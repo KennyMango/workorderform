@@ -4,3 +4,4 @@
 npm-debug.log
 /build/*
 database_setup.txt
+.DS_Store
