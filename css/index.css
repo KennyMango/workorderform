@@ -1,0 +1,92 @@
+@media screen and (min-width: 1080px) {
+    .nav-buttons{
+        height: 200px;
+        width: 50%;
+    }
+    .navIcons{
+        height: 150px;
+        width: auto;
+        text-align: center;
+    }
+
+    .nav-container{
+        width: 25%;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .nav-buttons{
+        height: 300px;
+        width: 50%;
+    }
+    .navIcons{
+        height: 250px;
+        width: auto;
+        text-align: center;
+    }
+}
+
+.navbar-header {
+    float: none;
+}
+.navbar-toggle {
+    display: block;
+}
+.navbar-collapse.collapse {
+    display: none!important;
+}
+.navbar-collapse.collapse.in {
+    display: block!important;
+}
+.navbar-nav {
+    float: none!important;
+}
+.navbar-nav>li {
+    float: none;
+}
+
+.nav-row{
+    height: 100%;
+    width: 100%;
+}
+
+
+.vertical-center {
+    min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+    min-height: 100vh; /* These two lines are counted as one 🙂       */
+    display: flex;
+    align-items: center;
+}
+
+/*.navbar-fixed-top {*/
+    /*min-height: 80px;*/
+/*}*/
+
+.navbar-nav > li > a {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    line-height: 80px;
+}
+
+@media (max-width: 767px) {
+    .navbar-nav > li > a {
+        line-height: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;}
+}
+
+/*.pull-left{*/
+    /*height: 50px;*/
+    /*width: 50px;*/
+/*}*/
+
+.icon-label{
+    text-align: center;
+    font-size: xx-large;
+}
+.nav-buttons{
+    background-color: #F5F5F5;
+    border-style: solid;
+    border-color: white;
+    border-width: 5px;
+}
