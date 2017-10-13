@@ -76,3 +76,5 @@ var MyApp = function() {
 
 var app = new MyApp();
 ko.applyBindings(app);
+
+// testing kelvin's github with gpg
