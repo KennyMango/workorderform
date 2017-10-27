@@ -18,10 +18,48 @@ var dispatchPage = function (params) {
         endDate: ko.observable(''),
         assignedTo: ko.observable('')
     }
-    this.submit = function () {
-        console.log(this.dispatchData);
-    };
 
+    self.buildingList = ko.observableArray();
+
+    self.submit = function () {
+
+        $.post("http://127.0.0.1:3000/customer", self.dispatchData, function(returnedData) {
+            console.log(returnedData)
+        })
+
+    },
+
+    self.loadJson = function () {
+
+            $.ajax({
+                type: 'GET',
+                url: 'http://127.0.0.1:3000/buildings/1',
+                contentType: "application/javascript",
+                dataType: "jsonp",
+                success: function(data) {
+                    console.log(data);
+                    console.log(ko.mapping.fromJS(data))
+                    var array = ko.mapping.fromJS(data);
+                    self.buildingList(array);
+                },
+                error:function(jq, st, error){
+                    alert(error);
+                }
+            });
+
+        // self.removeBuilding = function () {
+        //     $.ajax({
+        //         method: 'DELETE',
+        //         url: 'http://localhost:3000/users/12',
+        //         headers: {
+        //             'Content-Type': 'application/json'
+        //         },
+        //         error:function(jq, st, error){
+        //             alert(error);
+        //         }
+        //     });
+        // }
+    }
 };
 
 var materialsPage = function (params) {
@@ -124,7 +162,10 @@ var MyApp = function() {
     });
 };
 
-var app = new MyApp();
-ko.applyBindings(app);
+$(document).ready(function () {
+    var app = new MyApp();
+    ko.applyBindings(app);
+
+});
 
 // testing kelvin's github with gpg
