@@ -23,6 +23,13 @@
 
 <body>
 
+<script src='https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/knockout.mapping/2.4.1/knockout.mapping.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/knockout.mapping/2.4.1/knockout.mapping.min.js'></script>
+<script src='https://cdn.jsdelivr.net/grapnel.js/0.2.1/Grapnel.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/grapnel@0.6.4/src/grapnel.min.js'></script>
+
+
 <div>
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
@@ -42,7 +49,7 @@
         <ul class="nav navbar-nav">
           <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#/dispatch">Dispatch & Scheduling</a></li>
           <li><a href="#">Equipment</a></li>
-          <li><a href="#">Materials & Tools</a></li>
+          <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#/materials">Materials & Tools</a></li>
           <li><a href="#">Work Days & Service Records</a></li>
           <!--<li><a href="#">Enter Hours</a></li>-->
           <!--<li><a href="#">Invoice View</a></li>-->
@@ -58,6 +65,7 @@
         params: controller.viewParams },
     css: {'is-transitioning': controller.isTransitioning}">
 </div>
+
 
 <template id="main-page">
 
@@ -104,26 +112,193 @@
     <div class="container">
       <h2>Scheduling & Dispatch</h2>
       <form action="">
-        <div class="form-group">
-          <label for="customerNO">Customer NO:</label>
-          <input type="email" class="form-control" id="customerNO" placeholder="Customer NO" name="customerNO">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="btn btn-warning collapsed pull-left" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-expanded="false" data-bind="click: $component.loadJson">
+              Building Information
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+            <ul class="nav navbar-nav" data-bind="foreach: $component.buildingList">
+              <li><div class="form-group">
+                <label for="buildingName">Building/Location:</label>
+                <dl><div class="panel panel-default" id="buildingName">
+                  <div class="panel-body" data-bind="text: buildingName"></div>
+                </div></dl>
+              </div></li>
+              <li><div class="form-group">
+                <label for="buildingAddress">Address:</label>
+                <dl><div class="panel panel-default" id="buildingAddress">
+                  <div class="panel-body" data-bind="text: buildingAddress"></div>
+                </div></dl>
+              </div><li><div class="form-group">
+              <li><div class="form-group">
+                <label for="buildingCity">City:</label>
+              <dl><div class="panel panel-default" id="buildingCity">
+                <div class="panel-body" data-bind="text: buildingCity"></div>
+              </div></dl>
+              </div></li>
+              <li><div class="form-group">
+                <label for="buildingProvince">Province/State:</label>
+                <dl><div class="panel panel-default" id="buildingProvince">
+                  <div class="panel-body" data-bind="text: buildingProvince"></div>
+                </div></dl>
+              </div></li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="btn btn-warning collapsed pull-left" data-toggle="collapse" data-target="#bs-example-navbar-collapse-3" aria-expanded="false">
+              Customer Information
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-3">
+            <ul class="nav navbar-nav">
+              <li><div class="form-group">
+                <label for="customerName">Customer Name:</label>
+                <input data-bind="value: $component.dispatchData.custName" type="text" class="form-control" id="customerName" placeholder="Customer Name" name="customerName">
+              </div></li>
+              <li><div class="form-group">
+                <label for="customerNO">Customer P.O.#:</label>
+                <input data-bind="value: $component.dispatchData.custPO" type="text" class="form-control" id="customerNO" placeholder="Customer P.O#" name="customerNO">
+              </div><li><div class="form-group">
+              <li><div class="form-group">
+                <label for="customerNotes">Customer Notes:</label>
+                <input data-bind="value: $component.dispatchData.custNotes" type="text" class="form-control" id="customerNotes" placeholder="Customer Notes" name="customerNotes">
+              </div></li>
+              <li><div class="form-group">
+              <label for="customerEmail">Customer Email:</label>
+              <input data-bind="value: $component.dispatchData.custEmail" type="email" class="form-control" id="customerEmail" placeholder="Customer Email" name="customerEmail">
+            </div></li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+
+            <div class="navbar-header">
+              <button type="button" class="btn btn-warning collapsed pull-left" data-toggle="collapse" data-target="#bs-example-navbar-collapse-4" aria-expanded="false">
+                Contact Information
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-4">
+              <ul class="nav navbar-nav">
+                <li><div class="form-group">
+                  <label for="requesterName">Requested By:</label>
+                  <input data-bind="value: $component.dispatchData.requestedBy" type="text" class="form-control" id="requesterName" placeholder="Requester Name" name="requesterName">
+                </div></li>
+                <li><div class="form-group">
+                  <label for="siteContact">On-site Contact:</label>
+                  <input data-bind="value: $component.dispatchData.contOnSite" type="text" class="form-control" id="siteContact" placeholder="On-site Contact" name="siteContact">
+                </div></li>
+                <li><div class="form-group">
+                  <label for="contactPhone">Contact Phone:</label>
+                  <input data-bind="value: $component.dispatchData.contPhone" type="tel" class="form-control" id="contactPhone" placeholder="Contact Phone" name="contactPhone">
+                </div></li>
+                <li><div class="form-group">
+                  <label for="contactEmail">Contact Email:</label>
+                  <input data-bind="value: $component.dispatchData.contEmail" type="email" class="form-control" id="contactEmail" placeholder="Contact Email" name="contactEmail">
+                </div></li>
+              </ul>
+            </div><!-- /.navbar-collapse -->
+
+          <div class="navbar-header">
+            <button type="button" class="btn btn-warning collapsed pull-left" data-toggle="collapse" data-target="#bs-example-navbar-collapse-5" aria-expanded="false">
+              Schedule Information
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-5">
+            <ul class="nav navbar-nav">
+              <li><div class="form-group">
+                <label for="workDate">Scheduled Work Date:</label>
+                <input data-bind="value: $component.dispatchData.workDate" type="date" class="form-control" id="workDate" placeholder="Scheduled Work Date" name="workDate">
+              </div></li>
+              <li><div class="form-group">
+                <label for="startDate">Scheduled Start Date:</label>
+                <input data-bind="value: $component.dispatchData.startDate" type="date" class="form-control" id="startDate" placeholder="Scheduled Start Date" name="startDate">
+              </div></li>
+              <li><div class="form-group">
+                <label for="endDate">Scheduled End Date:</label>
+                <input data-bind="value: $component.dispatchData.endDate" type="date" class="form-control" id="endDate" placeholder="Scheduled End Date" name="endDate">
+              </div></li>
+              <li><div class="form-group">
+                <label for="assigned">Assigned To:</label>
+                <input data-bind="value: $component.dispatchData.assignedTo" type="text" class="form-control" id="assigned" placeholder="Assigned To" name="assigned">
+              </div></li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
         </div>
-        <div class="form-group">
-          <label for="customerName">Customer Name:</label>
-          <input type="password" class="form-control" id="customerName" placeholder="Customer Name" name="customerName">
-        </div>
-        <div class="checkbox">
-          <label><input type="checkbox" name="remember"> Remember me</label>
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="submit" data-bind="click: $component.submit" class="btn btn-danger pull-right">Submit</button>
       </form>
     </div>
   </div>
 </template>
 
-<script src='https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js'></script>
-<script src='https://cdn.jsdelivr.net/grapnel.js/0.2.1/Grapnel.js'></script>
-<script src='https://cdn.jsdelivr.net/npm/grapnel@0.6.4/src/grapnel.min.js'></script>
+
+<template id ="materials-page">
+  <div class="vertical-center">
+    <div class="container">
+      <h2>Materials & Tools</h2>
+      <form action="">
+        <div class="form-group">
+          <div class="btn btn-warning" onclick="location.href='#/purchase'">Purchase Orders</div>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-default">Truck Stock</button>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-default">Tools Used</button>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-default">Third Party Outsource Work</button>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-default">Quoted Work</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</template>
+
+
+<template id ="purchase-page">
+  <div class="vertical-center">
+    <div class="container">
+      <h2>Pruchase Orders</h2>
+      <form action="">
+        <div class="form-group">
+          <label>Supplier</label>
+          <tr>
+            <td><select data-bind="options: $component.suppliers, optionsText: 'supplierName'"></select></td>
+          </tr>
+          <button class="btn btn-default">View</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</template>
 
 <script  src="js/index.js"></script>
 

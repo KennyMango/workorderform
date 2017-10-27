@@ -3,10 +3,81 @@ var mainPage = function(params) {
 };
 
 var dispatchPage = function (params) {
+    self = this;
+    self.dispatchData = {
+        custName: ko.observable(''),
+        custPO: ko.observable(''),
+        custNotes: ko.observable(''),
+        custEmail: ko.observable(''),
+        reqeuestBy: ko.observable(''),
+        contOnSite: ko.observable(''),
+        contPhone: ko.observable(''),
+        contEmail: ko.observable(''),
+        workDate: ko.observable(''),
+        startDate: ko.observable(''),
+        endDate: ko.observable(''),
+        assignedTo: ko.observable('')
+    }
 
+    self.buildingList = ko.observableArray();
+
+    self.submit = function () {
+
+        $.post("http://127.0.0.1:3000/customer", self.dispatchData, function(returnedData) {
+            console.log(returnedData)
+        })
+
+    },
+
+    self.loadJson = function () {
+
+            $.ajax({
+                type: 'GET',
+                url: 'http://127.0.0.1:3000/buildings/1',
+                contentType: "application/javascript",
+                dataType: "jsonp",
+                success: function(data) {
+                    console.log(data);
+                    console.log(ko.mapping.fromJS(data))
+                    var array = ko.mapping.fromJS(data);
+                    self.buildingList(array);
+                },
+                error:function(jq, st, error){
+                    alert(error);
+                }
+            });
+
+        // self.removeBuilding = function () {
+        //     $.ajax({
+        //         method: 'DELETE',
+        //         url: 'http://localhost:3000/users/12',
+        //         headers: {
+        //             'Content-Type': 'application/json'
+        //         },
+        //         error:function(jq, st, error){
+        //             alert(error);
+        //         }
+        //     });
+        // }
+    }
 };
 
+var materialsPage = function (params) {
+
+};
+var purchasePage = function (params) {
+    self = this;
+    self.suppliers = [
+        { supplierName: "Trane"},
+        { supplierName: "Rona"},
+        { supplierName: "Home Depot"},
+        { supplierName: "Daikin"}
+    ];
+};
+
+this.custInfo = ko.observable('hello');
 var KnockoutController = function(config) {
+    this.custInfo = ko.observable('hello');
     var defaults = {
             transitionDelayMs: 0,
             views: []
@@ -46,6 +117,7 @@ var KnockoutController = function(config) {
             }
         }
     });
+
 };
 
 var MyApp = function() {
@@ -66,6 +138,22 @@ var MyApp = function() {
                     template: {element: "dispatch-page"}
                 },
                 routes: ["/dispatch"]
+            },
+            {
+                name: "Materials",
+                componentConfig: {
+                    viewModel: materialsPage,
+                    template: {element: "materials-page"}
+                },
+                routes: ["/materials"]
+            },
+            {
+                name: "Purchase",
+                componentConfig: {
+                    viewModel: purchasePage,
+                    template: {element: "purchase-page"}
+                },
+                routes: ["/purchase"]
             }],
         defaultView: {
             name: "main",
@@ -74,5 +162,10 @@ var MyApp = function() {
     });
 };
 
-var app = new MyApp();
-ko.applyBindings(app);
+$(document).ready(function () {
+    var app = new MyApp();
+    ko.applyBindings(app);
+
+});
+
+// testing kelvin's github with gpg
