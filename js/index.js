@@ -3,10 +3,43 @@ var mainPage = function(params) {
 };
 
 var dispatchPage = function (params) {
+    self = this;
+    self.dispatchData = {
+        custName: ko.observable(''),
+        custPO: ko.observable(''),
+        custNotes: ko.observable(''),
+        custEmail: ko.observable(''),
+        reqeuestBy: ko.observable(''),
+        contOnSite: ko.observable(''),
+        contPhone: ko.observable(''),
+        contEmail: ko.observable(''),
+        workDate: ko.observable(''),
+        startDate: ko.observable(''),
+        endDate: ko.observable(''),
+        assignedTo: ko.observable('')
+    }
+    this.submit = function () {
+        console.log(this.dispatchData);
+    };
 
 };
 
+var materialsPage = function (params) {
+
+};
+var purchasePage = function (params) {
+    self = this;
+    self.suppliers = [
+        { supplierName: "Trane"},
+        { supplierName: "Rona"},
+        { supplierName: "Home Depot"},
+        { supplierName: "Daikin"}
+    ];
+};
+
+this.custInfo = ko.observable('hello');
 var KnockoutController = function(config) {
+    this.custInfo = ko.observable('hello');
     var defaults = {
             transitionDelayMs: 0,
             views: []
@@ -46,6 +79,7 @@ var KnockoutController = function(config) {
             }
         }
     });
+
 };
 
 var MyApp = function() {
@@ -66,6 +100,22 @@ var MyApp = function() {
                     template: {element: "dispatch-page"}
                 },
                 routes: ["/dispatch"]
+            },
+            {
+                name: "Materials",
+                componentConfig: {
+                    viewModel: materialsPage,
+                    template: {element: "materials-page"}
+                },
+                routes: ["/materials"]
+            },
+            {
+                name: "Purchase",
+                componentConfig: {
+                    viewModel: purchasePage,
+                    template: {element: "purchase-page"}
+                },
+                routes: ["/purchase"]
             }],
         defaultView: {
             name: "main",
