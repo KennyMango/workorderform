@@ -65,6 +65,37 @@ var dispatchPage = function (params) {
 var materialsPage = function (params) {
 
 };
+
+var equipmentForm = function (params) {
+    self = this;
+    self.equipment = [
+        {buildingSpace: "Roof"},
+        {equipmentName: "RF01 (Roof - rf2341)"},
+        {equipmentMakeModel: "Apple"},
+        {equipmentNum: "1234567"},
+        {equipmentCost: "$ 100.00"},
+        {equipmentStatus: "Working"},
+        {equipmentDetails: "This item is intended to do blah blah blah"},
+        {equipmentNotes: "I found the following errors"},
+        {equipmentImages: "image1, image2, image3"}
+    ]
+};
+
+var equipmentPage = function (params) {
+    self = this;
+    self.equipment = {
+        buildingSpace: ko.observable(''),
+        equipmentName: ko.observable(''),
+        equipmentMakeModel: ko.observable(''),
+        equipmentNum: ko.observable(''),
+        equipmentCost: ko.observable(''),
+        equipmentStatus: ko.observable(''),
+        equipmentDetails: ko.observable(''),
+        equipmentNotes: ko.observable(''),
+        equipmentImages: ko.observable(''),
+    }
+};
+
 var purchasePage = function (params) {
     self = this;
     self.suppliers = [
@@ -172,6 +203,22 @@ var MyApp = function() {
                     template: {element: "materials-page"}
                 },
                 routes: ["/materials"]
+            },
+            {
+                name: "Equipment",
+                componentConfig: {
+                    viewModel: equipmentPage,
+                    template: {element: "equipment-page"}
+                },
+                routes: ["/equipment"]
+            },
+            {
+                name: "EquipmentForm",
+                componentConfig: {
+                    viewModel: equipmentForm,
+                    template: {element: "equipment-form"}
+                },
+                routes: ["/equipmentForm"]
             },
             {
                 name: "Purchase",
