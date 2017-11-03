@@ -106,6 +106,32 @@ var purchasePage = function (params) {
     ];
 };
 
+var workDaysPage = function (params) {
+    self = this;
+    self.workDaysData = {
+        workDate: ko.observable(''),
+        technician: ko.observable(''),
+        reghrs: ko.observable(''),
+        overtime: ko.observable(''),
+        doubletime: ko.observable(''),
+        totalhrs: ko.observable(''),
+        rate: ko.observable(''),
+        labour: ko.observable('')
+    }
+
+    self.submit = function () {
+
+        $.post("http://127.0.0.1:3000/workDays", self.workDaysData, function(returnedData) {
+            console.log(returnedData)
+        })
+
+    }
+}
+
+var viewWorkDaysPage = function (params) {
+
+};
+
 this.custInfo = ko.observable('hello');
 var KnockoutController = function(config) {
     this.custInfo = ko.observable('hello');
@@ -201,6 +227,22 @@ var MyApp = function() {
                     template: {element: "purchase-page"}
                 },
                 routes: ["/purchase"]
+            },
+            {
+                name: "WorkDays",
+                componentConfig: {
+                    viewModel: workDaysPage,
+                    template: {element: "workDays-page"}
+                },
+                routes: ["/workDays"]
+            },
+            {
+                name: "ViewWorkDays",
+                componentConfig: {
+                    viewModel: viewWorkDaysPage,
+                    template: {element: "viewWorkDays-page"}
+                },
+                routes: ["/viewWorkDays"]
             }],
         defaultView: {
             name: "main",
