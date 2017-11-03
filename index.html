@@ -2,7 +2,7 @@
 <html >
 <head>
   <meta charset="UTF-8">
-  <title>BuiltSpace00</title>
+  <title>BuiltSpace</title>
 
 
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
@@ -50,7 +50,7 @@
           <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#/dispatch">Dispatch & Scheduling</a></li>
           <li><a href="#">Equipment</a></li>
           <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#/materials">Materials & Tools</a></li>
-          <li><a href="#">Work Days & Service Records</a></li>
+          <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#/workDays">Work Days</a></li>
           <!--<li><a href="#">Enter Hours</a></li>-->
           <!--<li><a href="#">Invoice View</a></li>-->
         </ul>
@@ -88,7 +88,8 @@
         </div>
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 nav-buttons center-block">
           <img class="navIcons center-block" src="https://i.imgur.com/aj0NmyB.png">
-          <p class="icon-label">Work Days & Service Records</p>
+          <p class="icon-label">Work Days</p>
+        </div>
         </div>
         <div class="row nav-row center-block">
           <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 nav-buttons center-block">
@@ -100,7 +101,6 @@
             <p class="icon-label">Invoice View</p>
           </div>
         </div>
-      </div>
     </div>
   </div>
 
@@ -138,7 +138,7 @@
                 <dl><div class="panel panel-default" id="buildingAddress">
                   <div class="panel-body" data-bind="text: buildingAddress"></div>
                 </div></dl>
-              </div><li><div class="form-group">
+                  </div></li>
               <li><div class="form-group">
                 <label for="buildingCity">City:</label>
               <dl><div class="panel panel-default" id="buildingCity">
@@ -174,7 +174,7 @@
               <li><div class="form-group">
                 <label for="customerNO">Customer P.O.#:</label>
                 <input data-bind="value: $component.dispatchData.custPO" type="text" class="form-control" id="customerNO" placeholder="Customer P.O#" name="customerNO">
-              </div><li><div class="form-group">
+                  </div></li>
               <li><div class="form-group">
                 <label for="customerNotes">Customer Notes:</label>
                 <input data-bind="value: $component.dispatchData.custNotes" type="text" class="form-control" id="customerNotes" placeholder="Customer Notes" name="customerNotes">
@@ -299,6 +299,80 @@
     </div>
   </div>
 </template>
+
+<template id ="viewWorkDays-page">
+  <div class="vertical-center">
+    <div class="container">
+      <h2>View Work Days</h2>
+      <form action="">
+      </form>
+    </div>
+  </div>
+</template>
+      
+<template id ="workDays-page">
+  <div class="vertical-center">
+    <div class="container">
+      <h2>Work Days</h2>
+      <form action="">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="btn btn-warning collapsed pull-left" data-toggle="collapse" data-target="#bs-example-navbar-collapse-5" aria-expanded="false">
+              Insert Work Day
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+            
+        <div class="form-group">
+          <div class="btn btn-warning" onclick="location.href='#/viewWorkDays'">View Work Days</div>
+        </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-5">
+            <ul class="nav navbar-nav">
+              <li><div class="form-group">
+                <label for="workDate">Work Date:</label>
+                <input data-bind="value: $component.workDaysData.workDate" type="date" class="form-control" id="workDate" placeholder="Scheduled Work Date" name="workDate">
+              </div></li>
+              <li><div class="form-group">
+                <label for="technician">Technician</label>
+                <input data-bind="value: $component.workDaysData.technician" type="text" class="form-control" id="technician" placeholder="Technician Name" name="technician">
+              </div></li>
+              <li><div class="form-group">
+                <label for="reghrs">Regular Hours</label>
+                <input data-bind="value: $component.workDaysData.reghrs" type="number" class="form-control" id="reghrs" placeholder="Regular Hours" name="reghrs">
+              </div></li>
+              <li><div class="form-group">
+                <label for="overtime">Overtime</label>
+                <input data-bind="value: $component.workDaysData.overtime" type="number" class="form-control" id="overtime" placeholder="Overtime" name="overtime">
+              </div></li>
+              <li><div class="form-group">
+                <label for="doubletime">Double Time</label>
+                <input data-bind="value: $component.workDaysData.doubletime" type="number" class="form-control" id="doubletime" placeholder="Double Time" name="doubletime">
+              </div></li>
+              <li><div class="form-group">
+                <label for="totalhrs">Total Hours</label>
+                <input data-bind="value: $component.workDaysData.totalhrs" type="number" class="form-control" id="totalhrs" placeholder="Total Hours" name="totalhrs">
+              </div></li>
+              <li><div class="form-group">
+                <label for="rate">Rate</label>
+                <input data-bind="value: $component.workDaysData.rate" type="number" class="form-control" id="rate" placeholder="Rate" name="rate">
+              </div></li>
+              <li><div class="form-group">
+                <label for="labour">Labour</label>
+                <input data-bind="value: $component.workDaysData.labour" type="number" class="form-control" id="labour" placeholder="Labour" name="labour">
+              </div></li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div>
+        <button type="submit" data-bind="click: $component.submit" class="btn btn-danger pull-right">Submit</button>
+      </form>
+    </div>
+  </div>
+</template>    
 
 <script  src="js/index.js"></script>
 
