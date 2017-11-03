@@ -48,7 +48,7 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
           <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#/dispatch">Dispatch & Scheduling</a></li>
-          <li><a href="#">Equipment</a></li>
+          <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#/equipment">Equipment</a></li>
           <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#/materials">Materials & Tools</a></li>
           <li><a href="#">Work Days & Service Records</a></li>
           <!--<li><a href="#">Enter Hours</a></li>-->
@@ -295,6 +295,171 @@
           </tr>
           <button class="btn btn-default">View</button>
         </div>
+      </form>
+    </div>
+  </div>
+</template>
+
+<template id ="equipment-page">
+  <div class="vertical-center">
+    <div class="container" style="background-color: royalblue">
+      <h2>Space #3</h2>
+      <form action="">
+
+        <div class="form-group">
+          <div class="btn-default" onclick="location.href='#/equipmentForm'">
+            <div class="row">
+              <div class="col-sm-8">
+                <p>
+                <ul><h4>Equipment 1</h4></ul>
+                <ul>Category: General</ul>
+                <ul>Make / Model: Nike</ul>
+                <ul>Serial No: asfnsjlnf</ul>
+                </p>
+              </div>
+
+              <div class="col-sm-2">
+                <ul><button class="glyphicon glyphicon-pencil" style="width: 60px; height: 60px;left: 10px; background-color: white; color: black" onclick="location.href='#/'"></button></ul>
+                <ul><button class="glyphicon glyphicon-trash" style="width: 60px; height: 60px;left: 10px; background-color: white; color: black" onclick="location.href='#/'"></button></ul>
+              </div>
+
+              <div class="col-sm-2">
+                <ul><button class="glyphicon glyphicon-ok" style="width: 60px; height: 60px;right: 25px;background-color: green; color: white;" onclick="location.href='#/'"></button></ul>
+                <ul><button class="glyphicon glyphicon-remove" style="width: 60px; height: 60px;right: 25px;background-color: red; color: black" onclick="location.href='#/'"></button></ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="btn-default" onclick="location.href='#/equipmentForm'">
+            <div class="row">
+              <div class="col-sm-8">
+                <p>
+                <ul><h4>Equipment 2</h4></ul>
+                <ul>Category: General</ul>
+                <ul>Make / Model: Nike</ul>
+                <ul>Serial No: asfnsjlnf</ul>
+                </p>
+              </div>
+
+              <div class="col-sm-2">
+                <ul><button class="glyphicon glyphicon-pencil" style="width: 60px; height: 60px;left: 10px; background-color: white; color: black" onclick="location.href='#/'"></button></ul>
+                <ul><button class="glyphicon glyphicon-trash" style="width: 60px; height: 60px;left: 10px; background-color: white; color: black" onclick="location.href='#/'"></button></ul>
+              </div>
+
+              <div class="col-sm-2">
+                <ul><button  class="glyphicon glyphicon-ok" style="width: 60px; height: 60px; right: 25px;background-color: green; color: white;" onclick="location.href='#/'"></button></ul>
+                <ul><button class="glyphicon glyphicon-remove" style="width: 60px; height: 60px;right: 25px;background-color: red; color: black" onclick="location.href='#/'"></button></ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="btn-default" onclick="location.href='#/equipmentForm'">
+            <div class="row">
+              <div class="col-sm-8">
+                <p>
+                <ul><h4>Equipment 3</h4></ul>
+                <ul>Category: General</ul>
+                <ul>Make / Model: Nike</ul>
+                <ul>Serial No: asfnsjlnf</ul>
+                </p>
+              </div>
+
+              <div class="col-sm-2">
+                <ul><button class="glyphicon glyphicon-pencil" style="width: 60px; height: 60px;left: 10px; background-color: white; color: black" onclick="location.href='#/'"></button></ul>
+                <ul><button class="glyphicon glyphicon-trash" style="width: 60px; height: 60px;left: 10px; background-color: white; color: black" onclick="location.href='#/'"></button></ul>
+              </div>
+
+              <div class="col-sm-2">
+                <ul><button class="glyphicon glyphicon-ok" style="width: 60px; height: 60px;right: 25px;background-color: green; color: white;" onclick="location.href='#/'"></button></ul>
+                <ul><button class="glyphicon glyphicon-remove" style="width: 60px; height: 60px;right: 25px;background-color: red; color: black" onclick="location.href='#/'"></button></ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</template>
+
+<template id ="equipment-form">
+  <div class="vertical-center">
+    <div class="container">
+      <h2>Equipment Form</h2>
+      <form action="">
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div style="border: dotted; padding: 8px">
+          <ul class="nav navbar-nav">
+
+            <div id="equipmentProfilePic" style="width: 100px; height: 100px; border-radius: 50%; border: solid">
+            </div>
+
+            <li><div class="form-group">
+              <label for="buildingSpace">Building Space:</label>
+              <input data-bind="value: $component.equipment.buildingSpace" type="text" class="form-control" id="buildingSpace" placeholder="Building Space" name="buildingSpace">
+            </div></li>
+
+            <li><div class="form-group">
+              <label for="equipmentName">Equipment Name:</label>
+              <input data-bind="value: $component.equipment.equipmentName" type="text" class="form-control" id="equipmentName" placeholder="Equipment Name" name="equipmentName">
+            </div></li>
+
+            <li><div class="form-group">
+              <label for="equipmentMakeModel">Make/Model:</label>
+              <input data-bind="value: $component.equipment.equipmentMakeModel" type="text" class="form-control" id="equipmentMakeModel" placeholder="Make/Model" name="equipmentMakeModel">
+            </div></li>
+
+            <li><div class="form-group">
+              <label for="equipmentNumber">Equipment Number:</label>
+              <input data-bind="value: $component.equipment.equipmentNumber" type="text" class="form-control" id="equipmentNumber" placeholder="Equipment Number" name="equipmentNumber">
+            </div></li>
+
+            <li><div class="form-group">
+              <label for="equipmentCost">Equipment Cost:</label>
+              <input data-bind="value: $component.equipment.equipmentCost" type="text" class="form-control" id="equipmentCost" placeholder="Equipment Cost" name="equipmentCost">
+            </div></li>
+
+            <li><div class="form-group">
+              <label for="equipmentStatus">Equipment Status:</label>
+              <ul>
+                <button class="glyphicon glyphicon-ok" style="width: 60px; height: 60px;right: 25px;background-color: green; color: white;" onclick="location.href='#/'"></button>
+                <button class="glyphicon glyphicon-remove" style="width: 60px; height: 60px;right: 25px;background-color: red; color: black" onclick="location.href='#/'"></button>
+              </ul>
+              <input data-bind="value: $component.equipment.equipmentStatus" type="text" class="form-control" id="equipmentStatus" placeholder="Equipment Status" name="equipmentStatus">
+            </div></li>
+
+            <li><div class="form-group">
+              <label for="equipmentDetails">Equipment Details:</label>
+              <input data-bind="value: $component.equipment.equipmentDetails" type="text" class="form-control" id="equipmentDetails" placeholder="Equipment Details" name="equipmentDetails">
+            </div></li>
+
+            <li><div class="form-group">
+              <label for="equipmentNotes">Equipment Notes:</label>
+              <input data-bind="value: $component.equipment.equipmentNotes" type="text" class="form-control" id="equipmentNotes" placeholder="Equipment Notes" name="equipmentNotes">
+            </div></li>
+
+            <li><div class="form-group">
+              <label for="equipmentImages">Equipment Images:</label>
+              <ul>
+                <button class="glyphicon glyphicon-camera" style="width: 60px; height: 60px;right: 25px;background-color: dimgrey; color: white;" onclick="location.href='#/'"></button>
+              </ul>
+              <input data-bind="value: $component.equipment.equipmentImages" type="text" class="form-control" id="equipmentImages" placeholder="Equipment Images" name="equipmentImages">
+            </div></li>
+
+            <li><div class="form-group">
+              <button id="cancelButton" class="btn">Cancel</button>
+              <button id="saveButton" class="btn">Save</button>
+            </div></li>
+
+
+          </ul>
+        </div><!-- /.navbar-collapse -->
+
       </form>
     </div>
   </div>
