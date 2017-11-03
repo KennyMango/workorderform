@@ -133,7 +133,7 @@ var viewWorkDaysPage = function (params) {
 };
 
 var hoursSummaryPage = function (params) {
-
+// testing time
 };
 
 this.custInfo = ko.observable('hello');
