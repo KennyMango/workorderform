@@ -463,12 +463,32 @@
     </div>
   </div>
 </template>
+
+<template id ="viewWorkDays-page">
+    <div class="vertical-center">
+      <div class="container">
+        <h2>View Work Days</h2>
+        <form action="">
+            <ul><h4>
+                <li>A click-able list of all work days for the current technician goes here.</li><br />
+                <li>When a specific date is clicked, it shows a <u>Work Day Summary</u> page for that specific date.</li>
+                <li>This box shows a summary of the hours/rate/labour for that date.</li>
+            </h4></ul>
+        </form>
+      </div>
+    </div>
+</template>
     
 <template id ="hoursSummary-page">
   <div class="vertical-center">
     <div class="container">
       <h2>Hours Summary</h2>
       <form action="">
+        <ul><h4>
+            <li>A click-able list (similar to "View Work Days") of all technicians who have worked on this Work Order goes here.</li><br />
+            <li>When a specific technician is clicked, it shows a <u>Technician Summary</u> page for that specific clicked technician.</li>
+            <li>This box shows a summary of all hours worked for the Work Order by that technician.</li>
+        </h4></ul>
       </form>
     </div>
   </div>
@@ -542,18 +562,7 @@
   </div>
 </template>
 
-      <template id ="viewWorkDays-page">
-        <div class="vertical-center">
-          <div class="container">
-            <h2>View Work Days</h2>
-            <form action="">
-            </form>
-          </div>
-        </div>
-      </template>
-
-
-      <script  src="js/index.js"></script>
+<script  src="js/index.js"></script>
 
 </body>
 </html>
