@@ -132,6 +132,10 @@ var viewWorkDaysPage = function (params) {
 
 };
 
+var hoursSummaryPage = function (params) {
+// testing time
+};
+
 this.custInfo = ko.observable('hello');
 var KnockoutController = function(config) {
     this.custInfo = ko.observable('hello');
@@ -243,6 +247,14 @@ var MyApp = function() {
                     template: {element: "viewWorkDays-page"}
                 },
                 routes: ["/viewWorkDays"]
+            },
+            {
+                name: "HoursSummary",
+                componentConfig: {
+                    viewModel: hoursSummaryPage,
+                    template: {element: "hoursSummary-page"}
+                },
+                routes: ["/hoursSummary"]
             }],
         defaultView: {
             name: "main",

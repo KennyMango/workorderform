@@ -463,6 +463,36 @@
     </div>
   </div>
 </template>
+
+<template id ="viewWorkDays-page">
+    <div class="vertical-center">
+      <div class="container">
+        <h2>View Work Days</h2>
+        <form action="">
+            <ul><h4>
+                <li>A click-able list of all work days for the current technician goes here.</li><br />
+                <li>When a specific date is clicked, it shows a <u>Work Day Summary</u> page for that specific date.</li>
+                <li>This box shows a summary of the hours/rate/labour for that date.</li>
+            </h4></ul>
+        </form>
+      </div>
+    </div>
+</template>
+    
+<template id ="hoursSummary-page">
+  <div class="vertical-center">
+    <div class="container">
+      <h2>Hours Summary</h2>
+      <form action="">
+        <ul><h4>
+            <li>A click-able list (similar to "View Work Days") of all technicians who have worked on this Work Order goes here.</li><br />
+            <li>When a specific technician is clicked, it shows a <u>Technician Summary</u> page for that specific clicked technician.</li>
+            <li>This box shows a summary of all hours worked for the Work Order by that technician.</li>
+        </h4></ul>
+      </form>
+    </div>
+  </div>
+</template>
       
 <template id ="workDays-page">
   <div class="vertical-center">
@@ -479,10 +509,6 @@
               <span class="icon-bar"></span>
             </button>
           </div>
-            
-        <div class="form-group">
-          <div class="btn btn-warning" onclick="location.href='#/viewWorkDays'">View Work Days</div>
-        </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
@@ -521,6 +547,14 @@
               </div></li>
             </ul>
           </div><!-- /.navbar-collapse -->
+            
+        <div class="form-group">
+          <div class="btn btn-warning" onclick="location.href='#/viewWorkDays'">View Work Days</div>
+        </div>
+        <div class="form-group">
+          <div class="btn btn-warning" onclick="location.href='#/hoursSummary'">Hours Summary</div>
+        </div>
+            
         </div>
         <button type="submit" data-bind="click: $component.submit" class="btn btn-danger pull-right">Submit</button>
       </form>
@@ -528,18 +562,7 @@
   </div>
 </template>
 
-      <template id ="viewWorkDays-page">
-        <div class="vertical-center">
-          <div class="container">
-            <h2>View Work Days</h2>
-            <form action="">
-            </form>
-          </div>
-        </div>
-      </template>
-
-
-      <script  src="js/index.js"></script>
+<script  src="js/index.js"></script>
 
 </body>
 </html>
