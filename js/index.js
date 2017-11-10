@@ -132,6 +132,10 @@ var viewWorkDaysPage = function (params) {
 
 };
 
+var invoicePage = function (params) {
+
+};
+
 var hoursSummaryPage = function (params) {
 // testing time
 };
@@ -247,6 +251,14 @@ var MyApp = function() {
                     template: {element: "viewWorkDays-page"}
                 },
                 routes: ["/viewWorkDays"]
+            },
+				{
+                name: "Invoice",
+                componentConfig: {
+                    viewModel: invoicePage,
+                    template: {element: "invoice-page"}
+                },
+                routes: ["/invoice"]
             },
             {
                 name: "HoursSummary",
