@@ -4,26 +4,53 @@
         width: 50%;
     }
     .navIcons{
-        height: 150px;
+        height: 130px;
         width: auto;
         text-align: center;
+		margin: 10px;
     }
 
     .nav-container{
         width: 25%;
     }
+	.icon-label{
+    text-align: center;
+    font-size: 15px;
+}
 }
 
 @media screen and (max-width: 1024px) {
     .nav-buttons{
-        height: 300px;
+        height: 200px;
         width: 50%;
     }
     .navIcons{
-        height: 250px;
+        height: 160px;
         width: auto;
         text-align: center;
+		margin: 5px;
     }
+	.icon-label{
+    text-align: center;
+    font-size: 20px;
+}
+}
+
+@media screen and (max-width: 768px) {
+    .nav-buttons{
+        height: 190px;
+        width: 48%;
+    }
+    .navIcons{
+        height: 140px;
+        width: auto;
+        text-align: center;
+		margin: 5px;
+    }
+	.icon-label{
+    text-align: center;
+    font-size: 15px;
+}
 }
 
 .navbar-header {
@@ -90,3 +117,14 @@
     border-color: white;
     border-width: 5px;
 }
+
+.checkbox{
+    text-align: left;
+    font-size: xx-large;
+	padding-top: 50px;
+	flex: 1;
+	flex-direction: column;
+	display: flex;
+	margin: 50px;
+
+} 
