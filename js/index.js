@@ -9,7 +9,7 @@ var dispatchPage = function (params) {
         custPO: ko.observable(''),
         custNotes: ko.observable(''),
         custEmail: ko.observable(''),
-        reqeuestBy: ko.observable(''),
+        requestedBy: ko.observable(''),
         contOnSite: ko.observable(''),
         contPhone: ko.observable(''),
         contEmail: ko.observable(''),
@@ -17,7 +17,7 @@ var dispatchPage = function (params) {
         startDate: ko.observable(''),
         endDate: ko.observable(''),
         assignedTo: ko.observable('')
-    }
+    };
 
     self.buildingList = ko.observableArray();
 
@@ -27,7 +27,7 @@ var dispatchPage = function (params) {
             console.log(returnedData)
         })
 
-    },
+    };
 
     self.loadJson = function () {
 
@@ -38,7 +38,7 @@ var dispatchPage = function (params) {
                 dataType: "jsonp",
                 success: function(data) {
                     console.log(data);
-                    console.log(ko.mapping.fromJS(data))
+                    console.log(ko.mapping.fromJS(data));
                     var array = ko.mapping.fromJS(data);
                     self.buildingList(array);
                 },
@@ -68,21 +68,6 @@ var materialsPage = function (params) {
 
 var equipmentForm = function (params) {
     self = this;
-    self.equipment = [
-        {buildingSpace: "Roof"},
-        {equipmentName: "RF01 (Roof - rf2341)"},
-        {equipmentMakeModel: "Apple"},
-        {equipmentNum: "1234567"},
-        {equipmentCost: "$ 100.00"},
-        {equipmentStatus: "Working"},
-        {equipmentDetails: "This item is intended to do blah blah blah"},
-        {equipmentNotes: "I found the following errors"},
-        {equipmentImages: "image1, image2, image3"}
-    ]
-};
-
-var equipmentPage = function (params) {
-    self = this;
     self.equipment = {
         buildingSpace: ko.observable(''),
         equipmentName: ko.observable(''),
@@ -92,8 +77,54 @@ var equipmentPage = function (params) {
         equipmentStatus: ko.observable(''),
         equipmentDetails: ko.observable(''),
         equipmentNotes: ko.observable(''),
-        equipmentImages: ko.observable(''),
-    }
+        equipmentImages: ko.observable('')
+    };
+
+    self.save = function () {
+
+        // $.post("http://127.0.0.1:3000/equipment/1", self.equipment, function(returnedData) {
+        //     console.log(returnedData)
+        // });
+
+        $.ajax(
+            {
+                type:'PUT',
+                url: 'http://127.0.0.1:3000/equipment/1',
+                data: ko.toJSON(self.equipment),
+                contentType: 'application/json',
+                success: function(data){
+                    console.log("updated success")
+                    self.equipment(data)
+                }
+            }
+        )
+
+    };
+
+};
+
+var equipmentPage = function (params) {
+
+    self = this;
+
+    self.equipList = ko.observableArray();
+
+    $( document ).ready(function() {
+        $.ajax({
+            type: 'GET',
+            url: 'http://127.0.0.1:3000/equipment',
+            contentType: "application/javascript",
+            dataType: "jsonp",
+            success: function (data) {
+                console.log(data);
+                self.equipList(data);
+            },
+            error: function (jq, st, error) {
+                alert(error);
+            }
+        });
+    });
+
 };
 
 var purchasePage = function (params) {
@@ -119,7 +150,7 @@ var workDaysPage = function (params) {
         labour: ko.observable('')
     }
 
-    self.submit = function () {
+    self.add = function () {
 
         $.post("http://127.0.0.1:3000/workDays", self.workDaysData, function(returnedData) {
             console.log(returnedData)
@@ -129,6 +160,26 @@ var workDaysPage = function (params) {
 }
 
 var viewWorkDaysPage = function (params) {
+
+    self = this;
+
+    self.workList = ko.observableArray();
+
+    $( document ).ready(function() {
+        $.ajax({
+            type: 'GET',
+            url: 'http://127.0.0.1:3000/workDays',
+            contentType: "application/javascript",
+            dataType: "jsonp",
+            success: function (data) {
+                console.log(data);
+                self.workList(data);
+            },
+            error: function (jq, st, error) {
+                alert(error);
+            }
+        });
+    });
 
 };
 
@@ -141,6 +192,7 @@ var hoursSummaryPage = function (params) {
 };
 
 this.custInfo = ko.observable('hello');
+
 var KnockoutController = function(config) {
     this.custInfo = ko.observable('hello');
     var defaults = {
