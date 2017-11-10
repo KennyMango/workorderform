@@ -306,65 +306,15 @@
       <h2>Space #3</h2>
       <form action="">
 
-        <div class="form-group">
+        <div class="form-group" data-bind="foreach: $component.equipList">
           <div class="btn-default" onclick="location.href='#/equipmentForm'">
             <div class="row">
               <div class="col-sm-8">
                 <p>
-                <ul><h4>Equipment 1</h4></ul>
-                <ul>Category: General</ul>
-                <ul>Make / Model: Nike</ul>
-                <ul>Serial No: asfnsjlnf</ul>
-                </p>
-              </div>
-
-              <div class="col-sm-2">
-                <ul><button class="glyphicon glyphicon-pencil" style="width: 60px; height: 60px;left: 10px; background-color: white; color: black" onclick="location.href='#/'"></button></ul>
-                <ul><button class="glyphicon glyphicon-trash" style="width: 60px; height: 60px;left: 10px; background-color: white; color: black" onclick="location.href='#/'"></button></ul>
-              </div>
-
-              <div class="col-sm-2">
-                <ul><button class="glyphicon glyphicon-ok" style="width: 60px; height: 60px;right: 25px;background-color: green; color: white;" onclick="location.href='#/'"></button></ul>
-                <ul><button class="glyphicon glyphicon-remove" style="width: 60px; height: 60px;right: 25px;background-color: red; color: black" onclick="location.href='#/'"></button></ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <div class="btn-default" onclick="location.href='#/equipmentForm'">
-            <div class="row">
-              <div class="col-sm-8">
-                <p>
-                <ul><h4>Equipment 2</h4></ul>
-                <ul>Category: General</ul>
-                <ul>Make / Model: Nike</ul>
-                <ul>Serial No: asfnsjlnf</ul>
-                </p>
-              </div>
-
-              <div class="col-sm-2">
-                <ul><button class="glyphicon glyphicon-pencil" style="width: 60px; height: 60px;left: 10px; background-color: white; color: black" onclick="location.href='#/'"></button></ul>
-                <ul><button class="glyphicon glyphicon-trash" style="width: 60px; height: 60px;left: 10px; background-color: white; color: black" onclick="location.href='#/'"></button></ul>
-              </div>
-
-              <div class="col-sm-2">
-                <ul><button  class="glyphicon glyphicon-ok" style="width: 60px; height: 60px; right: 25px;background-color: green; color: white;" onclick="location.href='#/'"></button></ul>
-                <ul><button class="glyphicon glyphicon-remove" style="width: 60px; height: 60px;right: 25px;background-color: red; color: black" onclick="location.href='#/'"></button></ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <div class="btn-default" onclick="location.href='#/equipmentForm'">
-            <div class="row">
-              <div class="col-sm-8">
-                <p>
-                <ul><h4>Equipment 3</h4></ul>
-                <ul>Category: General</ul>
-                <ul>Make / Model: Nike</ul>
-                <ul>Serial No: asfnsjlnf</ul>
+                <ul><h4 data-bind="text: id"></h4></ul>
+                <ul data-bind="text: equipmentName"></ul>
+                <ul data-bind="text: equipmentMakeModel"></ul>
+                <ul data-bind="text: equipmentNum"></ul>
                 </p>
               </div>
 
@@ -414,8 +364,8 @@
             </div></li>
 
             <li><div class="form-group">
-              <label for="equipmentNumber">Equipment Number:</label>
-              <input data-bind="value: $component.equipment.equipmentNumber" type="text" class="form-control" id="equipmentNumber" placeholder="Equipment Number" name="equipmentNumber">
+              <label for="equipmentNum">Equipment Number:</label>
+              <input data-bind="value: $component.equipment.equipmentNum" type="text" class="form-control" id="equipmentNum" placeholder="Equipment Number" name="equipmentNum">
             </div></li>
 
             <li><div class="form-group">
@@ -452,7 +402,7 @@
 
             <li><div class="form-group">
               <button id="cancelButton" class="btn">Cancel</button>
-              <button id="saveButton" class="btn">Save</button>
+              <button id="saveButton" data-bind="click: $component.save" class="btn" onclick="location.href='#/equipment'">Save</button>
             </div></li>
 
 
@@ -469,11 +419,30 @@
       <div class="container">
         <h2>View Work Days</h2>
         <form action="">
-            <ul><h4>
-                <li>A click-able list of all work days for the current technician goes here.</li><br />
-                <li>When a specific date is clicked, it shows a <u>Work Day Summary</u> page for that specific date.</li>
-                <li>This box shows a summary of the hours/rate/labour for that date.</li>
-            </h4></ul>
+
+          <div class="form-group" data-bind="foreach: $component.workList">
+            <div class="btn-default" onclick="location.href='#'">
+              <div class="row">
+                <div class="col-sm-8">
+                  <p>
+                  <ul><h4 data-bind="text: id"></h4></ul>
+                  <ul data-bind="text: technician"></ul>
+                  <ul data-bind="text: workDate"></ul>
+                  </p>
+                </div>
+
+                <div class="col-sm-2">
+                  <ul><button class="glyphicon glyphicon-pencil" style="width: 60px; height: 60px;left: 10px; background-color: white; color: black" onclick="location.href='#/'"></button></ul>
+                  <ul><button class="glyphicon glyphicon-trash" style="width: 60px; height: 60px;left: 10px; background-color: white; color: black" onclick="location.href='#/'"></button></ul>
+                </div>
+
+                <div class="col-sm-2">
+                  <ul><button class="glyphicon glyphicon-ok" style="width: 60px; height: 60px;right: 25px;background-color: green; color: white;" onclick="location.href='#/'"></button></ul>
+                  <ul><button class="glyphicon glyphicon-remove" style="width: 60px; height: 60px;right: 25px;background-color: red; color: black" onclick="location.href='#/'"></button></ul>
+                </div>
+              </div>
+            </div>
+          </div>
         </form>
       </div>
     </div>
@@ -484,11 +453,11 @@
     <div class="container">
       <h2>Hours Summary</h2>
       <form action="">
-        <ul><h4>
-            <li>A click-able list (similar to "View Work Days") of all technicians who have worked on this Work Order goes here.</li><br />
-            <li>When a specific technician is clicked, it shows a <u>Technician Summary</u> page for that specific clicked technician.</li>
-            <li>This box shows a summary of all hours worked for the Work Order by that technician.</li>
-        </h4></ul>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+       </ul>
       </form>
     </div>
   </div>
@@ -523,27 +492,27 @@
               </div></li>
               <li><div class="form-group">
                 <label for="reghrs">Regular Hours</label>
-                <input data-bind="value: $component.workDaysData.reghrs" type="number" class="form-control" id="reghrs" placeholder="Regular Hours" name="reghrs">
+                <input data-bind="value: $component.workDaysData.reghrs" type="text" class="form-control" id="reghrs" placeholder="Regular Hours" name="reghrs">
               </div></li>
               <li><div class="form-group">
                 <label for="overtime">Overtime</label>
-                <input data-bind="value: $component.workDaysData.overtime" type="number" class="form-control" id="overtime" placeholder="Overtime" name="overtime">
+                <input data-bind="value: $component.workDaysData.overtime" type="text" class="form-control" id="overtime" placeholder="Overtime" name="overtime">
               </div></li>
               <li><div class="form-group">
                 <label for="doubletime">Double Time</label>
-                <input data-bind="value: $component.workDaysData.doubletime" type="number" class="form-control" id="doubletime" placeholder="Double Time" name="doubletime">
+                <input data-bind="value: $component.workDaysData.doubletime" type="text" class="form-control" id="doubletime" placeholder="Double Time" name="doubletime">
               </div></li>
               <li><div class="form-group">
                 <label for="totalhrs">Total Hours</label>
-                <input data-bind="value: $component.workDaysData.totalhrs" type="number" class="form-control" id="totalhrs" placeholder="Total Hours" name="totalhrs">
+                <input data-bind="value: $component.workDaysData.totalhrs" type="text" class="form-control" id="totalhrs" placeholder="Total Hours" name="totalhrs">
               </div></li>
               <li><div class="form-group">
                 <label for="rate">Rate</label>
-                <input data-bind="value: $component.workDaysData.rate" type="number" class="form-control" id="rate" placeholder="Rate" name="rate">
+                <input data-bind="value: $component.workDaysData.rate" type="text" class="form-control" id="rate" placeholder="Rate" name="rate">
               </div></li>
               <li><div class="form-group">
                 <label for="labour">Labour</label>
-                <input data-bind="value: $component.workDaysData.labour" type="number" class="form-control" id="labour" placeholder="Labour" name="labour">
+                <input data-bind="value: $component.workDaysData.labour" type="text" class="form-control" id="labour" placeholder="Labour" name="labour">
               </div></li>
             </ul>
           </div><!-- /.navbar-collapse -->
@@ -556,7 +525,7 @@
         </div>
             
         </div>
-        <button type="submit" data-bind="click: $component.submit" class="btn btn-danger pull-right">Submit</button>
+        <button type="submit" data-bind="click: $component.add" class="btn btn-danger pull-right">Submit</button>
       </form>
     </div>
   </div>
@@ -578,14 +547,14 @@
         </div>
 		  
 		 <div class="form-group">
-          <label for="customerNO">Invoice Date</label>
+          <label for="customerNum">Invoice Date</label>
           
         </div>
 		  
         
 		  
 		<form data-bind="with: formModel">
-    <input type="text" data-bind="value: invoiceDate" class="form-control" id="customerNO" placeholder="Select date"/>
+    <input type="text" data-bind="value: invoiceDate" class="form-control" id="customerNum" placeholder="Select date"/>
     
     <button data-bind="click: $parent.clear">Clear</button>
 	<button type="submit" class="btn btn-default">Generate</button>
