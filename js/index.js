@@ -1,31 +1,54 @@
+var truckList = ko.observableArray([]);
+
+var dispatchData = {
+    custName: ko.observable(''),
+    custPO: ko.observable(''),
+    custNotes: ko.observable(''),
+    custEmail: ko.observable(''),
+    reqeuestBy: ko.observable(''),
+    contOnSite: ko.observable(''),
+    contPhone: ko.observable(''),
+    contEmail: ko.observable(''),
+    workDate: ko.observable(''),
+    startDate: ko.observable(''),
+    endDate: ko.observable(''),
+    assignedTo: ko.observable('')
+};
+
+var FormData = [
+    {supplierName: "Trane"},
+    {supplierName: "Rona"},
+    {supplierName: "Home Depot"},
+    {supplierName: "Daikin"}
+    ];
+
+var trucks = {
+    truckQty: ko.observable(''),
+    truckCost: ko.observable(''),
+    truckDesc: ko.observable('')
+};
+
+truckObject = function (qty,cost,desc) {
+    self = this;
+    self.truckQty = qty;
+    self.truckCost = cost;
+    self.truckDesc = desc;
+};
+
 var mainPage = function(params) {
 
 };
 
 var dispatchPage = function (params) {
     self = this;
-    self.dispatchData = {
-        custName: ko.observable(''),
-        custPO: ko.observable(''),
-        custNotes: ko.observable(''),
-        custEmail: ko.observable(''),
-        reqeuestBy: ko.observable(''),
-        contOnSite: ko.observable(''),
-        contPhone: ko.observable(''),
-        contEmail: ko.observable(''),
-        workDate: ko.observable(''),
-        startDate: ko.observable(''),
-        endDate: ko.observable(''),
-        assignedTo: ko.observable('')
-    }
 
     self.buildingList = ko.observableArray();
 
     self.submit = function () {
 
-        $.post("http://127.0.0.1:3000/customer", self.dispatchData, function(returnedData) {
-            console.log(returnedData)
-        })
+        // $.post("http://127.0.0.1:3000/customer", self.dispatchData, function(returnedData) {
+        //     console.log(returnedData)
+        // })
 
     },
 
@@ -33,7 +56,7 @@ var dispatchPage = function (params) {
 
             $.ajax({
                 type: 'GET',
-                url: 'http://127.0.0.1:3000/buildings/1',
+                url: 'http://127.0.0.1: 3000/buildings/1',
                 contentType: "application/javascript",
                 dataType: "jsonp",
                 success: function(data) {
@@ -65,19 +88,35 @@ var dispatchPage = function (params) {
 var materialsPage = function (params) {
 
 };
+
 var purchasePage = function (params) {
     self = this;
-    self.suppliers = [
-        { supplierName: "Trane"},
-        { supplierName: "Rona"},
-        { supplierName: "Home Depot"},
-        { supplierName: "Daikin"}
-    ];
+    self.suppliers = [FormData[0],FormData[1],FormData[2],FormData[3]];
+};
+var truckPage = function (params) {
+
+};
+var truckAddPage = function (params) {
+    self = this;
+    self.addTruck = function () {
+        truckList.push(new truckObject(trucks.truckQty,trucks.truckCost,trucks.truckDesc));
+    };
+};
+var toolsPage = function (params) {
+
+};
+var toolsAddPage = function (params) {
+
+};
+var thirdPartyPage = function (params) {
+
+};
+var quotedWorkPage = function (params) {
+
 };
 
-this.custInfo = ko.observable('hello');
+
 var KnockoutController = function(config) {
-    this.custInfo = ko.observable('hello');
     var defaults = {
             transitionDelayMs: 0,
             views: []
@@ -154,6 +193,54 @@ var MyApp = function() {
                     template: {element: "purchase-page"}
                 },
                 routes: ["/purchase"]
+            },
+            {
+                name: "Trucks",
+                componentConfig: {
+                    viewModel: truckPage,
+                    template: {element: "truck-page"}
+                },
+                routes: ["/trucks"]
+            },
+            {
+                name: "TrucksAdd",
+                componentConfig: {
+                    viewModel: truckAddPage,
+                    template: {element: "truckAdd-page"}
+                },
+                routes: ["/trucksAdd"]
+            },
+            {
+                name: "Tools",
+                componentConfig: {
+                    viewModel: toolsPage,
+                    template: {element: "tools-page"}
+                },
+                routes: ["/tools"]
+            },
+            {
+                name: "ToolsAdd",
+                componentConfig: {
+                    viewModel: toolsAddPage,
+                    template: {element: "toolsAdd-page"}
+                },
+                routes: ["/toolsAdd"]
+            },
+            {
+                name: "ThirdParty",
+                componentConfig: {
+                    viewModel: thirdPartyPage,
+                    template: {element: "thirdParty-page"}
+                },
+                routes: ["/thirdParty"]
+            },
+            {
+                name: "QuotedWork",
+                componentConfig: {
+                    viewModel: quotedWorkPage,
+                    template: {element: "quotedWork-page"}
+                },
+                routes: ["/quotedWork"]
             }],
         defaultView: {
             name: "main",
