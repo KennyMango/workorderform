@@ -30,234 +30,260 @@
 <script src='https://cdn.jsdelivr.net/npm/grapnel@0.6.4/src/grapnel.min.js'></script>
 
 
-<div>
-  <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed pull-left" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#/">Brand</a>
-      </div>
+  <div>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed pull-left" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">BuiltSpace</a>
+        </div>
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#/dispatch">Dispatch & Scheduling</a></li>
-          <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#/equipment">Equipment</a></li>
-          <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#/materials">Materials & Tools</a></li>
-          <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#/workDays">Work Days</a></li>
-          <!--<li><a href="#">Enter Hours</a></li>-->
-          <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#/invoice">Invoice View</a></li>
-        </ul>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-  </nav>
-</div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#/dispatch">Dispatch & Scheduling</a></li>
+            <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#/equipment">Equipment</a></li>
+            <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#/materials">Materials & Tools</a></li>
+            <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#/workDays">Work Days</a></li>
+            <!--<li><a href="#">Enter Hours</a></li>-->
+            <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#/invoice">Invoice View</a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+  </div>
 
 
-<div class="view-container" data-bind="component: {
+  <div class="view-container" data-bind="component: {
         name: controller.viewName,
         params: controller.viewParams },
     css: {'is-transitioning': controller.isTransitioning}">
-</div>
+  </div>
+
 
 
 <template id="main-page">
 
-  <div class="vertical-center">
-    <div class="container nav-container center-block">
-      <div class="row nav-row center-block">
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 nav-buttons center-block">
-          <img class="navIcons center-block" src="https://i.imgur.com/Uvgtdht.png">
-          <p class="icon-label">Dispatch</p>
-        </div>
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 nav-buttons center-block">
-          <img class="navIcons center-block" src="https://i.imgur.com/ii8eHon.png">
-          <p class="icon-label">Equipment</p>
-        </div>
+
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-4 col-sm-6 col-xs-6">
+        <div class="menu-thumb"></div>
+        <a href="#x" class="thumbnail purple" style="background-color: lightgreen;">Dispatch & Scheduling</a>
       </div>
-      <div class="row nav-row center-block">
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 nav-buttons center-block">
-          <img class="navIcons center-block" src="https://i.imgur.com/aamWhFi.png">
-          <p class="icon-label">Materials</p>
-        </div>
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 nav-buttons center-block">
-          <img class="navIcons center-block" src="https://i.imgur.com/aj0NmyB.png">
-          <p class="icon-label">Work Days</p>
-        </div>
-        </div>
-        <div class="row nav-row center-block">
-          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 nav-buttons center-block">
-            <img class="navIcons center-block" src="https://i.imgur.com/GQs7Lot.png">
-            <p class="icon-label">Enter Hours</p>
-          </div>
-          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 nav-buttons center-block">
-            <img class="navIcons center-block" src="https://i.imgur.com/rBlhZQe.png">
-            <p class="icon-label">Invoice View</p>
-          </div>
-        </div>
+      <div class="col-md-4 col-sm-6 col-xs-6">
+        <div class="menu-thumb"></div>
+        <a href="#x" class="thumbnail purple" style="background-color: teal;">Equipment</a>
+      </div>
+      <div class="col-md-4 col-sm-6 col-xs-6">
+        <div class="menu-thumb"></div>
+        <a href="#x" class="thumbnail purple" style="background-color: plum;">Materials & Tools</a>
+      </div>
+      <div class="col-md-4 col-sm-6 col-xs-6">
+        <div class="menu-thumb"></div>
+        <a href="#x" class="thumbnail purple" style="background-color: dodgerblue;">Work Days & Service Records</a>
+      </div>
+      <div class="col-md-4 col-sm-6 col-xs-6" >
+        <div class="menu-thumb"></div>
+        <a href="#x" class="thumbnail purple" style="background-color: red;">Enter Hours</a>
+      </div>
+      <div class="col-md-4 col-sm-6 col-xs-6">
+        <div class="menu-thumb"></div>
+        <a href="#x" class="thumbnail purple" style="background-color: greenyellow;">Invoice View</a>
+      </div>
+
     </div>
   </div>
+
 
 </template>
 
 
 <template id ="dispatch-page">
-  <div class="vertical-center">
-    <div class="container">
-      <h2>Scheduling & Dispatch</h2>
-      <form action="">
-        <div class="container-fluid">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-            <button type="button" class="btn btn-warning collapsed pull-left" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-expanded="false" data-bind="click: $component.loadJson">
-              Building Information
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-          </div>
 
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
-            <ul class="nav navbar-nav" data-bind="foreach: $component.buildingList">
-              <li><div class="form-group">
-                <label for="buildingName">Building/Location:</label>
-                <dl><div class="panel panel-default" id="buildingName">
-                  <div class="panel-body" data-bind="text: buildingName"></div>
-                </div></dl>
-              </div></li>
-              <li><div class="form-group">
-                <label for="buildingAddress">Address:</label>
-                <dl><div class="panel panel-default" id="buildingAddress">
-                  <div class="panel-body" data-bind="text: buildingAddress"></div>
-                </div></dl>
-                  </div></li>
-              <li><div class="form-group">
-                <label for="buildingCity">City:</label>
-              <dl><div class="panel panel-default" id="buildingCity">
-                <div class="panel-body" data-bind="text: buildingCity"></div>
-              </div></dl>
-              </div></li>
-              <li><div class="form-group">
-                <label for="buildingProvince">Province/State:</label>
-                <dl><div class="panel panel-default" id="buildingProvince">
-                  <div class="panel-body" data-bind="text: buildingProvince"></div>
-                </div></dl>
-              </div></li>
-            </ul>
-          </div><!-- /.navbar-collapse -->
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-            <button type="button" class="btn btn-warning collapsed pull-left" data-toggle="collapse" data-target="#bs-example-navbar-collapse-3" aria-expanded="false">
-              Customer Information
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-          </div>
+  <div class="container">
+    <ol class="breadcrumb breadcrumb-arrow bread-nav">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Dispatch</a></li>
+      <!--<li><a href="#">Equipment</a></li>-->
+      <!--<li><a href="#">Materials & Tools</a></li>-->
+      <!--<li><a href="#">WorkDays</a></li>-->
+      <!--<li><a href="#">Invoice</a></li>-->
+    </ol>
+  </div>
 
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-3">
-            <ul class="nav navbar-nav">
-              <li><div class="form-group">
-                <label for="customerName">Customer Name:</label>
-                <input data-bind="value: dispatchData.custName" type="text" class="form-control" id="customerName" placeholder="Customer Name" name="customerName">
-              </div></li>
-              <li><div class="form-group">
-                <label for="customerNO">Customer P.O.#:</label>
-                <input data-bind="value: dispatchData.custPO" type="text" class="form-control" id="customerNO" placeholder="Customer P.O#" name="customerNO">
-              </div></li>
-              <li><div class="form-group">
-                <label for="customerNotes">Customer Notes:</label>
-                <input data-bind="value: dispatchData.custNotes" type="text" class="form-control" id="customerNotes" placeholder="Customer Notes" name="customerNotes">
-              </div></li>
-              <li><div class="form-group">
-              <label for="customerEmail">Customer Email:</label>
-              <input data-bind="value: dispatchData.custEmail" type="email" class="form-control" id="customerEmail" placeholder="Customer Email" name="customerEmail">
-            </div></li>
-            </ul>
-          </div><!-- /.navbar-collapse -->
-
-            <div class="navbar-header">
-              <button type="button" class="btn btn-warning collapsed pull-left" data-toggle="collapse" data-target="#bs-example-navbar-collapse-4" aria-expanded="false">
-                Contact Information
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
+  <ul class="accordion-menu">
+      <li class="open">
+        <header  onclick="toggle(this.parentNode)"><span class="title">Building Information</span></header>
+        <section class="content">
+          <div class="container">
+            <div class="row">
+              <form role="form">
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label for="building-name">BUILDING NAME</label>
+                    <div class="alert alert-success" id ="building-name">
+                      <strong>BUILDING NAME</strong>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="building-address">BUILDING ADDRESS</label>
+                    <div class="alert alert-success" id ="building-address">
+                      <strong>ADDRESS</strong>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="building-city">BUILDING CITY</label>
+                    <div class="alert alert-success" id ="building-city">
+                      <strong>CITY</strong>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="building-province">BUILDING PROVINCE</label>
+                    <div class="alert alert-success" id ="building-province">
+                      <strong>PROVINCE</strong>
+                    </div>
+                  </div>
+                </div>
+              </form>
             </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-4">
-              <ul class="nav navbar-nav">
-                <li><div class="form-group">
-                  <label for="requesterName">Requested By:</label>
-                  <input data-bind="value: dispatchData.requestedBy" type="text" class="form-control" id="requesterName" placeholder="Requester Name" name="requesterName">
-                </div></li>
-                <li><div class="form-group">
-                  <label for="siteContact">On-site Contact:</label>
-                  <input data-bind="value: dispatchData.contOnSite" type="text" class="form-control" id="siteContact" placeholder="On-site Contact" name="siteContact">
-                </div></li>
-                <li><div class="form-group">
-                  <label for="contactPhone">Contact Phone:</label>
-                  <input data-bind="value: dispatchData.contPhone" type="tel" class="form-control" id="contactPhone" placeholder="Contact Phone" name="contactPhone">
-                </div></li>
-                <li><div class="form-group">
-                  <label for="contactEmail">Contact Email:</label>
-                  <input data-bind="value: dispatchData.contEmail" type="email" class="form-control" id="contactEmail" placeholder="Contact Email" name="contactEmail">
-                </div></li>
-              </ul>
-            </div><!-- /.navbar-collapse -->
-
-          <div class="navbar-header">
-            <button type="button" class="btn btn-warning collapsed pull-left" data-toggle="collapse" data-target="#bs-example-navbar-collapse-5" aria-expanded="false">
-              Schedule Information
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
           </div>
+        </section>
+      </li>
+      <li class="closed">
+        <header  onclick="toggle(this.parentNode)"><span class="title">Contact Information</span></header>
+        <section class="content">
+          <div class="container">
+            <div class="row">
+              <form role="form">
+                <div class="col-lg-6">
+                  <div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
+                  <div class="form-group">
+                    <label for="InputName">Enter Customer Name</label>
+                    <div class="input-group">
+                      <input type="text" class="form-control" name="InputName" id="InputName" placeholder="Enter Name" required>
+                      <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="InputPOnum">Enter Customer P.O.#</label>
+                    <div class="input-group">
+                      <input type="text" class="form-control" id="InputPOnum" name="InputPO" placeholder="Enter P.O.#" required>
+                      <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="InputEmail">Enter Customer Email</label>
+                    <div class="input-group">
+                      <input type="email" class="form-control" id="InputEmail" name="InputEmail" placeholder="Confirm Email" required>
+                      <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="InputMessage">Enter Customer Notes</label>
+                    <div class="input-group">
+                      <textarea name="InputMessage" id="InputMessage" class="form-control" rows="5" required></textarea>
+                      <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+      </li>
+      <li class="closed">
+        <header  onclick="toggle(this.parentNode)"><span class="title">Schedule Information</span></header>
+        <section class="content">
+          <div class="container">
+            <div class="row">
+              <form role="form">
+                <div class="col-lg-6">
+                  <div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
+                  <div class="form-group">
+                    <label for="InputWorkDate">Work Date</label>
+                    <div class="input-group">
+                      <input data-bind="value: dispatchData.workDate" type="date" class="form-control" id="InputWorkDate" placeholder="Scheduled Work Date" name="workDate">
+                      <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="InputStart">Start Date</label>
+                    <div class="input-group">
+                      <input data-bind="value: dispatchData.startDate" type="date" class="form-control" id="InputStart" placeholder="Scheduled Start Date" name="startDate">
+                      <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="InputEnd">End Date</label>
+                    <div class="input-group">
+                      <input data-bind="value: dispatchData.endDate" type="date" class="form-control" id="InputEnd" placeholder="Scheduled End Date" name="endDate">
+                      <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="InputAssign">Assign To</label>
+                    <div class="input-group">
+                      <input data-bind="value: dispatchData.assignedTo" type="text" class="form-control" id="InputAssign" placeholder="Assigned To" name="assigned">
+                      <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+      </li>
 
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-5">
-            <ul class="nav navbar-nav">
-              <li><div class="form-group">
-                <label for="workDate">Scheduled Work Date:</label>
-                <input data-bind="value: dispatchData.workDate" type="date" class="form-control" id="workDate" placeholder="Scheduled Work Date" name="workDate">
-              </div></li>
-              <li><div class="form-group">
-                <label for="startDate">Scheduled Start Date:</label>
-                <input data-bind="value: dispatchData.startDate" type="date" class="form-control" id="startDate" placeholder="Scheduled Start Date" name="startDate">
-              </div></li>
-              <li><div class="form-group">
-                <label for="endDate">Scheduled End Date:</label>
-                <input data-bind="value: dispatchData.endDate" type="date" class="form-control" id="endDate" placeholder="Scheduled End Date" name="endDate">
-              </div></li>
-              <li><div class="form-group">
-                <label for="assigned">Assigned To:</label>
-                <input data-bind="value: dispatchData.assignedTo" type="text" class="form-control" id="assigned" placeholder="Assigned To" name="assigned">
-              </div></li>
-            </ul>
-          </div><!-- /.navbar-collapse -->
-        </div>
-        <button type="submit" onclick="location.href='#'" class="btn btn-danger pull-right">Submit</button>
-      </form>
+
+    </ul>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4"></div>
+      <div class="col-lg-4">
+        <nav>
+          <ul class="pagination pagination-lg">
+            <li class="page-item disabled">
+              <a class="page-link" href="#" tabindex="-1">Previous</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">4</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#">Next</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="col-lg-4"></div>
     </div>
   </div>
 </template>
 
 
 <template id ="materials-page">
+
+  <div class="container">
+    <ol class="breadcrumb breadcrumb-arrow bread-nav">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Dispatch</a></li>
+      <li><a href="#">Equipment</a></li>
+      <li><a href="#">Materials & Tools</a></li>
+      <!--<li><a href="#">WorkDays</a></li>-->
+      <!--<li><a href="#">Invoice</a></li>-->
+    </ol>
+  </div>
+
   <div class="vertical-center">
     <div class="container">
       <h2>Materials & Tools</h2>
@@ -280,6 +306,30 @@
       </form>
     </div>
   </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4"></div>
+      <div class="col-lg-4">
+        <nav>
+          <ul class="pagination pagination-lg">
+            <li class="page-item disabled">
+              <a class="page-link" href="#" tabindex="-1">Previous</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">4</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#">Next</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="col-lg-4"></div>
+    </div>
+  </div>
+
 </template>
 
 
@@ -328,6 +378,18 @@
 </template>
 
 <template id ="equipment-page">
+
+  <div class="container">
+    <ol class="breadcrumb breadcrumb-arrow bread-nav">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Dispatch</a></li>
+      <li><a href="#">Equipment</a></li>
+      <!--<li><a href="#">Materials & Tools</a></li>-->
+      <!--<li><a href="#">WorkDays</a></li>-->
+      <!--<li><a href="#">Invoice</a></li>-->
+    </ol>
+  </div>
+
   <div class="vertical-center">
     <div class="container" style="background-color: royalblue">
       <h2>Space #3</h2>
@@ -360,6 +422,30 @@
       </form>
     </div>
   </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4"></div>
+      <div class="col-lg-4">
+        <nav>
+          <ul class="pagination pagination-lg">
+            <li class="page-item disabled">
+              <a class="page-link" href="#" tabindex="-1">Previous</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">4</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#">Next</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="col-lg-4"></div>
+    </div>
+  </div>
+
 </template>
 
 <template id ="truckAdd-page">
@@ -389,77 +475,123 @@
 <template id ="equipment-form">
   <div class="vertical-center">
     <div class="container">
-      <h2>Equipment Form</h2>
-      <form action="">
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div style="border: dotted; padding: 8px">
-          <ul class="nav navbar-nav">
 
-            <div id="equipmentProfilePic" style="width: 100px; height: 100px; border-radius: 50%; border: solid">
+      <ul class="accordion-menu">
+        <li class="open">
+          <header  onclick="toggle(this.parentNode)"><span class="title">Edit Equipment</span></header>
+          <section class="content">
+            <div class="container">
+              <div class="row">
+                <form role="form">
+                  <div class="col-lg-6">
+                    <div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
+                    <div class="form-group">
+                      <label for="buildingSpace">Building Space:</label>
+                      <div class="input-group">
+                        <input data-bind="value: $component.equipment.buildingSpace" type="text" class="form-control" id="buildingSpace" placeholder="Building Space" name="buildingSpace">
+                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="equipmentName">Equipment Name:</label>
+                      <div class="input-group">
+                        <input data-bind="value: $component.equipment.equipmentName" type="text" class="form-control" id="equipmentName" placeholder="Equipment Name" name="equipmentName">
+                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="equipmentMakeModel">Make/Model:</label>
+                      <div class="input-group">
+                        <input data-bind="value: $component.equipment.equipmentMakeModel" type="text" class="form-control" id="equipmentMakeModel" placeholder="Make/Model" name="equipmentMakeModel">
+                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="equipmentNum">Equipment Number:</label>
+                      <div class="input-group">
+                        <input data-bind="value: $component.equipment.equipmentNum" type="text" class="form-control" id="equipmentNum" placeholder="Equipment Number" name="equipmentNum">
+                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="equipmentCost">Equipment Cost:</label>
+                      <div class="input-group">
+                        <input data-bind="value: $component.equipment.equipmentCost" type="text" class="form-control" id="equipmentCost" placeholder="Equipment Cost" name="equipmentCost">
+                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="equipmentStatus">Equipment Status:</label>
+                      <ul>
+                      <button class="glyphicon glyphicon-ok" style="width: 60px; height: 60px;right: 25px;background-color: green; color: white;" onclick="location.href='#/'"></button>
+                      <button class="glyphicon glyphicon-remove" style="width: 60px; height: 60px;right: 25px;background-color: red; color: black" onclick="location.href='#/'"></button>
+                      </ul>
+                      <br/>
+                      <div class="input-group">
+                        <input data-bind="value: $component.equipment.equipmentStatus" type="text" class="form-control" id="equipmentStatus" placeholder="Equipment Status" name="equipmentStatus">
+                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="equipmentDetails">Equipment Details:</label>
+                      <div class="input-group">
+                        <textarea data-bind="value: $component.equipment.equipmentDetails" name="equipmentDetails" id="equipmentDetails" class="form-control" rows="5" required></textarea>
+                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="equipmentNotes">Equipment Notes:</label>
+                      <div class="input-group">
+                        <textarea data-bind="value: $component.equipment.equipmentNotes" name="equipmentDetails" id="equipmentNotes" class="form-control" rows="5" required></textarea>
+                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label>Upload Image</label>
+                      <div class="input-group">
+                        <span class="input-group-btn">
+                            <span class="btn btn-default btn-file">
+                                Browse…<input type="file" id="imgInp">
+                            </span>
+                         </span>
+                        <input type="text" class="form-control" readonly>
+                      </div>
+                      <img id='img-upload'/>
+                    </div>
+                  </div>
+                </form>
+              </div>
             </div>
-
-            <li><div class="form-group">
-              <label for="buildingSpace">Building Space:</label>
-              <input data-bind="value: $component.equipment.buildingSpace" type="text" class="form-control" id="buildingSpace" placeholder="Building Space" name="buildingSpace">
-            </div></li>
-
-            <li><div class="form-group">
-              <label for="equipmentName">Equipment Name:</label>
-              <input data-bind="value: $component.equipment.equipmentName" type="text" class="form-control" id="equipmentName" placeholder="Equipment Name" name="equipmentName">
-            </div></li>
-
-            <li><div class="form-group">
-              <label for="equipmentMakeModel">Make/Model:</label>
-              <input data-bind="value: $component.equipment.equipmentMakeModel" type="text" class="form-control" id="equipmentMakeModel" placeholder="Make/Model" name="equipmentMakeModel">
-            </div></li>
-
-            <li><div class="form-group">
-              <label for="equipmentNum">Equipment Number:</label>
-              <input data-bind="value: $component.equipment.equipmentNum" type="text" class="form-control" id="equipmentNum" placeholder="Equipment Number" name="equipmentNum">
-            </div></li>
-
-            <li><div class="form-group">
-              <label for="equipmentCost">Equipment Cost:</label>
-              <input data-bind="value: $component.equipment.equipmentCost" type="text" class="form-control" id="equipmentCost" placeholder="Equipment Cost" name="equipmentCost">
-            </div></li>
-
-            <li><div class="form-group">
-              <label for="equipmentStatus">Equipment Status:</label>
-              <ul>
-                <button class="glyphicon glyphicon-ok" style="width: 60px; height: 60px;right: 25px;background-color: green; color: white;" onclick="location.href='#/'"></button>
-                <button class="glyphicon glyphicon-remove" style="width: 60px; height: 60px;right: 25px;background-color: red; color: black" onclick="location.href='#/'"></button>
-              </ul>
-              <input data-bind="value: $component.equipment.equipmentStatus" type="text" class="form-control" id="equipmentStatus" placeholder="Equipment Status" name="equipmentStatus">
-            </div></li>
-
-            <li><div class="form-group">
-              <label for="equipmentDetails">Equipment Details:</label>
-              <input data-bind="value: $component.equipment.equipmentDetails" type="text" class="form-control" id="equipmentDetails" placeholder="Equipment Details" name="equipmentDetails">
-            </div></li>
-
-            <li><div class="form-group">
-              <label for="equipmentNotes">Equipment Notes:</label>
-              <input data-bind="value: $component.equipment.equipmentNotes" type="text" class="form-control" id="equipmentNotes" placeholder="Equipment Notes" name="equipmentNotes">
-            </div></li>
-
-            <li><div class="form-group">
-              <label for="equipmentImages">Equipment Images:</label>
-              <ul>
-                <button class="glyphicon glyphicon-camera" style="width: 60px; height: 60px;right: 25px;background-color: dimgrey; color: white;" onclick="location.href='#/'"></button>
-              </ul>
-              <input data-bind="value: $component.equipment.equipmentImages" type="text" class="form-control" id="equipmentImages" placeholder="Equipment Images" name="equipmentImages">
-            </div></li>
-
-            <li><div class="form-group">
-              <button id="cancelButton" class="btn">Cancel</button>
-              <button id="saveButton" data-bind="click: $component.save" class="btn" onclick="location.href='#/equipment'">Save</button>
-            </div></li>
+          </section>
+        </li>
+        <li class="closed">
+          <header  onclick="toggle(this.parentNode)"><span class="title">Save</span></header>
+          <section class="content">
+            <div class="container">
+              <div class="row">
+                <form role="form">
+                </form>
+              </div>
+            </div>
+          </section>
+        </li>
+        <li class="closed">
+          <header  onclick="toggle(this.parentNode)"><span class="title">Cancel</span></header>
+          <section class="content">
+            <div class="container">
+              <div class="row">
+                <form role="form">
+                </form>
+              </div>
+            </div>
+          </section>
+        </li>
 
 
-          </ul>
-        </div><!-- /.navbar-collapse -->
-      </form>
+      </ul>
+
+
     </div>
   </div>
 </template>
@@ -563,71 +695,138 @@
 </template>
       
 <template id ="workDays-page">
-  <div class="vertical-center">
-    <div class="container">
-      <h2>Work Days</h2>
-      <form action="">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="btn btn-warning collapsed pull-left" data-toggle="collapse" data-target="#bs-example-navbar-collapse-6" aria-expanded="false">
-              Insert Work Day
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-          </div>
 
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
-            <ul class="nav navbar-nav">
-              <li><div class="form-group">
-                <label for="workDate">Work Date:</label>
-                <input data-bind="value: $component.workDaysData.workDate" type="date" class="form-control" id="workDate2" placeholder="Scheduled Work Date" name="workDate">
-              </div></li>
-              <li><div class="form-group">
-                <label for="technician">Technician</label>
-                <input data-bind="value: $component.workDaysData.technician" type="text" class="form-control" id="technician" placeholder="Technician Name" name="technician">
-              </div></li>
-              <li><div class="form-group">
-                <label for="reghrs">Regular Hours</label>
-                <input data-bind="value: $component.workDaysData.reghrs" type="text" class="form-control" id="reghrs" placeholder="Regular Hours" name="reghrs">
-              </div></li>
-              <li><div class="form-group">
-                <label for="overtime">Overtime</label>
-                <input data-bind="value: $component.workDaysData.overtime" type="text" class="form-control" id="overtime" placeholder="Overtime" name="overtime">
-              </div></li>
-              <li><div class="form-group">
-                <label for="doubletime">Double Time</label>
-                <input data-bind="value: $component.workDaysData.doubletime" type="text" class="form-control" id="doubletime" placeholder="Double Time" name="doubletime">
-              </div></li>
-              <li><div class="form-group">
-                <label for="totalhrs">Total Hours</label>
-                <input data-bind="value: $component.workDaysData.totalhrs" type="text" class="form-control" id="totalhrs" placeholder="Total Hours" name="totalhrs">
-              </div></li>
-              <li><div class="form-group">
-                <label for="rate">Rate</label>
-                <input data-bind="value: $component.workDaysData.rate" type="text" class="form-control" id="rate" placeholder="Rate" name="rate">
-              </div></li>
-              <li><div class="form-group">
-                <label for="labour">Labour</label>
-                <input data-bind="value: $component.workDaysData.labour" type="text" class="form-control" id="labour" placeholder="Labour" name="labour">
-              </div></li>
-            </ul>
-          </div><!-- /.navbar-collapse -->
-            
-        <div class="form-group">
-          <div class="btn btn-warning" onclick="location.href='#/viewWorkDays'">View Work Days</div>
+  <div class="container">
+    <ol class="breadcrumb breadcrumb-arrow bread-nav">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Dispatch</a></li>
+      <li><a href="#">Equipment</a></li>
+      <li><a href="#">Materials & Tools</a></li>
+      <li><a href="#">WorkDays</a></li>
+      <!--<li><a href="#">Invoice</a></li>-->
+    </ol>
+  </div>
+
+  <ul class="accordion-menu">
+    <li class="open">
+      <header  onclick="toggle(this.parentNode)"><span class="title">Insert Workday</span></header>
+      <section class="content">
+        <div class="container">
+          <div class="row">
+            <form role="form">
+              <div class="col-lg-6">
+                <div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
+                <div class="form-group">
+                  <label for="workDate2">Work Date:</label>
+                  <div class="input-group">
+                    <input data-bind="value: $component.workDaysData.workDate" type="date" class="form-control" id="workDate2" placeholder="Scheduled Work Date" name="workDate">
+                    <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="technician">Technician</label>
+                  <div class="input-group">
+                    <input data-bind="value: $component.workDaysData.technician" type="text" class="form-control" id="technician" placeholder="Technician Name" name="technician">
+                    <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="reghrs">Regular Hours</label>
+                  <div class="input-group">
+                    <input data-bind="value: $component.workDaysData.reghrs" type="text" class="form-control" id="reghrs" placeholder="Regular Hours" name="reghrs">
+                    <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="overtime">Overtime</label>
+                  <div class="input-group">
+                    <input data-bind="value: $component.workDaysData.overtime" type="text" class="form-control" id="overtime" placeholder="Overtime" name="overtime">
+                    <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="doubletime">Double Time</label>
+                  <div class="input-group">
+                    <input data-bind="value: $component.workDaysData.doubletime" type="text" class="form-control" id="doubletime" placeholder="Double Time" name="doubletime">
+                    <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="totalhrs">Total Hours</label>
+                  <div class="input-group">
+                    <input data-bind="value: $component.workDaysData.totalhrs" type="text" class="form-control" id="totalhrs" placeholder="Total Hours" name="totalhrs">
+                    <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="rate">Rate</label>
+                  <div class="input-group">
+                    <input data-bind="value: $component.workDaysData.rate" type="text" class="form-control" id="rate" placeholder="Rate" name="rate">
+                    <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="labour">Labour</label>
+                  <div class="input-group">
+                    <input data-bind="value: $component.workDaysData.labour" type="text" class="form-control" id="labour" placeholder="Labour" name="labour">
+                    <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
-        <div class="form-group">
-          <div class="btn btn-warning" onclick="location.href='#/hoursSummary'">Hours Summary</div>
+      </section>
+    </li>
+    <li class="closed">
+      <header  onclick="toggle(this.parentNode)"><span class="title">View Workdays</span></header>
+      <section class="content">
+        <div class="container">
+          <div class="row">
+            <form role="form">
+            </form>
+          </div>
         </div>
-            
+      </section>
+    </li>
+    <li class="closed">
+      <header  onclick="toggle(this.parentNode)"><span class="title">Hours Summary</span></header>
+      <section class="content">
+        <div class="container">
+          <div class="row">
+            <form role="form">
+            </form>
+          </div>
         </div>
-        <button type="submit" data-bind="click: $component.add" class="btn btn-danger pull-right">Submit</button>
-      </form>
+      </section>
+    </li>
+
+
+  </ul>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4"></div>
+      <div class="col-lg-4">
+        <nav>
+          <ul class="pagination pagination-lg">
+            <li class="page-item disabled">
+              <a class="page-link" href="#" tabindex="-1">Previous</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">4</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#">Next</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="col-lg-4"></div>
     </div>
   </div>
+
 </template>
 
 
@@ -668,6 +867,18 @@
 </template>
 
 <template id ="invoice-page">
+
+  <div class="container">
+    <ol class="breadcrumb breadcrumb-arrow bread-nav">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Dispatch</a></li>
+      <li><a href="#">Equipment</a></li>
+      <li><a href="#">Materials & Tools</a></li>
+      <li><a href="#">WorkDays</a></li>
+      <li><a href="#">Invoice</a></li>
+    </ol>
+  </div>
+
   <div class="vertical-center">
     <div class="container">
       <h2>Invoice View Settings</h2>
@@ -690,6 +901,31 @@
       </form>
     </div>
   </div>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4"></div>
+      <div class="col-lg-4">
+        <nav>
+          <ul class="pagination pagination-lg">
+            <li class="page-item disabled">
+              <a class="page-link" href="#" tabindex="-1">Previous</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">4</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#">Next</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="col-lg-4"></div>
+    </div>
+  </div>
+
 </template>
 
 <script  src="js/index.js"></script>
