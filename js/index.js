@@ -3,6 +3,8 @@ var toolList = ko.observableArray([]);
 var thirdPartyList = ko.observableArray([]);
 var equipList = ko.observableArray([]);
 var workList = ko.observableArray([]);
+var equipmentEdit;
+var indexToEdit;
 
 var dispatchData = {
     custName: ko.observable(''),
@@ -187,6 +189,19 @@ var equipmentForm = function (params) {
     self.save = function () {
         equipList.push(new equipmentObject(equipment.buildingSpace,equipment.equipmentName,equipment.equipmentMakeModel,equipment.equipmentNum,equipment.equipmentCost,
             equipment.equipmentStatus,equipment.equipmentDetails,equipment.equipmentNotes,equipment.equipmentImages));
+
+        equipment = {
+            buildingSpace: '',
+            equipmentName: '',
+            equipmentMakeModel: '',
+            equipmentNum: '',
+            equipmentCost: '',
+            equipmentStatus: '',
+            equipmentDetails: '',
+            equipmentNotes: '',
+            equipmentImages: ''
+        };
+
         // $.post("http://127.0.0.1:3000/equipment/1", self.equipment, function(returnedData) {
         //     console.log(returnedData)
         // });
@@ -208,10 +223,22 @@ var equipmentForm = function (params) {
 
 };
 
+var equipmentFormEdit = function (params) {
+    self = this;
+
+    self.update = function () {
+        equipList()[indexToEdit] = equipmentEdit;
+    }
+};
+
 var equipmentPage = function (params) {
 
     self = this;
 
+    self.edit = function(index) {
+        indexToEdit = index;
+        equipmentEdit = equipList()[indexToEdit];
+    };
     // $( document ).ready(function() {
     //     $.ajax({
     //         type: 'GET',
@@ -397,6 +424,14 @@ var MyApp = function() {
                     template: {element: "equipment-form"}
                 },
                 routes: ["/equipmentForm"]
+            },
+            {
+                name: "EquipmentFormEdit",
+                componentConfig: {
+                    viewModel: equipmentFormEdit,
+                    template: {element: "equipment-form-edit"}
+                },
+                routes: ["/equipmentFormEdit"]
             },
             {
                 name: "Purchase",
