@@ -18,7 +18,7 @@
 
   <link rel="stylesheet" href="css/index.css">
 
-  
+
 </head>
 
 <body>
@@ -90,17 +90,17 @@
           <img class="navIcons center-block" src="https://i.imgur.com/aj0NmyB.png">
           <p class="icon-label">Work Days</p>
         </div>
+      </div>
+      <div class="row nav-row center-block">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 nav-buttons center-block">
+          <img class="navIcons center-block" src="https://i.imgur.com/GQs7Lot.png">
+          <p class="icon-label">Enter Hours</p>
         </div>
-        <div class="row nav-row center-block">
-          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 nav-buttons center-block">
-            <img class="navIcons center-block" src="https://i.imgur.com/GQs7Lot.png">
-            <p class="icon-label">Enter Hours</p>
-          </div>
-          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 nav-buttons center-block">
-            <img class="navIcons center-block" src="https://i.imgur.com/rBlhZQe.png">
-            <p class="icon-label">Invoice View</p>
-          </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 nav-buttons center-block">
+          <img class="navIcons center-block" src="https://i.imgur.com/rBlhZQe.png">
+          <p class="icon-label">Invoice View</p>
         </div>
+      </div>
     </div>
   </div>
 
@@ -138,12 +138,12 @@
                 <dl><div class="panel panel-default" id="buildingAddress">
                   <div class="panel-body" data-bind="text: buildingAddress"></div>
                 </div></dl>
-                  </div></li>
+              </div></li>
               <li><div class="form-group">
                 <label for="buildingCity">City:</label>
-              <dl><div class="panel panel-default" id="buildingCity">
-                <div class="panel-body" data-bind="text: buildingCity"></div>
-              </div></dl>
+                <dl><div class="panel panel-default" id="buildingCity">
+                  <div class="panel-body" data-bind="text: buildingCity"></div>
+                </div></dl>
               </div></li>
               <li><div class="form-group">
                 <label for="buildingProvince">Province/State:</label>
@@ -180,43 +180,43 @@
                 <input data-bind="value: dispatchData.custNotes" type="text" class="form-control" id="customerNotes" placeholder="Customer Notes" name="customerNotes">
               </div></li>
               <li><div class="form-group">
-              <label for="customerEmail">Customer Email:</label>
-              <input data-bind="value: dispatchData.custEmail" type="email" class="form-control" id="customerEmail" placeholder="Customer Email" name="customerEmail">
-            </div></li>
+                <label for="customerEmail">Customer Email:</label>
+                <input data-bind="value: dispatchData.custEmail" type="email" class="form-control" id="customerEmail" placeholder="Customer Email" name="customerEmail">
+              </div></li>
             </ul>
           </div><!-- /.navbar-collapse -->
 
-            <div class="navbar-header">
-              <button type="button" class="btn btn-warning collapsed pull-left" data-toggle="collapse" data-target="#bs-example-navbar-collapse-4" aria-expanded="false">
-                Contact Information
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-            </div>
+          <div class="navbar-header">
+            <button type="button" class="btn btn-warning collapsed pull-left" data-toggle="collapse" data-target="#bs-example-navbar-collapse-4" aria-expanded="false">
+              Contact Information
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-4">
-              <ul class="nav navbar-nav">
-                <li><div class="form-group">
-                  <label for="requesterName">Requested By:</label>
-                  <input data-bind="value: dispatchData.requestedBy" type="text" class="form-control" id="requesterName" placeholder="Requester Name" name="requesterName">
-                </div></li>
-                <li><div class="form-group">
-                  <label for="siteContact">On-site Contact:</label>
-                  <input data-bind="value: dispatchData.contOnSite" type="text" class="form-control" id="siteContact" placeholder="On-site Contact" name="siteContact">
-                </div></li>
-                <li><div class="form-group">
-                  <label for="contactPhone">Contact Phone:</label>
-                  <input data-bind="value: dispatchData.contPhone" type="tel" class="form-control" id="contactPhone" placeholder="Contact Phone" name="contactPhone">
-                </div></li>
-                <li><div class="form-group">
-                  <label for="contactEmail">Contact Email:</label>
-                  <input data-bind="value: dispatchData.contEmail" type="email" class="form-control" id="contactEmail" placeholder="Contact Email" name="contactEmail">
-                </div></li>
-              </ul>
-            </div><!-- /.navbar-collapse -->
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-4">
+            <ul class="nav navbar-nav">
+              <li><div class="form-group">
+                <label for="requesterName">Requested By:</label>
+                <input data-bind="value: dispatchData.requestedBy" type="text" class="form-control" id="requesterName" placeholder="Requester Name" name="requesterName">
+              </div></li>
+              <li><div class="form-group">
+                <label for="siteContact">On-site Contact:</label>
+                <input data-bind="value: dispatchData.contOnSite" type="text" class="form-control" id="siteContact" placeholder="On-site Contact" name="siteContact">
+              </div></li>
+              <li><div class="form-group">
+                <label for="contactPhone">Contact Phone:</label>
+                <input data-bind="value: dispatchData.contPhone" type="tel" class="form-control" id="contactPhone" placeholder="Contact Phone" name="contactPhone">
+              </div></li>
+              <li><div class="form-group">
+                <label for="contactEmail">Contact Email:</label>
+                <input data-bind="value: dispatchData.contEmail" type="email" class="form-control" id="contactEmail" placeholder="Contact Email" name="contactEmail">
+              </div></li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
 
           <div class="navbar-header">
             <button type="button" class="btn btn-warning collapsed pull-left" data-toggle="collapse" data-target="#bs-example-navbar-collapse-5" aria-expanded="false">
@@ -327,41 +327,6 @@
   </div>
 </template>
 
-<template id ="equipment-page">
-  <div class="vertical-center">
-    <div class="container" style="background-color: royalblue">
-      <h2>Space #3</h2>
-      <form action="">
-
-        <div class="form-group" data-bind="foreach: $component.equipList">
-          <div class="btn-default" onclick="location.href='#/equipmentForm'">
-            <div class="row">
-              <div class="col-sm-8">
-                <p>
-                <ul><h4 data-bind="text: id"></h4></ul>
-                <ul data-bind="text: equipmentName"></ul>
-                <ul data-bind="text: equipmentMakeModel"></ul>
-                <ul data-bind="text: equipmentNum"></ul>
-                </p>
-              </div>
-
-              <div class="col-sm-2">
-                <ul><button class="glyphicon glyphicon-pencil" style="width: 60px; height: 60px;left: 10px; background-color: white; color: black" onclick="location.href='#/'"></button></ul>
-                <ul><button class="glyphicon glyphicon-trash" style="width: 60px; height: 60px;left: 10px; background-color: white; color: black" onclick="location.href='#/'"></button></ul>
-              </div>
-
-              <div class="col-sm-2">
-                <ul><button class="glyphicon glyphicon-ok" style="width: 60px; height: 60px;right: 25px;background-color: green; color: white;" onclick="location.href='#/'"></button></ul>
-                <ul><button class="glyphicon glyphicon-remove" style="width: 60px; height: 60px;right: 25px;background-color: red; color: black" onclick="location.href='#/'"></button></ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-</template>
-
 <template id ="truckAdd-page">
   <div class="vertical-center">
     <div class="container">
@@ -382,8 +347,178 @@
         <button type="submit" onclick="location.href='#/trucks'" data-bind="click: $component.addTruck" class="btn btn-danger pull-right">Submit</button>
 
       </form>
-      </div>
     </div>
+  </div>
+</template>
+
+<template id ="tools-page">
+  <div class="vertical-center">
+    <div class="container">
+      <h2>Tools Used</h2>
+      <form action="">
+        <div class="form-group">
+          <label>Total Cost:</label>
+          <table>
+            <thead><tr>
+              <th>Qty</th><th>Rate</th><th>Description</th>
+            </tr></thead>
+            <tbody data-bind="foreach: toolList">
+            <tr>
+              <td data-bind="text: toolQty"></td>
+              <td data-bind="text: toolRate"></td>
+              <td data-bind="text: toolDesc"></td>
+            </tr>
+            </tbody>
+          </table>
+          <button class="btn btn-warning" onclick="location.href='#/toolsAdd'">Add</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</template>
+
+<template id ="toolsAdd-page">
+  <div class="vertical-center">
+    <div class="container">
+      <h2>Tools Used</h2>
+      <form action="">
+        <div class="form-group">
+          <label for="toolQty">Quantity:</label>
+          <input data-bind="value: tools.toolQty" type="text" class="form-control" id="toolQty" placeholder="Tool Quantity">
+        </div>
+        <div class="form-group">
+          <label for="toolRate">Rate:</label>
+          <input data-bind="value: tools.toolRate" type="text" class="form-control" id="toolRate" placeholder="Tool Rate">
+        </div>
+        <div class="form-group">
+          <label for="toolDesc">Description:</label>
+          <input data-bind="value: tools.toolDesc" type="text" class="form-control" id="toolDesc" placeholder="Tool Description">
+        </div>
+        <button type="submit" onclick="location.href='#/tools'" data-bind="click: $component.addTool" class="btn btn-danger pull-right">Submit</button>
+      </form>
+    </div>
+  </div>
+</template>
+
+<template id ="thirdParty-page">
+  <div class="vertical-center">
+    <div class="container">
+      <h2>Third Party Outsource</h2>
+      <form action="">
+        <div class="form-group">
+          <label>Total Cost:</label>
+          <table>
+            <thead><tr>
+              <th>Date</th><th>Cost</th><th>Description</th>
+            </tr></thead>
+            <tbody data-bind="foreach: thirdPartyList">
+            <tr>
+              <td data-bind="text: thirdPartyDate"></td>
+              <td data-bind="text: thirdPartyCost"></td>
+              <td data-bind="text: thirdPartyDesc"></td>
+            </tr>
+            </tbody>
+          </table>
+          <button class="btn btn-warning" onclick="location.href='#/thirdPartyAdd'">Add</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</template>
+
+<template id ="thirdPartyAdd-page">
+  <div class="vertical-center">
+    <div class="container">
+      <h2>Third Party Outsource</h2>
+      <form action="">
+        <div class="form-group">
+          <label for="thirdPartyDate">Date:</label>
+          <input data-bind="value: thirdParty.thirdPartyDate" type="date" class="form-control" id="thirdPartyDate" placeholder="Third Party Date">
+        </div>
+        <div class="form-group">
+          <label for="thirdPartyCost">Cost:</label>
+          <input data-bind="value: thirdParty.thirdPartyCost" type="text" class="form-control" id="thirdPartyCost" placeholder="Third Party Cost">
+        </div>
+        <div class="form-group">
+          <label for="thirdPartyDesc">Description:</label>
+          <input data-bind="value: thirdParty.thirdPartyDesc" type="text" class="form-control" id="thirdPartyDesc" placeholder="Third Party Description">
+        </div>
+        <button type="submit" onclick="location.href='#/thirdParty'" data-bind="click: $component.addThirdParty" class="btn btn-danger pull-right">Submit</button>
+      </form>
+    </div>
+  </div>
+</template>
+
+<template id ="quotedWork-page">
+  <div class="vertical-center">
+    <div class="container">
+      <h2>Quoted Work</h2>
+      <form action="">
+        <div class="form-group">
+          <label>Total Cost:<strong data-bind="text: quotedWork.quotedCost"></strong></label>
+        </div>
+        <div class="form-group">
+          <label>Description:<strong data-bind="text: quotedWork.quotedDesc"></strong></label>
+        </div>
+        <button class="btn btn-warning" onclick="location.href='#/quotedWorkAdd'">Edit</button>
+      </form>
+    </div>
+  </div>
+</template>
+
+<template id ="quotedWorkAdd-page">
+  <div class="vertical-center">
+    <div class="container">
+      <h2>Quoted Work</h2>
+      <form action="">
+        <div class="form-group">
+          <label for="quotedWorkCost">Cost:</label>
+          <input data-bind="value: quotedWork.quotedCost" id="quotedWorkCost" class="form-control" type="text">
+        </div>
+        <div class="form-group">
+          <label for="quotedWorkDesc">Description:</label>
+          <input data-bind="value: quotedWork.quotedDesc" id="quotedWorkDesc" class="form-control" type="text">
+        </div>
+        <button type="submit" onclick="location.href='#/quotedWork'" class="btn btn-danger pull-right">Submit</button>
+      </form>
+    </div>
+  </div>
+</template>
+
+<template id ="equipment-page">
+  <div class="vertical-center">
+    <div class="container" style="background-color: royalblue">
+      <h2>Space #3</h2>
+      <form action="">
+
+        <div class="form-group" data-bind="foreach: equipList">
+          <div class="btn-default" onclick="location.href='#/equipmentForm'">
+            <div class="row">
+              <div class="col-sm-8">
+                <p>
+                <!--<ul><h4 data-bind="text: id"></h4></ul>-->
+                <ul data-bind="text: equipmentName"></ul>
+                <ul data-bind="text: equipmentMakeModel"></ul>
+                <ul data-bind="text: equipmentNum"></ul>
+                </p>
+              </div>
+
+              <div class="col-sm-2">
+                <ul><button class="glyphicon glyphicon-pencil" style="width: 60px; height: 60px;left: 10px; background-color: white; color: black" onclick="location.href='#/'"></button></ul>
+                <ul><button class="glyphicon glyphicon-trash" style="width: 60px; height: 60px;left: 10px; background-color: white; color: black" onclick="location.href='#/'"></button></ul>
+              </div>
+
+              <div class="col-sm-2">
+                <ul><button class="glyphicon glyphicon-ok" style="width: 60px; height: 60px;right: 25px;background-color: green; color: white;" onclick="location.href='#/'"></button></ul>
+                <ul><button class="glyphicon glyphicon-remove" style="width: 60px; height: 60px;right: 25px;background-color: red; color: black" onclick="location.href='#/'"></button></ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <button class="btn btn-warning" onclick="location.href='#/equipmentForm'">ADD</button>
+  </div>
 </template>
 
 <template id ="equipment-form">
@@ -401,27 +536,28 @@
 
             <li><div class="form-group">
               <label for="buildingSpace">Building Space:</label>
-              <input data-bind="value: $component.equipment.buildingSpace" type="text" class="form-control" id="buildingSpace" placeholder="Building Space" name="buildingSpace">
+              <input data-bind="value: equipment.buildingSpace" type="text" class="form-control" id="buildingSpace" placeholder="Building Space" name="buildingSpace">
+              <strong data-bind="text: equipment.buildingSpace"></strong>
             </div></li>
 
             <li><div class="form-group">
               <label for="equipmentName">Equipment Name:</label>
-              <input data-bind="value: $component.equipment.equipmentName" type="text" class="form-control" id="equipmentName" placeholder="Equipment Name" name="equipmentName">
+              <input data-bind="value: equipment.equipmentName" type="text" class="form-control" id="equipmentName" placeholder="Equipment Name" name="equipmentName">
             </div></li>
 
             <li><div class="form-group">
               <label for="equipmentMakeModel">Make/Model:</label>
-              <input data-bind="value: $component.equipment.equipmentMakeModel" type="text" class="form-control" id="equipmentMakeModel" placeholder="Make/Model" name="equipmentMakeModel">
+              <input data-bind="value: equipment.equipmentMakeModel" type="text" class="form-control" id="equipmentMakeModel" placeholder="Make/Model" name="equipmentMakeModel">
             </div></li>
 
             <li><div class="form-group">
               <label for="equipmentNum">Equipment Number:</label>
-              <input data-bind="value: $component.equipment.equipmentNum" type="text" class="form-control" id="equipmentNum" placeholder="Equipment Number" name="equipmentNum">
+              <input data-bind="value: equipment.equipmentNum" type="text" class="form-control" id="equipmentNum" placeholder="Equipment Number" name="equipmentNum">
             </div></li>
 
             <li><div class="form-group">
               <label for="equipmentCost">Equipment Cost:</label>
-              <input data-bind="value: $component.equipment.equipmentCost" type="text" class="form-control" id="equipmentCost" placeholder="Equipment Cost" name="equipmentCost">
+              <input data-bind="value: equipment.equipmentCost" type="text" class="form-control" id="equipmentCost" placeholder="Equipment Cost" name="equipmentCost">
             </div></li>
 
             <li><div class="form-group">
@@ -430,17 +566,17 @@
                 <button class="glyphicon glyphicon-ok" style="width: 60px; height: 60px;right: 25px;background-color: green; color: white;" onclick="location.href='#/'"></button>
                 <button class="glyphicon glyphicon-remove" style="width: 60px; height: 60px;right: 25px;background-color: red; color: black" onclick="location.href='#/'"></button>
               </ul>
-              <input data-bind="value: $component.equipment.equipmentStatus" type="text" class="form-control" id="equipmentStatus" placeholder="Equipment Status" name="equipmentStatus">
+              <input data-bind="value: equipment.equipmentStatus" type="text" class="form-control" id="equipmentStatus" placeholder="Equipment Status" name="equipmentStatus">
             </div></li>
 
             <li><div class="form-group">
               <label for="equipmentDetails">Equipment Details:</label>
-              <input data-bind="value: $component.equipment.equipmentDetails" type="text" class="form-control" id="equipmentDetails" placeholder="Equipment Details" name="equipmentDetails">
+              <input data-bind="value: equipment.equipmentDetails" type="text" class="form-control" id="equipmentDetails" placeholder="Equipment Details" name="equipmentDetails">
             </div></li>
 
             <li><div class="form-group">
               <label for="equipmentNotes">Equipment Notes:</label>
-              <input data-bind="value: $component.equipment.equipmentNotes" type="text" class="form-control" id="equipmentNotes" placeholder="Equipment Notes" name="equipmentNotes">
+              <input data-bind="value:equipment.equipmentNotes" type="text" class="form-control" id="equipmentNotes" placeholder="Equipment Notes" name="equipmentNotes">
             </div></li>
 
             <li><div class="form-group">
@@ -448,7 +584,7 @@
               <ul>
                 <button class="glyphicon glyphicon-camera" style="width: 60px; height: 60px;right: 25px;background-color: dimgrey; color: white;" onclick="location.href='#/'"></button>
               </ul>
-              <input data-bind="value: $component.equipment.equipmentImages" type="text" class="form-control" id="equipmentImages" placeholder="Equipment Images" name="equipmentImages">
+              <input data-bind="value: equipment.equipmentImages" type="text" class="form-control" id="equipmentImages" placeholder="Equipment Images" name="equipmentImages">
             </div></li>
 
             <li><div class="form-group">
@@ -464,104 +600,55 @@
   </div>
 </template>
 
-
-
-
-
-<template id ="tools-page">
+<template id ="viewWorkDays-page">
   <div class="vertical-center">
     <div class="container">
-      <h2>Tools Used</h2>
+      <h2>View Work Days</h2>
       <form action="">
-        <div class="form-group">
-          <label>Total Cost:</label>
-          <tbody data-bind="foreach: trucks">
-          <tr>
-            <td data-bind="text: truckQty"></td>
-            <td data-bind="text: truckCost"></td>
-            <td data-bind="text: truckDesc"></td>
-          </tr>
-          </tbody>
-          <button class="btn btn-default">View</button>
+
+        <div class="form-group" data-bind="foreach: workList">
+          <div class="btn-default" onclick="location.href='#'">
+            <div class="row">
+              <div class="col-sm-8">
+                <p>
+                <!--<ul><h4 data-bind="text: id"></h4></ul>-->
+                <ul data-bind="text: technician"></ul>
+                <ul data-bind="text: workDate"></ul>
+                </p>
+              </div>
+
+              <div class="col-sm-2">
+                <ul><button class="glyphicon glyphicon-pencil" style="width: 60px; height: 60px;left: 10px; background-color: white; color: black" onclick="location.href='#/'"></button></ul>
+                <ul><button class="glyphicon glyphicon-trash" style="width: 60px; height: 60px;left: 10px; background-color: white; color: black" onclick="location.href='#/'"></button></ul>
+              </div>
+
+              <div class="col-sm-2">
+                <ul><button class="glyphicon glyphicon-ok" style="width: 60px; height: 60px;right: 25px;background-color: green; color: white;" onclick="location.href='#/'"></button></ul>
+                <ul><button class="glyphicon glyphicon-remove" style="width: 60px; height: 60px;right: 25px;background-color: red; color: black" onclick="location.href='#/'"></button></ul>
+              </div>
+            </div>
+          </div>
         </div>
       </form>
     </div>
   </div>
 </template>
 
-<template id ="viewWorkDays-page">
-    <div class="vertical-center">
-      <div class="container">
-        <h2>View Work Days</h2>
-        <form action="">
-
-          <div class="form-group" data-bind="foreach: $component.workList">
-            <div class="btn-default" onclick="location.href='#'">
-              <div class="row">
-                <div class="col-sm-8">
-                  <p>
-                  <ul><h4 data-bind="text: id"></h4></ul>
-                  <ul data-bind="text: technician"></ul>
-                  <ul data-bind="text: workDate"></ul>
-                  </p>
-                </div>
-
-                <div class="col-sm-2">
-                  <ul><button class="glyphicon glyphicon-pencil" style="width: 60px; height: 60px;left: 10px; background-color: white; color: black" onclick="location.href='#/'"></button></ul>
-                  <ul><button class="glyphicon glyphicon-trash" style="width: 60px; height: 60px;left: 10px; background-color: white; color: black" onclick="location.href='#/'"></button></ul>
-                </div>
-
-                <div class="col-sm-2">
-                  <ul><button class="glyphicon glyphicon-ok" style="width: 60px; height: 60px;right: 25px;background-color: green; color: white;" onclick="location.href='#/'"></button></ul>
-                  <ul><button class="glyphicon glyphicon-remove" style="width: 60px; height: 60px;right: 25px;background-color: red; color: black" onclick="location.href='#/'"></button></ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-</template>
-    
 <template id ="hoursSummary-page">
   <div class="vertical-center">
     <div class="container">
       <h2>Hours Summary</h2>
       <form action="">
         <ul>
-            <li></li>
-            <li></li>
-            <li></li>
-       </ul>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
       </form>
     </div>
   </div>
 </template>
 
-
-<template id ="toolsAdd-page">
-  <div class="vertical-center">
-    <div class="container">
-      <h2>Tools Used</h2>
-      <form action="">
-        <div class="form-group">
-          <label for="toolQty">Quantity:</label>
-          <input data-bind="value: trucks.truckQty" type="text" class="form-control" id="toolQty" placeholder="Tool Quantity">
-        </div>
-        <div class="form-group">
-          <label for="toolRate">Rate:</label>
-          <input data-bind="value: trucks.truckCost" type="text" class="form-control" id="toolRate" placeholder="Tool Rate">
-        </div>
-        <div class="form-group">
-          <label for="toolDesc">Description:</label>
-          <input data-bind="value: trucks.truckDesc" type="text" class="form-control" id="toolDesc" placeholder="Tool Description">
-        </div>
-        <button type="submit" onclick="location.href='#/tools'" data-bind="click: $component.addTruck" class="btn btn-danger pull-right">Submit</button>
-      </form>
-    </div>
-  </div>
-</template>
-      
 <template id ="workDays-page">
   <div class="vertical-center">
     <div class="container">
@@ -583,85 +670,48 @@
             <ul class="nav navbar-nav">
               <li><div class="form-group">
                 <label for="workDate">Work Date:</label>
-                <input data-bind="value: $component.workDaysData.workDate" type="date" class="form-control" id="workDate2" placeholder="Scheduled Work Date" name="workDate">
+                <input data-bind="value: workDaysData.workDate" type="date" class="form-control" id="workDate2" placeholder="Scheduled Work Date" name="workDate">
               </div></li>
               <li><div class="form-group">
                 <label for="technician">Technician</label>
-                <input data-bind="value: $component.workDaysData.technician" type="text" class="form-control" id="technician" placeholder="Technician Name" name="technician">
+                <input data-bind="value: workDaysData.technician" type="text" class="form-control" id="technician" placeholder="Technician Name" name="technician">
               </div></li>
               <li><div class="form-group">
                 <label for="reghrs">Regular Hours</label>
-                <input data-bind="value: $component.workDaysData.reghrs" type="text" class="form-control" id="reghrs" placeholder="Regular Hours" name="reghrs">
+                <input data-bind="value: workDaysData.regHrs" type="text" class="form-control" id="reghrs" placeholder="Regular Hours" name="reghrs">
               </div></li>
               <li><div class="form-group">
                 <label for="overtime">Overtime</label>
-                <input data-bind="value: $component.workDaysData.overtime" type="text" class="form-control" id="overtime" placeholder="Overtime" name="overtime">
+                <input data-bind="value: workDaysData.overTime" type="text" class="form-control" id="overtime" placeholder="Overtime" name="overtime">
               </div></li>
               <li><div class="form-group">
                 <label for="doubletime">Double Time</label>
-                <input data-bind="value: $component.workDaysData.doubletime" type="text" class="form-control" id="doubletime" placeholder="Double Time" name="doubletime">
+                <input data-bind="value: workDaysData.doubleTime" type="text" class="form-control" id="doubletime" placeholder="Double Time" name="doubletime">
               </div></li>
               <li><div class="form-group">
                 <label for="totalhrs">Total Hours</label>
-                <input data-bind="value: $component.workDaysData.totalhrs" type="text" class="form-control" id="totalhrs" placeholder="Total Hours" name="totalhrs">
+                <input data-bind="value: workDaysData.totalHrs" type="text" class="form-control" id="totalhrs" placeholder="Total Hours" name="totalhrs">
               </div></li>
               <li><div class="form-group">
                 <label for="rate">Rate</label>
-                <input data-bind="value: $component.workDaysData.rate" type="text" class="form-control" id="rate" placeholder="Rate" name="rate">
+                <input data-bind="value: workDaysData.rate" type="text" class="form-control" id="rate" placeholder="Rate" name="rate">
               </div></li>
               <li><div class="form-group">
                 <label for="labour">Labour</label>
-                <input data-bind="value: $component.workDaysData.labour" type="text" class="form-control" id="labour" placeholder="Labour" name="labour">
+                <input data-bind="value: workDaysData.labour" type="text" class="form-control" id="labour" placeholder="Labour" name="labour">
               </div></li>
             </ul>
           </div><!-- /.navbar-collapse -->
-            
-        <div class="form-group">
-          <div class="btn btn-warning" onclick="location.href='#/viewWorkDays'">View Work Days</div>
-        </div>
-        <div class="form-group">
-          <div class="btn btn-warning" onclick="location.href='#/hoursSummary'">Hours Summary</div>
-        </div>
-            
-        </div>
-        <button type="submit" data-bind="click: $component.add" class="btn btn-danger pull-right">Submit</button>
-      </form>
-    </div>
-  </div>
-</template>
 
+          <div class="form-group">
+            <div class="btn btn-warning" onclick="location.href='#/viewWorkDays'">View Work Days</div>
+          </div>
+          <div class="form-group">
+            <div class="btn btn-warning" onclick="location.href='#/hoursSummary'">Hours Summary</div>
+          </div>
 
-<template id ="thirdParty-page">
-  <div class="vertical-center">
-    <div class="container">
-      <h2>Third Party Outsource</h2>
-      <form action="">
-        <div class="form-group">
-          <label>Total Cost:</label>
-          <tbody data-bind="foreach: trucks">
-          <tr>
-            <td data-bind="text: truckQty"></td>
-            <td data-bind="text: truckCost"></td>
-            <td data-bind="text: truckDesc"></td>
-          </tr>
-          </tbody>
-          <button class="btn btn-default">View</button>
         </div>
-      </form>
-    </div>
-  </div>
-</template>
-
-<template id ="quotedWork-page">
-  <div class="vertical-center">
-    <div class="container">
-      <h2>Quoted Work</h2>
-      <form action="">
-        <div class="form-group">
-          <label>Total Cost:</label>
-          <label>Description:</label>
-          <button class="btn btn-default">Edit</button>
-        </div>
+        <button type="submit" data-bind="click: $component.addWorkDay" class="btn btn-danger pull-right">Submit</button>
       </form>
     </div>
   </div>
@@ -674,15 +724,15 @@
       <form action="">
         <div class="checkbox">
           <label><input type="checkbox" name="remember" style="width:32px;height:32px;left:-10px;">    Show 'Materials' section</label>
-		  <label><input type="checkbox" name="remember" style="width:32px;height:32px;left:-10px;"> Show 'Truck Stock' section</label>
-		  <label><input type="checkbox" name="remember" style="width:32px;height:32px;left:-10px;"> Show 'Tools Used' section</label>
-		  <label><input type="checkbox" name="remember" style="width:32px;height:32px;left:-10px;"> Show 'Third Party Outsource' section</label>
+          <label><input type="checkbox" name="remember" style="width:32px;height:32px;left:-10px;"> Show 'Truck Stock' section</label>
+          <label><input type="checkbox" name="remember" style="width:32px;height:32px;left:-10px;"> Show 'Tools Used' section</label>
+          <label><input type="checkbox" name="remember" style="width:32px;height:32px;left:-10px;"> Show 'Third Party Outsource' section</label>
         </div>
         <div class="form-group">
           <label for="customerNum">Invoice Date</label>
         </div>
         <form data-bind="with: formModel">
-        <input type="text" data-bind="value: invoiceDate" class="form-control" id="customerNum" placeholder="Select date"/>
+          <input type="text" data-bind="value: invoiceDate" class="form-control" id="customerNum" placeholder="Select date"/>
           <button data-bind="click: $parent.clear">Clear</button>
           <button type="submit" class="btn btn-default">Generate</button>
           <button type="submit" class="btn btn-default">Create WO</button>
