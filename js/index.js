@@ -3,6 +3,7 @@ var toolList = ko.observableArray([]);
 var thirdPartyList = ko.observableArray([]);
 var equipList = ko.observableArray([]);
 var workList = ko.observableArray([]);
+
 var equipmentEdit;
 var workDaysEdit;
 var equipmentIndex;
