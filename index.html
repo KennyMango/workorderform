@@ -30,7 +30,6 @@
 <script src='https://cdn.jsdelivr.net/npm/grapnel@0.6.4/src/grapnel.min.js'></script>
 
 
-  <div>
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -41,7 +40,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">BuiltSpace</a>
+          <a class="navbar-brand" href="#/">BuiltSpace</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -57,7 +56,6 @@
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
-  </div>
 
 
   <div class="view-container" data-bind="component: {
@@ -106,25 +104,35 @@
 
 
 <template id ="dispatch-page">
-  <div class="container">
-    <ol class="breadcrumb breadcrumb-arrow bread-nav">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Dispatch</a></li>
-      <!--<li><a href="#">Equipment</a></li>-->
-      <!--<li><a href="#">Materials & Tools</a></li>-->
-      <!--<li><a href="#">WorkDays</a></li>-->
-      <!--<li><a href="#">Invoice</a></li>-->
-    </ol>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-4"></div>
+      <div class="col-lg-4">
+        <ol class="breadcrumb breadcrumb-arrow bread-nav">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Dispatch</a></li>
+          <!--<li><a href="#">Equipment</a></li>-->
+          <!--<li><a href="#">Materials & Tools</a></li>-->
+          <!--<li><a href="#">WorkDays</a></li>-->
+          <!--<li><a href="#">Invoice</a></li>-->
+        </ol>
+      </div>
+      <div class="col-lg-4"></div>
+    </div>
   </div>
 
-  <ul class="accordion-menu">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-4"></div>
+    <ul class="accordion-menu col-sm-12 col-lg-4">
       <li class="open">
         <header  onclick="toggle(this.parentNode)"><span class="title">Building Information</span></header>
         <section class="content">
-          <div class="container">
+          <div class="container-fluid">
             <div class="row">
               <form role="form">
-                <div class="col-lg-12">
+                <div>
                   <div class="form-group">
                     <label for="building-name">BUILDING NAME</label>
                     <div class="alert alert-success" id ="building-name">
@@ -163,32 +171,71 @@
               <form role="form">
                 <div class="col-lg-6">
                   <div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
-                  <div class="form-group">
+                  <div class="form-group form-group-lg">
                     <label for="InputName">Enter Customer Name</label>
                     <div class="input-group">
-                      <input type="text" class="form-control" name="InputName" id="InputName" placeholder="Enter Name" required>
+                      <input  type="text" class="form-control" name="InputName" id="InputName" placeholder="Enter Name" required>
                       <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                     </div>
                   </div>
-                  <div class="form-group">
+                  <div class="form-group form-group-lg">
                     <label for="InputPOnum">Enter Customer P.O.#</label>
                     <div class="input-group">
                       <input type="text" class="form-control" id="InputPOnum" name="InputPO" placeholder="Enter P.O.#" required>
                       <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                     </div>
                   </div>
-                  <div class="form-group">
+                  <div class="form-group form-group-lg">
                     <label for="InputEmail">Enter Customer Email</label>
                     <div class="input-group">
                       <input type="email" class="form-control" id="InputEmail" name="InputEmail" placeholder="Confirm Email" required>
                       <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                     </div>
                   </div>
-                  <div class="form-group">
+                  <div class="form-group form-group-lg">
                     <label for="InputMessage">Enter Customer Notes</label>
                     <div class="input-group">
                       <textarea name="InputMessage" id="InputMessage" class="form-control" rows="5" required></textarea>
                       <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                    </div>
+                  </div>
+                  <div class="form-group form-group-lg">
+                    <label for="InputRequestedBy">Requested By</label>
+                    <div class="input-group">
+                      <input name="InputRequestedBy" id="InputRequestedBy" class="form-control" rows="5" required>
+                      <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                    </div>
+                  </div>
+                  <div class="form-group form-group-lg">
+                    <label for="InputOnSite">On-Site Contact:</label>
+                    <div class="input-group">
+                      <input name="InputOnSite" id="InputOnSite" class="form-control" rows="5" required>
+                      <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                    </div>
+                  </div>
+                  <div class="form-group form-group-lg">
+                    <label for="InputCPhone">Contact Phone Number:</label>
+                    <div class="input-group">
+                      <input name="InputCPhone" id="InputCPhone" class="form-control" rows="5" required>
+                      <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                    </div>
+                  </div>
+                  <div class="form-group form-group-lg">
+                    <label for="InputCEmail">Contact Email Address</label>
+                    <div class="input-group">
+                      <input name="InputCEmail" id="InputCEmail" class="form-control" rows="5" required>
+                      <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>Attach File</label>
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <span class="btn btn-default btn-file">
+                                Browse…<input type="file" id="fileInp">
+                            </span>
+                         </span>
+                      <input type="text" class="form-control" readonly>
                     </div>
                   </div>
                 </div>
@@ -205,28 +252,28 @@
               <form role="form">
                 <div class="col-lg-6">
                   <div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
-                  <div class="form-group">
+                  <div class="form-group form-group-lg">
                     <label for="InputWorkDate">Work Date</label>
                     <div class="input-group">
                       <input data-bind="value: dispatchData.workDate" type="date" class="form-control" id="InputWorkDate" placeholder="Scheduled Work Date" name="workDate">
                       <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                     </div>
                   </div>
-                  <div class="form-group">
+                  <div class="form-group form-group-lg">
                     <label for="InputStart">Start Date</label>
                     <div class="input-group">
                       <input data-bind="value: dispatchData.startDate" type="date" class="form-control" id="InputStart" placeholder="Scheduled Start Date" name="startDate">
                       <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                     </div>
                   </div>
-                  <div class="form-group">
+                  <div class="form-group form-group-lg">
                     <label for="InputEnd">End Date</label>
                     <div class="input-group">
                       <input data-bind="value: dispatchData.endDate" type="date" class="form-control" id="InputEnd" placeholder="Scheduled End Date" name="endDate">
                       <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                     </div>
                   </div>
-                  <div class="form-group">
+                  <div class="form-group form-group-lg">
                     <label for="InputAssign">Assign To</label>
                     <div class="input-group">
                       <input data-bind="value: dispatchData.assignedTo" type="text" class="form-control" id="InputAssign" placeholder="Assigned To" name="assigned">
@@ -239,48 +286,56 @@
           </div>
         </section>
       </li>
-
-
     </ul>
-
-
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-4"></div>
-      <div class="col-lg-4">
-        <nav>
-          <ul class="pagination pagination-lg">
-            <li class="page-item disabled">
-              <a class="page-link" href="#" tabindex="-1">Previous</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">4</a></li>
-            <li class="page-item">
-              <a class="page-link" href="#">Next</a>
-            </li>
-          </ul>
-        </nav>
+    <div class="col-lg-4"></div>
+  </div>
+  <div class="row">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+          <nav>
+            <ul class="pagination pagination-lg">
+              <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1">Previous</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">4</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="col-lg-4"></div>
       </div>
-      <div class="col-lg-4"></div>
     </div>
   </div>
+</div>
 </template>
 
 
 <template id ="materials-page">
 
-  <div class="container">
-    <ol class="breadcrumb breadcrumb-arrow bread-nav">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Dispatch</a></li>
-      <li><a href="#">Equipment</a></li>
-      <li><a href="#">Materials & Tools</a></li>
-      <!--<li><a href="#">WorkDays</a></li>-->
-      <!--<li><a href="#">Invoice</a></li>-->
-    </ol>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-4"></div>
+      <div class="col-lg-4">
+        <ol class="breadcrumb breadcrumb-arrow bread-nav">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Dispatch</a></li>
+          <li><a href="#">Equipment</a></li>
+          <li><a href="#">Materials & Tools</a></li>
+          <!--<li><a href="#">WorkDays</a></li>-->
+          <!--<li><a href="#">Invoice</a></li>-->
+        </ol>
+      </div>
+      <div class="col-lg-4"></div>
+    </div>
   </div>
+
 
   <div class="vertical-center">
     <div class="container">
@@ -308,7 +363,7 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-4"></div>
-      <div class="col-lg-4">
+      <div class="col-lg-6">
         <nav>
           <ul class="pagination pagination-lg">
             <li class="page-item disabled">
@@ -316,8 +371,9 @@
             </li>
             <li class="page-item"><a class="page-link" href="#">1</a></li>
             <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item active"><a class="page-link" href="#">3</a></li>
             <li class="page-item"><a class="page-link" href="#">4</a></li>
+            <li class="page-item"><a class="page-link" href="#">5</a></li>
             <li class="page-item">
               <a class="page-link" href="#">Next</a>
             </li>
@@ -535,15 +591,21 @@
 
 <template id ="equipment-page">
 
-  <div class="container">
-    <ol class="breadcrumb breadcrumb-arrow bread-nav">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Dispatch</a></li>
-      <li><a href="#">Equipment</a></li>
-      <!--<li><a href="#">Materials & Tools</a></li>-->
-      <!--<li><a href="#">WorkDays</a></li>-->
-      <!--<li><a href="#">Invoice</a></li>-->
-    </ol>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-4"></div>
+      <div class="col-lg-4">
+        <ol class="breadcrumb breadcrumb-arrow bread-nav">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Dispatch</a></li>
+          <li><a href="#">Equipment</a></li>
+          <!--<li><a href="#">Materials & Tools</a></li>-->
+          <!--<li><a href="#">WorkDays</a></li>-->
+          <!--<li><a href="#">Invoice</a></li>-->
+        </ol>
+      </div>
+      <div class="col-lg-4"></div>
+    </div>
   </div>
 
   <div class="vertical-center">
@@ -583,16 +645,17 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-4"></div>
-      <div class="col-lg-4">
+      <div class="col-lg-6">
         <nav>
           <ul class="pagination pagination-lg">
-            <li class="page-item disabled">
+            <li class="page-item">
               <a class="page-link" href="#" tabindex="-1">Previous</a>
             </li>
             <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item active"><a class="page-link" href="#">2</a></li>
             <li class="page-item"><a class="page-link" href="#">3</a></li>
             <li class="page-item"><a class="page-link" href="#">4</a></li>
+            <li class="page-item"><a class="page-link" href="#">5</a></li>
             <li class="page-item">
               <a class="page-link" href="#">Next</a>
             </li>
@@ -610,44 +673,44 @@
     <div class="container">
 
 
-      <ul class="accordion-menu">
+      <ul class="accordion-menu col-sm-12 col-lg-12">
         <li class="open">
           <header  onclick="toggle(this.parentNode)"><span class="title">Edit Equipment</span></header>
           <section class="content">
             <div class="container">
               <div class="row">
                 <form role="form">
-                  <div class="col-lg-6">
+                  <div class="col-lg-12">
                     <div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
-                    <div class="form-group">
+                    <div class="form-group form-group-lg">
                       <label for="buildingSpace">Building Space:</label>
                       <div class="input-group">
                         <input data-bind="value: equipment.buildingSpace" type="text" class="form-control" id="buildingSpace" placeholder="Building Space" name="buildingSpace">
                         <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                       </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group form-group-lg">
                       <label for="equipmentName">Equipment Name:</label>
                       <div class="input-group">
                         <input data-bind="value: equipment.equipmentName" type="text" class="form-control" id="equipmentName" placeholder="Equipment Name" name="equipmentName">
                         <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                       </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group form-group-lg">
                       <label for="equipmentMakeModel">Make/Model:</label>
                       <div class="input-group">
                         <input data-bind="value: equipment.equipmentMakeModel" type="text" class="form-control" id="equipmentMakeModel" placeholder="Make/Model" name="equipmentMakeModel">
                         <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                       </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group form-group-lg">
                       <label for="equipmentNum">Equipment Number:</label>
                       <div class="input-group">
                         <input data-bind="value: equipment.equipmentNum" type="text" class="form-control" id="equipmentNum" placeholder="Equipment Number" name="equipmentNum">
                         <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                       </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group form-group-lg">
                       <label for="equipmentCost">Equipment Cost:</label>
                       <div class="input-group">
                         <input data-bind="value: equipment.equipmentCost" type="text" class="form-control" id="equipmentCost" placeholder="Equipment Cost" name="equipmentCost">
@@ -666,14 +729,14 @@
                         <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                       </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group form-group-lg">
                       <label for="equipmentDetails">Equipment Details:</label>
                       <div class="input-group">
                         <textarea data-bind="value: equipment.equipmentDetails" name="equipmentDetails" id="equipmentDetails" class="form-control" rows="5" required></textarea>
                         <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                       </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group form-group-lg">
                       <label for="equipmentNotes">Equipment Notes:</label>
                       <div class="input-group">
                         <textarea data-bind="value: equipment.equipmentNotes" name="equipmentDetails" id="equipmentNotes" class="form-control" rows="5" required></textarea>
@@ -690,7 +753,6 @@
                          </span>
                         <input type="text" class="form-control" readonly>
                       </div>
-                      <img id='img-upload'/>
                     </div>
                   </div>
                 </form>
@@ -737,37 +799,37 @@
             <div class="container">
               <div class="row">
                 <form role="form">
-                  <div class="col-lg-6">
+                  <div class="col-lg-12">
                     <div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
-                    <div class="form-group">
+                    <div class="form-group form-group-lg">
                       <label for="buildingSpaceEdit">Building Space:</label>
                       <div class="input-group">
                         <input data-bind="value: equipmentEdit.buildingSpace" type="text" class="form-control" id="buildingSpaceEdit" placeholder="Building Space" name="buildingSpace">
                         <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                       </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group form-group-lg">
                       <label for="equipmentNameEdit">Equipment Name:</label>
                       <div class="input-group">
                         <input data-bind="value: equipmentEdit.equipmentName" type="text" class="form-control" id="equipmentNameEdit" placeholder="Equipment Name" name="equipmentName">
                         <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                       </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group form-group-lg">
                       <label for="equipmentMakeModelEdit">Make/Model:</label>
                       <div class="input-group">
                         <input data-bind="value: equipmentEdit.equipmentMakeModel" type="text" class="form-control" id="equipmentMakeModelEdit" placeholder="Make/Model" name="equipmentMakeModel">
                         <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                       </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group form-group-lg">
                       <label for="equipmentNumEdit">Equipment Number:</label>
                       <div class="input-group">
                         <input data-bind="value: equipmentEdit.equipmentNum" type="text" class="form-control" id="equipmentNumEdit" placeholder="Equipment Number" name="equipmentNum">
                         <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                       </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group form-group-lg">
                       <label for="equipmentCostEdit">Equipment Cost:</label>
                       <div class="input-group">
                         <input data-bind="value: equipmentEdit.equipmentCost" type="text" class="form-control" id="equipmentCostEdit" placeholder="Equipment Cost" name="equipmentCost">
@@ -786,14 +848,14 @@
                         <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                       </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group form-group-lg">
                       <label for="equipmentDetailsEdit">Equipment Details:</label>
                       <div class="input-group">
                         <textarea data-bind="value: equipmentEdit.equipmentDetails" name="equipmentDetails" id="equipmentDetailsEdit" class="form-control" rows="5" required></textarea>
                         <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                       </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group form-group-lg">
                       <label for="equipmentNotesEdit">Equipment Notes:</label>
                       <div class="input-group">
                         <textarea data-bind="value: equipmentEdit.equipmentNotes" name="equipmentDetails" id="equipmentNotesEdit" class="form-control" rows="5" required></textarea>
@@ -897,127 +959,139 @@
 
 <template id ="workDays-page">
 
-  <div class="container">
-    <ol class="breadcrumb breadcrumb-arrow bread-nav">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Dispatch</a></li>
-      <li><a href="#">Equipment</a></li>
-      <li><a href="#">Materials & Tools</a></li>
-      <li><a href="#">WorkDays</a></li>
-      <!--<li><a href="#">Invoice</a></li>-->
-    </ol>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-4"></div>
+      <div class="col-lg-4">
+        <ol class="breadcrumb breadcrumb-arrow bread-nav">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Dispatch</a></li>
+          <li><a href="#">Equipment</a></li>
+          <li><a href="#">Materials & Tools</a></li>
+          <li><a href="#">WorkDays</a></li>
+          <!--<li><a href="#">Invoice</a></li>-->
+        </ol>
+      </div>
+      <div class="col-lg-4"></div>
+    </div>
   </div>
 
-  <ul class="accordion-menu">
-    <li class="open">
-      <header  onclick="toggle(this.parentNode)"><span class="title">Insert Workday</span></header>
-      <section class="content">
-        <div class="container">
-          <div class="row">
-            <form role="form">
-              <div class="col-lg-6">
-                <div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
-                <div class="form-group">
-                  <label for="workDate2">Work Date:</label>
-                  <div class="input-group">
-                    <input data-bind="value: workDaysData.workDate" type="date" class="form-control" id="workDate2" placeholder="Scheduled Work Date" name="workDate">
-                    <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-4"></div>
+      <ul class="accordion-menu col-sm-12 col-lg-4">
+        <li class="open">
+          <header  onclick="toggle(this.parentNode)"><span class="title">Insert Workday</span></header>
+          <section class="content">
+            <div class="container">
+              <div class="row">
+                <form role="form">
+                  <div class="col-lg-6">
+                    <div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
+                    <div class="form-group  form-group-lg">
+                      <label for="workDate2">Work Date:</label>
+                      <div class="input-group">
+                        <input data-bind="value: workDaysData.workDate" type="date" class="form-control" id="workDate2" placeholder="Scheduled Work Date" name="workDate">
+                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                      </div>
+                    </div>
+                    <div class="form-group  form-group-lg">
+                      <label for="technician">Technician</label>
+                      <div class="input-group">
+                        <input data-bind="value: workDaysData.technician" type="text" class="form-control" id="technician" placeholder="Technician Name" name="technician">
+                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                      </div>
+                    </div>
+                    <div class="form-group form-group-lg">
+                      <label for="reghrs">Regular Hours</label>
+                      <div class="input-group">
+                        <input data-bind="value: workDaysData.reghrs" type="text" class="form-control" id="reghrs" placeholder="Regular Hours" name="reghrs">
+                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                      </div>
+                    </div>
+                    <div class="form-group form-group-lg">
+                      <label for="overtime">Overtime</label>
+                      <div class="input-group">
+                        <input data-bind="value: workDaysData.overtime" type="text" class="form-control" id="overtime" placeholder="Overtime" name="overtime">
+                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                      </div>
+                    </div>
+                    <div class="form-group form-group-lg">
+                      <label for="doubletime">Double Time</label>
+                      <div class="input-group">
+                        <input data-bind="value: workDaysData.doubletime" type="text" class="form-control" id="doubletime" placeholder="Double Time" name="doubletime">
+                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                      </div>
+                    </div>
+                    <div class="form-group form-group-lg">
+                      <label for="totalhrs">Total Hours</label>
+                      <div class="input-group">
+                        <input data-bind="value: workDaysData.totalhrs" type="text" class="form-control" id="totalhrs" placeholder="Total Hours" name="totalhrs">
+                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                      </div>
+                    </div>
+                    <div class="form-group form-group-lg">
+                      <label for="rate">Rate</label>
+                      <div class="input-group">
+                        <input data-bind="value: workDaysData.rate" type="text" class="form-control" id="rate" placeholder="Rate" name="rate">
+                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                      </div>
+                    </div>
+                    <div class="form-group form-group-lg">
+                      <label for="labour">Labour</label>
+                      <div class="input-group">
+                        <input data-bind="value: workDaysData.labour" type="text" class="form-control" id="labour" placeholder="Labour" name="labour">
+                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div class="form-group">
-                  <label for="technician">Technician</label>
-                  <div class="input-group">
-                    <input data-bind="value: workDaysData.technician" type="text" class="form-control" id="technician" placeholder="Technician Name" name="technician">
-                    <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="reghrs">Regular Hours</label>
-                  <div class="input-group">
-                    <input data-bind="value: workDaysData.reghrs" type="text" class="form-control" id="reghrs" placeholder="Regular Hours" name="reghrs">
-                    <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="overtime">Overtime</label>
-                  <div class="input-group">
-                    <input data-bind="value: workDaysData.overtime" type="text" class="form-control" id="overtime" placeholder="Overtime" name="overtime">
-                    <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="doubletime">Double Time</label>
-                  <div class="input-group">
-                    <input data-bind="value: workDaysData.doubletime" type="text" class="form-control" id="doubletime" placeholder="Double Time" name="doubletime">
-                    <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="totalhrs">Total Hours</label>
-                  <div class="input-group">
-                    <input data-bind="value: workDaysData.totalhrs" type="text" class="form-control" id="totalhrs" placeholder="Total Hours" name="totalhrs">
-                    <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="rate">Rate</label>
-                  <div class="input-group">
-                    <input data-bind="value: workDaysData.rate" type="text" class="form-control" id="rate" placeholder="Rate" name="rate">
-                    <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="labour">Labour</label>
-                  <div class="input-group">
-                    <input data-bind="value: $component.workDaysData.labour" type="text" class="form-control" id="labour" placeholder="Labour" name="labour">
-                    <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-                  </div>
-                </div>
+                </form>
               </div>
-            </form>
-          </div>
-        </div>
-      </section>
-    </li>
-    <li class="closed">
-      <header  onclick="toggle(this.parentNode)"><span class="title">View Workdays</span></header>
-      <section class="content">
-        <div class="container">
-          <div class="row">
-            <form role="form">
-            </form>
-          </div>
-        </div>
-      </section>
-    </li>
-    <li class="closed">
-      <header  onclick="toggle(this.parentNode)"><span class="title">Hours Summary</span></header>
-      <section class="content">
-        <div class="container">
-          <div class="row">
-            <form role="form">
-            </form>
-          </div>
-        </div>
-      </section>
-    </li>
+            </div>
+          </section>
+        </li>
+        <li class="closed">
+          <header  onclick="toggle(this.parentNode)"><span class="title">View Workdays</span></header>
+          <section class="content">
+            <div class="container">
+              <div class="row">
+                <form role="form">
+                </form>
+              </div>
+            </div>
+          </section>
+        </li>
+        <li class="closed">
+          <header  onclick="toggle(this.parentNode)"><span class="title">Hours Summary</span></header>
+          <section class="content">
+            <div class="container">
+              <div class="row">
+                <form role="form">
+                </form>
+              </div>
+            </div>
+          </section>
+        </li>
+      </ul>
+      <div class ="col-lg-4"></div>
+    </div>
+  </div>
 
-
-  </ul>
 
   <div class="container">
     <div class="row">
       <div class="col-lg-4"></div>
-      <div class="col-lg-4">
+      <div class="col-lg-6">
         <nav>
           <ul class="pagination pagination-lg">
-            <li class="page-item disabled">
+            <li class="page-item">
               <a class="page-link" href="#" tabindex="-1">Previous</a>
             </li>
             <li class="page-item"><a class="page-link" href="#">1</a></li>
             <li class="page-item"><a class="page-link" href="#">2</a></li>
             <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">4</a></li>
+            <li class="page-item active"><a class="page-link" href="#">4</a></li>
+            <li class="page-item"><a class="page-link" href="#">5</a></li>
             <li class="page-item">
               <a class="page-link" href="#">Next</a>
             </li>
@@ -1032,18 +1106,24 @@
 
 <template id ="invoice-page">
 
-  <div class="container">
-    <ol class="breadcrumb breadcrumb-arrow bread-nav">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Dispatch</a></li>
-      <li><a href="#">Equipment</a></li>
-      <li><a href="#">Materials & Tools</a></li>
-      <li><a href="#">WorkDays</a></li>
-      <li><a href="#">Invoice</a></li>
-    </ol>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-4"></div>
+      <div class="col-lg-4">
+        <ol class="breadcrumb breadcrumb-arrow bread-nav">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Dispatch</a></li>
+          <li><a href="#">Equipment</a></li>
+          <li><a href="#">Materials & Tools</a></li>
+          <li><a href="#">WorkDays</a></li>
+          <li><a href="#">Invoice</a></li>
+        </ol>
+      </div>
+      <div class="col-lg-4"></div>
+    </div>
   </div>
 
-  <div class="vertical-center">
+
     <div class="container">
       <h2>Invoice View Settings</h2>
       <form action="">
@@ -1057,30 +1137,31 @@
           <label for="customerNum">Invoice Date</label>
         </div>
         <form data-bind="with: formModel">
-          <input type="text" data-bind="value: invoiceDate" class="form-control" id="customerNum" placeholder="Select date"/>
-          <button data-bind="click: $parent.clear">Clear</button>
+        <input type="text" data-bind="value: invoiceDate" class="form-control" id="customerNum" placeholder="Select date"/>
+          <button type="submit" class="btn btn-default" data-bind="click: $parent.clear">Clear</button>
           <button type="submit" class="btn btn-default">Generate</button>
           <button type="submit" class="btn btn-default">Create WO</button>
         </form>
       </form>
     </div>
-  </div>
+
 
 
   <div class="container">
     <div class="row">
       <div class="col-lg-4"></div>
-      <div class="col-lg-4">
+      <div class="col-lg-6">
         <nav>
           <ul class="pagination pagination-lg">
-            <li class="page-item disabled">
+            <li class="page-item">
               <a class="page-link" href="#" tabindex="-1">Previous</a>
             </li>
             <li class="page-item"><a class="page-link" href="#">1</a></li>
             <li class="page-item"><a class="page-link" href="#">2</a></li>
             <li class="page-item"><a class="page-link" href="#">3</a></li>
             <li class="page-item"><a class="page-link" href="#">4</a></li>
-            <li class="page-item">
+            <li class="page-item active"><a class="page-link" href="#">5</a></li>
+            <li class="page-item disabled">
               <a class="page-link" href="#">Next</a>
             </li>
           </ul>
