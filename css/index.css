@@ -1,68 +1,71 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,900);
 
-/*@media screen and (min-width: 1080px) {*/
-    /*.nav-buttons{*/
-        /*height: 200px;*/
-        /*width: 50%;*/
-    /*}*/
-    /*.navIcons{*/
-        /*height: 130px;*/
-        /*width: auto;*/
-        /*text-align: center;*/
-		/*margin: 10px;*/
-    /*}*/
+@media screen and (min-width: 1080px) {
+    .nav-buttons{
+        height: 200px;
+        width: 50%;
+    }
+    .navIcons{
+        height: 130px;
+        width: auto;
+        text-align: center;
+		margin: 10px;
+    }
 
-    /*.nav-container{*/
-        /*width: 25%;*/
-    /*}*/
-	/*.icon-label{*/
-    /*text-align: center;*/
-    /*font-size: 15px;*/
-    /*}*/
-    /*.view-container{*/
-        /*margin-top: 10%;*/
-    /*}*/
-/*}*/
+    .nav-container{
+        width: 25%;
+    }
+	.icon-label{
+    text-align: center;
+    font-size: 15px;
+    }
+    .ul.accordion-menu li header{
+        width: 579px;
+    }
+}
 
-/*@media screen and (max-width: 1024px) {*/
-    /*.nav-buttons{*/
-        /*height: 200px;*/
-        /*width: 50%;*/
-    /*}*/
-    /*.navIcons{*/
-        /*height: 160px;*/
-        /*width: auto;*/
-        /*text-align: center;*/
-		/*margin: 5px;*/
-    /*}*/
-	/*.icon-label{*/
-    /*text-align: center;*/
-    /*font-size: 20px;*/
-    /*}*/
-    /*.view-container{*/
-        /*margin-top: 10%;*/
-    /*}*/
-/*}*/
+@media screen and (max-width: 1024px) {
+    .nav-buttons{
+        height: 200px;
+        width: 50%;
+    }
+    .navIcons{
+        height: 160px;
+        width: auto;
+        text-align: center;
+		margin: 5px;
+    }
+	.icon-label{
+    text-align: center;
+    font-size: 20px;
+    }
+    .view-container{
+        margin-top: 10%;
+    }
+}
 
-/*@media screen and (max-width: 768px) {*/
-    /*.nav-buttons{*/
-        /*height: 190px;*/
-        /*width: 48%;*/
-    /*}*/
-    /*.navIcons{*/
-        /*height: 140px;*/
-        /*width: auto;*/
-        /*text-align: center;*/
-		/*margin: 5px;*/
-    /*}*/
-	/*.icon-label{*/
-    /*text-align: center;*/
-    /*font-size: 15px;*/
-    /*}*/
-    /*.view-container{*/
-        /*margin-top: 10%;*/
-    /*}*/
-/*}*/
+@media screen and (max-width: 768px) {
+    .nav-buttons{
+        height: 190px;
+        width: 48%;
+    }
+    .navIcons{
+        height: 140px;
+        width: auto;
+        text-align: center;
+		margin: 5px;
+    }
+	.icon-label{
+    text-align: center;
+    font-size: 15px;
+    }
+    .view-container{
+        margin-top: 10%;
+    }
+    .breadcrumb{
+        display: none;
+    }
+}
 
 .navbar-header {
     float: none;
@@ -94,15 +97,11 @@
 
 
 .vertical-center {
-    min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
-    min-height: 100vh; /* These two lines are counted as one 🙂       */
+    min-height: 100%;
+    min-height: 100vh;
     display: flex;
     align-items: center;
 }
-
-/*.navbar-fixed-top {*/
-    /*min-height: 80px;*/
-/*}*/
 
 .navbar-nav > li > a {
     padding-top: 0px;
@@ -110,20 +109,25 @@
     line-height: 50px;
 }
 
-/*@media (max-width: 767px) {*/
-    /*.navbar-nav > li > a {*/
-        /*line-height: 20px;*/
-        /*padding-top: 10px;*/
-        /*padding-bottom: 10px;}*/
-    /*.view-container{*/
-        /*margin-top: 10%;*/
-    /*}*/
-/*}*/
+@media (max-width: 767px) {
+    .navbar-nav > li > a {
+        line-height: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;}
+    .view-container{
+        margin-top: 20%;
+    }
 
-/*.pull-left{*/
-    /*height: 50px;*/
-    /*width: 50px;*/
-/*}*/
+    .breadcrumb{
+        display: none;
+    }
+}
+
+
+.pull-left{
+    height: 50px;
+    width: 50px;
+}
 
 .icon-label{
     text-align: center;
@@ -157,6 +161,7 @@
 .icon-label{
     color: white;
 }
+
 
 body {
     background-image: url("https://i.ytimg.com/vi/lQwol0Y98o8/maxresdefault.jpg");
@@ -198,7 +203,7 @@ ul.accordion-menu li {
 
 ul.accordion-menu li header {
 
-    width: 579px;
+    width: auto;
 
     margin: 0 auto;
 
@@ -254,9 +259,7 @@ ul.accordion-menu li section.content {
 
     transition:all 200ms linear;
 
-    width: 600px;
-
-    margin: 0 auto;
+    width: auto;
 
 }
 
@@ -382,9 +385,10 @@ ul.accordion-menu li.open header span.title {
     color: #434a54
 }
 .bread-nav{
-    width: 579px;
+    width: auto;
     margin: 0 auto;
 }
+
 
 .btn-file {
     position: relative;
@@ -428,3 +432,34 @@ ul.accordion-menu li.open header span.title {
     color: white;
     font-size: large;
 }
+
+.pagination{
+    margin: 0 auto;
+}
+
+.pagination ul {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+
+.pagination li {
+    display: inline;
+}
+
+.pagination li a {
+    color: green;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.pagination li.active a {
+    background-color: green;
+    color: white;
+}
+
+.pagination li:hover:not(.active) a {
+    background-color: lightgreen;
+}
+
