@@ -119,6 +119,16 @@ var mainPage = function(params) {
 
 };
 
+function toggle(e) {
+    if(e.className == 'closed') {
+        e.className = 'open';
+    }
+    else {
+        e.className = 'closed';
+    }
+}
+
+
 var dispatchPage = function (params) {
     self = this;
     self.buildingList = ko.observableArray();
@@ -161,12 +171,16 @@ var dispatchPage = function (params) {
         //         }
         //     });
         // }
-    }
+    };
+
+
 };
 
 var materialsPage = function (params) {
 
 };
+
+
 
 var equipmentForm = function (params) {
     self = this;
