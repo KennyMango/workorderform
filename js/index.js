@@ -3,8 +3,11 @@ var toolList = ko.observableArray([]);
 var thirdPartyList = ko.observableArray([]);
 var equipList = ko.observableArray([]);
 var workList = ko.observableArray([]);
+
 var equipmentEdit;
-var indexToEdit;
+var workDaysEdit;
+var equipmentIndex;
+var workDaysIndex;
 
 var dispatchData = {
     custName: ko.observable(''),
@@ -178,11 +181,6 @@ var dispatchPage = function (params) {
 
 };
 
-var materialsPage = function (params) {
-
-};
-
-
 
 var equipmentForm = function (params) {
     self = this;
@@ -227,7 +225,7 @@ var equipmentFormEdit = function (params) {
     self = this;
 
     self.update = function () {
-        equipList()[indexToEdit] = equipmentEdit;
+        equipList()[equipmentIndex] = equipmentEdit;
     }
 };
 
@@ -236,8 +234,8 @@ var equipmentPage = function (params) {
     self = this;
 
     self.edit = function(index) {
-        indexToEdit = index;
-        equipmentEdit = equipList()[indexToEdit];
+        equipmentIndex = index;
+        equipmentEdit = equipList()[equipmentIndex];
     };
     // $( document ).ready(function() {
     //     $.ajax({
@@ -257,6 +255,9 @@ var equipmentPage = function (params) {
 
 };
 
+var materialsPage = function (params) {
+
+};
 
 var purchasePage = function (params) {
     self = this;
@@ -305,14 +306,36 @@ var workDaysPage = function (params) {
         //     console.log(returnedData)
         // })
 
+        workDaysData = {
+            workDate: '',
+            technician: '',
+            regHrs: '',
+            overTime: '',
+            doubleTime: '',
+            totalHrs: '',
+            rate: '',
+            labour: ''
+
+        };
+
     };
 };
 
+var workDaysEditPage = function (params) {
+    self = this;
+    self.updateWorkDay = function () {
+        workList()[workDaysIndex] = workDaysEdit;
+    };
+};
 
 var viewWorkDaysPage = function (params) {
 
     self = this;
 
+    self.editWorkDay = function (index) {
+        workDaysIndex = index;
+        workDaysEdit = workList()[workDaysIndex];
+    };
     // $( document ).ready(function() {
     //     $.ajax({
     //         type: 'GET',
@@ -335,9 +358,6 @@ var invoicePage = function (params) {
 
 };
 
-var hoursSummaryPage = function (params) {
-// testing time
-};
 
 var KnockoutController = function(config) {
     var defaults = {
@@ -514,6 +534,14 @@ var MyApp = function() {
                 routes: ["/workDays"]
             },
             {
+                name: "WorkDaysEdit",
+                componentConfig: {
+                    viewModel: workDaysEditPage,
+                    template: {element: "workDaysEdit-page"}
+                },
+                routes: ["/workDaysEdit"]
+            },
+            {
                 name: "ViewWorkDays",
                 componentConfig: {
                     viewModel: viewWorkDaysPage,
@@ -528,14 +556,6 @@ var MyApp = function() {
                     template: {element: "invoice-page"}
                 },
                 routes: ["/invoice"]
-            },
-            {
-                name: "HoursSummary",
-                componentConfig: {
-                    viewModel: hoursSummaryPage,
-                    template: {element: "hoursSummary-page"}
-                },
-                routes: ["/hoursSummary"]
             }],
         defaultView: {
             name: "main",

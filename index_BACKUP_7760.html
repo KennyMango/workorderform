@@ -910,90 +910,302 @@
 
 <template id ="viewWorkDays-page">
 
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-4"></div>
-      <div class="col-lg-4">
-        <ol class="breadcrumb breadcrumb-arrow bread-nav">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Dispatch</a></li>
-          <li><a href="#">Equipment</a></li>
-          <li><a href="#">Materials & Tools</a></li>
-          <li><a href="#">WorkDays</a></li>
-          <!--<li><a href="#">Invoice</a></li>-->
-        </ol>
-      </div>
-      <div class="col-lg-4"></div>
+    <div class="container">
+      <ol class="breadcrumb breadcrumb-arrow bread-nav">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Dispatch</a></li>
+        <li><a href="#">Equipment</a></li>
+        <li><a href="#">Materials & Tools</a></li>
+        <li><a href="#">WorkDays</a></li>
+        <!--<li><a href="#">Invoice</a></li>-->
+      </ol>
     </div>
-  </div>
-
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-4"></div>
-      <ul class="accordion-menu col-sm-12 col-lg-4">
-        <li class="open">
-          <header  onclick="toggle(this.parentNode)"><span class="title">View Workdays</span></header>
-          <section class="content">
-            <div class="container">
-              <div class="row">
-                <form role="form">
-                  <button onclick="location.href='#/workDays'">Add</button>
-                  <div data-bind="foreach: workList">
-                    <div data-bind="text: workDate"></div>
-                    <div data-bind="text: technician"></div>
-                    <button data-bind="click: $component.editWorkDay($index())" onclick="location.href='#/workDaysEdit'">Edit</button>
-                  </div>
-                </form>
-              </div>
+  <ul class="accordion-menu">
+      <li class="open">
+        <header  onclick="toggle(this.parentNode)"><span class="title">View Workdays</span></header>
+        <section class="content">
+          <div class="container">
+            <div class="row">
+              <form role="form">
+                <button onclick="location.href='#/workDays'">Add</button>
+                <div data-bind="foreach: workList">
+                  <li data-bind="text: workDate"></li>
+                  <li data-bind="text: technician"></li>
+                  <button data-bind="click: $component.editWorkDay($index())" onclick="location.href='#/workDaysEdit'">Edit</button>
+                </div>
+              </form>
             </div>
-          </section>
-        </li>
+          </div>
+        </section>
+      </li>
 
-        <li class="closed">
-          <header  onclick="toggle(this.parentNode)"><span class="title">Hours Summary</span></header>
-          <section class="content">
-            <div class="container">
-              <div class="row">
-                <form role="form">
-
-                </form>
-              </div>
+      <li class="closed">
+        <header  onclick="toggle(this.parentNode)"><span class="title">Hours Summary</span></header>
+        <section class="content">
+          <div class="container">
+            <div class="row">
+              <form role="form">
+              </form>
             </div>
-          </section>
-        </li>
-      </ul>
-      <div class ="col-lg-4"></div>
-    </div>
-  </div>
+          </div>
+        </section>
+      </li>
+    </ul>
 
-
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-4"></div>
-      <div class="col-lg-6">
-        <nav>
-          <ul class="pagination pagination-lg">
-            <li class="page-item">
-              <a class="page-link" href="#" tabindex="-1">Previous</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item active"><a class="page-link" href="#">4</a></li>
-            <li class="page-item"><a class="page-link" href="#">5</a></li>
-            <li class="page-item">
-              <a class="page-link" href="#">Next</a>
-            </li>
-          </ul>
-        </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+          <nav>
+            <ul class="pagination pagination-lg">
+              <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1">Previous</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">4</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="col-lg-4"></div>
       </div>
-      <div class="col-lg-4"></div>
     </div>
-  </div>
 </template>
 
 
-<template id ="workDays-page">
+<!--<<<<<<< HEAD-->
+<!--<template id ="workDays-page">-->
+
+  <!--<ul class="accordion-menu">-->
+    <!--<li class="open">-->
+      <!--<header  onclick="toggle(this.parentNode)"><span class="title">Insert Workday</span></header>-->
+      <!--<section class="content">-->
+        <!--<div class="container">-->
+          <!--<div class="row">-->
+            <!--<form role="form">-->
+              <!--<div class="col-lg-6">-->
+                <!--<div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>-->
+                <!--<div class="form-group">-->
+                  <!--<label for="workDate2">Work Date:</label>-->
+                  <!--<div class="input-group">-->
+                    <!--<input data-bind="value: workDaysData.workDate" type="date" class="form-control" id="workDate2" placeholder="Scheduled Work Date" name="workDate">-->
+                    <!--<span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>-->
+                  <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                  <!--<label for="technician">Technician</label>-->
+                  <!--<div class="input-group">-->
+                    <!--<input data-bind="value: workDaysData.technician" type="text" class="form-control" id="technician" placeholder="Technician Name" name="technician">-->
+                    <!--<span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>-->
+                  <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                  <!--<label for="reghrs">Regular Hours</label>-->
+                  <!--<div class="input-group">-->
+                    <!--<input data-bind="value: workDaysData.regHrs" type="text" class="form-control" id="reghrs" placeholder="Regular Hours" name="reghrs">-->
+                    <!--<span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>-->
+                  <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                  <!--<label for="overtime">Overtime</label>-->
+                  <!--<div class="input-group">-->
+                    <!--<input data-bind="value: workDaysData.overTime" type="text" class="form-control" id="overtime" placeholder="Overtime" name="overtime">-->
+                    <!--<span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>-->
+                  <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                  <!--<label for="doubletime">Double Time</label>-->
+                  <!--<div class="input-group">-->
+                    <!--<input data-bind="value: workDaysData.doubleTime" type="text" class="form-control" id="doubletime" placeholder="Double Time" name="doubletime">-->
+                    <!--<span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>-->
+                  <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                  <!--<label for="totalhrs">Total Hours</label>-->
+                  <!--<div class="input-group">-->
+                    <!--<input data-bind="value: workDaysData.totalHrs" type="text" class="form-control" id="totalhrs" placeholder="Total Hours" name="totalhrs">-->
+                    <!--<span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>-->
+                  <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                  <!--<label for="rate">Rate</label>-->
+                  <!--<div class="input-group">-->
+                    <!--<input data-bind="value: workDaysData.rate" type="text" class="form-control" id="rate" placeholder="Rate" name="rate">-->
+                    <!--<span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>-->
+                  <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                  <!--<label for="labour">Labour</label>-->
+                  <!--<div class="input-group">-->
+                    <!--<input data-bind="value: workDaysData.labour" type="text" class="form-control" id="labour" placeholder="Labour" name="labour">-->
+                    <!--<span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>-->
+                  <!--</div>-->
+                <!--</div>-->
+
+                <!--<li class="closed">-->
+                  <!--<header  data-bind="click: $component.addWorkDay" onclick="location.href='#/viewWorkDays'"><span class="title">Save</span></header>-->
+                  <!--<section class="content">-->
+                    <!--<div class="container">-->
+                      <!--<div class="row">-->
+                        <!--<form role="form">-->
+                        <!--</form>-->
+                      <!--</div>-->
+                    <!--</div>-->
+                  <!--</section>-->
+                <!--</li>-->
+                <!--<li class="closed">-->
+                  <!--<header  onclick="location.href='#/viewWorkDays'"><span class="title">Back</span></header>-->
+                  <!--<section class="content">-->
+                    <!--<div class="container">-->
+                      <!--<div class="row">-->
+                        <!--<form role="form">-->
+                        <!--</form>-->
+                      <!--</div>-->
+                    <!--</div>-->
+                  <!--</section>-->
+                <!--</li>-->
+
+
+              <!--</div>-->
+            <!--</form>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</section>-->
+    <!--</li>-->
+
+
+  <!--</ul>-->
+
+  <!--<div class="container">-->
+    <!--<div class="row">-->
+      <!--<div class="col-lg-4"></div>-->
+      <!--<div class="col-lg-4">-->
+        <!--<nav>-->
+          <!--<ul class="pagination pagination-lg">-->
+            <!--<li class="page-item disabled">-->
+              <!--<a class="page-link" href="#" tabindex="-1">Previous</a>-->
+            <!--</li>-->
+            <!--<li class="page-item"><a class="page-link" href="#">1</a></li>-->
+            <!--<li class="page-item"><a class="page-link" href="#">2</a></li>-->
+            <!--<li class="page-item"><a class="page-link" href="#">3</a></li>-->
+            <!--<li class="page-item"><a class="page-link" href="#">4</a></li>-->
+            <!--<li class="page-item">-->
+              <!--<a class="page-link" href="#">Next</a>-->
+            <!--</li>-->
+          <!--</ul>-->
+        <!--</nav>-->
+      <!--</div>-->
+      <!--<div class="col-lg-4"></div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</template>-->
+
+<!--<template id ="workDaysEdit-page">-->
+
+  <!--<ul class="accordion-menu">-->
+    <!--<li class="open">-->
+      <!--<header  onclick="toggle(this.parentNode)"><span class="title">Insert Workday</span></header>-->
+      <!--<section class="content">-->
+        <!--<div class="container">-->
+          <!--<div class="row">-->
+            <!--<form role="form">-->
+              <!--<div class="col-lg-6">-->
+                <!--<div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>-->
+                <!--<div class="form-group">-->
+                  <!--<label for="workDate2Edit">Work Date:</label>-->
+                  <!--<div class="input-group">-->
+                    <!--<input data-bind="value: workDaysEdit.workDate" type="date" class="form-control" id="workDate2Edit" placeholder="Scheduled Work Date" name="workDate">-->
+                    <!--<span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>-->
+                  <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                  <!--<label for="technicianEdit">Technician</label>-->
+                  <!--<div class="input-group">-->
+                    <!--<input data-bind="value: workDaysEdit.technician" type="text" class="form-control" id="technicianEdit" placeholder="Technician Name" name="technician">-->
+                    <!--<span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>-->
+                  <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                  <!--<label for="reghrsEdit">Regular Hours</label>-->
+                  <!--<div class="input-group">-->
+                    <!--<input data-bind="value: workDaysEdit.regHrs" type="text" class="form-control" id="reghrsEdit" placeholder="Regular Hours" name="reghrs">-->
+                    <!--<span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>-->
+                  <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                  <!--<label for="overtimeEdit">Overtime</label>-->
+                  <!--<div class="input-group">-->
+                    <!--<input data-bind="value: workDaysEdit.overTime" type="text" class="form-control" id="overtimeEdit" placeholder="Overtime" name="overtime">-->
+                    <!--<span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>-->
+                  <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                  <!--<label for="doubletimeEdit">Double Time</label>-->
+                  <!--<div class="input-group">-->
+                    <!--<input data-bind="value: workDaysEdit.doubleTime" type="text" class="form-control" id="doubletimeEdit" placeholder="Double Time" name="doubletime">-->
+                    <!--<span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>-->
+                  <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                  <!--<label for="totalhrsEdit">Total Hours</label>-->
+                  <!--<div class="input-group">-->
+                    <!--<input data-bind="value: workDaysEdit.totalHrs" type="text" class="form-control" id="totalhrsEdit" placeholder="Total Hours" name="totalhrs">-->
+                    <!--<span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>-->
+                  <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                  <!--<label for="rateEdit">Rate</label>-->
+                  <!--<div class="input-group">-->
+                    <!--<input data-bind="value: workDaysEdit.rate" type="text" class="form-control" id="rateEdit" placeholder="Rate" name="rate">-->
+                    <!--<span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>-->
+                  <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                  <!--<label for="labourEdit">Labour</label>-->
+                  <!--<div class="input-group">-->
+                    <!--<input data-bind="value: workDaysEdit.labour" type="text" class="form-control" id="labourEdit" placeholder="Labour" name="labour">-->
+                    <!--<span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>-->
+                  <!--</div>-->
+                <!--</div>-->
+
+    <!--<li class="closed">-->
+      <!--<header  data-bind="click: $component.updateWorkDay" onclick="location.href='#/viewWorkDays'"><span class="title">Update</span></header>-->
+      <!--<section class="content">-->
+        <!--<div class="container">-->
+          <!--<div class="row">-->
+            <!--<form role="form">-->
+            <!--</form>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</section>-->
+    <!--</li>-->
+    <!--<li class="closed">-->
+      <!--<header  onclick="location.href='#/viewWorkDays'"><span class="title">Back</span></header>-->
+      <!--<section class="content">-->
+        <!--<div class="container">-->
+          <!--<div class="row">-->
+            <!--<form role="form">-->
+            <!--</form>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</section>-->
+    <!--</li>-->
+
+
+    <!--</div>-->
+    <!--</form>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</section>-->
+    <!--</li>-->
+
+
+  <!--</ul>-->
+<!--=======-->
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-4"></div>
@@ -1040,28 +1252,28 @@
                     <div class="form-group form-group-lg">
                       <label for="reghrs">Regular Hours</label>
                       <div class="input-group">
-                        <input data-bind="value: workDaysData.regHrs" type="text" class="form-control" id="reghrs" placeholder="Regular Hours" name="reghrs">
+                        <input data-bind="value: workDaysData.reghrs" type="text" class="form-control" id="reghrs" placeholder="Regular Hours" name="reghrs">
                         <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                       </div>
                     </div>
                     <div class="form-group form-group-lg">
                       <label for="overtime">Overtime</label>
                       <div class="input-group">
-                        <input data-bind="value: workDaysData.overTime" type="text" class="form-control" id="overtime" placeholder="Overtime" name="overtime">
+                        <input data-bind="value: workDaysData.overtime" type="text" class="form-control" id="overtime" placeholder="Overtime" name="overtime">
                         <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                       </div>
                     </div>
                     <div class="form-group form-group-lg">
                       <label for="doubletime">Double Time</label>
                       <div class="input-group">
-                        <input data-bind="value: workDaysData.doubleTime" type="text" class="form-control" id="doubletime" placeholder="Double Time" name="doubletime">
+                        <input data-bind="value: workDaysData.doubletime" type="text" class="form-control" id="doubletime" placeholder="Double Time" name="doubletime">
                         <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                       </div>
                     </div>
                     <div class="form-group form-group-lg">
                       <label for="totalhrs">Total Hours</label>
                       <div class="input-group">
-                        <input data-bind="value: workDaysData.totalHrs" type="text" class="form-control" id="totalhrs" placeholder="Total Hours" name="totalhrs">
+                        <input data-bind="value: workDaysData.totalhrs" type="text" class="form-control" id="totalhrs" placeholder="Total Hours" name="totalhrs">
                         <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                       </div>
                     </div>
@@ -1086,7 +1298,7 @@
           </section>
         </li>
         <li class="closed">
-          <header  data-bind="click: $component.addWorkDay" onclick="location.href='#/viewWorkDays'"><span class="title">Save</span></header>
+          <header  onclick="toggle(this.parentNode)"><span class="title">View Workdays</span></header>
           <section class="content">
             <div class="container">
               <div class="row">
@@ -1097,7 +1309,7 @@
           </section>
         </li>
         <li class="closed">
-          <header  onclick="location.href='#/viewWorkDays'"><span class="title">Back</span></header>
+          <header  onclick="toggle(this.parentNode)"><span class="title">Hours Summary</span></header>
           <section class="content">
             <div class="container">
               <div class="row">
@@ -1112,151 +1324,7 @@
     </div>
   </div>
 
-
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-4"></div>
-      <div class="col-lg-6">
-        <nav>
-          <ul class="pagination pagination-lg">
-            <li class="page-item">
-              <a class="page-link" href="#" tabindex="-1">Previous</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item active"><a class="page-link" href="#">4</a></li>
-            <li class="page-item"><a class="page-link" href="#">5</a></li>
-            <li class="page-item">
-              <a class="page-link" href="#">Next</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <div class="col-lg-4"></div>
-    </div>
-  </div>
-</template>
-
-<template id ="workDaysEdit-page">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-4"></div>
-      <div class="col-lg-4">
-        <ol class="breadcrumb breadcrumb-arrow bread-nav">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Dispatch</a></li>
-          <li><a href="#">Equipment</a></li>
-          <li><a href="#">Materials & Tools</a></li>
-          <li><a href="#">WorkDays</a></li>
-          <!--<li><a href="#">Invoice</a></li>-->
-        </ol>
-      </div>
-      <div class="col-lg-4"></div>
-    </div>
-  </div>
-
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-4"></div>
-      <ul class="accordion-menu col-sm-12 col-lg-4">
-        <li class="open">
-          <header  onclick="toggle(this.parentNode)"><span class="title">Insert Workday</span></header>
-          <section class="content">
-            <div class="container">
-              <div class="row">
-                <form role="form">
-                  <div class="col-lg-6">
-                    <div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
-                    <div class="form-group  form-group-lg">
-                      <label for="workDate2Edit">Work Date:</label>
-                      <div class="input-group">
-                        <input data-bind="value: workDaysEdit.workDate" type="date" class="form-control" id="workDate2Edit" placeholder="Scheduled Work Date" name="workDate">
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-                      </div>
-                    </div>
-                    <div class="form-group  form-group-lg">
-                      <label for="technicianEdit">Technician</label>
-                      <div class="input-group">
-                        <input data-bind="value: workDaysEdit.technician" type="text" class="form-control" id="technicianEdit" placeholder="Technician Name" name="technician">
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-                      </div>
-                    </div>
-                    <div class="form-group form-group-lg">
-                      <label for="reghrsEdit">Regular Hours</label>
-                      <div class="input-group">
-                        <input data-bind="value: workDaysEdit.regHrs" type="text" class="form-control" id="reghrsEdit" placeholder="Regular Hours" name="reghrs">
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-                      </div>
-                    </div>
-                    <div class="form-group form-group-lg">
-                      <label for="overtimeEdit">Overtime</label>
-                      <div class="input-group">
-                        <input data-bind="value: workDaysEdit.overTime" type="text" class="form-control" id="overtimeEdit" placeholder="Overtime" name="overtime">
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-                      </div>
-                    </div>
-                    <div class="form-group form-group-lg">
-                      <label for="doubletimeEdit">Double Time</label>
-                      <div class="input-group">
-                        <input data-bind="value: workDaysEdit.doubleTime" type="text" class="form-control" id="doubletimeEdit" placeholder="Double Time" name="doubletime">
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-                      </div>
-                    </div>
-                    <div class="form-group form-group-lg">
-                      <label for="totalhrsEdit">Total Hours</label>
-                      <div class="input-group">
-                        <input data-bind="value: workDaysEdit.totalHrs" type="text" class="form-control" id="totalhrsEdit" placeholder="Total Hours" name="totalhrs">
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-                      </div>
-                    </div>
-                    <div class="form-group form-group-lg">
-                      <label for="rateEdit">Rate</label>
-                      <div class="input-group">
-                        <input data-bind="value: workDaysEdit.rate" type="text" class="form-control" id="rateEdit" placeholder="Rate" name="rate">
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-                      </div>
-                    </div>
-                    <div class="form-group form-group-lg">
-                      <label for="labourEdit">Labour</label>
-                      <div class="input-group">
-                        <input data-bind="value: workDaysEdit.labour" type="text" class="form-control" id="labourEdit" placeholder="Labour" name="labour">
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </section>
-        </li>
-        <li class="closed">
-          <header  data-bind="click: $component.updateWorkDay" onclick="location.href='#/viewWorkDays'"><span class="title">Update</span></header>
-          <section class="content">
-            <div class="container">
-              <div class="row">
-                <form role="form">
-                </form>
-              </div>
-            </div>
-          </section>
-        </li>
-        <li class="closed">
-          <header  onclick="location.href='#/viewWorkDays'"><span class="title">Back</span></header>
-          <section class="content">
-            <div class="container">
-              <div class="row">
-                <form role="form">
-                </form>
-              </div>
-            </div>
-          </section>
-        </li>
-      </ul>
-      <div class ="col-lg-4"></div>
-    </div>
-  </div>
-
+>>>>>>> 17be5089d2f7d54b4211a9a3d0a9072e35a0d7fd
 
   <div class="container">
     <div class="row">
