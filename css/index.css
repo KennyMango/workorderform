@@ -463,3 +463,27 @@ ul.accordion-menu li.open header span.title {
     background-color: lightgreen;
 }
 
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 3px solid black;
+    text-align: center;
+    padding: 8px;
+    font-size: 20px;
+}
+
+thead {
+    background-color: grey;
+}
+
+tr:nth-child(1n+2) {
+    background-color: lightblue;
+}
+
+tr:nth-child(even) {
+    background-color: lightgreen;
+}
