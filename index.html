@@ -336,30 +336,29 @@
     </div>
   </div>
 
-
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-lg-4"></div>
-        <ul class="accordion-menu col-sm-12 col-lg-4">
-            <li class="closed">
-                <header onclick="location.href='#/purchase'"><span class="title">Purchase Orders</span></header>
-            </li>
-            <li class="closed">
-                <header onclick="location.href='#/trucks'"><span class="title">Truck Stock</span></header>
-             </li>
-            <li class="closed">
-                <header onclick="location.href='#/tools'"><span class="title">Tools Used</span></header>
-            </li>
-            <li class="closed">
-                <header onclick="location.href='#/thirdParty'"><span class="title">Third Party Outsource Work</span></header>
-            </li>
-            <li class="closed">
-                <header onclick="location.href='#/quotedWork'"><span class="title">Quoted Work</span></header>
-            </li>
-        </ul>
-        </div>
-    <div class ="col-lg-4"></div>
-</div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4"></div>
+            <ul class="accordion-menu col-sm-12 col-lg-4">
+                <li class="closed">
+                    <header onclick="location.href='#/purchase'"><span class="title">Purchase Orders</span></header>
+                </li>
+                <li class="closed">
+                    <header onclick="location.href='#/trucks'"><span class="title">Truck Stock</span></header>
+                 </li>
+                <li class="closed">
+                    <header onclick="location.href='#/tools'"><span class="title">Tools Used</span></header>
+                </li>
+                <li class="closed">
+                    <header onclick="location.href='#/thirdParty'"><span class="title">Third Party Outsource Work</span></header>
+                </li>
+                <li class="closed">
+                    <header onclick="location.href='#/quotedWork'"><span class="title">Quoted Work</span></header>
+                </li>
+            </ul>
+            </div>
+        <div class ="col-lg-4"></div>
+    </div>
 
   <div class="container">
     <div class="row">
@@ -387,207 +386,292 @@
 
 </template>
 
-
 <template id ="purchase-page">
-  <div class="vertical-center">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-4"></div>
+      <div class="col-lg-4">
+        <ol class="breadcrumb breadcrumb-arrow bread-nav">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Dispatch</a></li>
+          <li><a href="#">Equipment</a></li>
+          <li><a href="#">Materials & Tools</a></li>
+          <!--<li><a href="#">WorkDays</a></li>-->
+          <!--<li><a href="#">Invoice</a></li>-->
+        </ol>
+      </div>
+      <div class="col-lg-4"></div>
+    </div>
+  </div>
+
+<!--  <div class="vertical-center">-->
     <div class="container">
-      <h2>Pruchase Orders</h2>
+      <h1>Purchase Orders</h1>
       <form action="">
         <div class="form-group">
-          <label>Supplier</label>
+          <h2>Supplier</h2><br>
           <tr>
-            <td><select data-bind="options: $component.suppliers, optionsText: 'supplierName'"></select></td>
+            <td><select data-bind="options: $component.suppliers, optionsText: 'supplierName'" style="width:50vw;height:10vh;font-size: 25px;"></select></td>
           </tr>
-          <button class="btn btn-default">View</button>
+          <button class="btn btn-default" style="width:10vw;height:10vh;">View</button>
         </div>
       </form>
     </div>
-  </div>
+<!--  </div>-->
 </template>
 
 
 <template id ="truck-page">
-  <div class="vertical-center">
+<!--  <div class="vertical-center">-->
     <div class="container">
-      <h2>Truck Stock</h2>
+      <h1>Truck Stock</h1>
       <form action="">
         <div class="form-group">
-          <label>Total Cost:</label>
+          <h2>Total Cost:</h2>
           <table>
             <thead><tr>
-              <th>Qty</th><th>Cost</th><th>Description</th>
+                <th>Qty</th><th>Description</th><th>Item Cost</th>
             </tr></thead>
             <tbody data-bind="foreach: truckList">
             <tr>
-              <td data-bind="text: truckQty"></td>
-              <td data-bind="text: truckCost"></td>
-              <td data-bind="text: truckDesc"></td>
+                <td data-bind="text: truckQty"></td>
+                <td data-bind="text: truckDesc"></td>
+                <td data-bind="text: truckCost"></td>
             </tr>
             </tbody>
           </table>
-          <button class="btn btn-warning" onclick="location.href='#/trucksAdd'">add</button>
+            <ul class="accordion-menu col-sm-12 col-lg-4">
+                <li class="closed">
+                    <header onclick="location.href='#/trucksAdd'"><span class="title">Add</span></header>
+                </li>
+            </ul>
         </div>
       </form>
     </div>
-  </div>
+<!--  </div>-->
 </template>
 
 <template id ="truckAdd-page">
-  <div class="vertical-center">
+<!--  <div class="vertical-center">-->
     <div class="container">
-      <h2>Truck Stock</h2>
+      <h1>Truck Stock</h1><br>
       <form action="">
+        <div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
         <div class="form-group">
           <label for="truckQty">Quantity:</label>
-          <input data-bind="value: trucks.truckQty" type="text" class="form-control" id="truckQty" placeholder="Truck Quantity">
-        </div>
-        <div class="form-group">
-          <label for="truckCost">Cost:</label>
-          <input data-bind="value: trucks.truckCost" type="text" class="form-control" id="truckCost" placeholder="Truck Cost">
+            <div class="input-group">
+                <input data-bind="value: trucks.truckQty" type="text" class="form-control" id="truckQty" placeholder="Truck Quantity">
+                <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+            </div>
         </div>
         <div class="form-group">
           <label for="truckDesc">Description:</label>
-          <input data-bind="value: trucks.truckDesc" type="text" class="form-control" id="truckDesc" placeholder="Truck Description">
+            <div class="input-group">
+                <input data-bind="value: trucks.truckDesc" type="text" class="form-control" id="truckDesc" placeholder="Truck Description">
+                <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+            </div>
         </div>
-        <button type="submit" onclick="location.href='#/trucks'" data-bind="click: $component.addTruck" class="btn btn-danger pull-right">Submit</button>
-
+        <div class="form-group">
+          <label for="truckCost">Item Cost:</label>
+            <div class="input-group">
+                <input data-bind="value: trucks.truckCost" type="text" class="form-control" id="truckCost" placeholder="Truck Cost">
+                <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+            </div>
+        </div>
+        <ul class="accordion-menu col-sm-12 col-lg-4">
+            <li class="closed">
+                <header data-bind="click: $component.addTruck" onclick="location.href='#/trucks'"><span class="title">Submit</span></header>
+            </li>
+        </ul>
       </form>
     </div>
-  </div>
+<!--  </div>-->
 </template>
 
 <template id ="tools-page">
-  <div class="vertical-center">
+<!--  <div class="vertical-center">-->
     <div class="container">
-      <h2>Tools Used</h2>
+      <h1>Tools Used</h1>
       <form action="">
         <div class="form-group">
-          <label>Total Cost:</label>
+          <h2>Total Cost:</h2>
           <table>
             <thead><tr>
-              <th>Qty</th><th>Rate</th><th>Description</th>
+              <th>Qty</th><th>Description</th><th>Rate</th>
             </tr></thead>
             <tbody data-bind="foreach: toolList">
             <tr>
               <td data-bind="text: toolQty"></td>
-              <td data-bind="text: toolRate"></td>
               <td data-bind="text: toolDesc"></td>
+              <td data-bind="text: toolRate"></td>
             </tr>
             </tbody>
           </table>
-          <button class="btn btn-warning" onclick="location.href='#/toolsAdd'">Add</button>
+            <ul class="accordion-menu col-sm-12 col-lg-4">
+                <li class="closed">
+                    <header onclick="location.href='#/toolsAdd'"><span class="title">Add</span></header>
+                </li>
+            </ul>
         </div>
       </form>
     </div>
-  </div>
+<!--  </div>-->
 </template>
 
 <template id ="toolsAdd-page">
-  <div class="vertical-center">
+<!--  <div class="vertical-center">-->
     <div class="container">
-      <h2>Tools Used</h2>
+      <h1>Tools Used</h1><br>
       <form action="">
+        <div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
         <div class="form-group">
           <label for="toolQty">Quantity:</label>
-          <input data-bind="value: tools.toolQty" type="text" class="form-control" id="toolQty" placeholder="Tool Quantity">
-        </div>
-        <div class="form-group">
-          <label for="toolRate">Rate:</label>
-          <input data-bind="value: tools.toolRate" type="text" class="form-control" id="toolRate" placeholder="Tool Rate">
+            <div class="input-group">
+                <input data-bind="value: tools.toolQty" type="text" class="form-control" id="toolQty" placeholder="Tool Quantity">
+                <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+            </div>
         </div>
         <div class="form-group">
           <label for="toolDesc">Description:</label>
-          <input data-bind="value: tools.toolDesc" type="text" class="form-control" id="toolDesc" placeholder="Tool Description">
+            <div class="input-group">
+                <input data-bind="value: tools.toolDesc" type="text" class="form-control" id="toolDesc" placeholder="Tool Description">
+                <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+            </div>
         </div>
-        <button type="submit" onclick="location.href='#/tools'" data-bind="click: $component.addTool" class="btn btn-danger pull-right">Submit</button>
+        <div class="form-group">
+          <label for="toolRate">Rate:</label>
+            <div class="input-group">
+                <input data-bind="value: tools.toolRate" type="text" class="form-control" id="toolRate" placeholder="Tool Rate">
+                <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+            </div>
+        </div>
+        <ul class="accordion-menu col-sm-12 col-lg-4">
+            <li class="closed">
+                <header data-bind="click: $component.addTool" onclick="location.href='#/tools'"><span class="title">Submit</span></header>
+            </li>
+        </ul>
       </form>
     </div>
-  </div>
+<!--  </div>-->
 </template>
 
 <template id ="thirdParty-page">
-  <div class="vertical-center">
+<!--  <div class="vertical-center">-->
     <div class="container">
-      <h2>Third Party Outsource</h2>
+      <h1>Third Party Outsource</h1>
       <form action="">
         <div class="form-group">
-          <label>Total Cost:</label>
+          <h2>Total Cost:</h2>
           <table>
             <thead><tr>
-              <th>Date</th><th>Cost</th><th>Description</th>
+              <th>Date</th><th>Description</th><th>Cost</th>
             </tr></thead>
             <tbody data-bind="foreach: thirdPartyList">
             <tr>
               <td data-bind="text: thirdPartyDate"></td>
-              <td data-bind="text: thirdPartyCost"></td>
               <td data-bind="text: thirdPartyDesc"></td>
+              <td data-bind="text: thirdPartyCost"></td>
             </tr>
             </tbody>
           </table>
-          <button class="btn btn-warning" onclick="location.href='#/thirdPartyAdd'">Add</button>
+            <ul class="accordion-menu col-sm-12 col-lg-4">
+                <li class="closed">
+                    <header onclick="location.href='#/thirdPartyAdd'"><span class="title">Add</span></header>
+                </li>
+            </ul>
         </div>
       </form>
     </div>
-  </div>
+<!--  </div>-->
 </template>
 
 <template id ="thirdPartyAdd-page">
-  <div class="vertical-center">
+<!--  <div class="vertical-center">-->
     <div class="container">
-      <h2>Third Party Outsource</h2>
+      <h1>Third Party Outsource</h1><br>
       <form action="">
+        <div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
         <div class="form-group">
           <label for="thirdPartyDate">Date:</label>
-          <input data-bind="value: thirdParty.thirdPartyDate" type="date" class="form-control" id="thirdPartyDate" placeholder="Third Party Date">
-        </div>
-        <div class="form-group">
-          <label for="thirdPartyCost">Cost:</label>
-          <input data-bind="value: thirdParty.thirdPartyCost" type="text" class="form-control" id="thirdPartyCost" placeholder="Third Party Cost">
+            <div class="input-group">
+                <input data-bind="value: thirdParty.thirdPartyDate" type="date" class="form-control" id="thirdPartyDate" placeholder="Third Party Date">
+                <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+            </div>
         </div>
         <div class="form-group">
           <label for="thirdPartyDesc">Description:</label>
-          <input data-bind="value: thirdParty.thirdPartyDesc" type="text" class="form-control" id="thirdPartyDesc" placeholder="Third Party Description">
+            <div class="input-group">
+                <input data-bind="value: thirdParty.thirdPartyDesc" type="text" class="form-control" id="thirdPartyDesc" placeholder="Third Party Description">
+                <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+            </div>
         </div>
-        <button type="submit" onclick="location.href='#/thirdParty'" data-bind="click: $component.addThirdParty" class="btn btn-danger pull-right">Submit</button>
+        <div class="form-group">
+          <label for="thirdPartyCost">Cost:</label>
+            <div class="input-group">
+                <input data-bind="value: thirdParty.thirdPartyCost" type="text" class="form-control" id="thirdPartyCost" placeholder="Third Party Cost">
+                <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+            </div>
+        </div>
+        <ul class="accordion-menu col-sm-12 col-lg-4">
+            <li class="closed">
+                <header data-bind="click: $component.addThirdParty" onclick="location.href='#/thirdParty'"><span class="title">Submit</span></header>
+            </li>
+        </ul>
       </form>
     </div>
-  </div>
+<!--  </div>-->
 </template>
 
 <template id ="quotedWork-page">
-  <div class="vertical-center">
+<!--  <div class="vertical-center">-->
     <div class="container">
-      <h2>Quoted Work</h2>
+      <h1>Quoted Work</h1>
       <form action="">
         <div class="form-group">
-          <label>Total Cost:<strong data-bind="text: quotedWork.quotedCost"></strong></label>
+          <h3>Total Cost: <strong data-bind="text: quotedWork.quotedCost"></strong></h3>
         </div>
         <div class="form-group">
-          <label>Description:<strong data-bind="text: quotedWork.quotedDesc"></strong></label>
+          <h3>Description:<br><br> <strong data-bind="text: quotedWork.quotedDesc"></strong></h3>
         </div>
-        <button class="btn btn-warning" onclick="location.href='#/quotedWorkAdd'">Edit</button>
+        <ul class="accordion-menu col-sm-12 col-lg-4">
+            <li class="closed">
+                <header onclick="location.href='#/quotedWorkAdd'"><span class="title">Edit</span></header>
+            </li>
+        </ul>
       </form>
     </div>
-  </div>
+<!--  </div>-->
 </template>
 
 <template id ="quotedWorkAdd-page">
-  <div class="vertical-center">
+<!--  <div class="vertical-center">-->
     <div class="container">
-      <h2>Quoted Work</h2>
+      <h1>Quoted Work</h1><br>
       <form action="">
+        <div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
         <div class="form-group">
           <label for="quotedWorkCost">Cost:</label>
-          <input data-bind="value: quotedWork.quotedCost" id="quotedWorkCost" class="form-control" type="text">
+            <div class="input-group">
+                <input data-bind="value: quotedWork.quotedCost" id="quotedWorkCost" class="form-control" type="text">
+                <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+            </div>
         </div>
         <div class="form-group">
           <label for="quotedWorkDesc">Description:</label>
-          <input data-bind="value: quotedWork.quotedDesc" id="quotedWorkDesc" class="form-control" type="text">
+            <div class="input-group">
+                <input data-bind="value: quotedWork.quotedDesc" id="quotedWorkDesc" class="form-control" type="text">
+                <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+            </div>
         </div>
-        <button type="submit" onclick="location.href='#/quotedWork'" class="btn btn-danger pull-right">Submit</button>
+        <ul class="accordion-menu col-sm-12 col-lg-4">
+            <li class="closed">
+                <header onclick="location.href='#/quotedWork'"><span class="title">Submit</span></header>
+            </li>
+        </ul>
       </form>
     </div>
-  </div>
+<!--  </div>-->
 </template>
 
 <template id ="equipment-page">
