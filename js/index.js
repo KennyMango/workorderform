@@ -1,4 +1,14 @@
 var truckList = ko.observableArray([]);
+var toolList = ko.observableArray([]);
+var thirdPartyList = ko.observableArray([]);
+var equipList = ko.observableArray([]);
+var workList = ko.observableArray([]);
+var equipmentNameList = ko.observableArray([]);
+
+var equipmentEdit;
+var workDaysEdit;
+var equipmentIndex;
+var workDaysIndex;
 
 var dispatchData = {
     custName: ko.observable(''),
@@ -20,12 +30,50 @@ var FormData = [
     {supplierName: "Rona"},
     {supplierName: "Home Depot"},
     {supplierName: "Daikin"}
-    ];
+];
 
 var trucks = {
     truckQty: ko.observable(''),
     truckCost: ko.observable(''),
     truckDesc: ko.observable('')
+};
+var tools = {
+    toolQty: ko.observable(''),
+    toolRate: ko.observable(''),
+    toolDesc: ko.observable('')
+};
+var thirdParty = {
+    thirdPartyDate: ko.observable(''),
+    thirdPartyCost: ko.observable(''),
+    thirdPartyDesc: ko.observable('')
+};
+var quotedWork = {
+    quotedCost: ko.observable(''),
+    quotedDesc: ko.observable('')
+};
+
+var equipment = {
+    buildingSpace: ko.observable(''),
+    equipmentName: ko.observable(''),
+    equipmentMakeModel: ko.observable(''),
+    equipmentNum: ko.observable(''),
+    equipmentCost: ko.observable(''),
+    equipmentStatus: ko.observable(''),
+    equipmentDetails: ko.observable(''),
+    equipmentNotes: ko.observable(''),
+    equipmentImages: ko.observable('')
+};
+
+var workDaysData = {
+    workDate: ko.observable(''),
+    technician: ko.observable(''),
+    regHrs: ko.observable(''),
+    overTime: ko.observable(''),
+    doubleTime: ko.observable(''),
+    totalHrs: ko.observable(''),
+    rate: ko.observable(''),
+    labour: ko.observable('')
+
 };
 
 truckObject = function (qty,cost,desc) {
@@ -33,6 +81,44 @@ truckObject = function (qty,cost,desc) {
     self.truckQty = qty;
     self.truckCost = cost;
     self.truckDesc = desc;
+};
+toolObject = function (qty,rate,desc) {
+    self = this;
+    self.toolQty = qty;
+    self.toolRate = rate;
+    self.toolDesc = desc;
+};
+thirdPartyObject = function (date,cost,desc) {
+    self = this;
+    self.thirdPartyDate = date;
+    self.thirdPartyCost = cost;
+    self.thirdPartyDesc = desc;
+};
+
+equipmentObject = function(space,name,model,num,cost,status,details,notes,images) {
+    self = this;
+    self.buildingSpace = space;
+    self.equipmentName = name;
+    self.equipmentMakeModel = model;
+    self.equipmentNum = num;
+    self.equipmentCost = cost;
+    self.equipmentStatus = status;
+    self.equipmentDetails = details;
+    self.equipmentNotes = notes;
+    self.equipmentImages = images;
+};
+
+workDaysObject = function(date,technician,reghrs,overtime,doubletime,totalhrs,rate,labour){
+    self = this;
+    self.workDate = date;
+    self.technician = technician;
+    self.regHrs = reghrs;
+    self.overTime = overtime;
+    self.doubleTime = doubletime;
+    self.totalHrs = totalhrs;
+    self.rate = rate;
+    self.labour = labour;
+
 };
 
 var mainPage = function(params) {
@@ -63,21 +149,21 @@ var dispatchPage = function (params) {
 
     self.loadJson = function () {
 
-            $.ajax({
-                type: 'GET',
-                url: 'http://127.0.0.1: 3000/buildings/1',
-                contentType: "application/javascript",
-                dataType: "jsonp",
-                success: function(data) {
-                    console.log(data);
-                    console.log(ko.mapping.fromJS(data));
-                    var array = ko.mapping.fromJS(data);
-                    self.buildingList(array);
-                },
-                error:function(jq, st, error){
-                    alert(error);
-                }
-            });
+        $.ajax({
+            type: 'GET',
+            url: 'http://127.0.0.1: 3000/buildings/1',
+            contentType: "application/javascript",
+            dataType: "jsonp",
+            success: function(data) {
+                console.log(data);
+                console.log(ko.mapping.fromJS(data));
+                var array = ko.mapping.fromJS(data);
+                self.buildingList(array);
+            },
+            error:function(jq, st, error){
+                alert(error);
+            }
+        });
 
         // self.removeBuilding = function () {
         //     $.ajax({
@@ -96,73 +182,86 @@ var dispatchPage = function (params) {
 
 };
 
-var materialsPage = function (params) {
-
-};
-
-
 
 var equipmentForm = function (params) {
     self = this;
-    self.equipment = {
-        buildingSpace: ko.observable(''),
-        equipmentName: ko.observable(''),
-        equipmentMakeModel: ko.observable(''),
-        equipmentNum: ko.observable(''),
-        equipmentCost: ko.observable(''),
-        equipmentStatus: ko.observable(''),
-        equipmentDetails: ko.observable(''),
-        equipmentNotes: ko.observable(''),
-        equipmentImages: ko.observable('')
-    };
-
     self.save = function () {
+        equipList.push(new equipmentObject(equipment.buildingSpace,equipment.equipmentName,equipment.equipmentMakeModel,equipment.equipmentNum,equipment.equipmentCost,
+            equipment.equipmentStatus,equipment.equipmentDetails,equipment.equipmentNotes,equipment.equipmentImages));
+
+        equipmentNameList.push({name: equipment.equipmentName});
+
+        equipment = {
+            buildingSpace: '',
+            equipmentName: '',
+            equipmentMakeModel: '',
+            equipmentNum: '',
+            equipmentCost: '',
+            equipmentStatus: '',
+            equipmentDetails: '',
+            equipmentNotes: '',
+            equipmentImages: ''
+        };
 
         // $.post("http://127.0.0.1:3000/equipment/1", self.equipment, function(returnedData) {
         //     console.log(returnedData)
         // });
 
-        $.ajax(
-            {
-                type:'PUT',
-                url: 'http://127.0.0.1:3000/equipment/1',
-                data: ko.toJSON(self.equipment),
-                contentType: 'application/json',
-                success: function(data){
-                    console.log("updated success")
-                    self.equipment(data)
-                }
-            }
-        )
+        // $.ajax(
+        //     {
+        //         type:'PUT',
+        //         url: 'http://127.0.0.1:3000/equipment/1',
+        //         data: ko.toJSON(self.equipment),
+        //         contentType: 'application/json',
+        //         success: function(data){
+        //             console.log("updated success");
+        //             self.equipment(data)
+        //         }
+        //     }
+        // )
 
     };
 
+};
+
+var equipmentFormEdit = function (params) {
+    self = this;
+
+    self.update = function () {
+        equipList()[equipmentIndex] = equipmentEdit;
+    }
 };
 
 var equipmentPage = function (params) {
 
     self = this;
 
-    self.equipList = ko.observableArray();
+    self.edit = function(index) {
+        equipmentIndex = index;
+        equipmentEdit = equipList()[equipmentIndex];
+    };
 
-    $( document ).ready(function() {
-        $.ajax({
-            type: 'GET',
-            url: 'http://127.0.0.1:3000/equipment',
-            contentType: "application/javascript",
-            dataType: "jsonp",
-            success: function (data) {
-                console.log(data);
-                self.equipList(data);
-            },
-            error: function (jq, st, error) {
-                alert(error);
-            }
-        });
-    });
+    // $( document ).ready(function() {
+    //     $.ajax({
+    //         type: 'GET',
+    //         url: 'http://127.0.0.1:3000/equipment',
+    //         contentType: "application/javascript",
+    //         dataType: "jsonp",
+    //         success: function (data) {
+    //             console.log(data);
+    //             self.equipList(data);
+    //         },
+    //         error: function (jq, st, error) {
+    //             alert(error);
+    //         }
+    //     });
+    // });
 
 };
 
+var materialsPage = function (params) {
+
+};
 
 var purchasePage = function (params) {
     self = this;
@@ -181,58 +280,81 @@ var toolsPage = function (params) {
 
 };
 var toolsAddPage = function (params) {
-
+    self = this;
+    self.addTool = function () {
+        toolList.push(new toolObject(tools.toolQty,tools.toolRate,tools.toolDesc));
+    };
 };
 var thirdPartyPage = function (params) {
 
 };
+var thirdPartyAddPage = function (params) {
+    self = this;
+    self.addThirdParty = function () {
+        thirdPartyList.push(new thirdPartyObject(thirdParty.thirdPartyDate,thirdParty.thirdPartyCost,thirdParty.thirdPartyDesc));
+    };
+};
 var quotedWorkPage = function (params) {
+
+};
+var quotedWorkAddPage = function (params) {
 
 };
 
 var workDaysPage = function (params) {
     self = this;
-    self.workDaysData = {
-        workDate: ko.observable(''),
-        technician: ko.observable(''),
-        reghrs: ko.observable(''),
-        overtime: ko.observable(''),
-        doubletime: ko.observable(''),
-        totalhrs: ko.observable(''),
-        rate: ko.observable(''),
-        labour: ko.observable('')
-    }
+    self.addWorkDay = function () {
+        workList.push(new workDaysObject(workDaysData.workDate,workDaysData.technician,workDaysData.regHrs,workDaysData.overTime,
+            workDaysData.doubleTime, workDaysData.totalHrs,workDaysData.rate,workDaysData.labour));
+        // $.post("http://127.0.0.1:3000/workDays", workDaysData, function(returnedData) {
+        //     console.log(returnedData)
+        // })
 
-    self.add = function () {
+        workDaysData = {
+            workDate: '',
+            technician: '',
+            regHrs: '',
+            overTime: '',
+            doubleTime: '',
+            totalHrs: '',
+            rate: '',
+            labour: ''
 
-        $.post("http://127.0.0.1:3000/workDays", self.workDaysData, function(returnedData) {
-            console.log(returnedData)
-        })
+        };
 
-    }
-}
+    };
+};
+
+var workDaysEditPage = function (params) {
+    self = this;
+    self.updateWorkDay = function () {
+        workList()[workDaysIndex] = workDaysEdit;
+    };
+};
 
 var viewWorkDaysPage = function (params) {
 
     self = this;
 
-    self.workList = ko.observableArray();
-
-    $( document ).ready(function() {
-        $.ajax({
-            type: 'GET',
-            url: 'http://127.0.0.1:3000/workDays',
-            contentType: "application/javascript",
-            dataType: "jsonp",
-            success: function (data) {
-                console.log(data);
-                self.workList(data);
-            },
-            error: function (jq, st, error) {
-                alert(error);
-            }
-        });
-    });
+    self.editWorkDay = function (index) {
+        workDaysIndex = index;
+        workDaysEdit = workList()[workDaysIndex];
+    };
+    // $( document ).ready(function() {
+    //     $.ajax({
+    //         type: 'GET',
+    //         url: 'http://127.0.0.1:3000/workDays',
+    //         contentType: "application/javascript",
+    //         dataType: "jsonp",
+    //         success: function (data) {
+    //             console.log(data);
+    //             self.workList(data);
+    //         },
+    //         error: function (jq, st, error) {
+    //             alert(error);
+    //         }
+    //     });
+    // });
 
 };
 
@@ -240,9 +362,6 @@ var invoicePage = function (params) {
 
 };
 
-var hoursSummaryPage = function (params) {
-// testing time
-};
 
 var KnockoutController = function(config) {
     var defaults = {
@@ -331,6 +450,14 @@ var MyApp = function() {
                 routes: ["/equipmentForm"]
             },
             {
+                name: "EquipmentFormEdit",
+                componentConfig: {
+                    viewModel: equipmentFormEdit,
+                    template: {element: "equipment-form-edit"}
+                },
+                routes: ["/equipmentFormEdit"]
+            },
+            {
                 name: "Purchase",
                 componentConfig: {
                     viewModel: purchasePage,
@@ -379,12 +506,28 @@ var MyApp = function() {
                 routes: ["/thirdParty"]
             },
             {
+                name: "ThirdPartyAdd",
+                componentConfig: {
+                    viewModel: thirdPartyAddPage,
+                    template: {element: "thirdPartyAdd-page"}
+                },
+                routes: ["/thirdPartyAdd"]
+            },
+            {
                 name: "QuotedWork",
                 componentConfig: {
                     viewModel: quotedWorkPage,
                     template: {element: "quotedWork-page"}
                 },
                 routes: ["/quotedWork"]
+            },
+            {
+                name: "QuotedWorkAdd",
+                componentConfig: {
+                    viewModel: quotedWorkAddPage,
+                    template: {element: "quotedWorkAdd-page"}
+                },
+                routes: ["/quotedWorkAdd"]
             },
             {
                 name: "WorkDays",
@@ -395,6 +538,14 @@ var MyApp = function() {
                 routes: ["/workDays"]
             },
             {
+                name: "WorkDaysEdit",
+                componentConfig: {
+                    viewModel: workDaysEditPage,
+                    template: {element: "workDaysEdit-page"}
+                },
+                routes: ["/workDaysEdit"]
+            },
+            {
                 name: "ViewWorkDays",
                 componentConfig: {
                     viewModel: viewWorkDaysPage,
@@ -402,21 +553,13 @@ var MyApp = function() {
                 },
                 routes: ["/viewWorkDays"]
             },
-				{
+            {
                 name: "Invoice",
                 componentConfig: {
                     viewModel: invoicePage,
                     template: {element: "invoice-page"}
                 },
                 routes: ["/invoice"]
-            },
-            {
-                name: "HoursSummary",
-                componentConfig: {
-                    viewModel: hoursSummaryPage,
-                    template: {element: "hoursSummary-page"}
-                },
-                routes: ["/hoursSummary"]
             }],
         defaultView: {
             name: "main",
