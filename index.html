@@ -535,9 +535,8 @@
 </div>
 </template>
 
-
 <template id ="materials-page">
-
+    
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-4"></div>
@@ -561,17 +560,9 @@
             <ul class="accordion-menu col-sm-12 col-lg-4">
                 <li class="closed">
                     <header onclick="location.href='#/purchase'"><span class="title">Purchase Orders</span></header>
-                </li>
-                <li class="closed">
                     <header onclick="location.href='#/trucks'"><span class="title">Truck Stock</span></header>
-                 </li>
-                <li class="closed">
                     <header onclick="location.href='#/tools'"><span class="title">Tools Used</span></header>
-                </li>
-                <li class="closed">
                     <header onclick="location.href='#/thirdParty'"><span class="title">Third Party Outsource Work</span></header>
-                </li>
-                <li class="closed">
                     <header onclick="location.href='#/quotedWork'"><span class="title">Quoted Work</span></header>
                 </li>
             </ul>
@@ -606,24 +597,6 @@
 </template>
 
 <template id ="purchase-page">
-
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-4"></div>
-      <div class="col-lg-4">
-        <ol class="breadcrumb breadcrumb-arrow bread-nav">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Dispatch</a></li>
-          <li><a href="#">Equipment</a></li>
-          <li><a href="#">Materials & Tools</a></li>
-          <!--<li><a href="#">WorkDays</a></li>-->
-          <!--<li><a href="#">Invoice</a></li>-->
-        </ol>
-      </div>
-      <div class="col-lg-4"></div>
-    </div>
-  </div>
-
 <!--  <div class="vertical-center">-->
     <div class="container">
       <h1>Purchase Orders</h1>
@@ -651,6 +624,7 @@
     </div>
 <!--  </div>-->
 </template>
+
 
 <!--<template id ="purchaseAdd-page">-->
 
@@ -702,6 +676,7 @@
   <!--&lt;!&ndash;  </div>&ndash;&gt;-->
 <!--</template>-->
 
+
 <template id ="truck-page">
 <!--  <div class="vertical-center">-->
     <div class="container">
@@ -722,9 +697,10 @@
             </tr>
             </tbody>
           </table>
-            <ul class="accordion-menu col-sm-12 col-lg-4">
+            <ul class="accordion-menu col-sm-12 col-lg-12">
                 <li class="closed">
                     <header onclick="location.href='#/trucksAdd'"><span class="title">Add</span></header>
+                    <header onclick="location.href='#/materials'"><span class="title">Back</span></header>
                 </li>
             </ul>
         </div>
@@ -833,9 +809,10 @@
             </tr>
             </tbody>
           </table>
-            <ul class="accordion-menu col-sm-12 col-lg-4">
+            <ul class="accordion-menu col-sm-12 col-lg-12">
                 <li class="closed">
                     <header onclick="location.href='#/toolsAdd'"><span class="title">Add</span></header>
+                    <header onclick="location.href='#/materials'"><span class="title">Back</span></header>
                 </li>
             </ul>
         </div>
@@ -871,9 +848,10 @@
                 <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
             </div>
         </div>
-        <ul class="accordion-menu col-sm-12 col-lg-4">
+        <ul class="accordion-menu col-sm-12 col-lg-12">
             <li class="closed">
                 <header data-bind="click: $component.addTool" onclick="location.href='#/tools'"><span class="title">Submit</span></header>
+                <header onclick="location.href='#/tools'"><span class="title">Back</span></header>
             </li>
           <li class="closed">
             <header onclick="location.href='#/tools'"><span class="title">Cancel</span></header>
@@ -944,9 +922,10 @@
             </tr>
             </tbody>
           </table>
-            <ul class="accordion-menu col-sm-12 col-lg-4">
+            <ul class="accordion-menu col-sm-12 col-lg-12">
                 <li class="closed">
                     <header onclick="location.href='#/thirdPartyAdd'"><span class="title">Add</span></header>
+                    <header onclick="location.href='#/materials'"><span class="title">Back</span></header>
                 </li>
             </ul>
         </div>
@@ -982,9 +961,10 @@
                 <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
             </div>
         </div>
-        <ul class="accordion-menu col-sm-12 col-lg-4">
+        <ul class="accordion-menu col-sm-12 col-lg-12">
             <li class="closed">
                 <header data-bind="click: $component.addThirdParty" onclick="location.href='#/thirdParty'"><span class="title">Submit</span></header>
+                <header onclick="location.href='#/thirdParty'"><span class="title">Back</span></header>
             </li>
           <li class="closed">
             <header  onclick="location.href='#/thirdParty'"><span class="title">Cancel</span></header>
@@ -1046,9 +1026,10 @@
         <div class="form-group">
           <h3>Description:<br><br> <strong data-bind="text: quotedWork.quotedDesc"></strong></h3>
         </div>
-        <ul class="accordion-menu col-sm-12 col-lg-4">
+        <ul class="accordion-menu col-sm-12 col-lg-12">
             <li class="closed">
                 <header onclick="location.href='#/quotedWorkAdd'"><span class="title">Edit</span></header>
+                <header onclick="location.href='#/materials'"><span class="title">Back</span></header>
             </li>
         </ul>
       </form>
@@ -1076,9 +1057,10 @@
                 <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
             </div>
         </div>
-        <ul class="accordion-menu col-sm-12 col-lg-4">
+        <ul class="accordion-menu col-sm-12 col-lg-12">
             <li class="closed">
                 <header onclick="location.href='#/quotedWork'"><span class="title">Submit</span></header>
+                <header onclick="location.href='#/quotedWork'"><span class="title">Back</span></header>
             </li>
         </ul>
       </form>
@@ -1105,38 +1087,70 @@
     </div>
   </div>
 
-  <div class="vertical-center">
-    <div class="container" style="background-color: royalblue">
-      <h2>Space #3</h2>
-      <button class="btn btn-warning" onclick="location.href='#/equipmentForm'">ADD</button>
-      <form action="">
-        <div class="form-group" data-bind="foreach: equipList">
-          <div class="btn-default" onclick="location.href='#/equipmentFormEdit'" data-bind="click: $component.edit($index())">
-            <div class="row">
-              <div class="col-sm-8">
-                <p>
-                <!--<ul><h4 data-bind="text: id"></h4></ul>-->
-                <ul data-bind="text: $index"></ul>
-                <ul data-bind="text: equipmentName"></ul>
-                <ul data-bind="text: equipmentMakeModel"></ul>
-                <ul data-bind="text: equipmentNum"></ul>
-                </p>
-              </div>
+  <div>
+    <div class="container" >
 
-              <div class="col-sm-2">
-                <ul><button class="glyphicon glyphicon-pencil" style="width: 60px; height: 60px;left: 10px; background-color: white; color: black" onclick="location.href='#/'"></button></ul>
-                <ul><button class="glyphicon glyphicon-trash" style="width: 60px; height: 60px;left: 10px; background-color: white; color: black" onclick="location.href='#/'"></button></ul>
-              </div>
-
-              <div class="col-sm-2">
-                <ul><button class="glyphicon glyphicon-ok" style="width: 60px; height: 60px;right: 25px;background-color: green; color: white;" onclick="location.href='#/'"></button></ul>
-                <ul><button class="glyphicon glyphicon-remove" style="width: 60px; height: 60px;right: 25px;background-color: red; color: black" onclick="location.href='#/'"></button></ul>
-              </div>
-            </div>
+      <div class="row" data-bind="foreach: equipList">
+      <div class="card equipmentcards col-lg-6">
+        <div class="card-header card-success">
+          <div class="form-group">
+            <label>Equipment Name:</label>
+            <select class="form-control">
+              <option data-bind="text: equipmentName"></option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
           </div>
         </div>
-      </form>
+        <div class="card-block">
+          <blockquote class="card-blockquote">
+            <table class="table">
+              <thead>
+              <tr class="table-success">
+                <th>Category:</th>
+                <th>Make/Model:</th>
+                <th>Serial#:</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>HVAC</td>
+                <td data-bind="text: equipmentMakeModel"></td>
+                <td data-bind="text: equipmentNum"></td>
+              </tr>
+              </tbody>
+            </table>
+
+            <div class="row">
+              <div class="equipment-buttons"><div class="btn-group" role="group">
+                <button type="button" class="btn btn-secondary  btn-success"><span class="glyphicon glyphicon-ok"></span></button>
+                <button type="button" class="btn btn-secondary  btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
+                <button type="button" class="btn btn-secondary  btn-warning"><span class="glyphicon glyphicon-camera"></span></button>
+                <button type="button" class="btn btn-secondary  btn-primary" onclick="location.href='#/equipmentFormEdit'" data-bind="click: $component.edit($index())"><span class="glyphicon glyphicon-pencil"></span></button>
+                <button type="button" class="btn btn-secondary  btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+              </div>
+              </div>
+            </div>
+
+          </blockquote>
+        </div>
+      </div>
+
+      </div>
+
+
+        <div class="card equipmentcards col-lg-16">
+          <div class="col-lg-6 add-button">
+            <button type="button" class="btn btn-success btn-circle btn-xl" onclick="location.href='#/equipmentForm'"><i class="glyphicon glyphicon-plus"></i></button>
+          </div>
+        </div>
+
+
+
+
     </div>
+
   </div>
 
   <div class="container">
@@ -1849,7 +1863,10 @@
 
 </template>
 
+
+
 <script  src="js/index.js"></script>
+
 
 </body>
 </html>

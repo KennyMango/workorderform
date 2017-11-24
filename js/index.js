@@ -4,6 +4,7 @@ var toolList = ko.observableArray([]);
 var thirdPartyList = ko.observableArray([]);
 var equipList = ko.observableArray([]);
 var workList = ko.observableArray([]);
+var equipmentNameList = ko.observableArray([]);
 
 var supplierEdit;
 var truckEdit;
@@ -199,6 +200,8 @@ var equipmentForm = function (params) {
         equipList.push(new equipmentObject(equipment.buildingSpace,equipment.equipmentName,equipment.equipmentMakeModel,equipment.equipmentNum,equipment.equipmentCost,
             equipment.equipmentStatus,equipment.equipmentDetails,equipment.equipmentNotes,equipment.equipmentImages));
 
+        equipmentNameList.push({name: equipment.equipmentName});
+
         equipment = {
             buildingSpace: '',
             equipmentName: '',
@@ -248,6 +251,7 @@ var equipmentPage = function (params) {
         equipmentIndex = index;
         equipmentEdit = equipList()[equipmentIndex];
     };
+
     // $( document ).ready(function() {
     //     $.ajax({
     //         type: 'GET',
