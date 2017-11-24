@@ -102,8 +102,224 @@
 
 </template>
 
-
 <template id ="dispatch-page">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-4"></div>
+      <div class="col-lg-4">
+        <ol class="breadcrumb breadcrumb-arrow bread-nav">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Dispatch</a></li>
+          <!--<li><a href="#">Equipment</a></li>-->
+          <!--<li><a href="#">Materials & Tools</a></li>-->
+          <!--<li><a href="#">WorkDays</a></li>-->
+          <!--<li><a href="#">Invoice</a></li>-->
+        </ol>
+      </div>
+      <div class="col-lg-4"></div>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-4"></div>
+      <ul class="accordion-menu col-sm-12 col-lg-4">
+        <li class="open">
+          <header  onclick="toggle(this.parentNode)"><span class="title">Building Information</span></header>
+          <section class="content">
+            <div class="container-fluid">
+              <div class="row">
+                <form role="form">
+                  <div>
+                    <div class="form-group">
+                      <label for="building-name">BUILDING NAME</label>
+                      <div class="alert alert-success" id ="building-name">
+                        <strong>BUILDING NAME</strong>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="building-address">BUILDING ADDRESS</label>
+                      <div class="alert alert-success" id ="building-address">
+                        <strong>ADDRESS</strong>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="building-city">BUILDING CITY</label>
+                      <div class="alert alert-success" id ="building-city">
+                        <strong>CITY</strong>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="building-province">BUILDING PROVINCE</label>
+                      <div class="alert alert-success" id ="building-province">
+                        <strong>PROVINCE</strong>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </section>
+        </li>
+        <li class="closed">
+          <header  onclick="toggle(this.parentNode)"><span class="title">Contact Information</span></header>
+          <section class="content">
+            <div class="container">
+              <div class="row">
+                <form role="form">
+                  <div class="col-lg-6">
+                    <div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
+                    <div class="form-group form-group-lg">
+                      <label for="InputName">Enter Customer Name</label>
+                      <div class="input-group">
+                      <span data-bind="text: dispatchData.custName" class="title" name="InputName" id="InputName" placeholder="Enter Name" required></span>
+                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                      </div>
+                    </div>
+                    <div class="form-group form-group-lg">
+                      <label for="InputPOnum">Enter Customer P.O.#</label>
+                      <div class="input-group">
+                        <span data-bind="text: dispatchData.custPO" class="title" id="InputPOnum" name="InputPO" placeholder="Enter P.O.#" required></span>
+                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                      </div>
+                    </div>
+                    <div class="form-group form-group-lg">
+                      <label for="InputEmail">Enter Customer Email</label>
+                      <div class="input-group">
+                        <span data-bind="text: dispatchData.custEmail" class="title" id="InputEmail" name="InputEmail" placeholder="Confirm Email" required></span>
+                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                      </div>
+                    </div>
+                    <div class="form-group form-group-lg">
+                      <label for="InputMessage">Enter Customer Notes</label>
+                      <div class="input-group">
+                        <span data-bind="text: dispatchData.custNotes" name="InputMessage" id="InputMessage" class="title" rows="5" required></span>
+                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                      </div>
+                    </div>
+                    <div class="form-group form-group-lg">
+                      <label for="InputRequestedBy">Requested By</label>
+                      <div class="input-group">
+                        <span data-bind="text: dispatchData.requestBy" name="InputRequestedBy" id="InputRequestedBy" class="title" rows="5" required></span>
+                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                      </div>
+                    </div>
+                    <div class="form-group form-group-lg">
+                      <label for="InputOnSite">On-Site Contact:</label>
+                      <div class="input-group">
+                        <span data-bind="text: dispatchData.contOnSite" name="InputOnSite" id="InputOnSite" class="title" rows="5" required></span>
+                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                      </div>
+                    </div>
+                    <div class="form-group form-group-lg">
+                      <label for="InputCPhone">Contact Phone Number:</label>
+                      <div class="input-group">
+                        <span data-bind="text: dispatchData.contPhone" name="InputCPhone" id="InputCPhone" class="title" rows="5" required></span>
+                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                      </div>
+                    </div>
+                    <div class="form-group form-group-lg">
+                      <label for="InputCEmail">Contact Email Address</label>
+                      <div class="input-group">
+                        <span data-bind="text: dispatchData.contEmail" name="InputCEmail" id="InputCEmail" class="title" rows="5" required></span>
+                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label>Attach File</label>
+                      <div class="input-group">
+                        <span class="input-group-btn">
+                            <span class="btn btn-default btn-file">
+                                Browse…<input type="file" id="fileInp">
+                            </span>
+                         </span>
+                        <input type="text" class="form-control" readonly>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </section>
+        </li>
+        <li class="closed">
+          <header  onclick="toggle(this.parentNode)"><span class="title">Schedule Information</span></header>
+          <section class="content">
+            <div class="container">
+              <div class="row">
+                <form role="form">
+                  <div class="col-lg-6">
+                    <div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
+                    <div class="form-group form-group-lg">
+                      <label for="InputWorkDate">Work Date</label>
+                      <div class="input-group">
+                        <span data-bind="text: dispatchData.workDate" class="title" id="InputWorkDate" placeholder="Scheduled Work Date" name="workDate"></span>
+                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                      </div>
+                    </div>
+                    <div class="form-group form-group-lg">
+                      <label for="InputStart">Start Date</label>
+                      <div class="input-group">
+                        <span data-bind="text: dispatchData.startDate" class="title" id="InputStart" placeholder="Scheduled Start Date" name="startDate"></span>
+                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                      </div>
+                    </div>
+                    <div class="form-group form-group-lg">
+                      <label for="InputEnd">End Date</label>
+                      <div class="input-group">
+                        <span data-bind="text: dispatchData.endDate" type="date" class="title" id="InputEnd" placeholder="Scheduled End Date" name="endDate"></span>
+                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                      </div>
+                    </div>
+                    <div class="form-group form-group-lg">
+                      <label for="InputAssign">Assign To</label>
+                      <div class="input-group">
+                        <span data-bind="text: dispatchData.assignedTo" type="text" class="title" id="InputAssign" placeholder="Assigned To" name="assigned"></span>
+                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </section>
+        </li>
+        <li class="closed">
+          <header onclick="location.href='#/dispatchEdit'"><span class="title">Edit</span></header>
+        </li>
+      </ul>
+      <div class="col-lg-4"></div>
+    </div>
+    <div class="row">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4"></div>
+          <div class="col-lg-4">
+            <nav>
+              <ul class="pagination pagination-lg">
+                <li class="page-item disabled">
+                  <a class="page-link" href="#" tabindex="-1">Previous</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="#">Next</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <div class="col-lg-4"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+
+<template id ="dispatchEdit-page">
 
   <div class="container-fluid">
     <div class="row">
@@ -134,26 +350,26 @@
               <form role="form">
                 <div>
                   <div class="form-group">
-                    <label for="building-name">BUILDING NAME</label>
-                    <div class="alert alert-success" id ="building-name">
+                    <label for="building-nameEdit">BUILDING NAME</label>
+                    <div class="alert alert-success" id ="building-nameEdit">
                       <strong>BUILDING NAME</strong>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="building-address">BUILDING ADDRESS</label>
-                    <div class="alert alert-success" id ="building-address">
+                    <label for="building-addressEdit">BUILDING ADDRESS</label>
+                    <div class="alert alert-success" id ="building-addressEdit">
                       <strong>ADDRESS</strong>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="building-city">BUILDING CITY</label>
-                    <div class="alert alert-success" id ="building-city">
+                    <label for="building-cityEdit">BUILDING CITY</label>
+                    <div class="alert alert-success" id ="building-cityEdit">
                       <strong>CITY</strong>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="building-province">BUILDING PROVINCE</label>
-                    <div class="alert alert-success" id ="building-province">
+                    <label for="building-provinceEdit">BUILDING PROVINCE</label>
+                    <div class="alert alert-success" id ="building-provinceEdit">
                       <strong>PROVINCE</strong>
                     </div>
                   </div>
@@ -172,58 +388,58 @@
                 <div class="col-lg-6">
                   <div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
                   <div class="form-group form-group-lg">
-                    <label for="InputName">Enter Customer Name</label>
+                    <label for="InputNameEdit">Enter Customer Name</label>
                     <div class="input-group">
-                      <input  type="text" class="form-control" name="InputName" id="InputName" placeholder="Enter Name" required>
+                      <input data-bind="value: dispatchData.custName" type="text" class="form-control" name="InputName" id="InputNameEdit" placeholder="Enter Name" required>
                       <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                     </div>
                   </div>
                   <div class="form-group form-group-lg">
-                    <label for="InputPOnum">Enter Customer P.O.#</label>
+                    <label for="InputPOnumEdit">Enter Customer P.O.#</label>
                     <div class="input-group">
-                      <input type="text" class="form-control" id="InputPOnum" name="InputPO" placeholder="Enter P.O.#" required>
+                      <input data-bind="value: dispatchData.custPO" type="text" class="form-control" id="InputPOnumEdit" name="InputPO" placeholder="Enter P.O.#" required>
                       <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                     </div>
                   </div>
                   <div class="form-group form-group-lg">
-                    <label for="InputEmail">Enter Customer Email</label>
+                    <label for="InputEmailEdit">Enter Customer Email</label>
                     <div class="input-group">
-                      <input type="email" class="form-control" id="InputEmail" name="InputEmail" placeholder="Confirm Email" required>
+                      <input data-bind="value: dispatchData.custEmail" type="email" class="form-control" id="InputEmailEdit" name="InputEmail" placeholder="Confirm Email" required>
                       <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                     </div>
                   </div>
                   <div class="form-group form-group-lg">
-                    <label for="InputMessage">Enter Customer Notes</label>
+                    <label for="InputMessageEdit">Enter Customer Notes</label>
                     <div class="input-group">
-                      <textarea name="InputMessage" id="InputMessage" class="form-control" rows="5" required></textarea>
+                      <textarea data-bind="value: dispatchData.custNotes" name="InputMessage" id="InputMessageEdit" class="form-control" rows="5" required></textarea>
                       <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                     </div>
                   </div>
                   <div class="form-group form-group-lg">
-                    <label for="InputRequestedBy">Requested By</label>
+                    <label for="InputRequestedByEdit">Requested By</label>
                     <div class="input-group">
-                      <input name="InputRequestedBy" id="InputRequestedBy" class="form-control" rows="5" required>
+                      <input data-bind="value: dispatchData.requestBy" name="InputRequestedBy" id="InputRequestedByEdit" class="form-control" rows="5" required>
                       <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                     </div>
                   </div>
                   <div class="form-group form-group-lg">
-                    <label for="InputOnSite">On-Site Contact:</label>
+                    <label for="InputOnSiteEdit">On-Site Contact:</label>
                     <div class="input-group">
-                      <input name="InputOnSite" id="InputOnSite" class="form-control" rows="5" required>
+                      <input data-bind="value: dispatchData.contOnSite" name="InputOnSite" id="InputOnSiteEdit" class="form-control" rows="5" required>
                       <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                     </div>
                   </div>
                   <div class="form-group form-group-lg">
-                    <label for="InputCPhone">Contact Phone Number:</label>
+                    <label for="InputCPhoneEdit">Contact Phone Number:</label>
                     <div class="input-group">
-                      <input name="InputCPhone" id="InputCPhone" class="form-control" rows="5" required>
+                      <input data-bind="value: dispatchData.contPhone" name="InputCPhone" id="InputCPhoneEdit" class="form-control" rows="5" required>
                       <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                     </div>
                   </div>
                   <div class="form-group form-group-lg">
-                    <label for="InputCEmail">Contact Email Address</label>
+                    <label for="InputCEmailEdit">Contact Email Address</label>
                     <div class="input-group">
-                      <input name="InputCEmail" id="InputCEmail" class="form-control" rows="5" required>
+                      <input data-bind="value: dispatchData.contEmail" name="InputCEmail" id="InputCEmailEdit" class="form-control" rows="5" required>
                       <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                     </div>
                   </div>
@@ -232,7 +448,7 @@
                     <div class="input-group">
                         <span class="input-group-btn">
                             <span class="btn btn-default btn-file">
-                                Browse…<input type="file" id="fileInp">
+                                Browse…<input type="file" id="fileInpEdit">
                             </span>
                          </span>
                       <input type="text" class="form-control" readonly>
@@ -253,30 +469,30 @@
                 <div class="col-lg-6">
                   <div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
                   <div class="form-group form-group-lg">
-                    <label for="InputWorkDate">Work Date</label>
+                    <label for="InputWorkDateEdit">Work Date</label>
                     <div class="input-group">
-                      <input data-bind="value: dispatchData.workDate" type="date" class="form-control" id="InputWorkDate" placeholder="Scheduled Work Date" name="workDate">
+                      <input data-bind="value: dispatchData.workDate" type="date" class="form-control" id="InputWorkDateEdit" placeholder="Scheduled Work Date" name="workDate">
                       <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                     </div>
                   </div>
                   <div class="form-group form-group-lg">
-                    <label for="InputStart">Start Date</label>
+                    <label for="InputStartEdit">Start Date</label>
                     <div class="input-group">
-                      <input data-bind="value: dispatchData.startDate" type="date" class="form-control" id="InputStart" placeholder="Scheduled Start Date" name="startDate">
+                      <input data-bind="value: dispatchData.startDate" type="date" class="form-control" id="InputStartEdit" placeholder="Scheduled Start Date" name="startDate">
                       <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                     </div>
                   </div>
                   <div class="form-group form-group-lg">
-                    <label for="InputEnd">End Date</label>
+                    <label for="InputEndEdit">End Date</label>
                     <div class="input-group">
-                      <input data-bind="value: dispatchData.endDate" type="date" class="form-control" id="InputEnd" placeholder="Scheduled End Date" name="endDate">
+                      <input data-bind="value: dispatchData.endDate" type="date" class="form-control" id="InputEndEdit" placeholder="Scheduled End Date" name="endDate">
                       <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                     </div>
                   </div>
                   <div class="form-group form-group-lg">
-                    <label for="InputAssign">Assign To</label>
+                    <label for="InputAssignEdit">Assign To</label>
                     <div class="input-group">
-                      <input data-bind="value: dispatchData.assignedTo" type="text" class="form-control" id="InputAssign" placeholder="Assigned To" name="assigned">
+                      <input data-bind="value: dispatchData.assignedTo" type="text" class="form-control" id="InputAssignEdit" placeholder="Assigned To" name="assigned">
                       <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                     </div>
                   </div>
@@ -285,6 +501,9 @@
             </div>
           </div>
         </section>
+      </li>
+      <li class="closed">
+        <header onclick="location.href='#/dispatch'"><span class="title">Update</span></header>
       </li>
     </ul>
     <div class="col-lg-4"></div>
@@ -384,20 +603,79 @@
       <form action="">
         <div class="form-group">
           <h2>Supplier</h2><br>
-          <tr>
-            <td><select data-bind="options: $component.suppliers, optionsText: 'supplierName'" style="width:65vw;height:10vh;font-size: 25px;"></select></td>
-          </tr>
-          <button class="btn btn-default" style="width:10vw;height:10vh;">View</button>
-            <ul class="accordion-menu col-sm-12 col-lg-12">
-                <li class="closed">
-                    <header onclick="location.href='#/materials'"><span class="title">Back</span></header>
-                </li>
-            </ul>
+          <table>
+            <thead><tr>
+              <th>Supplier</th><th>Edit or <br/>Remove</th>
+            </tr></thead>
+            <tbody data-bind="foreach: supplierList">
+                  <tr>
+                    <td><header><span class="title" data-bind="text: "></span></header></td>
+                    <td><header onclick="location.href='#/purchaseAdd'"><span class="title">Edit</span></header></td>
+                  </tr>
+            </tbody>
+          </table>
+          <ul class="accordion-menu col-sm-12 col-lg-4">
+            <li class="closed">
+              <header data-bind="click: $component.test"><span class="title">Add</span></header>
+            </li>
+          </ul>
         </div>
       </form>
     </div>
 <!--  </div>-->
 </template>
+
+
+<!--<template id ="purchaseAdd-page">-->
+
+  <!--<div class="container-fluid">-->
+    <!--<div class="row">-->
+      <!--<div class="col-lg-4"></div>-->
+      <!--<div class="col-lg-4">-->
+        <!--<ol class="breadcrumb breadcrumb-arrow bread-nav">-->
+          <!--<li><a href="#">Home</a></li>-->
+          <!--<li><a href="#">Dispatch</a></li>-->
+          <!--<li><a href="#">Equipment</a></li>-->
+          <!--<li><a href="#">Materials & Tools</a></li>-->
+          <!--&lt;!&ndash;<li><a href="#">WorkDays</a></li>&ndash;&gt;-->
+          <!--&lt;!&ndash;<li><a href="#">Invoice</a></li>&ndash;&gt;-->
+        <!--</ol>-->
+      <!--</div>-->
+      <!--<div class="col-lg-4"></div>-->
+    <!--</div>-->
+  <!--</div>-->
+
+  <!--&lt;!&ndash;  <div class="vertical-center">&ndash;&gt;-->
+  <!--<div class="container">-->
+    <!--<h1>Purchase Orders</h1>-->
+    <!--<form action="">-->
+      <!--<div class="form-group">-->
+        <!--<h2>Supplier</h2><br>-->
+        <!--<table>-->
+          <!--<thead><tr>-->
+            <!--<th>Supplier</th><th>Edit or <br/>Remove</th>-->
+          <!--</tr></thead>-->
+          <!--<tbody data-bind="foreach: supplierList">-->
+          <!--<tr>-->
+          <!--<tr>-->
+            <!--<td><select data-bind="value: supplierList($index()), options: $component.supplierData, optionsText: 'supplierName', 'optionsValue: supplierName" style="width:50vw;height:10vh;font-size: 25px;"></select></td>-->
+            <!--<td><header><span class="title">View</span></header></td>-->
+          <!--</tr>-->
+          <!--</td>-->
+          <!--</tr>-->
+          <!--</tbody>-->
+        <!--</table>-->
+        <!--<ul class="accordion-menu col-sm-12 col-lg-4">-->
+          <!--<li class="closed">-->
+            <!--<header data-bind="click: $component.test"><span class="title">Add</span></header>-->
+          <!--</li>-->
+        <!--</ul>-->
+      <!--</div>-->
+    <!--</form>-->
+  <!--</div>-->
+  <!--&lt;!&ndash;  </div>&ndash;&gt;-->
+<!--</template>-->
+
 
 <template id ="truck-page">
 <!--  <div class="vertical-center">-->
@@ -408,13 +686,14 @@
           <h2>Total Cost:</h2>
           <table>
             <thead><tr>
-                <th>Qty</th><th>Description</th><th>Item Cost</th>
+                <th>Qty</th><th>Description</th><th>Item Cost</th><th>Edit or <br/>Remove</th>
             </tr></thead>
             <tbody data-bind="foreach: truckList">
             <tr>
                 <td data-bind="text: truckQty"></td>
                 <td data-bind="text: truckDesc"></td>
                 <td data-bind="text: truckCost"></td>
+                <td><span class="glyphicon glyphicon-pencil" style="margin-right: 20px" data-bind="click: $component.editTruck($index())" onclick="location.href='#/trucksEdit'"></span><span class="glyphicon glyphicon-trash alert-danger"></span></td>
             </tr>
             </tbody>
           </table>
@@ -431,41 +710,83 @@
 </template>
 
 <template id ="truckAdd-page">
-<!--  <div class="vertical-center">-->
-    <div class="container">
-      <h1>Truck Stock</h1><br>
-      <form action="">
-        <div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
-        <div class="form-group">
-          <label for="truckQty">Quantity:</label>
-            <div class="input-group">
-                <input data-bind="value: trucks.truckQty" type="text" class="form-control" id="truckQty" placeholder="Truck Quantity">
-                <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-            </div>
+  <!--  <div class="vertical-center">-->
+  <div class="container">
+    <h1>Truck Stock</h1><br>
+    <form action="">
+      <div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
+      <div class="form-group">
+        <label for="truckQty">Quantity:</label>
+        <div class="input-group">
+          <input data-bind="value: trucks.truckQty" type="text" class="form-control" id="truckQty" placeholder="Truck Quantity">
+          <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
         </div>
-        <div class="form-group">
-          <label for="truckDesc">Description:</label>
-            <div class="input-group">
-                <input data-bind="value: trucks.truckDesc" type="text" class="form-control" id="truckDesc" placeholder="Truck Description">
-                <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-            </div>
+      </div>
+      <div class="form-group">
+        <label for="truckDesc">Description:</label>
+        <div class="input-group">
+          <input data-bind="value: trucks.truckDesc" type="text" class="form-control" id="truckDesc" placeholder="Truck Description">
+          <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
         </div>
-        <div class="form-group">
-          <label for="truckCost">Item Cost:</label>
-            <div class="input-group">
-                <input data-bind="value: trucks.truckCost" type="text" class="form-control" id="truckCost" placeholder="Truck Cost">
-                <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-            </div>
+      </div>
+      <div class="form-group">
+        <label for="truckCost">Item Cost:</label>
+        <div class="input-group">
+          <input data-bind="value: trucks.truckCost" type="text" class="form-control" id="truckCost" placeholder="Truck Cost">
+          <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
         </div>
-        <ul class="accordion-menu col-sm-12 col-lg-12">
-            <li class="closed">
-                <header data-bind="click: $component.addTruck" onclick="location.href='#/trucks'"><span class="title">Submit</span></header>
-                <header onclick="location.href='#/trucks'"><span class="title">Back</span></header>
-            </li>
-        </ul>
-      </form>
-    </div>
-<!--  </div>-->
+      </div>
+      <ul class="accordion-menu col-sm-12 col-lg-4">
+        <li class="closed">
+          <header data-bind="click: $component.addTruck" onclick="location.href='#/trucks'"><span class="title">Submit</span></header>
+        </li>
+        <li class="closed">
+          <header onclick="location.href='#/trucks'"><span class="title">Cancel</span></header>
+        </li>
+      </ul>
+    </form>
+  </div>
+  <!--  </div>-->
+</template>
+
+<template id ="truckEdit-page">
+  <!--  <div class="vertical-center">-->
+  <div class="container">
+    <h1>Truck Stock</h1><br>
+    <form action="">
+      <div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
+      <div class="form-group">
+        <label for="truckQtyEdit">Quantity:</label>
+        <div class="input-group">
+          <input data-bind="value: truckEdit.truckQty" type="text" class="form-control" id="truckQtyEdit" placeholder="Truck Quantity">
+          <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="truckDescEdit">Description:</label>
+        <div class="input-group">
+          <input data-bind="value: truckEdit.truckDesc" type="text" class="form-control" id="truckDescEdit" placeholder="Truck Description">
+          <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="truckCostEdit">Item Cost:</label>
+        <div class="input-group">
+          <input data-bind="value: truckEdit.truckCost" type="text" class="form-control" id="truckCostEdit" placeholder="Truck Cost">
+          <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+        </div>
+      </div>
+      <ul class="accordion-menu col-sm-12 col-lg-4">
+        <li class="closed">
+          <header data-bind="click: $component.updateTruck" onclick="location.href='#/trucks'"><span class="title">Update</span></header>
+        </li>
+        <li class="closed">
+          <header onclick="location.href='#/trucks'"><span class="title">Cancel</span></header>
+        </li>
+      </ul>
+    </form>
+  </div>
+  <!--  </div>-->
 </template>
 
 <template id ="tools-page">
@@ -477,13 +798,14 @@
           <h2>Total Cost:</h2>
           <table>
             <thead><tr>
-              <th>Qty</th><th>Description</th><th>Rate</th>
+              <th>Qty</th><th>Description</th><th>Rate</th><th>Edit or <br/>Remove</th>
             </tr></thead>
             <tbody data-bind="foreach: toolList">
             <tr>
               <td data-bind="text: toolQty"></td>
               <td data-bind="text: toolDesc"></td>
               <td data-bind="text: toolRate"></td>
+              <td><span class="glyphicon glyphicon-pencil" style="margin-right: 20px" data-bind="click: $component.editTool($index())" onclick="location.href='#/toolsEdit'"></span><span class="glyphicon glyphicon-trash alert-danger"></span></td>
             </tr>
             </tbody>
           </table>
@@ -531,10 +853,53 @@
                 <header data-bind="click: $component.addTool" onclick="location.href='#/tools'"><span class="title">Submit</span></header>
                 <header onclick="location.href='#/tools'"><span class="title">Back</span></header>
             </li>
+          <li class="closed">
+            <header onclick="location.href='#/tools'"><span class="title">Cancel</span></header>
+          </li>
         </ul>
       </form>
     </div>
 <!--  </div>-->
+</template>
+
+<template id ="toolsEdit-page">
+  <!--  <div class="vertical-center">-->
+  <div class="container">
+    <h1>Tools Used</h1><br>
+    <form action="">
+      <div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
+      <div class="form-group">
+        <label for="toolQtyEdit">Quantity:</label>
+        <div class="input-group">
+          <input data-bind="value: toolsEdit.toolQty" type="text" class="form-control" id="toolQtyEdit" placeholder="Tool Quantity">
+          <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="toolDescEdit">Description:</label>
+        <div class="input-group">
+          <input data-bind="value: toolsEdit.toolDesc" type="text" class="form-control" id="toolDescEdit" placeholder="Tool Description">
+          <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="toolRateEdit">Rate:</label>
+        <div class="input-group">
+          <input data-bind="value: toolsEdit.toolRate" type="text" class="form-control" id="toolRateEdit" placeholder="Tool Rate">
+          <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+        </div>
+      </div>
+      <ul class="accordion-menu col-sm-12 col-lg-4">
+        <li class="closed">
+          <header data-bind="click: $component.updateTool" onclick="location.href='#/tools'"><span class="title">Update</span></header>
+        </li>
+        <li class="closed">
+          <header onclick="location.href='#/tools'"><span class="title">Cancel</span></header>
+        </li>
+      </ul>
+    </form>
+  </div>
+  <!--  </div>-->
 </template>
 
 <template id ="thirdParty-page">
@@ -546,13 +911,14 @@
           <h2>Total Cost:</h2>
           <table>
             <thead><tr>
-              <th>Date</th><th>Description</th><th>Cost</th>
+              <th>Date</th><th>Description</th><th>Cost</th><th>Edit or <br/>Remove</th>
             </tr></thead>
             <tbody data-bind="foreach: thirdPartyList">
             <tr>
               <td data-bind="text: thirdPartyDate"></td>
               <td data-bind="text: thirdPartyDesc"></td>
               <td data-bind="text: thirdPartyCost"></td>
+              <td><span class="glyphicon glyphicon-pencil" style="margin-right: 20px" data-bind="click: $component.editThirdParty($index())" onclick="location.href='#/thirdPartyEdit'"></span><span class="glyphicon glyphicon-trash alert-danger"></span></td>
             </tr>
             </tbody>
           </table>
@@ -600,10 +966,53 @@
                 <header data-bind="click: $component.addThirdParty" onclick="location.href='#/thirdParty'"><span class="title">Submit</span></header>
                 <header onclick="location.href='#/thirdParty'"><span class="title">Back</span></header>
             </li>
+          <li class="closed">
+            <header  onclick="location.href='#/thirdParty'"><span class="title">Cancel</span></header>
+          </li>
         </ul>
       </form>
     </div>
 <!--  </div>-->
+</template>
+
+<template id ="thirdPartyEdit-page">
+  <!--  <div class="vertical-center">-->
+  <div class="container">
+    <h1>Third Party Outsource</h1><br>
+    <form action="">
+      <div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
+      <div class="form-group">
+        <label for="thirdPartyDateEdit">Date:</label>
+        <div class="input-group">
+          <input data-bind="value: thirdPartyEdit.thirdPartyDate" type="date" class="form-control" id="thirdPartyDateEdit" placeholder="Third Party Date">
+          <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="thirdPartyDescEdit">Description:</label>
+        <div class="input-group">
+          <input data-bind="value: thirdPartyEdit.thirdPartyDesc" type="text" class="form-control" id="thirdPartyDescEdit" placeholder="Third Party Description">
+          <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="thirdPartyCostEdit">Cost:</label>
+        <div class="input-group">
+          <input data-bind="value: thirdPartyEdit.thirdPartyCost" type="text" class="form-control" id="thirdPartyCostEdit" placeholder="Third Party Cost">
+          <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+        </div>
+      </div>
+      <ul class="accordion-menu col-sm-12 col-lg-4">
+        <li class="closed">
+          <header data-bind="click: $component.updateThirdParty" onclick="location.href='#/thirdParty'"><span class="title">Update</span></header>
+        </li>
+        <li class="closed">
+          <header onclick="location.href='#/thirdParty'"><span class="title">Cancel</span></header>
+        </li>
+      </ul>
+    </form>
+  </div>
+  <!--  </div>-->
 </template>
 
 <template id ="quotedWork-page">

@@ -557,13 +557,25 @@ table {
 
 }
 
-td, th {
+td {
+    border: 3px solid black;
     text-align: center;
     padding: 8px;
     font-size: 20px;
 }
+th {
+    border: 3px solid black;
+    text-align: center;
+    padding: 8px;
+    font-size: 20px;
+    background-color: grey;
+}
 
-tr:nth-child(1n+2) {
+thead {
+    background-color: grey;
+}
+
+tr:nth-child(odd) {
     background-color: lightblue;
 }
 

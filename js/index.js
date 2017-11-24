@@ -1,3 +1,4 @@
+var supplierList = ko.observableArray([]);
 var truckList = ko.observableArray([]);
 var toolList = ko.observableArray([]);
 var thirdPartyList = ko.observableArray([]);
@@ -5,8 +6,17 @@ var equipList = ko.observableArray([]);
 var workList = ko.observableArray([]);
 var equipmentNameList = ko.observableArray([]);
 
+var supplierEdit;
+var truckEdit;
+var toolsEdit;
+var thirdPartyEdit;
 var equipmentEdit;
 var workDaysEdit;
+
+var supplierIndex;
+var truckIndex;
+var toolsIndex;
+var thirdPartyIndex;
 var equipmentIndex;
 var workDaysIndex;
 
@@ -24,13 +34,6 @@ var dispatchData = {
     endDate: ko.observable(''),
     assignedTo: ko.observable('')
 };
-
-var FormData = [
-    {supplierName: "Trane"},
-    {supplierName: "Rona"},
-    {supplierName: "Home Depot"},
-    {supplierName: "Daikin"}
-];
 
 var trucks = {
     truckQty: ko.observable(''),
@@ -76,6 +79,10 @@ var workDaysData = {
 
 };
 
+function supplierObject(supplierName) {
+    self = this;
+    self.selectedSupplier = ko.observable(supplierName);
+};
 truckObject = function (qty,cost,desc) {
     self = this;
     self.truckQty = qty;
@@ -182,6 +189,10 @@ var dispatchPage = function (params) {
 
 };
 
+var dispatchEditPage = function (params) {
+
+};
+
 
 var equipmentForm = function (params) {
     self = this;
@@ -263,35 +274,116 @@ var materialsPage = function (params) {
 
 };
 
+// var purchasePage = function (params) {
+//     self = this;
+//     self.supplierData = [
+//         {supplierName: "Trane"},
+//         {supplierName: "Rona"},
+//         {supplierName: "Home Depot"},
+//         {supplierName: "Daikin"}
+//     ];
+//     self.supplierList = ko.observableArray([new supplierObject(self.supplierData[0])]);
+//
+//     self.saveOption = function (index) {
+//         // supplierIndex = index;
+//         // self.supplierList()[supplierIndex] = ;
+//         console.log(supplierList());
+//
+//     };
+//     self.addSupplier = function () {
+//         console.log('hello');
+//         self.supplierList.push(new supplierObject(self.supplierData[0]));
+//     };
+// };
+
 var purchasePage = function (params) {
     self = this;
-    self.suppliers = [FormData[0],FormData[1],FormData[2],FormData[3]];
-};
-var truckPage = function (params) {
 
+    self.test = function () {
+        console.log(supplierList()[0])
+    };
+    self.supplierData = [
+        {supplierName: "Trane"},
+        {supplierName: "Rona"},
+        {supplierName: "Home Depot"},
+        {supplierName: "Daikin"}
+    ];
+
+};
+
+var truckPage = function (params) {
+    self = this;
+    self.editTruck = function(index) {
+        truckIndex = index;
+        truckEdit = truckList()[truckIndex];
+    };
 };
 var truckAddPage = function (params) {
     self = this;
     self.addTruck = function () {
-        truckList.push(new truckObject(trucks.truckQty,trucks.truckCost,trucks.truckDesc));
+        // truckList.push(new truckObject(trucks.truckQty,trucks.truckCost,trucks.truckDesc));
+    };
+
+    trucks = {
+        truckQty: ko.observable(''),
+        truckCost: ko.observable(''),
+        truckDesc: ko.observable('')
+    };
+};
+var truckEditPage = function (params) {
+    self = this;
+    self.updateTruck = function () {
+        truckList()[truckIndex] = truckEdit;
     };
 };
 var toolsPage = function (params) {
+    self = this;
 
+    self.editTool = function(index) {
+        toolsIndex = index;
+        toolsEdit = toolList()[toolsIndex];
+    };
 };
 var toolsAddPage = function (params) {
     self = this;
     self.addTool = function () {
         toolList.push(new toolObject(tools.toolQty,tools.toolRate,tools.toolDesc));
     };
+    tools = {
+        toolQty: ko.observable(''),
+        toolRate: ko.observable(''),
+        toolDesc: ko.observable('')
+    };
+};
+var toolsEditPage = function (params) {
+    self = this;
+    self.updateTool = function () {
+        toolList()[toolsIndex] = toolsEdit;
+    };
 };
 var thirdPartyPage = function (params) {
+    self = this;
 
+    self.editThirdParty = function(index) {
+        thirdPartyIndex = index;
+        thirdPartyEdit = thirdPartyList()[thirdPartyIndex];
+    };
 };
 var thirdPartyAddPage = function (params) {
     self = this;
     self.addThirdParty = function () {
         thirdPartyList.push(new thirdPartyObject(thirdParty.thirdPartyDate,thirdParty.thirdPartyCost,thirdParty.thirdPartyDesc));
+    };
+    thirdParty = {
+        thirdPartyDate: ko.observable(''),
+        thirdPartyCost: ko.observable(''),
+        thirdPartyDesc: ko.observable('')
+    };
+};
+var thirdPartyEditPage = function (params) {
+    self = this;
+    self.updateThirdParty = function () {
+        thirdPartyList()[thirdPartyIndex] = thirdPartyEdit;
     };
 };
 var quotedWorkPage = function (params) {
@@ -426,6 +518,14 @@ var MyApp = function() {
                 routes: ["/dispatch"]
             },
             {
+                name: "DispatchEdit",
+                componentConfig: {
+                    viewModel: dispatchEditPage,
+                    template: {element: "dispatchEdit-page"}
+                },
+                routes: ["/dispatchEdit"]
+            },
+            {
                 name: "Materials",
                 componentConfig: {
                     viewModel: materialsPage,
@@ -482,6 +582,14 @@ var MyApp = function() {
                 routes: ["/trucksAdd"]
             },
             {
+                name: "TrucksEdit",
+                componentConfig: {
+                    viewModel: truckEditPage,
+                    template: {element: "truckEdit-page"}
+                },
+                routes: ["/trucksEdit"]
+            },
+            {
                 name: "Tools",
                 componentConfig: {
                     viewModel: toolsPage,
@@ -498,6 +606,14 @@ var MyApp = function() {
                 routes: ["/toolsAdd"]
             },
             {
+                name: "ToolsEdit",
+                componentConfig: {
+                    viewModel: toolsEditPage,
+                    template: {element: "toolsEdit-page"}
+                },
+                routes: ["/toolsEdit"]
+            },
+            {
                 name: "ThirdParty",
                 componentConfig: {
                     viewModel: thirdPartyPage,
@@ -512,6 +628,14 @@ var MyApp = function() {
                     template: {element: "thirdPartyAdd-page"}
                 },
                 routes: ["/thirdPartyAdd"]
+            },
+            {
+                name: "ThirdPartyEdit",
+                componentConfig: {
+                    viewModel: thirdPartyEditPage,
+                    template: {element: "thirdPartyEdit-page"}
+                },
+                routes: ["/thirdPartyEdit"]
             },
             {
                 name: "QuotedWork",
