@@ -316,9 +316,8 @@
 </div>
 </template>
 
-
 <template id ="materials-page">
-
+    
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-4"></div>
@@ -342,17 +341,9 @@
             <ul class="accordion-menu col-sm-12 col-lg-4">
                 <li class="closed">
                     <header onclick="location.href='#/purchase'"><span class="title">Purchase Orders</span></header>
-                </li>
-                <li class="closed">
                     <header onclick="location.href='#/trucks'"><span class="title">Truck Stock</span></header>
-                 </li>
-                <li class="closed">
                     <header onclick="location.href='#/tools'"><span class="title">Tools Used</span></header>
-                </li>
-                <li class="closed">
                     <header onclick="location.href='#/thirdParty'"><span class="title">Third Party Outsource Work</span></header>
-                </li>
-                <li class="closed">
                     <header onclick="location.href='#/quotedWork'"><span class="title">Quoted Work</span></header>
                 </li>
             </ul>
@@ -387,24 +378,6 @@
 </template>
 
 <template id ="purchase-page">
-
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-4"></div>
-      <div class="col-lg-4">
-        <ol class="breadcrumb breadcrumb-arrow bread-nav">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Dispatch</a></li>
-          <li><a href="#">Equipment</a></li>
-          <li><a href="#">Materials & Tools</a></li>
-          <!--<li><a href="#">WorkDays</a></li>-->
-          <!--<li><a href="#">Invoice</a></li>-->
-        </ol>
-      </div>
-      <div class="col-lg-4"></div>
-    </div>
-  </div>
-
 <!--  <div class="vertical-center">-->
     <div class="container">
       <h1>Purchase Orders</h1>
@@ -412,15 +385,19 @@
         <div class="form-group">
           <h2>Supplier</h2><br>
           <tr>
-            <td><select data-bind="options: $component.suppliers, optionsText: 'supplierName'" style="width:50vw;height:10vh;font-size: 25px;"></select></td>
+            <td><select data-bind="options: $component.suppliers, optionsText: 'supplierName'" style="width:65vw;height:10vh;font-size: 25px;"></select></td>
           </tr>
           <button class="btn btn-default" style="width:10vw;height:10vh;">View</button>
+            <ul class="accordion-menu col-sm-12 col-lg-12">
+                <li class="closed">
+                    <header onclick="location.href='#/materials'"><span class="title">Back</span></header>
+                </li>
+            </ul>
         </div>
       </form>
     </div>
 <!--  </div>-->
 </template>
-
 
 <template id ="truck-page">
 <!--  <div class="vertical-center">-->
@@ -441,9 +418,10 @@
             </tr>
             </tbody>
           </table>
-            <ul class="accordion-menu col-sm-12 col-lg-4">
+            <ul class="accordion-menu col-sm-12 col-lg-12">
                 <li class="closed">
                     <header onclick="location.href='#/trucksAdd'"><span class="title">Add</span></header>
+                    <header onclick="location.href='#/materials'"><span class="title">Back</span></header>
                 </li>
             </ul>
         </div>
@@ -479,9 +457,10 @@
                 <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
             </div>
         </div>
-        <ul class="accordion-menu col-sm-12 col-lg-4">
+        <ul class="accordion-menu col-sm-12 col-lg-12">
             <li class="closed">
                 <header data-bind="click: $component.addTruck" onclick="location.href='#/trucks'"><span class="title">Submit</span></header>
+                <header onclick="location.href='#/trucks'"><span class="title">Back</span></header>
             </li>
         </ul>
       </form>
@@ -508,9 +487,10 @@
             </tr>
             </tbody>
           </table>
-            <ul class="accordion-menu col-sm-12 col-lg-4">
+            <ul class="accordion-menu col-sm-12 col-lg-12">
                 <li class="closed">
                     <header onclick="location.href='#/toolsAdd'"><span class="title">Add</span></header>
+                    <header onclick="location.href='#/materials'"><span class="title">Back</span></header>
                 </li>
             </ul>
         </div>
@@ -546,9 +526,10 @@
                 <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
             </div>
         </div>
-        <ul class="accordion-menu col-sm-12 col-lg-4">
+        <ul class="accordion-menu col-sm-12 col-lg-12">
             <li class="closed">
                 <header data-bind="click: $component.addTool" onclick="location.href='#/tools'"><span class="title">Submit</span></header>
+                <header onclick="location.href='#/tools'"><span class="title">Back</span></header>
             </li>
         </ul>
       </form>
@@ -575,9 +556,10 @@
             </tr>
             </tbody>
           </table>
-            <ul class="accordion-menu col-sm-12 col-lg-4">
+            <ul class="accordion-menu col-sm-12 col-lg-12">
                 <li class="closed">
                     <header onclick="location.href='#/thirdPartyAdd'"><span class="title">Add</span></header>
+                    <header onclick="location.href='#/materials'"><span class="title">Back</span></header>
                 </li>
             </ul>
         </div>
@@ -613,9 +595,10 @@
                 <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
             </div>
         </div>
-        <ul class="accordion-menu col-sm-12 col-lg-4">
+        <ul class="accordion-menu col-sm-12 col-lg-12">
             <li class="closed">
                 <header data-bind="click: $component.addThirdParty" onclick="location.href='#/thirdParty'"><span class="title">Submit</span></header>
+                <header onclick="location.href='#/thirdParty'"><span class="title">Back</span></header>
             </li>
         </ul>
       </form>
@@ -634,9 +617,10 @@
         <div class="form-group">
           <h3>Description:<br><br> <strong data-bind="text: quotedWork.quotedDesc"></strong></h3>
         </div>
-        <ul class="accordion-menu col-sm-12 col-lg-4">
+        <ul class="accordion-menu col-sm-12 col-lg-12">
             <li class="closed">
                 <header onclick="location.href='#/quotedWorkAdd'"><span class="title">Edit</span></header>
+                <header onclick="location.href='#/materials'"><span class="title">Back</span></header>
             </li>
         </ul>
       </form>
@@ -664,9 +648,10 @@
                 <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
             </div>
         </div>
-        <ul class="accordion-menu col-sm-12 col-lg-4">
+        <ul class="accordion-menu col-sm-12 col-lg-12">
             <li class="closed">
                 <header onclick="location.href='#/quotedWork'"><span class="title">Submit</span></header>
+                <header onclick="location.href='#/quotedWork'"><span class="title">Back</span></header>
             </li>
         </ul>
       </form>
