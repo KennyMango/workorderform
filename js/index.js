@@ -7,18 +7,23 @@ var workList = ko.observableArray([]);
 var equipmentNameList = ko.observableArray([]);
 
 var supplierEdit;
+var unitEdit;
 var truckEdit;
 var toolsEdit;
 var thirdPartyEdit;
 var equipmentEdit;
 var workDaysEdit;
 
+var newUnit = true;
+
 var supplierIndex;
+var unitIndex;
 var truckIndex;
 var toolsIndex;
 var thirdPartyIndex;
 var equipmentIndex;
 var workDaysIndex;
+
 
 var dispatchData = {
     custName: ko.observable(''),
@@ -35,6 +40,15 @@ var dispatchData = {
     assignedTo: ko.observable('')
 };
 
+var supplierData = {
+    supplierName: ko.observable(''),
+    unitList: ko.observableArray([])
+};
+var units = {
+    unitQty: ko.observable(''),
+    unitCost: ko.observable(''),
+    unitDesc: ko.observable('')
+};
 var trucks = {
     truckQty: ko.observable(''),
     truckCost: ko.observable(''),
@@ -79,9 +93,23 @@ var workDaysData = {
 
 };
 
-function supplierObject(supplierName) {
+var supplierNameData = [
+    {supplierName: "Trane"},
+    {supplierName: "Rona"},
+    {supplierName: "Home Depot"},
+    {supplierName: "Daikin"}
+];
+
+supplierObject = function(supplierName, unitList) {
     self = this;
-    self.selectedSupplier = ko.observable(supplierName);
+    self.selectedSupplier = supplierName;
+    self.unitList = unitList;
+};
+unitObject = function (qty,cost,desc) {
+    self = this;
+    self.unitQty = qty;
+    self.unitCost = cost;
+    self.unitDesc = desc;
 };
 truckObject = function (qty,cost,desc) {
     self = this;
@@ -298,30 +326,71 @@ var materialsPage = function (params) {
 
 var purchasePage = function (params) {
     self = this;
-
-    self.test = function () {
-        console.log(supplierList()[0])
+    self.editSupplier = function (index) {
+        supplierIndex = index;
+        supplierEdit = supplierList()[supplierIndex];
     };
-    self.supplierData = [
-        {supplierName: "Trane"},
-        {supplierName: "Rona"},
-        {supplierName: "Home Depot"},
-        {supplierName: "Daikin"}
-    ];
-
 };
-
-var truckPage = function (params) {
+var purchaseAddPage = function (params) {
+    self = this;
+    self.addSupplier = function () {
+        supplierList.push(new supplierObject(supplierData.supplierName, supplierData.unitList));
+        supplierData = {
+            supplierName: ko.observable(''),
+            unitList: ko.observableArray([])
+        };
+    };
+    self.editUnit = function (index) {
+        unitIndex = index;
+        unitEdit = supplierData.unitList()[unitIndex];
+        newUnit = true;
+    }
+};
+var purchaseEditPage = function (params) {
+    self = this;
+    self.updateSupplier = function () {
+        supplierList()[supplierIndex] = supplierEdit;
+    };
+    self.editUnit = function (index) {
+        unitIndex = index;
+        unitEdit = supplierEdit.unitList()[unitIndex];
+        newUnit = false;
+    }
+};
+var unitPage = function (params) {
+    self = this;
+    self.addUnit = function () {
+        supplierData.unitList.push(new unitObject(units.unitQty,units.unitCost,units.unitDesc));
+    };
+    units = {
+        unitQty: ko.observable(''),
+        unitCost: ko.observable(''),
+        unitDesc: ko.observable('')
+    };
+};
+var unitEditPage = function (params) {
+    self = this;
+    self.updateUnit = function () {
+        if (newUnit == true) {
+            supplierData.unitList()[unitIndex] = unitEdit;
+        }
+        else if (newUnit == false) {
+            supplierEdit.unitList()[unitIndex] = unitEdit;
+        }
+    };
+};
+truckPage = function (params) {
     self = this;
     self.editTruck = function(index) {
         truckIndex = index;
         truckEdit = truckList()[truckIndex];
     };
+
 };
 var truckAddPage = function (params) {
     self = this;
     self.addTruck = function () {
-        // truckList.push(new truckObject(trucks.truckQty,trucks.truckCost,trucks.truckDesc));
+        truckList.push(new truckObject(trucks.truckQty,trucks.truckCost,trucks.truckDesc));
     };
 
     trucks = {
@@ -564,6 +633,38 @@ var MyApp = function() {
                     template: {element: "purchase-page"}
                 },
                 routes: ["/purchase"]
+            },
+            {
+                name: "PurchaseAdd",
+                componentConfig: {
+                    viewModel: purchaseAddPage,
+                    template: {element: "purchaseAdd-page"}
+                },
+                routes: ["/purchaseAdd"]
+            },
+            {
+                name: "PurchaseEdit",
+                componentConfig: {
+                    viewModel: purchaseEditPage,
+                    template: {element: "purchaseEdit-page"}
+                },
+                routes: ["/purchaseEdit"]
+            },
+            {
+                name: "Unit",
+                componentConfig: {
+                    viewModel: unitPage,
+                    template: {element: "unit-page"}
+                },
+                routes: ["/unit"]
+            },
+            {
+                name: "UnitEdit",
+                componentConfig: {
+                    viewModel: unitEditPage,
+                    template: {element: "unitEdit-page"}
+                },
+                routes: ["/unitEdit"]
             },
             {
                 name: "Trucks",
