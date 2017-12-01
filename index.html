@@ -609,14 +609,14 @@
             </tr></thead>
             <tbody data-bind="foreach: supplierList">
                   <tr>
-                    <td><header><span class="title" data-bind="text: "></span></header></td>
-                    <td><header onclick="location.href='#/purchaseAdd'"><span class="title">Edit</span></header></td>
+                    <td><header><span class="title" data-bind="text: selectedSupplier"></span></header></td>
+                    <td><header onclick="location.href='#/purchaseEdit'" data-bind="click: $component.editSupplier($index())"><span class="title">Edit</span></header></td>
                   </tr>
             </tbody>
           </table>
           <ul class="accordion-menu col-sm-12 col-lg-4">
             <li class="closed">
-              <header data-bind="click: $component.test"><span class="title">Add</span></header>
+              <header onclick="location.href='#/purchaseAdd'"><span class="title">Add</span></header>
             </li>
           </ul>
         </div>
@@ -626,56 +626,176 @@
 </template>
 
 
-<!--<template id ="purchaseAdd-page">-->
+<template id ="purchaseAdd-page">
 
-  <!--<div class="container-fluid">-->
-    <!--<div class="row">-->
-      <!--<div class="col-lg-4"></div>-->
-      <!--<div class="col-lg-4">-->
-        <!--<ol class="breadcrumb breadcrumb-arrow bread-nav">-->
-          <!--<li><a href="#">Home</a></li>-->
-          <!--<li><a href="#">Dispatch</a></li>-->
-          <!--<li><a href="#">Equipment</a></li>-->
-          <!--<li><a href="#">Materials & Tools</a></li>-->
-          <!--&lt;!&ndash;<li><a href="#">WorkDays</a></li>&ndash;&gt;-->
-          <!--&lt;!&ndash;<li><a href="#">Invoice</a></li>&ndash;&gt;-->
-        <!--</ol>-->
-      <!--</div>-->
-      <!--<div class="col-lg-4"></div>-->
-    <!--</div>-->
-  <!--</div>-->
 
-  <!--&lt;!&ndash;  <div class="vertical-center">&ndash;&gt;-->
-  <!--<div class="container">-->
-    <!--<h1>Purchase Orders</h1>-->
-    <!--<form action="">-->
-      <!--<div class="form-group">-->
-        <!--<h2>Supplier</h2><br>-->
-        <!--<table>-->
-          <!--<thead><tr>-->
-            <!--<th>Supplier</th><th>Edit or <br/>Remove</th>-->
-          <!--</tr></thead>-->
-          <!--<tbody data-bind="foreach: supplierList">-->
-          <!--<tr>-->
-          <!--<tr>-->
-            <!--<td><select data-bind="value: supplierList($index()), options: $component.supplierData, optionsText: 'supplierName', 'optionsValue: supplierName" style="width:50vw;height:10vh;font-size: 25px;"></select></td>-->
-            <!--<td><header><span class="title">View</span></header></td>-->
-          <!--</tr>-->
-          <!--</td>-->
-          <!--</tr>-->
-          <!--</tbody>-->
-        <!--</table>-->
-        <!--<ul class="accordion-menu col-sm-12 col-lg-4">-->
-          <!--<li class="closed">-->
-            <!--<header data-bind="click: $component.test"><span class="title">Add</span></header>-->
-          <!--</li>-->
-        <!--</ul>-->
-      <!--</div>-->
-    <!--</form>-->
-  <!--</div>-->
-  <!--&lt;!&ndash;  </div>&ndash;&gt;-->
-<!--</template>-->
+  <!--  <div class="vertical-center">-->
+  <div class="container">
+    <h1>Purchase Orders</h1>
+    <form action="">
+      <div class="form-group">
+        <h2>Supplier</h2><br>
+        <select data-bind="value: supplierData.supplierName, options: supplierNameData, optionsText: 'supplierName', optionsValue: 'supplierName'" style="width:50vw;height:10vh;font-size: 25px;"></select>
+        <h2>Units</h2><br>
+        <table>
+          <thead><tr>
+            <th>Quantity</th><th>Description</th><th>Unit Cost</th><th>Edit or <br/>Remove</th>
+          </tr></thead>
+          <tbody data-bind="foreach: supplierData.unitList">
+          <tr>
+            <td><header><span class="title" data-bind="text: unitQty"></span></header></td>
+            <td><header><span class="title" data-bind="text: unitDesc"></span></header></td>
+            <td><header><span class="title" data-bind="text: unitCost"></span></header></td>
+            <td><header onclick="location.href='#/unitEdit'"><span class="title">Edit</span></header></td>
+          </tr>
+          </tbody>
+        </table>
+        <ul class="accordion-menu col-sm-12 col-lg-4">
+          <li class="closed">
+            <header onclick="location.href='#/unit'"><span class="title">Add Units</span></header>
+            <header data-bind="click: $component.addSupplier" onclick="location.href='#/purchase'"><span class="title">Add Purchase Order</span></header>
+          </li>
+        </ul>
+      </div>
+    </form>
+  </div>
+  <!--  </div>-->
+</template>
 
+<template id ="purchaseEdit-page">
+
+
+  <!--  <div class="vertical-center">-->
+  <div class="container">
+    <h1>Purchase Orders</h1>
+    <form action="">
+      <div class="form-group">
+        <h2>Supplier</h2><br>
+        <select data-bind="value: supplierEdit.selectedSupplier, options: supplierNameData, optionsText: 'supplierName', optionsValue: 'supplierName'" style="width:50vw;height:10vh;font-size: 25px;"></select>
+        <h2>Units</h2><br>
+        <table>
+          <thead><tr>
+            <th>Quantity</th><th>Description</th><th>Unit Cost</th><th>Edit or <br/>Remove</th>
+          </tr></thead>
+          <tbody data-bind="foreach: supplierEdit.unitList">
+          <tr>
+            <td><header><span class="title" data-bind="text: unitQty"></span></header></td>
+            <td><header><span class="title" data-bind="text: unitDesc"></span></header></td>
+            <td><header><span class="title" data-bind="text: unitCost"></span></header></td>
+            <td><header onclick="location.href='#/unitEdit'"><span class="title">Edit</span></header></td>
+          </tr>
+          </tbody>
+        </table>
+        <ul class="accordion-menu col-sm-12 col-lg-4">
+          <li class="closed">
+            <header onclick="location.href='#/unit'"><span class="title">Add Units</span></header>
+            <header data-bind="click: $component.updateSupplier" onclick="location.href='#/purchase'"><span class="title">Update Purchase Order</span></header>
+          </li>
+        </ul>
+      </div>
+    </form>
+  </div>
+  <!--  </div>-->
+</template>
+
+<template id ="unit-page">
+
+  <!--  <div class="vertical-center">-->
+  <div class="container">
+    <h1>Supplier Units</h1>
+    <form action="">
+      <div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
+      <div class="form-group">
+        <label for="unitQty">Quantity:</label>
+        <div class="input-group">
+          <input data-bind="value: units.unitQty" type="text" class="form-control" id="unitQty" placeholder="Truck Quantity">
+          <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="unitDesc">Description:</label>
+        <div class="input-group">
+          <input data-bind="value: units.unitDesc" type="text" class="form-control" id="unitDesc" placeholder="Truck Description">
+          <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="unitCost">Unit Cost:</label>
+        <div class="input-group">
+          <input data-bind="value: units.unitCost" type="text" class="form-control" id="unitCost" placeholder="Truck Cost">
+          <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+        </div>
+      </div>
+      <ul class="accordion-menu col-sm-12 col-lg-4">
+        <li class="closed">
+          <header data-bind="click: $component.addUnit" onclick="location.href='#/purchaseAdd'"><span class="title">Submit</span></header>
+        </li>
+        <li class="closed">
+          <header onclick="location.href='#/purchase'"><span class="title">Cancel</span></header>
+        </li>
+      </ul>
+    </form>
+  </div>
+  <!--  </div>-->
+</template>
+
+<template id ="unitEdit-page">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-4"></div>
+      <div class="col-lg-4">
+        <ol class="breadcrumb breadcrumb-arrow bread-nav">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Dispatch</a></li>
+          <li><a href="#">Equipment</a></li>
+          <li><a href="#">Materials & Tools</a></li>
+          <!--<li><a href="#">WorkDays</a></li>-->
+          <!--<li><a href="#">Invoice</a></li>-->
+        </ol>
+      </div>
+      <div class="col-lg-4"></div>
+    </div>
+  </div>
+
+  <!--  <div class="vertical-center">-->
+  <div class="container">
+    <h1>Edit Supplier Unit</h1>
+    <form action="">
+      <div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
+      <div class="form-group">
+        <label for="unitQtyEdit">Quantity:</label>
+        <div class="input-group">
+          <input data-bind="value: unitsEdit.unitQty" type="text" class="form-control" id="unitQtyEdit" placeholder="Truck Quantity">
+          <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="unitDescEdit">Description:</label>
+        <div class="input-group">
+          <input data-bind="value: unitsEdit.unitDesc" type="text" class="form-control" id="unitDescEdit" placeholder="Truck Description">
+          <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="unitCostEdit">Unit Cost:</label>
+        <div class="input-group">
+          <input data-bind="value: unitsEdit.unitCost" type="text" class="form-control" id="unitCostEdit" placeholder="Truck Cost">
+          <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+        </div>
+      </div>
+      <ul class="accordion-menu col-sm-12 col-lg-4">
+        <li class="closed">
+          <header data-bind="click: $component.updateUnit" onclick="location.href='#/purchaseAdd'"><span class="title">Submit</span></header>
+        </li>
+        <li class="closed">
+          <header onclick="location.href='#/purchase'"><span class="title">Cancel</span></header>
+        </li>
+      </ul>
+    </form>
+  </div>
+  <!--  </div>-->
+</template>
 
 <template id ="truck-page">
 <!--  <div class="vertical-center">-->
@@ -686,7 +806,7 @@
           <h2>Total Cost:</h2>
           <table>
             <thead><tr>
-                <th>Qty</th><th>Description</th><th>Item Cost</th><th>Edit or <br/>Remove</th>
+                <th>Quantity</th><th>Description</th><th>Item Cost</th><th>Edit or <br/>Remove</th>
             </tr></thead>
             <tbody data-bind="foreach: truckList">
             <tr>
@@ -798,7 +918,7 @@
           <h2>Total Cost:</h2>
           <table>
             <thead><tr>
-              <th>Qty</th><th>Description</th><th>Rate</th><th>Edit or <br/>Remove</th>
+              <th>Quantity</th><th>Description</th><th>Rate</th><th>Edit or <br/>Remove</th>
             </tr></thead>
             <tbody data-bind="foreach: toolList">
             <tr>
