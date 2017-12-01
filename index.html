@@ -41,6 +41,15 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="#/">BuiltSpace</a>
+          <span class="navbar-text pull-right">
+                Status:
+          </span>
+          <span class="navbar-text pull-right">
+                Category:
+          </span>
+          <span class="navbar-text pull-right">
+                WO Number:
+          </span>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -53,8 +62,10 @@
             <!--<li><a href="#">Enter Hours</a></li>-->
             <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#/invoice">Invoice View</a></li>
           </ul>
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container-fluid -->
     </nav>
 
 
@@ -1379,7 +1390,7 @@
                       <div class="input-group">
                         <span class="input-group-btn">
                             <span class="btn btn-default btn-file">
-                                Browse…<input type="file" id="imgInp">
+                                Browse…<input id="imgInp" type="file" accept="image/*;capture=camera">
                             </span>
                          </span>
                         <input type="text" class="form-control" readonly>
@@ -1561,22 +1572,77 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-4"></div>
-      <ul class="accordion-menu col-sm-12 col-lg-4">
+      <ul class="accordion-menu col-sm-12 col-lg-12">
         <li class="open">
           <header  onclick="toggle(this.parentNode)"><span class="title">View Workdays</span></header>
           <section class="content">
-            <div class="container">
-              <div class="row">
-                <form role="form">
-                  <button onclick="location.href='#/workDays'">Add</button>
-                  <div data-bind="foreach: workList">
-                    <div data-bind="text: workDate"></div>
-                    <div data-bind="text: technician"></div>
-                    <button data-bind="click: $component.editWorkDay($index())" onclick="location.href='#/workDaysEdit'">Edit</button>
+
+
+            <div>
+              <div class="container" >
+
+                <div class="row" data-bind="foreach: workList">
+                  <div class="card equipmentcards col-lg-6">
+                    <div class="card-header card-success">
+
+                    </div>
+                    <div class="card-block">
+                      <blockquote class="card-blockquote">
+                        <table class="table">
+                          <thead>
+                          <tr class="table-success">
+                            <th>Work Date:</th>
+                            <th>Technician:</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                            <td data-bind="text: workDate"></td>
+                            <td data-bind="text: technician"></td>
+                          </tr>
+                          </tbody>
+                        </table>
+
+                        <div class="row">
+                          <div class="equipment-buttons"><div class="btn-group" role="group">
+                            <button type="button" class="btn btn-secondary  btn-primary" data-bind="click: $component.editWorkDay($index())" onclick="location.href='#/workDaysEdit'"><span class="glyphicon glyphicon-pencil"></span></button>
+                            <button type="button" class="btn btn-secondary  btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                          </div>
+                          </div>
+                        </div>
+
+                      </blockquote>
+                    </div>
                   </div>
-                </form>
+
+                </div>
+
+
+                <div class="card equipmentcards col-lg-16">
+                  <div class="col-lg-6 add-button">
+                    <button type="button" class="btn btn-success btn-circle btn-xl" onclick="location.href='#/workDays'"><i class="glyphicon glyphicon-plus"></i></button>
+                  </div>
+                </div>
+
+
+
+
               </div>
+
             </div>
+
+            <!--<div class="container">-->
+              <!--<div class="row">-->
+                <!--<form role="form">-->
+                  <!--<button onclick="location.href='#/workDays'">Add</button>-->
+                  <!--<div data-bind="foreach: workList">-->
+                    <!--<div data-bind="text: workDate"></div>-->
+                    <!--<div data-bind="text: technician"></div>-->
+                    <!--<button data-bind="click: $component.editWorkDay($index())" onclick="location.href='#/workDaysEdit'">Edit</button>-->
+                  <!--</div>-->
+                <!--</form>-->
+              <!--</div>-->
+            <!--</div>-->
           </section>
         </li>
 
