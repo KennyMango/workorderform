@@ -24,20 +24,49 @@ var thirdPartyIndex;
 var equipmentIndex;
 var workDaysIndex;
 
-
 var dispatchData = {
-    custName: ko.observable(''),
-    custPO: ko.observable(''),
+    custName: ko.observable('')
+        .extend({required: true})
+        .extend({ 
+            pattern: {
+             message: 'Please enter letters only!',
+             params: '^[a-zA-Z].*'
+            }
+        }),
+    custPO: ko.observable('')
+        .extend({required: true})
+        .extend({number: true}),
+    custEmail: ko.observable('').extend({ email: true }),
     custNotes: ko.observable(''),
-    custEmail: ko.observable(''),
-    reqeuestBy: ko.observable(''),
-    contOnSite: ko.observable(''),
-    contPhone: ko.observable(''),
-    contEmail: ko.observable(''),
+    requestBy: ko.observable('')
+        .extend({required: true})
+        .extend({ 
+            pattern: {
+             message: 'Please enter letters only!',
+             params: '^[a-zA-Z].*'
+            }
+        }),
+    contOnSite: ko.observable('')
+        .extend({required: true})
+        .extend({ 
+            pattern: {
+             message: 'Please enter letters only!',
+             params: '^[a-zA-Z].*'
+            }
+        }),
+    contPhone: ko.observable('').extend({ phoneUS: true }),
+    contEmail: ko.observable('').extend({ email: true }),
     workDate: ko.observable(''),
     startDate: ko.observable(''),
     endDate: ko.observable(''),
     assignedTo: ko.observable('')
+        .extend({required: true})
+        .extend({ 
+            pattern: {
+             message: 'Please enter letters only!',
+             params: '^[a-zA-Z].*'
+            }
+        })
 };
 
 var supplierData = {
@@ -65,8 +94,10 @@ var thirdParty = {
     thirdPartyDesc: ko.observable('')
 };
 var quotedWork = {
-    quotedCost: ko.observable(''),
-    quotedDesc: ko.observable('')
+    quotedCost: ko.observable('')
+        .extend({required: true})
+        .extend({number: true}),
+    quotedDesc: ko.observable('').extend({required: true})
 };
 
 var equipment = {
@@ -83,14 +114,28 @@ var equipment = {
 
 var workDaysData = {
     workDate: ko.observable(''),
-    technician: ko.observable(''),
-    regHrs: ko.observable(''),
-    overTime: ko.observable(''),
-    doubleTime: ko.observable(''),
+    technician: ko.observable('')
+        .extend({required: true})
+        .extend({ 
+            pattern: {
+             message: 'Please enter letters only!',
+             params: '^[a-zA-Z].*'
+            }
+        }),
+    regHrs: ko.observable('')
+        .extend({required: true})
+        .extend({number: true}),
+    overTime: ko.observable('')
+        .extend({required: true})
+        .extend({number: true}),
+    doubleTime: ko.observable('')
+        .extend({required: true})
+        .extend({number: true}),
     totalHrs: ko.observable(''),
-    rate: ko.observable(''),
+    rate: ko.observable('')
+        .extend({required: true})
+        .extend({number: true}),
     labour: ko.observable('')
-
 };
 
 var supplierNameData = [
@@ -363,9 +408,13 @@ var unitPage = function (params) {
         supplierData.unitList.push(new unitObject(units.unitQty,units.unitCost,units.unitDesc));
     };
     units = {
-        unitQty: ko.observable(''),
-        unitCost: ko.observable(''),
-        unitDesc: ko.observable('')
+        unitQty: ko.observable('')
+            .extend({required: true})
+            .extend({number: true}),
+        unitCost: ko.observable('')
+            .extend({required: true})
+            .extend({number: true}),
+        unitDesc: ko.observable('').extend({required: true})
     };
 };
 var unitEditPage = function (params) {
@@ -394,9 +443,13 @@ var truckAddPage = function (params) {
     };
 
     trucks = {
-        truckQty: ko.observable(''),
-        truckCost: ko.observable(''),
-        truckDesc: ko.observable('')
+        truckQty: ko.observable('')
+            .extend({required: true})
+            .extend({number: true}),
+        truckCost: ko.observable('')
+            .extend({required: true})
+            .extend({number: true}),
+        truckDesc: ko.observable('').extend({required: true})
     };
 };
 var truckEditPage = function (params) {
@@ -419,9 +472,13 @@ var toolsAddPage = function (params) {
         toolList.push(new toolObject(tools.toolQty,tools.toolRate,tools.toolDesc));
     };
     tools = {
-        toolQty: ko.observable(''),
-        toolRate: ko.observable(''),
-        toolDesc: ko.observable('')
+        toolQty: ko.observable('')
+            .extend({required: true})
+            .extend({number: true}),
+        toolRate: ko.observable('')
+            .extend({required: true})
+            .extend({number: true}),
+        toolDesc: ko.observable('').extend({required: true})
     };
 };
 var toolsEditPage = function (params) {
@@ -445,8 +502,10 @@ var thirdPartyAddPage = function (params) {
     };
     thirdParty = {
         thirdPartyDate: ko.observable(''),
-        thirdPartyCost: ko.observable(''),
-        thirdPartyDesc: ko.observable('')
+        thirdPartyCost: ko.observable('')
+            .extend({required: true})
+            .extend({number: true}),
+        thirdPartyDesc: ko.observable('').extend({required: true})
     };
 };
 var thirdPartyEditPage = function (params) {
@@ -522,7 +581,6 @@ var viewWorkDaysPage = function (params) {
 var invoicePage = function (params) {
 
 };
-
 
 var KnockoutController = function(config) {
     var defaults = {
@@ -796,7 +854,6 @@ var MyApp = function() {
 $(document).ready(function () {
     var app = new MyApp();
     ko.applyBindings(app);
-
 });
 
 // testing kelvin's github with gpg

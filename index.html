@@ -28,7 +28,8 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/knockout.mapping/2.4.1/knockout.mapping.min.js'></script>
 <script src='https://cdn.jsdelivr.net/grapnel.js/0.2.1/Grapnel.js'></script>
 <script src='https://cdn.jsdelivr.net/npm/grapnel@0.6.4/src/grapnel.min.js'></script>
-
+<script src='https://cdnjs.cloudflare.com/ajax/libs/knockout-validation/2.0.3/knockout.validation.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/knockout-validation/2.0.3/knockout.validation.min.js'></script>
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
@@ -402,56 +403,48 @@
                     <label for="InputNameEdit">Enter Customer Name</label>
                     <div class="input-group">
                       <input data-bind="value: dispatchData.custName" type="text" class="form-control" name="InputName" id="InputNameEdit" placeholder="Enter Name" required>
-                      <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                     </div>
                   </div>
                   <div class="form-group form-group-lg">
                     <label for="InputPOnumEdit">Enter Customer P.O.#</label>
                     <div class="input-group">
                       <input data-bind="value: dispatchData.custPO" type="text" class="form-control" id="InputPOnumEdit" name="InputPO" placeholder="Enter P.O.#" required>
-                      <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                     </div>
                   </div>
                   <div class="form-group form-group-lg">
                     <label for="InputEmailEdit">Enter Customer Email</label>
                     <div class="input-group">
                       <input data-bind="value: dispatchData.custEmail" type="email" class="form-control" id="InputEmailEdit" name="InputEmail" placeholder="Confirm Email" required>
-                      <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                     </div>
                   </div>
                   <div class="form-group form-group-lg">
                     <label for="InputMessageEdit">Enter Customer Notes</label>
                     <div class="input-group">
                       <textarea data-bind="value: dispatchData.custNotes" name="InputMessage" id="InputMessageEdit" class="form-control" rows="5" required></textarea>
-                      <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                     </div>
                   </div>
                   <div class="form-group form-group-lg">
                     <label for="InputRequestedByEdit">Requested By</label>
                     <div class="input-group">
                       <input data-bind="value: dispatchData.requestBy" name="InputRequestedBy" id="InputRequestedByEdit" class="form-control" rows="5" required>
-                      <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                     </div>
                   </div>
                   <div class="form-group form-group-lg">
                     <label for="InputOnSiteEdit">On-Site Contact:</label>
                     <div class="input-group">
                       <input data-bind="value: dispatchData.contOnSite" name="InputOnSite" id="InputOnSiteEdit" class="form-control" rows="5" required>
-                      <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                     </div>
                   </div>
                   <div class="form-group form-group-lg">
                     <label for="InputCPhoneEdit">Contact Phone Number:</label>
                     <div class="input-group">
                       <input data-bind="value: dispatchData.contPhone" name="InputCPhone" id="InputCPhoneEdit" class="form-control" rows="5" required>
-                      <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                     </div>
                   </div>
                   <div class="form-group form-group-lg">
                     <label for="InputCEmailEdit">Contact Email Address</label>
                     <div class="input-group">
                       <input data-bind="value: dispatchData.contEmail" name="InputCEmail" id="InputCEmailEdit" class="form-control" rows="5" required>
-                      <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                     </div>
                   </div>
                   <div class="form-group">
@@ -504,7 +497,6 @@
                     <label for="InputAssignEdit">Assign To</label>
                     <div class="input-group">
                       <input data-bind="value: dispatchData.assignedTo" type="text" class="form-control" id="InputAssignEdit" placeholder="Assigned To" name="assigned">
-                      <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                     </div>
                   </div>
                 </div>
@@ -720,21 +712,18 @@
         <label for="unitQty">Quantity:</label>
         <div class="input-group">
           <input data-bind="value: units.unitQty" type="text" class="form-control" id="unitQty" placeholder="Truck Quantity">
-          <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
         </div>
       </div>
       <div class="form-group">
         <label for="unitDesc">Description:</label>
         <div class="input-group">
           <input data-bind="value: units.unitDesc" type="text" class="form-control" id="unitDesc" placeholder="Truck Description">
-          <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
         </div>
       </div>
       <div class="form-group">
         <label for="unitCost">Unit Cost:</label>
         <div class="input-group">
           <input data-bind="value: units.unitCost" type="text" class="form-control" id="unitCost" placeholder="Truck Cost">
-          <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
         </div>
       </div>
       <ul class="accordion-menu col-sm-12 col-lg-4">
@@ -850,21 +839,18 @@
         <label for="truckQty">Quantity:</label>
         <div class="input-group">
           <input data-bind="value: trucks.truckQty" type="text" class="form-control" id="truckQty" placeholder="Truck Quantity">
-          <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
         </div>
       </div>
       <div class="form-group">
         <label for="truckDesc">Description:</label>
         <div class="input-group">
           <input data-bind="value: trucks.truckDesc" type="text" class="form-control" id="truckDesc" placeholder="Truck Description">
-          <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
         </div>
       </div>
       <div class="form-group">
         <label for="truckCost">Item Cost:</label>
         <div class="input-group">
           <input data-bind="value: trucks.truckCost" type="text" class="form-control" id="truckCost" placeholder="Truck Cost">
-          <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
         </div>
       </div>
       <ul class="accordion-menu col-sm-12 col-lg-4">
@@ -962,21 +948,18 @@
           <label for="toolQty">Quantity:</label>
             <div class="input-group">
                 <input data-bind="value: tools.toolQty" type="text" class="form-control" id="toolQty" placeholder="Tool Quantity">
-                <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
             </div>
         </div>
         <div class="form-group">
           <label for="toolDesc">Description:</label>
             <div class="input-group">
                 <input data-bind="value: tools.toolDesc" type="text" class="form-control" id="toolDesc" placeholder="Tool Description">
-                <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
             </div>
         </div>
         <div class="form-group">
           <label for="toolRate">Rate:</label>
             <div class="input-group">
                 <input data-bind="value: tools.toolRate" type="text" class="form-control" id="toolRate" placeholder="Tool Rate">
-                <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
             </div>
         </div>
         <ul class="accordion-menu col-sm-12 col-lg-12">
@@ -1082,14 +1065,12 @@
           <label for="thirdPartyDesc">Description:</label>
             <div class="input-group">
                 <input data-bind="value: thirdParty.thirdPartyDesc" type="text" class="form-control" id="thirdPartyDesc" placeholder="Third Party Description">
-                <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
             </div>
         </div>
         <div class="form-group">
           <label for="thirdPartyCost">Cost:</label>
             <div class="input-group">
                 <input data-bind="value: thirdParty.thirdPartyCost" type="text" class="form-control" id="thirdPartyCost" placeholder="Third Party Cost">
-                <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
             </div>
         </div>
         <ul class="accordion-menu col-sm-12 col-lg-12">
@@ -1178,14 +1159,12 @@
           <label for="quotedWorkCost">Cost:</label>
             <div class="input-group">
                 <input data-bind="value: quotedWork.quotedCost" id="quotedWorkCost" class="form-control" type="text">
-                <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
             </div>
         </div>
         <div class="form-group">
           <label for="quotedWorkDesc">Description:</label>
             <div class="input-group">
                 <input data-bind="value: quotedWork.quotedDesc" id="quotedWorkDesc" class="form-control" type="text">
-                <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
             </div>
         </div>
         <ul class="accordion-menu col-sm-12 col-lg-12">
@@ -1730,29 +1709,25 @@
                     <div class="form-group  form-group-lg">
                       <label for="technician">Technician</label>
                       <div class="input-group">
-                        <input data-bind="value: workDaysData.technician" type="text" class="form-control" id="technician" placeholder="Technician Name" name="technician">
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                        <input data-bind="value: workDaysData.technician" type="text" class="form-control" id="technician" placeholder="Technician Name" name="technician"> 
                       </div>
                     </div>
                     <div class="form-group form-group-lg">
                       <label for="reghrs">Regular Hours</label>
                       <div class="input-group">
                         <input data-bind="value: workDaysData.regHrs" type="text" class="form-control" id="reghrs" placeholder="Regular Hours" name="reghrs">
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                       </div>
                     </div>
                     <div class="form-group form-group-lg">
                       <label for="overtime">Overtime</label>
                       <div class="input-group">
                         <input data-bind="value: workDaysData.overTime" type="text" class="form-control" id="overtime" placeholder="Overtime" name="overtime">
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                       </div>
                     </div>
                     <div class="form-group form-group-lg">
                       <label for="doubletime">Double Time</label>
                       <div class="input-group">
                         <input data-bind="value: workDaysData.doubleTime" type="text" class="form-control" id="doubletime" placeholder="Double Time" name="doubletime">
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                       </div>
                     </div>
                     <div class="form-group form-group-lg">
@@ -1766,7 +1741,6 @@
                       <label for="rate">Rate</label>
                       <div class="input-group">
                         <input data-bind="value: workDaysData.rate" type="text" class="form-control" id="rate" placeholder="Rate" name="rate">
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                       </div>
                     </div>
                     <div class="form-group form-group-lg">
