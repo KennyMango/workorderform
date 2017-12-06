@@ -1,11 +1,3 @@
-var supplierList = ko.observableArray([]);
-var truckList = ko.observableArray([]);
-var toolList = ko.observableArray([]);
-var thirdPartyList = ko.observableArray([]);
-var equipList = ko.observableArray([]);
-var workList = ko.observableArray([]);
-var equipmentNameList = ko.observableArray([]);
-
 var supplierEdit;
 var unitEdit;
 var truckEdit;
@@ -14,7 +6,8 @@ var thirdPartyEdit;
 var equipmentEdit;
 var workDaysEdit;
 
-var newUnit = true;
+
+var navigatePage;
 
 var supplierIndex;
 var unitIndex;
@@ -100,6 +93,36 @@ var supplierNameData = [
     {supplierName: "Daikin"}
 ];
 
+var equipmentOne = {
+    buildingSpace: "13",
+    equipmentName: "Unit SR",
+    equipmentMakeModel: "XPS 310",
+    equipmentNum: "138-13",
+    equipmentCost: "55",
+    equipmentStatus: "green",
+    equipmentDetails: "Red base, Black trim.",
+    equipmentNotes: "None.",
+    equipmentImages: "_"
+}
+
+var equipmentTwo = {
+    buildingSpace: "14",
+    equipmentName: "Unit RS",
+    equipmentMakeModel: "XPS 311",
+    equipmentNum: "1438-13",
+    equipmentCost: "55",
+    equipmentStatus: "green",
+    equipmentDetails: "Red base, Black trim.",
+    equipmentNotes: "None.",
+    equipmentImages: "_"
+}
+
+var equipmentOptions = [
+    {item: equipmentOne, name: equipmentOne.equipmentName},
+    {item: equipmentTwo, name: equipmentTwo.equipmentName}
+]
+
+
 supplierObject = function(supplierName, unitList) {
     self = this;
     self.selectedSupplier = supplierName;
@@ -155,6 +178,13 @@ workDaysObject = function(date,technician,reghrs,overtime,doubletime,totalhrs,ra
     self.labour = labour;
 
 };
+var supplierList = ko.observableArray([]);
+var truckList = ko.observableArray([new truckObject()]);
+var toolList = ko.observableArray([]);
+var thirdPartyList = ko.observableArray([]);
+var equipList = ko.observableArray([new equipmentObject()]);
+var workList = ko.observableArray([]);
+var equipmentNameList = ko.observableArray([]);
 
 var mainPage = function(params) {
 
@@ -274,10 +304,21 @@ var equipmentFormEdit = function (params) {
 var equipmentPage = function (params) {
 
     self = this;
-
+    self.equipmentValue = ko.observable('');
     self.edit = function(index) {
         equipmentIndex = index;
         equipmentEdit = equipList()[equipmentIndex];
+    };
+    self.remove = function (index) {
+        equipList.remove(index);
+    };
+    self.add = function () {
+        equipList.push(new equipmentObject());
+    };
+    self.confirm = function (index) {
+        console.log(index);
+        equipList()[index] = self.equipmentValue;
+        self.equipmentValue = ko.observable('');
     };
 
     // $( document ).ready(function() {
@@ -343,8 +384,8 @@ var purchaseAddPage = function (params) {
     self.editUnit = function (index) {
         unitIndex = index;
         unitEdit = supplierData.unitList()[unitIndex];
-        newUnit = true;
-    }
+         navigatePage= 0;
+    };
 };
 var purchaseEditPage = function (params) {
     self = this;
@@ -354,7 +395,7 @@ var purchaseEditPage = function (params) {
     self.editUnit = function (index) {
         unitIndex = index;
         unitEdit = supplierEdit.unitList()[unitIndex];
-        newUnit = false;
+        navigatePage = 1;
     }
 };
 var unitPage = function (params) {
@@ -371,27 +412,47 @@ var unitPage = function (params) {
 var unitEditPage = function (params) {
     self = this;
     self.updateUnit = function () {
-        if (newUnit == true) {
+        if (navigatePage == 0) {
             supplierData.unitList()[unitIndex] = unitEdit;
         }
-        else if (newUnit == false) {
+        else if (navigatePage == 1) {
             supplierEdit.unitList()[unitIndex] = unitEdit;
         }
     };
 };
+var loadPage = function (params) {
+    self = this;
+    self.loadPage;
+    if (navigatePage == 0){
+        self.loadPage = 'purchaseAdd-page';
+    }
+    else if (navigatePage == 1){
+        self.loadPage = 'purchaseEdit-page';
+    }
+    else if (navigatePage == 2){
+        self.loadPage = 'truck-page';
+        console.log("happens");
+    }
+
+};
 truckPage = function (params) {
     self = this;
+    self.addTruck = function () {
+        console.log('thing');
+        truckList.push(new truckObject());
+    };
     self.editTruck = function(index) {
         truckIndex = index;
         truckEdit = truckList()[truckIndex];
     };
 
+    self.removeTruck = function (index) {
+        truckList.remove(index);
+    }
+
 };
 var truckAddPage = function (params) {
     self = this;
-    self.addTruck = function () {
-        truckList.push(new truckObject(trucks.truckQty,trucks.truckCost,trucks.truckDesc));
-    };
 
     trucks = {
         truckQty: ko.observable(''),
@@ -407,11 +468,14 @@ var truckEditPage = function (params) {
 };
 var toolsPage = function (params) {
     self = this;
-
     self.editTool = function(index) {
         toolsIndex = index;
         toolsEdit = toolList()[toolsIndex];
     };
+    self.removeTool = function (index) {
+        toolList.remove(index)
+    };
+
 };
 var toolsAddPage = function (params) {
     self = this;
@@ -432,10 +496,12 @@ var toolsEditPage = function (params) {
 };
 var thirdPartyPage = function (params) {
     self = this;
-
     self.editThirdParty = function(index) {
         thirdPartyIndex = index;
         thirdPartyEdit = thirdPartyList()[thirdPartyIndex];
+    };
+    self.removeThirdParty = function (index) {
+        thirdPartyList.remove(index);
     };
 };
 var thirdPartyAddPage = function (params) {
@@ -501,6 +567,9 @@ var viewWorkDaysPage = function (params) {
         workDaysIndex = index;
         workDaysEdit = workList()[workDaysIndex];
     };
+    self.removeWorkDay = function (index) {
+        workList.remove(index);
+    }
     // $( document ).ready(function() {
     //     $.ajax({
     //         type: 'GET',
@@ -665,6 +734,14 @@ var MyApp = function() {
                     template: {element: "unitEdit-page"}
                 },
                 routes: ["/unitEdit"]
+            },
+            {
+                name: "LoadPage",
+                componentConfig: {
+                    viewModel: loadPage,
+                    template: {element: "load-page"}
+                },
+                routes: ["/loadPage"]
             },
             {
                 name: "Trucks",
