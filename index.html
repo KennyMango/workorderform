@@ -649,7 +649,7 @@
             <td><header><span class="title" data-bind="text: unitQty"></span></header></td>
             <td><header><span class="title" data-bind="text: unitDesc"></span></header></td>
             <td><header><span class="title" data-bind="text: unitCost"></span></header></td>
-            <td><header onclick="location.href='#/unitEdit'"><span class="title">Edit</span></header></td>
+            <td><header data-bind="click: $component.editUnit($index())" onclick="location.href='#/unitEdit'"><span class="title">Edit</span></header></td>
           </tr>
           </tbody>
         </table>
@@ -685,7 +685,7 @@
             <td><header><span class="title" data-bind="text: unitQty"></span></header></td>
             <td><header><span class="title" data-bind="text: unitDesc"></span></header></td>
             <td><header><span class="title" data-bind="text: unitCost"></span></header></td>
-            <td><header onclick="location.href='#/unitEdit'"><span class="title">Edit</span></header></td>
+            <td><header data-bind="click: $component.editUnit($index())" onclick="location.href='#/unitEdit'"><span class="title">Edit</span></header></td>
           </tr>
           </tbody>
         </table>
@@ -766,27 +766,27 @@
       <div class="form-group">
         <label for="unitQtyEdit">Quantity:</label>
         <div class="input-group">
-          <input data-bind="value: unitsEdit.unitQty" type="text" class="form-control" id="unitQtyEdit" placeholder="Truck Quantity">
+          <input data-bind="value: unitEdit.unitQty" type="text" class="form-control" id="unitQtyEdit" placeholder="Truck Quantity">
           <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
         </div>
       </div>
       <div class="form-group">
         <label for="unitDescEdit">Description:</label>
         <div class="input-group">
-          <input data-bind="value: unitsEdit.unitDesc" type="text" class="form-control" id="unitDescEdit" placeholder="Truck Description">
+          <input data-bind="value: unitEdit.unitDesc" type="text" class="form-control" id="unitDescEdit" placeholder="Truck Description">
           <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
         </div>
       </div>
       <div class="form-group">
         <label for="unitCostEdit">Unit Cost:</label>
         <div class="input-group">
-          <input data-bind="value: unitsEdit.unitCost" type="text" class="form-control" id="unitCostEdit" placeholder="Truck Cost">
+          <input data-bind="value: unitEdit.unitCost" type="text" class="form-control" id="unitCostEdit" placeholder="Truck Cost">
           <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
         </div>
       </div>
       <ul class="accordion-menu col-sm-12 col-lg-4">
         <li class="closed">
-          <header data-bind="click: $component.updateUnit" onclick="location.href='#/purchaseAdd'"><span class="title">Submit</span></header>
+          <header data-bind="click: $component.updateUnit" onclick="location.href='#/loadPage'"><span class="title">Submit</span></header>
         </li>
         <li class="closed">
           <header onclick="location.href='#/purchase'"><span class="title">Cancel</span></header>
@@ -795,6 +795,10 @@
     </form>
   </div>
   <!--  </div>-->
+</template>
+
+<template id="load-page">
+  <div data-bind="template: {name: $component.loadPage}"></div>
 </template>
 
 <template id ="truck-page">
@@ -806,14 +810,14 @@
           <h2>Total Cost:</h2>
           <table>
             <thead><tr>
-                <th>Quantity</th><th>Description</th><th>Item Cost</th><th>Edit or <br/>Remove</th>
+                <th>Quantity</th><th>Description</th><th>Item Cost</th><th>Remove</th>
             </tr></thead>
             <tbody data-bind="foreach: truckList">
             <tr>
-                <td data-bind="text: truckQty"></td>
-                <td data-bind="text: truckDesc"></td>
-                <td data-bind="text: truckCost"></td>
-                <td><span class="glyphicon glyphicon-pencil" style="margin-right: 20px" data-bind="click: $component.editTruck($index())" onclick="location.href='#/trucksEdit'"></span><span class="glyphicon glyphicon-trash alert-danger"></span></td>
+              <td data-bind="text: truckQty, click: $component.editTruck($index())" onclick="location.href='#/trucksEdit'"></td>
+              <td data-bind="text: truckDesc, click: $component.editTruck($index())" onclick="location.href='#/trucksEdit'"></td>
+              <td data-bind="text: truckCost, click: $component.editTruck($index())" onclick="location.href='#/trucksEdit'"></td>
+              <td><span class="glyphicon glyphicon-trash alert-danger" data-bind="click: $component.removeTruck"></span></td>
             </tr>
             </tbody>
           </table>
@@ -838,18 +842,21 @@
       <div class="form-group">
         <label for="truckQty">Quantity:</label>
         <div class="input-group">
+          <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
           <input data-bind="value: trucks.truckQty" type="text" class="form-control" id="truckQty" placeholder="Truck Quantity">
         </div>
       </div>
       <div class="form-group">
         <label for="truckDesc">Description:</label>
         <div class="input-group">
+          <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
           <input data-bind="value: trucks.truckDesc" type="text" class="form-control" id="truckDesc" placeholder="Truck Description">
         </div>
       </div>
       <div class="form-group">
         <label for="truckCost">Item Cost:</label>
         <div class="input-group">
+          <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
           <input data-bind="value: trucks.truckCost" type="text" class="form-control" id="truckCost" placeholder="Truck Cost">
         </div>
       </div>
@@ -915,14 +922,14 @@
           <h2>Total Cost:</h2>
           <table>
             <thead><tr>
-              <th>Quantity</th><th>Description</th><th>Rate</th><th>Edit or <br/>Remove</th>
+              <th>Quantity</th><th>Description</th><th>Rate</th><th>Remove</th>
             </tr></thead>
             <tbody data-bind="foreach: toolList">
             <tr>
-              <td data-bind="text: toolQty"></td>
-              <td data-bind="text: toolDesc"></td>
-              <td data-bind="text: toolRate"></td>
-              <td><span class="glyphicon glyphicon-pencil" style="margin-right: 20px" data-bind="click: $component.editTool($index())" onclick="location.href='#/toolsEdit'"></span><span class="glyphicon glyphicon-trash alert-danger"></span></td>
+              <td data-bind="text: toolQty, click: $component.editTool($index())" onclick="location.href='#/toolsEdit'"></td>
+              <td data-bind="text: toolDesc, click: $component.editTool($index())" onclick="location.href='#/toolsEdit'"></td>
+              <td data-bind="text: toolRate, click: $component.editTool($index())" onclick="location.href='#/toolsEdit'"></td>
+              <td><span data-bind="click: $component.removeTool" class="glyphicon glyphicon-trash alert-danger"></span></td>
             </tr>
             </tbody>
           </table>
@@ -1025,14 +1032,14 @@
           <h2>Total Cost:</h2>
           <table>
             <thead><tr>
-              <th>Date</th><th>Description</th><th>Cost</th><th>Edit or <br/>Remove</th>
+              <th>Date</th><th>Description</th><th>Cost</th><th>Remove</th>
             </tr></thead>
             <tbody data-bind="foreach: thirdPartyList">
             <tr>
-              <td data-bind="text: thirdPartyDate"></td>
-              <td data-bind="text: thirdPartyDesc"></td>
-              <td data-bind="text: thirdPartyCost"></td>
-              <td><span class="glyphicon glyphicon-pencil" style="margin-right: 20px" data-bind="click: $component.editThirdParty($index())" onclick="location.href='#/thirdPartyEdit'"></span><span class="glyphicon glyphicon-trash alert-danger"></span></td>
+              <td data-bind="text: thirdPartyDate, click: $component.editThirdParty($index())" onclick="location.href='#/thirdPartyEdit'"></td>
+              <td data-bind="text: thirdPartyDesc, click: $component.editThirdParty($index())" onclick="location.href='#/thirdPartyEdit'"></td>
+              <td data-bind="text: thirdPartyCost, click: $component.editThirdParty($index())" onclick="location.href='#/thirdPartyEdit'"></td>
+              <td><span data-bind="click: $component.removeThirdParty" class="glyphicon glyphicon-trash alert-danger"></span></td>
             </tr>
             </tbody>
           </table>
@@ -1203,14 +1210,10 @@
       <div class="row" data-bind="foreach: equipList">
       <div class="card equipmentcards col-lg-6">
         <div class="card-header card-success">
-          <div class="form-group">
+          <div class="form-group" data-bind="click: $component.getIndex($index())">
             <label>Equipment Name:</label>
-            <select class="form-control">
-              <option data-bind="text: equipmentName"></option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-            </select>
+            <select class="form-control" data-bind="options: equipmentOptions, optionsText: 'name', optionsValue: 'item', optionsCaption: 'Select...', value: equipLoad"></select>
+            <button type="button" class="btn btn-secondary  btn-info" data-bind="click: $component.confirm"><span class="glyphicon glyphicon-ok"></span></button>
           </div>
         </div>
         <div class="card-block">
@@ -1221,13 +1224,15 @@
                 <th>Category:</th>
                 <th>Make/Model:</th>
                 <th>Serial#:</th>
+                <th>Remove:</th>
               </tr>
               </thead>
               <tbody>
               <tr>
                 <td>HVAC</td>
-                <td data-bind="text: equipmentMakeModel"></td>
-                <td data-bind="text: equipmentNum"></td>
+                <td data-bind="text: equipmentMakeModel, click: $component.edit($index())" onclick="location.href='#/equipmentFormEdit'"></td>
+                <td data-bind="text: equipmentNum, click: $component.edit($index())" onclick="location.href='#/equipmentFormEdit'"></td>
+                <td><button type="button" class="btn btn-secondary  btn-default" data-bind="click: $component.remove"><span class="glyphicon glyphicon-trash"></span></button></td>
               </tr>
               </tbody>
             </table>
@@ -1237,8 +1242,6 @@
                 <button type="button" class="btn btn-secondary  btn-success"><span class="glyphicon glyphicon-ok"></span></button>
                 <button type="button" class="btn btn-secondary  btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
                 <button type="button" class="btn btn-secondary  btn-warning"><span class="glyphicon glyphicon-camera"></span></button>
-                <button type="button" class="btn btn-secondary  btn-primary" onclick="location.href='#/equipmentFormEdit'" data-bind="click: $component.edit($index())"><span class="glyphicon glyphicon-pencil"></span></button>
-                <button type="button" class="btn btn-secondary  btn-default"><span class="glyphicon glyphicon-trash"></span></button>
               </div>
               </div>
             </div>
@@ -1252,7 +1255,7 @@
 
         <div class="card equipmentcards col-lg-16">
           <div class="col-lg-6 add-button">
-            <button type="button" class="btn btn-success btn-circle btn-xl" onclick="location.href='#/equipmentForm'"><i class="glyphicon glyphicon-plus"></i></button>
+            <button type="button" class="btn btn-success btn-circle btn-xl" data-bind="click: $component.add"><i class="glyphicon glyphicon-plus"></i></button>
           </div>
         </div>
 
@@ -1567,28 +1570,23 @@
                     </div>
                     <div class="card-block">
                       <blockquote class="card-blockquote">
-                        <table class="table">
+                        <table>
                           <thead>
-                          <tr class="table-success">
+                          <tr>
                             <th>Work Date:</th>
                             <th>Technician:</th>
+                            <th>Remove:</th>
                           </tr>
                           </thead>
                           <tbody>
                           <tr>
-                            <td data-bind="text: workDate"></td>
-                            <td data-bind="text: technician"></td>
+                            <td data-bind="text: workDate, click: $component.editWorkDay($index())" onclick="location.href='#/workDaysEdit'"></td>
+                            <td data-bind="text: technician, click: $component.editWorkDay($index())" onclick="location.href='#/workDaysEdit'"></td>
+                            <td><span class="glyphicon glyphicon-trash alert-danger" data-bind="click: $component.removeWorkDay"></span></td>
                           </tr>
                           </tbody>
                         </table>
 
-                        <div class="row">
-                          <div class="equipment-buttons"><div class="btn-group" role="group">
-                            <button type="button" class="btn btn-secondary  btn-primary" data-bind="click: $component.editWorkDay($index())" onclick="location.href='#/workDaysEdit'"><span class="glyphicon glyphicon-pencil"></span></button>
-                            <button type="button" class="btn btn-secondary  btn-default"><span class="glyphicon glyphicon-trash"></span></button>
-                          </div>
-                          </div>
-                        </div>
 
                       </blockquote>
                     </div>

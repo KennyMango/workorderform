@@ -554,21 +554,23 @@ table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
-
+    box-shadow: 0 0 0 1px;
+    border-radius: 4px;
 }
 
 td {
-    border: 3px solid black;
     text-align: center;
     padding: 8px;
     font-size: 20px;
+    border: 3px solid;
 }
 th {
-    border: 3px solid black;
+
     text-align: center;
     padding: 8px;
     font-size: 20px;
-    background-color: grey;
+    background-color: #5cb85c;
+    border: 3px solid;
 }
 
 thead {
@@ -576,9 +578,10 @@ thead {
 }
 
 tr:nth-child(odd) {
-    background-color: lightblue;
+    background-color: #e6e9ed;
 }
 
 tr:nth-child(even) {
-    background-color: lightgreen;
+    background-color: #fafafa;
 }
+tr:hover{background-color: #a1a1a1}
