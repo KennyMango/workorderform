@@ -6,7 +6,7 @@ var thirdPartyEdit;
 var equipmentEdit;
 var workDaysEdit;
 
-
+var equipLoad;
 var navigatePage;
 
 var supplierIndex;
@@ -17,20 +17,49 @@ var thirdPartyIndex;
 var equipmentIndex;
 var workDaysIndex;
 
-
 var dispatchData = {
-    custName: ko.observable(''),
-    custPO: ko.observable(''),
+    custName: ko.observable('')
+        .extend({required: true})
+        .extend({ 
+            pattern: {
+             message: 'Please enter letters only!',
+             params: '^[a-zA-Z].*'
+            }
+        }),
+    custPO: ko.observable('')
+        .extend({required: true})
+        .extend({number: true}),
+    custEmail: ko.observable('').extend({ email: true }),
     custNotes: ko.observable(''),
-    custEmail: ko.observable(''),
-    reqeuestBy: ko.observable(''),
-    contOnSite: ko.observable(''),
-    contPhone: ko.observable(''),
-    contEmail: ko.observable(''),
+    requestBy: ko.observable('')
+        .extend({required: true})
+        .extend({ 
+            pattern: {
+             message: 'Please enter letters only!',
+             params: '^[a-zA-Z].*'
+            }
+        }),
+    contOnSite: ko.observable('')
+        .extend({required: true})
+        .extend({ 
+            pattern: {
+             message: 'Please enter letters only!',
+             params: '^[a-zA-Z].*'
+            }
+        }),
+    contPhone: ko.observable('').extend({ phoneUS: true }),
+    contEmail: ko.observable('').extend({ email: true }),
     workDate: ko.observable(''),
     startDate: ko.observable(''),
     endDate: ko.observable(''),
     assignedTo: ko.observable('')
+        .extend({required: true})
+        .extend({ 
+            pattern: {
+             message: 'Please enter letters only!',
+             params: '^[a-zA-Z].*'
+            }
+        })
 };
 
 var supplierData = {
@@ -58,8 +87,10 @@ var thirdParty = {
     thirdPartyDesc: ko.observable('')
 };
 var quotedWork = {
-    quotedCost: ko.observable(''),
-    quotedDesc: ko.observable('')
+    quotedCost: ko.observable('')
+        .extend({required: true})
+        .extend({number: true}),
+    quotedDesc: ko.observable('').extend({required: true})
 };
 
 var equipment = {
@@ -76,14 +107,28 @@ var equipment = {
 
 var workDaysData = {
     workDate: ko.observable(''),
-    technician: ko.observable(''),
-    regHrs: ko.observable(''),
-    overTime: ko.observable(''),
-    doubleTime: ko.observable(''),
+    technician: ko.observable('')
+        .extend({required: true})
+        .extend({ 
+            pattern: {
+             message: 'Please enter letters only!',
+             params: '^[a-zA-Z].*'
+            }
+        }),
+    regHrs: ko.observable('')
+        .extend({required: true})
+        .extend({number: true}),
+    overTime: ko.observable('')
+        .extend({required: true})
+        .extend({number: true}),
+    doubleTime: ko.observable('')
+        .extend({required: true})
+        .extend({number: true}),
     totalHrs: ko.observable(''),
-    rate: ko.observable(''),
+    rate: ko.observable('')
+        .extend({required: true})
+        .extend({number: true}),
     labour: ko.observable('')
-
 };
 
 var supplierNameData = [
@@ -179,12 +224,11 @@ workDaysObject = function(date,technician,reghrs,overtime,doubletime,totalhrs,ra
 
 };
 var supplierList = ko.observableArray([]);
-var truckList = ko.observableArray([new truckObject()]);
+var truckList = ko.observableArray([]);
 var toolList = ko.observableArray([]);
 var thirdPartyList = ko.observableArray([]);
 var equipList = ko.observableArray([new equipmentObject()]);
 var workList = ko.observableArray([]);
-var equipmentNameList = ko.observableArray([]);
 
 var mainPage = function(params) {
 
@@ -255,22 +299,22 @@ var dispatchEditPage = function (params) {
 var equipmentForm = function (params) {
     self = this;
     self.save = function () {
-        equipList.push(new equipmentObject(equipment.buildingSpace,equipment.equipmentName,equipment.equipmentMakeModel,equipment.equipmentNum,equipment.equipmentCost,
-            equipment.equipmentStatus,equipment.equipmentDetails,equipment.equipmentNotes,equipment.equipmentImages));
-
-        equipmentNameList.push({name: equipment.equipmentName});
-
-        equipment = {
-            buildingSpace: '',
-            equipmentName: '',
-            equipmentMakeModel: '',
-            equipmentNum: '',
-            equipmentCost: '',
-            equipmentStatus: '',
-            equipmentDetails: '',
-            equipmentNotes: '',
-            equipmentImages: ''
-        };
+        // equipList.push(new equipmentObject(equipment.buildingSpace,equipment.equipmentName,equipment.equipmentMakeModel,equipment.equipmentNum,equipment.equipmentCost,
+        //     equipment.equipmentStatus,equipment.equipmentDetails,equipment.equipmentNotes,equipment.equipmentImages));
+        //
+        // equipmentNameList.push({name: equipment.equipmentName});
+        //
+        // equipment = {
+        //     buildingSpace: '',
+        //     equipmentName: '',
+        //     equipmentMakeModel: '',
+        //     equipmentNum: '',
+        //     equipmentCost: '',
+        //     equipmentStatus: '',
+        //     equipmentDetails: '',
+        //     equipmentNotes: '',
+        //     equipmentImages: ''
+        // };
 
         // $.post("http://127.0.0.1:3000/equipment/1", self.equipment, function(returnedData) {
         //     console.log(returnedData)
@@ -304,7 +348,6 @@ var equipmentFormEdit = function (params) {
 var equipmentPage = function (params) {
 
     self = this;
-    self.equipmentValue = ko.observable('');
     self.edit = function(index) {
         equipmentIndex = index;
         equipmentEdit = equipList()[equipmentIndex];
@@ -315,10 +358,23 @@ var equipmentPage = function (params) {
     self.add = function () {
         equipList.push(new equipmentObject());
     };
+    self.getIndex = function (index) {
+        equipmentIndex = index
+    };
     self.confirm = function (index) {
-        console.log(index);
-        equipList()[index] = self.equipmentValue;
-        self.equipmentValue = ko.observable('');
+        index.buildingSpace = equipLoad.buildingSpace;
+        index.equipmentName = equipLoad.equipmentName;
+        index.equipmentMakeModel = equipLoad.equipmentMakeModel;
+        index.equipmentNum = equipLoad.equipmentNum;
+        index.equipmentCost = equipLoad.equipmentCost;
+        index.equipmentStatus = equipLoad.equipmentStatus;
+        index.equipmentDetails = equipLoad.equipmentDetails;
+        index.equipmentNotes = equipLoad.equipmentNotes;
+        index.equipmentImages = equipLoad.equipmentImages;
+
+        equipList()[equipmentIndex] = index;
+        navigatePage = 3;
+
     };
 
     // $( document ).ready(function() {
@@ -404,9 +460,13 @@ var unitPage = function (params) {
         supplierData.unitList.push(new unitObject(units.unitQty,units.unitCost,units.unitDesc));
     };
     units = {
-        unitQty: ko.observable(''),
-        unitCost: ko.observable(''),
-        unitDesc: ko.observable('')
+        unitQty: ko.observable('')
+            .extend({required: true})
+            .extend({number: true}),
+        unitCost: ko.observable('')
+            .extend({required: true})
+            .extend({number: true}),
+        unitDesc: ko.observable('').extend({required: true})
     };
 };
 var unitEditPage = function (params) {
@@ -431,16 +491,11 @@ var loadPage = function (params) {
     }
     else if (navigatePage == 2){
         self.loadPage = 'truck-page';
-        console.log("happens");
     }
 
 };
 truckPage = function (params) {
     self = this;
-    self.addTruck = function () {
-        console.log('thing');
-        truckList.push(new truckObject());
-    };
     self.editTruck = function(index) {
         truckIndex = index;
         truckEdit = truckList()[truckIndex];
@@ -454,10 +509,17 @@ truckPage = function (params) {
 var truckAddPage = function (params) {
     self = this;
 
+    self.addTruck = function () {
+        truckList.push(new truckObject(trucks.truckQty, trucks.truckDesc, trucks.truckCost));
+    };
     trucks = {
-        truckQty: ko.observable(''),
-        truckCost: ko.observable(''),
-        truckDesc: ko.observable('')
+        truckQty: ko.observable('')
+            .extend({required: true})
+            .extend({number: true}),
+        truckCost: ko.observable('')
+            .extend({required: true})
+            .extend({number: true}),
+        truckDesc: ko.observable('').extend({required: true})
     };
 };
 var truckEditPage = function (params) {
@@ -483,9 +545,13 @@ var toolsAddPage = function (params) {
         toolList.push(new toolObject(tools.toolQty,tools.toolRate,tools.toolDesc));
     };
     tools = {
-        toolQty: ko.observable(''),
-        toolRate: ko.observable(''),
-        toolDesc: ko.observable('')
+        toolQty: ko.observable('')
+            .extend({required: true})
+            .extend({number: true}),
+        toolRate: ko.observable('')
+            .extend({required: true})
+            .extend({number: true}),
+        toolDesc: ko.observable('').extend({required: true})
     };
 };
 var toolsEditPage = function (params) {
@@ -511,8 +577,10 @@ var thirdPartyAddPage = function (params) {
     };
     thirdParty = {
         thirdPartyDate: ko.observable(''),
-        thirdPartyCost: ko.observable(''),
-        thirdPartyDesc: ko.observable('')
+        thirdPartyCost: ko.observable('')
+            .extend({required: true})
+            .extend({number: true}),
+        thirdPartyDesc: ko.observable('').extend({required: true})
     };
 };
 var thirdPartyEditPage = function (params) {
@@ -591,7 +659,6 @@ var viewWorkDaysPage = function (params) {
 var invoicePage = function (params) {
 
 };
-
 
 var KnockoutController = function(config) {
     var defaults = {
@@ -873,7 +940,6 @@ var MyApp = function() {
 $(document).ready(function () {
     var app = new MyApp();
     ko.applyBindings(app);
-
 });
 
 // testing kelvin's github with gpg
