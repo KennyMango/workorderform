@@ -1,3 +1,4 @@
+
 var supplierList = ko.observableArray([]);
 var truckList = ko.observableArray([]);
 var toolList = ko.observableArray([]);
@@ -15,7 +16,8 @@ var thirdPartyEdit;
 var equipmentEdit;
 var workDaysEdit;
 
-var newUnit = true;
+var equipLoad;
+var navigatePage;
 
 var supplierIndex;
 var unitIndex;
@@ -146,6 +148,36 @@ var supplierNameData = [
     {supplierName: "Daikin"}
 ];
 
+var equipmentOne = {
+    buildingSpace: "13",
+    equipmentName: "Unit SR",
+    equipmentMakeModel: "XPS 310",
+    equipmentNum: "138-13",
+    equipmentCost: "55",
+    equipmentStatus: "green",
+    equipmentDetails: "Red base, Black trim.",
+    equipmentNotes: "None.",
+    equipmentImages: "_"
+}
+
+var equipmentTwo = {
+    buildingSpace: "14",
+    equipmentName: "Unit RS",
+    equipmentMakeModel: "XPS 311",
+    equipmentNum: "1438-13",
+    equipmentCost: "55",
+    equipmentStatus: "green",
+    equipmentDetails: "Red base, Black trim.",
+    equipmentNotes: "None.",
+    equipmentImages: "_"
+}
+
+var equipmentOptions = [
+    {item: equipmentOne, name: equipmentOne.equipmentName},
+    {item: equipmentTwo, name: equipmentTwo.equipmentName}
+]
+
+
 supplierObject = function(supplierName, unitList) {
     self = this;
     self.selectedSupplier = supplierName;
@@ -157,7 +189,7 @@ unitObject = function (qty,cost,desc) {
     self.unitCost = cost;
     self.unitDesc = desc;
 };
-truckObject = function (qty,cost,desc) {
+truckObject = function (qty,desc,cost) {
     self = this;
     self.truckQty = qty;
     self.truckCost = cost;
@@ -201,6 +233,39 @@ workDaysObject = function(date,technician,reghrs,overtime,doubletime,totalhrs,ra
     self.labour = labour;
 
 };
+var supplierList = ko.observableArray([]);
+var truckList = ko.observableArray([]);
+var toolList = ko.observableArray([]);
+var thirdPartyList = ko.observableArray([]);
+var equipList = ko.observableArray([new equipmentObject()]);
+var workList = ko.observableArray([]);
+
+var totalTruckCost = ko.computed(function () {
+    var total = 0;
+    for (var i = 0; i < truckList().length; i++) {
+        total += (parseInt(truckList()[i].truckQty()) * parseInt(truckList()[i].truckCost()));
+    }
+
+    return (total ? " $" + total.toFixed(2) : " 0");
+});
+
+var totalToolCost = ko.computed(function () {
+    var total = 0;
+    for (var i = 0; i < toolList().length; i++) {
+        total += (parseInt(toolList()[i].toolQty()) * parseInt(toolList()[i].toolRate()));
+    }
+
+    return (total ? " $" + total.toFixed(2) : " 0");
+});
+
+var totalThirdPartyCost = ko.computed(function () {
+    var total = 0;
+    for (var i = 0; i < thirdPartyList().length; i++) {
+        total += parseInt(thirdPartyList()[i].thirdPartyCost());
+    }
+
+    return (total ? " $" + total.toFixed(2) : " 0");
+});
 
 var mainPage = function(params) {
 
@@ -220,6 +285,7 @@ var dispatchPage = function (params) {
     self = this;
     self.buildingList = ko.observableArray();
 
+    console.log(dispatchData.workDate());
     self.submit = function () {
 
         // $.post("http://127.0.0.1:3000/customer", self.dispatchData, function(returnedData) {
@@ -249,29 +315,29 @@ var dispatchPage = function (params) {
 };
 
 var dispatchEditPage = function (params) {
-
+    console.log(dispatchData.workDate);
 };
 
 
 var equipmentForm = function (params) {
     self = this;
     self.save = function () {
-        equipList.push(new equipmentObject(equipment.buildingSpace,equipment.equipmentName,equipment.equipmentMakeModel,equipment.equipmentNum,equipment.equipmentCost,
-            equipment.equipmentStatus,equipment.equipmentDetails,equipment.equipmentNotes,equipment.equipmentImages));
-
-        equipmentNameList.push({name: equipment.equipmentName});
-
-        equipment = {
-            buildingSpace: '',
-            equipmentName: '',
-            equipmentMakeModel: '',
-            equipmentNum: '',
-            equipmentCost: '',
-            equipmentStatus: '',
-            equipmentDetails: '',
-            equipmentNotes: '',
-            equipmentImages: ''
-        };
+        // equipList.push(new equipmentObject(equipment.buildingSpace,equipment.equipmentName,equipment.equipmentMakeModel,equipment.equipmentNum,equipment.equipmentCost,
+        //     equipment.equipmentStatus,equipment.equipmentDetails,equipment.equipmentNotes,equipment.equipmentImages));
+        //
+        // equipmentNameList.push({name: equipment.equipmentName});
+        //
+        // equipment = {
+        //     buildingSpace: '',
+        //     equipmentName: '',
+        //     equipmentMakeModel: '',
+        //     equipmentNum: '',
+        //     equipmentCost: '',
+        //     equipmentStatus: '',
+        //     equipmentDetails: '',
+        //     equipmentNotes: '',
+        //     equipmentImages: ''
+        // };
 
         // $.post("http://127.0.0.1:3000/equipment/1", self.equipment, function(returnedData) {
         //     console.log(returnedData)
@@ -301,14 +367,37 @@ var equipmentFormEdit = function (params) {
         equipList()[equipmentIndex] = equipmentEdit;
     }
 };
-
+var test = test;
 var equipmentPage = function (params) {
 
     self = this;
-
     self.edit = function(index) {
         equipmentIndex = index;
         equipmentEdit = equipList()[equipmentIndex];
+    };
+    self.remove = function (index) {
+        equipList.remove(index);
+    };
+    self.add = function () {
+        equipList.push(new equipmentObject());
+    };
+    self.getIndex = function (index) {
+        equipmentIndex = index
+    };
+    self.confirm = function (index) {
+        equipList.remove(index);
+        equipList.push(new equipmentObject(equipLoad.buildingSpace,equipLoad.equipmentName,equipLoad.equipmentMakeModel,equipLoad.equipmentNum,equipLoad.equipmentCost,equipLoad.equipmentStatus,equipLoad.equipmentDetails,equipLoad.equipmentNotes,equipLoad.equipmentImages));
+        // index.buildingSpace = equipLoad.buildingSpace;
+        // index.equipmentName = equipLoad.equipmentName;
+        // index.equipmentMakeModel = equipLoad.equipmentMakeModel;
+        // index.equipmentNum = equipLoad.equipmentNum;
+        // index.equipmentCost = equipLoad.equipmentCost;
+        // index.equipmentStatus = equipLoad.equipmentStatus;
+        // index.equipmentDetails = equipLoad.equipmentDetails;
+        // index.equipmentNotes = equipLoad.equipmentNotes;
+        // index.equipmentImages = equipLoad.equipmentImages;
+        navigatePage = 3;
+
     };
 
     // $( document ).ready(function() {
@@ -361,6 +450,9 @@ var purchasePage = function (params) {
         supplierIndex = index;
         supplierEdit = supplierList()[supplierIndex];
     };
+    self.removeSupplier = function (index) {
+        supplierList.remove(index);
+    }
 };
 var purchaseAddPage = function (params) {
     self = this;
@@ -374,7 +466,10 @@ var purchaseAddPage = function (params) {
     self.editUnit = function (index) {
         unitIndex = index;
         unitEdit = supplierData.unitList()[unitIndex];
-        newUnit = true;
+         navigatePage= 0;
+    };
+    self.removeUnit = function (index) {
+        supplierData.unitList.remove(index);
     }
 };
 var purchaseEditPage = function (params) {
@@ -385,7 +480,10 @@ var purchaseEditPage = function (params) {
     self.editUnit = function (index) {
         unitIndex = index;
         unitEdit = supplierEdit.unitList()[unitIndex];
-        newUnit = false;
+        navigatePage = 1;
+    }
+    self.removeUnit = function (index) {
+        supplierEdit.unitList.remove(index);
     }
 };
 var unitPage = function (params) {
@@ -406,13 +504,27 @@ var unitPage = function (params) {
 var unitEditPage = function (params) {
     self = this;
     self.updateUnit = function () {
-        if (newUnit == true) {
+        if (navigatePage == 0) {
             supplierData.unitList()[unitIndex] = unitEdit;
         }
-        else if (newUnit == false) {
+        else if (navigatePage == 1) {
             supplierEdit.unitList()[unitIndex] = unitEdit;
         }
     };
+};
+var loadPage = function (params) {
+    self = this;
+    self.loadPage;
+    if (navigatePage == 0){
+        self.loadPage = 'purchaseAdd-page';
+    }
+    else if (navigatePage == 1){
+        self.loadPage = 'purchaseEdit-page';
+    }
+    else if (navigatePage == 2){
+        self.loadPage = 'truck-page';
+    }
+
 };
 truckPage = function (params) {
     self = this;
@@ -421,13 +533,17 @@ truckPage = function (params) {
         truckEdit = truckList()[truckIndex];
     };
 
+    self.removeTruck = function (index) {
+        truckList.remove(index);
+    }
+
 };
 var truckAddPage = function (params) {
     self = this;
-    self.addTruck = function () {
-        truckList.push(new truckObject(trucks.truckQty,trucks.truckCost,trucks.truckDesc));
-    };
 
+    self.addTruck = function () {
+        truckList.push(new truckObject(trucks.truckQty, trucks.truckDesc, trucks.truckCost));
+    };
     trucks = {
         truckQty: ko.observable('')
             .extend({required: true})
@@ -446,11 +562,14 @@ var truckEditPage = function (params) {
 };
 var toolsPage = function (params) {
     self = this;
-
     self.editTool = function(index) {
         toolsIndex = index;
         toolsEdit = toolList()[toolsIndex];
     };
+    self.removeTool = function (index) {
+        toolList.remove(index)
+    };
+
 };
 var toolsAddPage = function (params) {
     self = this;
@@ -475,10 +594,12 @@ var toolsEditPage = function (params) {
 };
 var thirdPartyPage = function (params) {
     self = this;
-
     self.editThirdParty = function(index) {
         thirdPartyIndex = index;
         thirdPartyEdit = thirdPartyList()[thirdPartyIndex];
+    };
+    self.removeThirdParty = function (index) {
+        thirdPartyList.remove(index);
     };
 };
 var thirdPartyAddPage = function (params) {
@@ -546,6 +667,9 @@ var viewWorkDaysPage = function (params) {
         workDaysIndex = index;
         workDaysEdit = workList()[workDaysIndex];
     };
+    self.removeWorkDay = function (index) {
+        workList.remove(index);
+    }
     // $( document ).ready(function() {
     //     $.ajax({
     //         type: 'GET',
@@ -701,6 +825,14 @@ var MyApp = function() {
                     template: {element: "unitEdit-page"}
                 },
                 routes: ["/unitEdit"]
+            },
+            {
+                name: "LoadPage",
+                componentConfig: {
+                    viewModel: loadPage,
+                    template: {element: "load-page"}
+                },
+                routes: ["/loadPage"]
             },
             {
                 name: "Trucks",
