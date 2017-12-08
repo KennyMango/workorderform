@@ -5,6 +5,7 @@ var thirdPartyList = ko.observableArray([]);
 var equipList = ko.observableArray([]);
 var workList = ko.observableArray([]);
 var equipmentNameList = ko.observableArray([]);
+var text = 'text'
 
 var supplierEdit;
 var unitEdit;
@@ -227,37 +228,22 @@ var dispatchPage = function (params) {
 
     };
 
-    self.loadJson = function () {
 
-        $.ajax({
-            type: 'GET',
-            url: 'http://127.0.0.1: 3000/buildings/1',
-            contentType: "application/javascript",
-            dataType: "jsonp",
-            success: function(data) {
-                console.log(data);
-                console.log(ko.mapping.fromJS(data));
-                var array = ko.mapping.fromJS(data);
-                self.buildingList(array);
-            },
-            error:function(jq, st, error){
-                alert(error);
+    jQuery.ajax({
+        url: "https://www.builtspace.com/sites/bcitproject/_vti_bin/listdata.svc/OrganizationBuildings",
+        type: "GET",
+        async: false,
+        headers: { "Accept": "application/json;odata=verbose" },
+        success: function (data) {
+            if (data.d) {
+                if (data.d.results){
+                    self.buildingList = data.d.results[0]
+                }
+                else
+                    console.log('error')
             }
-        });
-
-        // self.removeBuilding = function () {
-        //     $.ajax({
-        //         method: 'DELETE',
-        //         url: 'http://localhost:3000/users/12',
-        //         headers: {
-        //             'Content-Type': 'application/json'
-        //         },
-        //         error:function(jq, st, error){
-        //             alert(error);
-        //         }
-        //     });
-        // }
-    };
+        }
+    });
 
 
 };
@@ -645,14 +631,6 @@ var MyApp = function() {
                 routes: ["/dispatch"]
             },
             {
-                name: "DispatchEdit",
-                componentConfig: {
-                    viewModel: dispatchEditPage,
-                    template: {element: "dispatchEdit-page"}
-                },
-                routes: ["/dispatchEdit"]
-            },
-            {
                 name: "Materials",
                 componentConfig: {
                     viewModel: materialsPage,
@@ -851,7 +829,31 @@ var MyApp = function() {
     });
 };
 
+$(document).on('click','.navbar-collapse.in',function(e) {
+    if( $(e.target).is('a') && $(e.target).attr('class') != 'dropdown-toggle' ) {
+        $(this).collapse('hide');
+    }
+});
+
 $(document).ready(function () {
+
+    jQuery.ajax({
+        url: "https://www.builtspace.com/sites/bcitproject/_vti_bin/listdata.svc/ServiceWorkOrder",
+        type: "GET",
+        async: false,
+        headers: { "Accept": "application/json;odata=verbose" },
+        success: function (data) {
+            if (data.d) {
+                if (data.d.results){
+                    console.log(data.d.results[0])
+                    console.log(ko.toJSON(data.d.results[0]));
+                }
+                else
+                    console.log('error')
+            }
+        }
+    });
+
     var app = new MyApp();
     ko.applyBindings(app);
 });

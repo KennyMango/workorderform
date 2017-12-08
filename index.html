@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html >
 <head>
@@ -5,7 +6,7 @@
   <title>BuiltSpace</title>
 
 
-  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -31,50 +32,39 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/knockout-validation/2.0.3/knockout.validation.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/knockout-validation/2.0.3/knockout.validation.min.js'></script>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed pull-left" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#/">BuiltSpace</a>
-          <span class="navbar-text pull-right">
-                Status:
-          </span>
-          <span class="navbar-text pull-right">
-                Category:
-          </span>
-          <span class="navbar-text pull-right">
-                WO Number:
-          </span>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#/dispatch">Dispatch & Scheduling</a></li>
-            <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#/equipment">Equipment</a></li>
-            <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#/materials">Materials & Tools</a></li>
-            <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#/viewWorkDays">Work Days</a></li>
-            <!--<li><a href="#">Enter Hours</a></li>-->
-            <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#/invoice">Invoice View</a></li>
-          </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-      </div>
-      <!-- /.container-fluid -->
-    </nav>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#/">BuiltSpace</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="#/dispatch">Dispatch & Scheduling</a></li>
+        <li><a href="#/equipment">Equipment</a></li>
+        <li><a href="#/materials">Materials & Tools</a></li>
+        <li><a href="#/viewWorkDays">Work Days</a></li>
+        <li><a href="#/invoice">Invoice View</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a>WO Number:</a></li>
+        <li><a>Category:</a></li>
+        <li><a>Status:</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
 
-  <div class="view-container" data-bind="component: {
+<div class="view-container" data-bind="component: {
         name: controller.viewName,
         params: controller.viewParams },
     css: {'is-transitioning': controller.isTransitioning}">
-  </div>
+</div>
 
 
 
@@ -114,193 +104,147 @@
 
 </template>
 
+
 <template id ="dispatch-page">
 
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-4"></div>
-      <div class="col-lg-4">
-        <ol class="breadcrumb breadcrumb-arrow bread-nav">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Dispatch</a></li>
-          <!--<li><a href="#">Equipment</a></li>-->
-          <!--<li><a href="#">Materials & Tools</a></li>-->
-          <!--<li><a href="#">WorkDays</a></li>-->
-          <!--<li><a href="#">Invoice</a></li>-->
-        </ol>
-      </div>
-      <div class="col-lg-4"></div>
-    </div>
-  </div>
 
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-4"></div>
-      <ul class="accordion-menu col-sm-12 col-lg-4">
-        <li class="open">
-          <header  onclick="toggle(this.parentNode)"><span class="title">Building Information</span></header>
-          <section class="content">
-            <div class="container-fluid">
-              <div class="row">
-                <form role="form">
-                  <div>
-                    <div class="form-group">
-                      <label for="building-name">BUILDING NAME</label>
-                      <div class="alert alert-success" id ="building-name">
-                        <strong>BUILDING NAME</strong>
+      <div class="col-lg-12">
+        <ul class="accordion-menu">
+          <li class="open">
+            <header  onclick="toggle(this.parentNode)"><span class="title">Building Information</span></header>
+            <section class="content">
+              <div class="container-fluid">
+                <div class="row">
+                  <form role="form">
+                    <div>
+                      <div class="form-group">
+                        <label for="building-name">BUILDING NAME</label>
+                        <div class="alert alert-success" id ="building-name">
+                          <strong data-bind="text: $component.buildingList.BuildingName"></strong>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="building-address">BUILDING ADDRESS</label>
+                        <div class="alert alert-success" id ="building-address">
+                          <strong data-bind="text: $component.buildingList.Address">ADDRESS</strong>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="building-city">BUILDING CITY</label>
+                        <div class="alert alert-success" id ="building-city">
+                          <strong data-bind="text: $component.buildingList.City">CITY</strong>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="building-province">BUILDING PROVINCE</label>
+                        <div class="alert alert-success" id ="building-province">
+                          <strong data-bind="text: $component.buildingList.ProvinceState">PROVINCE</strong>
+                        </div>
                       </div>
                     </div>
-                    <div class="form-group">
-                      <label for="building-address">BUILDING ADDRESS</label>
-                      <div class="alert alert-success" id ="building-address">
-                        <strong>ADDRESS</strong>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="building-city">BUILDING CITY</label>
-                      <div class="alert alert-success" id ="building-city">
-                        <strong>CITY</strong>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="building-province">BUILDING PROVINCE</label>
-                      <div class="alert alert-success" id ="building-province">
-                        <strong>PROVINCE</strong>
-                      </div>
-                    </div>
-                  </div>
-                </form>
+                  </form>
+                </div>
               </div>
-            </div>
-          </section>
-        </li>
-        <li class="closed">
-          <header  onclick="toggle(this.parentNode)"><span class="title">Contact Information</span></header>
-          <section class="content">
-            <div class="container">
-              <div class="row">
-                <form role="form">
-                  <div class="col-lg-6">
-                    <div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
-                    <div class="form-group form-group-lg">
-                      <label for="InputName">Enter Customer Name</label>
-                      <div class="input-group">
-                      <span data-bind="text: dispatchData.custName" class="title" name="InputName" id="InputName" placeholder="Enter Name" required></span>
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+            </section>
+          </li>
+          <li class="closed">
+            <header  onclick="toggle(this.parentNode)"><span class="title">Contact Information</span></header>
+            <section class="content">
+              <div class="container-fluid">
+                <div class="row">
+                  <form role="form">
+                    <div>
+                      <div class="form-group form-group-lg">
+                        <label for="InputNameEdit">Enter Customer Name</label>
+                        <input data-bind="value: dispatchData.custName" type="text" class="form-control" name="InputName" id="InputNameEdit" placeholder="Enter Name" required>
                       </div>
-                    </div>
-                    <div class="form-group form-group-lg">
-                      <label for="InputPOnum">Enter Customer P.O.#</label>
-                      <div class="input-group">
-                        <span data-bind="text: dispatchData.custPO" class="title" id="InputPOnum" name="InputPO" placeholder="Enter P.O.#" required></span>
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                      <div class="form-group form-group-lg">
+                        <label for="InputPOnumEdit">Enter Customer P.O.#</label>
+                        <input data-bind="value: dispatchData.custPO" type="text" class="form-control" id="InputPOnumEdit" name="InputPO" placeholder="Enter P.O.#" required>
                       </div>
-                    </div>
-                    <div class="form-group form-group-lg">
-                      <label for="InputEmail">Enter Customer Email</label>
-                      <div class="input-group">
-                        <span data-bind="text: dispatchData.custEmail" class="title" id="InputEmail" name="InputEmail" placeholder="Confirm Email" required></span>
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                      <div class="form-group form-group-lg">
+                        <label for="InputEmailEdit">Enter Customer Email</label>
+                        <input data-bind="value: dispatchData.custEmail" type="email" class="form-control" id="InputEmailEdit" name="InputEmail" placeholder="Confirm Email" required>
                       </div>
-                    </div>
-                    <div class="form-group form-group-lg">
-                      <label for="InputMessage">Enter Customer Notes</label>
-                      <div class="input-group">
-                        <span data-bind="text: dispatchData.custNotes" name="InputMessage" id="InputMessage" class="title" rows="5" required></span>
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                      <div class="form-group form-group-lg">
+                        <label for="InputMessageEdit">Enter Customer Notes</label>
+                        <textarea data-bind="value: dispatchData.custNotes" name="InputMessage" id="InputMessageEdit" class="form-control" rows="5" required></textarea>
                       </div>
-                    </div>
-                    <div class="form-group form-group-lg">
-                      <label for="InputRequestedBy">Requested By</label>
-                      <div class="input-group">
-                        <span data-bind="text: dispatchData.requestBy" name="InputRequestedBy" id="InputRequestedBy" class="title" rows="5" required></span>
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                      <div class="form-group form-group-lg">
+                        <label for="InputRequestedByEdit">Requested By</label>
+                        <input data-bind="value: dispatchData.requestBy" name="InputRequestedBy" id="InputRequestedByEdit" class="form-control" rows="5" required>
                       </div>
-                    </div>
-                    <div class="form-group form-group-lg">
-                      <label for="InputOnSite">On-Site Contact:</label>
-                      <div class="input-group">
-                        <span data-bind="text: dispatchData.contOnSite" name="InputOnSite" id="InputOnSite" class="title" rows="5" required></span>
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                      <div class="form-group form-group-lg">
+                        <label for="InputOnSiteEdit">On-Site Contact:</label>
+                        <input data-bind="value: dispatchData.contOnSite" name="InputOnSite" id="InputOnSiteEdit" class="form-control" rows="5" required>
                       </div>
-                    </div>
-                    <div class="form-group form-group-lg">
-                      <label for="InputCPhone">Contact Phone Number:</label>
-                      <div class="input-group">
-                        <span data-bind="text: dispatchData.contPhone" name="InputCPhone" id="InputCPhone" class="title" rows="5" required></span>
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                      <div class="form-group form-group-lg">
+                        <label for="InputCPhoneEdit">Contact Phone Number:</label>
+                        <input data-bind="value: dispatchData.contPhone" name="InputCPhone" id="InputCPhoneEdit" class="form-control" rows="5" required>
                       </div>
-                    </div>
-                    <div class="form-group form-group-lg">
-                      <label for="InputCEmail">Contact Email Address</label>
-                      <div class="input-group">
-                        <span data-bind="text: dispatchData.contEmail" name="InputCEmail" id="InputCEmail" class="title" rows="5" required></span>
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+                      <div class="form-group form-group-lg">
+                        <label for="InputCEmailEdit">Contact Email Address</label>
+                        <input data-bind="value: dispatchData.contEmail" name="InputCEmail" id="InputCEmailEdit" class="form-control" rows="5" required>
                       </div>
-                    </div>
-                    <div class="form-group">
-                      <label>Attach File</label>
-                      <div class="input-group">
+                      <div class="form-group">
+                        <label>Attach File</label>
+                        <div class="input-group">
                         <span class="input-group-btn">
                             <span class="btn btn-default btn-file">
-                                Browse…<input type="file" id="fileInp">
+                                Browse…<input type="file" id="fileInpEdit">
                             </span>
                          </span>
-                        <input type="text" class="form-control" readonly>
+                          <input type="text" class="form-control" readonly>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </form>
+                  </form>
+                </div>
               </div>
-            </div>
-          </section>
-        </li>
-        <li class="closed">
-          <header  onclick="toggle(this.parentNode)"><span class="title">Schedule Information</span></header>
-          <section class="content">
-            <div class="container">
-              <div class="row">
-                <form role="form">
-                  <div class="col-lg-6">
-                    <div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
-                    <div class="form-group form-group-lg">
-                      <label for="InputWorkDate">Work Date</label>
-                      <div class="input-group">
-                        <span data-bind="text: dispatchData.workDate" class="title" id="InputWorkDate" placeholder="Scheduled Work Date" name="workDate"></span>
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+            </section>
+          </li>
+          <li class="closed">
+            <header  onclick="toggle(this.parentNode)"><span class="title">Schedule Information</span></header>
+            <section class="content">
+              <div class="container-fluid">
+                <div class="row">
+                  <form role="form">
+                    <div>
+                      <div class="form-group form-group-lg">
+                        <label for="InputWorkDateEdit">Work Date</label>
+                        <div class="input-group">
+                          <input data-bind="value: dispatchData.workDate" type="date" class="form-control" id="InputWorkDateEdit" placeholder="Scheduled Work Date" name="workDate">
+                        </div>
+                      </div>
+                      <div class="form-group form-group-lg">
+                        <label for="InputStartEdit">Start Date</label>
+                        <div class="input-group">
+                          <input data-bind="value: dispatchData.startDate" type="date" class="form-control" id="InputStartEdit" placeholder="Scheduled Start Date" name="startDate">
+                        </div>
+                      </div>
+                      <div class="form-group form-group-lg">
+                        <label for="InputEndEdit">End Date</label>
+                        <div class="input-group">
+                          <input data-bind="value: dispatchData.endDate" type="date" class="form-control" id="InputEndEdit" placeholder="Scheduled End Date" name="endDate">
+                        </div>
+                      </div>
+                      <div class="form-group form-group-lg">
+                        <label for="InputAssignEdit">Assign To</label>
+                        <div class="input-group">
+                          <input data-bind="value: dispatchData.assignedTo" type="text" class="form-control" id="InputAssignEdit" placeholder="Assigned To" name="assigned">
+                        </div>
                       </div>
                     </div>
-                    <div class="form-group form-group-lg">
-                      <label for="InputStart">Start Date</label>
-                      <div class="input-group">
-                        <span data-bind="text: dispatchData.startDate" class="title" id="InputStart" placeholder="Scheduled Start Date" name="startDate"></span>
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-                      </div>
-                    </div>
-                    <div class="form-group form-group-lg">
-                      <label for="InputEnd">End Date</label>
-                      <div class="input-group">
-                        <span data-bind="text: dispatchData.endDate" type="date" class="title" id="InputEnd" placeholder="Scheduled End Date" name="endDate"></span>
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-                      </div>
-                    </div>
-                    <div class="form-group form-group-lg">
-                      <label for="InputAssign">Assign To</label>
-                      <div class="input-group">
-                        <span data-bind="text: dispatchData.assignedTo" type="text" class="title" id="InputAssign" placeholder="Assigned To" name="assigned"></span>
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-                      </div>
-                    </div>
-                  </div>
-                </form>
+                  </form>
+                </div>
               </div>
-            </div>
-          </section>
-        </li>
-        <li class="closed">
-          <header onclick="location.href='#/dispatchEdit'"><span class="title">Edit</span></header>
-        </li>
-      </ul>
+            </section>
+          </li>
+        </ul>
+      </div>
       <div class="col-lg-4"></div>
     </div>
     <div class="row">
@@ -330,248 +274,24 @@
   </div>
 </template>
 
-
-<template id ="dispatchEdit-page">
-
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-4"></div>
-      <div class="col-lg-4">
-        <ol class="breadcrumb breadcrumb-arrow bread-nav">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Dispatch</a></li>
-          <!--<li><a href="#">Equipment</a></li>-->
-          <!--<li><a href="#">Materials & Tools</a></li>-->
-          <!--<li><a href="#">WorkDays</a></li>-->
-          <!--<li><a href="#">Invoice</a></li>-->
-        </ol>
-      </div>
-      <div class="col-lg-4"></div>
-    </div>
-  </div>
-
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-lg-4"></div>
-    <ul class="accordion-menu col-sm-12 col-lg-4">
-      <li class="open">
-        <header  onclick="toggle(this.parentNode)"><span class="title">Building Information</span></header>
-        <section class="content">
-          <div class="container-fluid">
-            <div class="row">
-              <form role="form">
-                <div>
-                  <div class="form-group">
-                    <label for="building-nameEdit">BUILDING NAME</label>
-                    <div class="alert alert-success" id ="building-nameEdit">
-                      <strong>BUILDING NAME</strong>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="building-addressEdit">BUILDING ADDRESS</label>
-                    <div class="alert alert-success" id ="building-addressEdit">
-                      <strong>ADDRESS</strong>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="building-cityEdit">BUILDING CITY</label>
-                    <div class="alert alert-success" id ="building-cityEdit">
-                      <strong>CITY</strong>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="building-provinceEdit">BUILDING PROVINCE</label>
-                    <div class="alert alert-success" id ="building-provinceEdit">
-                      <strong>PROVINCE</strong>
-                    </div>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </section>
-      </li>
-      <li class="closed">
-        <header  onclick="toggle(this.parentNode)"><span class="title">Contact Information</span></header>
-        <section class="content">
-          <div class="container">
-            <div class="row">
-              <form role="form">
-                <div class="col-lg-6">
-                  <div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
-                  <div class="form-group form-group-lg">
-                    <label for="InputNameEdit">Enter Customer Name</label>
-                    <div class="input-group">
-                      <input data-bind="value: dispatchData.custName" type="text" class="form-control" name="InputName" id="InputNameEdit" placeholder="Enter Name" required>
-                    </div>
-                  </div>
-                  <div class="form-group form-group-lg">
-                    <label for="InputPOnumEdit">Enter Customer P.O.#</label>
-                    <div class="input-group">
-                      <input data-bind="value: dispatchData.custPO" type="text" class="form-control" id="InputPOnumEdit" name="InputPO" placeholder="Enter P.O.#" required>
-                    </div>
-                  </div>
-                  <div class="form-group form-group-lg">
-                    <label for="InputEmailEdit">Enter Customer Email</label>
-                    <div class="input-group">
-                      <input data-bind="value: dispatchData.custEmail" type="email" class="form-control" id="InputEmailEdit" name="InputEmail" placeholder="Confirm Email" required>
-                    </div>
-                  </div>
-                  <div class="form-group form-group-lg">
-                    <label for="InputMessageEdit">Enter Customer Notes</label>
-                    <div class="input-group">
-                      <textarea data-bind="value: dispatchData.custNotes" name="InputMessage" id="InputMessageEdit" class="form-control" rows="5" required></textarea>
-                    </div>
-                  </div>
-                  <div class="form-group form-group-lg">
-                    <label for="InputRequestedByEdit">Requested By</label>
-                    <div class="input-group">
-                      <input data-bind="value: dispatchData.requestBy" name="InputRequestedBy" id="InputRequestedByEdit" class="form-control" rows="5" required>
-                    </div>
-                  </div>
-                  <div class="form-group form-group-lg">
-                    <label for="InputOnSiteEdit">On-Site Contact:</label>
-                    <div class="input-group">
-                      <input data-bind="value: dispatchData.contOnSite" name="InputOnSite" id="InputOnSiteEdit" class="form-control" rows="5" required>
-                    </div>
-                  </div>
-                  <div class="form-group form-group-lg">
-                    <label for="InputCPhoneEdit">Contact Phone Number:</label>
-                    <div class="input-group">
-                      <input data-bind="value: dispatchData.contPhone" name="InputCPhone" id="InputCPhoneEdit" class="form-control" rows="5" required>
-                    </div>
-                  </div>
-                  <div class="form-group form-group-lg">
-                    <label for="InputCEmailEdit">Contact Email Address</label>
-                    <div class="input-group">
-                      <input data-bind="value: dispatchData.contEmail" name="InputCEmail" id="InputCEmailEdit" class="form-control" rows="5" required>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label>Attach File</label>
-                    <div class="input-group">
-                        <span class="input-group-btn">
-                            <span class="btn btn-default btn-file">
-                                Browse…<input type="file" id="fileInpEdit">
-                            </span>
-                         </span>
-                      <input type="text" class="form-control" readonly>
-                    </div>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </section>
-      </li>
-      <li class="closed">
-        <header  onclick="toggle(this.parentNode)"><span class="title">Schedule Information</span></header>
-        <section class="content">
-          <div class="container">
-            <div class="row">
-              <form role="form">
-                <div class="col-lg-6">
-                  <div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
-                  <div class="form-group form-group-lg">
-                    <label for="InputWorkDateEdit">Work Date</label>
-                    <div class="input-group">
-                      <input data-bind="value: dispatchData.workDate" type="date" class="form-control" id="InputWorkDateEdit" placeholder="Scheduled Work Date" name="workDate">
-                      <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-                    </div>
-                  </div>
-                  <div class="form-group form-group-lg">
-                    <label for="InputStartEdit">Start Date</label>
-                    <div class="input-group">
-                      <input data-bind="value: dispatchData.startDate" type="date" class="form-control" id="InputStartEdit" placeholder="Scheduled Start Date" name="startDate">
-                      <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-                    </div>
-                  </div>
-                  <div class="form-group form-group-lg">
-                    <label for="InputEndEdit">End Date</label>
-                    <div class="input-group">
-                      <input data-bind="value: dispatchData.endDate" type="date" class="form-control" id="InputEndEdit" placeholder="Scheduled End Date" name="endDate">
-                      <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-                    </div>
-                  </div>
-                  <div class="form-group form-group-lg">
-                    <label for="InputAssignEdit">Assign To</label>
-                    <div class="input-group">
-                      <input data-bind="value: dispatchData.assignedTo" type="text" class="form-control" id="InputAssignEdit" placeholder="Assigned To" name="assigned">
-                    </div>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </section>
-      </li>
-      <li class="closed">
-        <header onclick="location.href='#/dispatch'"><span class="title">Update</span></header>
-      </li>
-    </ul>
-    <div class="col-lg-4"></div>
-  </div>
-  <div class="row">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4"></div>
-        <div class="col-lg-4">
-          <nav>
-            <ul class="pagination pagination-lg">
-              <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1">Previous</a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item"><a class="page-link" href="#">4</a></li>
-              <li class="page-item">
-                <a class="page-link" href="#">Next</a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-        <div class="col-lg-4"></div>
-      </div>
-    </div>
-  </div>
-</div>
-</template>
-
 <template id ="materials-page">
-    
+
+
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-4"></div>
-      <div class="col-lg-4">
-        <ol class="breadcrumb breadcrumb-arrow bread-nav">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Dispatch</a></li>
-          <li><a href="#">Equipment</a></li>
-          <li><a href="#">Materials & Tools</a></li>
-          <!--<li><a href="#">WorkDays</a></li>-->
-          <!--<li><a href="#">Invoice</a></li>-->
-        </ol>
-      </div>
-      <div class="col-lg-4"></div>
+      <ul class="accordion-menu col-sm-12 col-lg-4">
+        <li class="closed">
+          <header onclick="location.href='#/purchase'"><span class="title">Purchase Orders</span></header>
+          <header onclick="location.href='#/trucks'"><span class="title">Truck Stock</span></header>
+          <header onclick="location.href='#/tools'"><span class="title">Tools Used</span></header>
+          <header onclick="location.href='#/thirdParty'"><span class="title">Third Party Outsource Work</span></header>
+          <header onclick="location.href='#/quotedWork'"><span class="title">Quoted Work</span></header>
+        </li>
+      </ul>
     </div>
+    <div class ="col-lg-4"></div>
   </div>
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-4"></div>
-            <ul class="accordion-menu col-sm-12 col-lg-4">
-                <li class="closed">
-                    <header onclick="location.href='#/purchase'"><span class="title">Purchase Orders</span></header>
-                    <header onclick="location.href='#/trucks'"><span class="title">Truck Stock</span></header>
-                    <header onclick="location.href='#/tools'"><span class="title">Tools Used</span></header>
-                    <header onclick="location.href='#/thirdParty'"><span class="title">Third Party Outsource Work</span></header>
-                    <header onclick="location.href='#/quotedWork'"><span class="title">Quoted Work</span></header>
-                </li>
-            </ul>
-            </div>
-        <div class ="col-lg-4"></div>
-    </div>
 
   <div class="container">
     <div class="row">
@@ -600,32 +320,32 @@
 </template>
 
 <template id ="purchase-page">
-<!--  <div class="vertical-center">-->
-    <div class="container">
-      <h1>Purchase Orders</h1>
-      <form action="">
-        <div class="form-group">
-          <h2>Supplier</h2><br>
-          <table>
-            <thead><tr>
-              <th>Supplier</th><th>Edit or <br/>Remove</th>
-            </tr></thead>
-            <tbody data-bind="foreach: supplierList">
-                  <tr>
-                    <td><header><span class="title" data-bind="text: selectedSupplier"></span></header></td>
-                    <td><header onclick="location.href='#/purchaseEdit'" data-bind="click: $component.editSupplier($index())"><span class="title">Edit</span></header></td>
-                  </tr>
-            </tbody>
-          </table>
-          <ul class="accordion-menu col-sm-12 col-lg-4">
-            <li class="closed">
-              <header onclick="location.href='#/purchaseAdd'"><span class="title">Add</span></header>
-            </li>
-          </ul>
-        </div>
-      </form>
-    </div>
-<!--  </div>-->
+  <!--  <div class="vertical-center">-->
+  <div class="container">
+    <h1>Purchase Orders</h1>
+    <form action="">
+      <div class="form-group">
+        <h2>Supplier</h2><br>
+        <table>
+          <thead><tr>
+            <th>Supplier</th><th>Edit or <br/>Remove</th>
+          </tr></thead>
+          <tbody data-bind="foreach: supplierList">
+          <tr>
+            <td><header><span class="title" data-bind="text: selectedSupplier"></span></header></td>
+            <td><header onclick="location.href='#/purchaseEdit'" data-bind="click: $component.editSupplier($index())"><span class="title">Edit</span></header></td>
+          </tr>
+          </tbody>
+        </table>
+        <ul class="accordion-menu col-sm-12 col-lg-4">
+          <li class="closed">
+            <header onclick="location.href='#/purchaseAdd'"><span class="title">Add</span></header>
+          </li>
+        </ul>
+      </div>
+    </form>
+  </div>
+  <!--  </div>-->
 </template>
 
 
@@ -741,22 +461,6 @@
 
 <template id ="unitEdit-page">
 
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-4"></div>
-      <div class="col-lg-4">
-        <ol class="breadcrumb breadcrumb-arrow bread-nav">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Dispatch</a></li>
-          <li><a href="#">Equipment</a></li>
-          <li><a href="#">Materials & Tools</a></li>
-          <!--<li><a href="#">WorkDays</a></li>-->
-          <!--<li><a href="#">Invoice</a></li>-->
-        </ol>
-      </div>
-      <div class="col-lg-4"></div>
-    </div>
-  </div>
 
   <!--  <div class="vertical-center">-->
   <div class="container">
@@ -765,24 +469,18 @@
       <div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
       <div class="form-group">
         <label for="unitQtyEdit">Quantity:</label>
-        <div class="input-group">
-          <input data-bind="value: unitsEdit.unitQty" type="text" class="form-control" id="unitQtyEdit" placeholder="Truck Quantity">
-          <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-        </div>
+        <input data-bind="value: unitsEdit.unitQty" type="text" class="form-control" id="unitQtyEdit" placeholder="Truck Quantity">
+        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
       </div>
       <div class="form-group">
         <label for="unitDescEdit">Description:</label>
-        <div class="input-group">
-          <input data-bind="value: unitsEdit.unitDesc" type="text" class="form-control" id="unitDescEdit" placeholder="Truck Description">
-          <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-        </div>
+        <input data-bind="value: unitsEdit.unitDesc" type="text" class="form-control" id="unitDescEdit" placeholder="Truck Description">
+        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
       </div>
       <div class="form-group">
         <label for="unitCostEdit">Unit Cost:</label>
-        <div class="input-group">
-          <input data-bind="value: unitsEdit.unitCost" type="text" class="form-control" id="unitCostEdit" placeholder="Truck Cost">
-          <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-        </div>
+        <input data-bind="value: unitsEdit.unitCost" type="text" class="form-control" id="unitCostEdit" placeholder="Truck Cost">
+        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
       </div>
       <ul class="accordion-menu col-sm-12 col-lg-4">
         <li class="closed">
@@ -798,35 +496,35 @@
 </template>
 
 <template id ="truck-page">
-<!--  <div class="vertical-center">-->
-    <div class="container">
-      <h1>Truck Stock</h1>
-      <form action="">
-        <div class="form-group">
-          <h2>Total Cost:</h2>
-          <table>
-            <thead><tr>
-                <th>Quantity</th><th>Description</th><th>Item Cost</th><th>Edit or <br/>Remove</th>
-            </tr></thead>
-            <tbody data-bind="foreach: truckList">
-            <tr>
-                <td data-bind="text: truckQty"></td>
-                <td data-bind="text: truckDesc"></td>
-                <td data-bind="text: truckCost"></td>
-                <td><span class="glyphicon glyphicon-pencil" style="margin-right: 20px" data-bind="click: $component.editTruck($index())" onclick="location.href='#/trucksEdit'"></span><span class="glyphicon glyphicon-trash alert-danger"></span></td>
-            </tr>
-            </tbody>
-          </table>
-            <ul class="accordion-menu col-sm-12 col-lg-12">
-                <li class="closed">
-                    <header onclick="location.href='#/trucksAdd'"><span class="title">Add</span></header>
-                    <header onclick="location.href='#/materials'"><span class="title">Back</span></header>
-                </li>
-            </ul>
-        </div>
-      </form>
-    </div>
-<!--  </div>-->
+  <!--  <div class="vertical-center">-->
+  <div class="container">
+    <h1>Truck Stock</h1>
+    <form action="">
+      <div class="form-group">
+        <h2>Total Cost:</h2>
+        <table>
+          <thead><tr>
+            <th>Quantity</th><th>Description</th><th>Item Cost</th><th>Edit or <br/>Remove</th>
+          </tr></thead>
+          <tbody data-bind="foreach: truckList">
+          <tr>
+            <td data-bind="text: truckQty"></td>
+            <td data-bind="text: truckDesc"></td>
+            <td data-bind="text: truckCost"></td>
+            <td><span class="glyphicon glyphicon-pencil" style="margin-right: 20px" data-bind="click: $component.editTruck($index())" onclick="location.href='#/trucksEdit'"></span><span class="glyphicon glyphicon-trash alert-danger"></span></td>
+          </tr>
+          </tbody>
+        </table>
+        <ul class="accordion-menu col-sm-12 col-lg-12">
+          <li class="closed">
+            <header onclick="location.href='#/trucksAdd'"><span class="title">Add</span></header>
+            <header onclick="location.href='#/materials'"><span class="title">Back</span></header>
+          </li>
+        </ul>
+      </div>
+    </form>
+  </div>
+  <!--  </div>-->
 </template>
 
 <template id ="truckAdd-page">
@@ -837,21 +535,15 @@
       <div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
       <div class="form-group">
         <label for="truckQty">Quantity:</label>
-        <div class="input-group">
-          <input data-bind="value: trucks.truckQty" type="text" class="form-control" id="truckQty" placeholder="Truck Quantity">
-        </div>
+        <input data-bind="value: trucks.truckQty" type="text" class="form-control" id="truckQty" placeholder="Truck Quantity">
       </div>
       <div class="form-group">
         <label for="truckDesc">Description:</label>
-        <div class="input-group">
-          <input data-bind="value: trucks.truckDesc" type="text" class="form-control" id="truckDesc" placeholder="Truck Description">
-        </div>
+        <input data-bind="value: trucks.truckDesc" type="text" class="form-control" id="truckDesc" placeholder="Truck Description">
       </div>
       <div class="form-group">
         <label for="truckCost">Item Cost:</label>
-        <div class="input-group">
-          <input data-bind="value: trucks.truckCost" type="text" class="form-control" id="truckCost" placeholder="Truck Cost">
-        </div>
+        <input data-bind="value: trucks.truckCost" type="text" class="form-control" id="truckCost" placeholder="Truck Cost">
       </div>
       <ul class="accordion-menu col-sm-12 col-lg-4">
         <li class="closed">
@@ -874,24 +566,18 @@
       <div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
       <div class="form-group">
         <label for="truckQtyEdit">Quantity:</label>
-        <div class="input-group">
-          <input data-bind="value: truckEdit.truckQty" type="text" class="form-control" id="truckQtyEdit" placeholder="Truck Quantity">
-          <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-        </div>
+        <input data-bind="value: truckEdit.truckQty" type="text" class="form-control" id="truckQtyEdit" placeholder="Truck Quantity">
+        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
       </div>
       <div class="form-group">
         <label for="truckDescEdit">Description:</label>
-        <div class="input-group">
-          <input data-bind="value: truckEdit.truckDesc" type="text" class="form-control" id="truckDescEdit" placeholder="Truck Description">
-          <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-        </div>
+        <input data-bind="value: truckEdit.truckDesc" type="text" class="form-control" id="truckDescEdit" placeholder="Truck Description">
+        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
       </div>
       <div class="form-group">
         <label for="truckCostEdit">Item Cost:</label>
-        <div class="input-group">
-          <input data-bind="value: truckEdit.truckCost" type="text" class="form-control" id="truckCostEdit" placeholder="Truck Cost">
-          <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-        </div>
+        <input data-bind="value: truckEdit.truckCost" type="text" class="form-control" id="truckCostEdit" placeholder="Truck Cost">
+        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
       </div>
       <ul class="accordion-menu col-sm-12 col-lg-4">
         <li class="closed">
@@ -907,73 +593,66 @@
 </template>
 
 <template id ="tools-page">
-<!--  <div class="vertical-center">-->
-    <div class="container">
-      <h1>Tools Used</h1>
-      <form action="">
-        <div class="form-group">
-          <h2>Total Cost:</h2>
-          <table>
-            <thead><tr>
-              <th>Quantity</th><th>Description</th><th>Rate</th><th>Edit or <br/>Remove</th>
-            </tr></thead>
-            <tbody data-bind="foreach: toolList">
-            <tr>
-              <td data-bind="text: toolQty"></td>
-              <td data-bind="text: toolDesc"></td>
-              <td data-bind="text: toolRate"></td>
-              <td><span class="glyphicon glyphicon-pencil" style="margin-right: 20px" data-bind="click: $component.editTool($index())" onclick="location.href='#/toolsEdit'"></span><span class="glyphicon glyphicon-trash alert-danger"></span></td>
-            </tr>
-            </tbody>
-          </table>
-            <ul class="accordion-menu col-sm-12 col-lg-12">
-                <li class="closed">
-                    <header onclick="location.href='#/toolsAdd'"><span class="title">Add</span></header>
-                    <header onclick="location.href='#/materials'"><span class="title">Back</span></header>
-                </li>
-            </ul>
-        </div>
-      </form>
-    </div>
-<!--  </div>-->
+  <!--  <div class="vertical-center">-->
+  <div class="container">
+    <h1>Tools Used</h1>
+    <form action="">
+      <div class="form-group">
+        <h2>Total Cost:</h2>
+        <table>
+          <thead><tr>
+            <th>Quantity</th><th>Description</th><th>Rate</th><th>Edit or <br/>Remove</th>
+          </tr></thead>
+          <tbody data-bind="foreach: toolList">
+          <tr>
+            <td data-bind="text: toolQty"></td>
+            <td data-bind="text: toolDesc"></td>
+            <td data-bind="text: toolRate"></td>
+            <td><span class="glyphicon glyphicon-pencil" style="margin-right: 20px" data-bind="click: $component.editTool($index())" onclick="location.href='#/toolsEdit'"></span><span class="glyphicon glyphicon-trash alert-danger"></span></td>
+          </tr>
+          </tbody>
+        </table>
+        <ul class="accordion-menu col-sm-12 col-lg-12">
+          <li class="closed">
+            <header onclick="location.href='#/toolsAdd'"><span class="title">Add</span></header>
+            <header onclick="location.href='#/materials'"><span class="title">Back</span></header>
+          </li>
+        </ul>
+      </div>
+    </form>
+  </div>
+  <!--  </div>-->
 </template>
 
 <template id ="toolsAdd-page">
-<!--  <div class="vertical-center">-->
-    <div class="container">
-      <h1>Tools Used</h1><br>
-      <form action="">
-        <div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
-        <div class="form-group">
-          <label for="toolQty">Quantity:</label>
-            <div class="input-group">
-                <input data-bind="value: tools.toolQty" type="text" class="form-control" id="toolQty" placeholder="Tool Quantity">
-            </div>
-        </div>
-        <div class="form-group">
-          <label for="toolDesc">Description:</label>
-            <div class="input-group">
-                <input data-bind="value: tools.toolDesc" type="text" class="form-control" id="toolDesc" placeholder="Tool Description">
-            </div>
-        </div>
-        <div class="form-group">
-          <label for="toolRate">Rate:</label>
-            <div class="input-group">
-                <input data-bind="value: tools.toolRate" type="text" class="form-control" id="toolRate" placeholder="Tool Rate">
-            </div>
-        </div>
-        <ul class="accordion-menu col-sm-12 col-lg-12">
-            <li class="closed">
-                <header data-bind="click: $component.addTool" onclick="location.href='#/tools'"><span class="title">Submit</span></header>
-                <header onclick="location.href='#/tools'"><span class="title">Back</span></header>
-            </li>
-          <li class="closed">
-            <header onclick="location.href='#/tools'"><span class="title">Cancel</span></header>
-          </li>
-        </ul>
-      </form>
-    </div>
-<!--  </div>-->
+  <!--  <div class="vertical-center">-->
+  <div class="container">
+    <h1>Tools Used</h1><br>
+    <form action="">
+      <div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
+      <div class="form-group">
+        <label for="toolQty">Quantity:</label>
+        <input data-bind="value: tools.toolQty" type="text" class="form-control" id="toolQty" placeholder="Tool Quantity">
+      </div>
+      <div class="form-group">
+        <label for="toolDesc">Description:</label>
+        <input data-bind="value: tools.toolDesc" type="text" class="form-control" id="toolDesc" placeholder="Tool Description">
+      </div>
+      <div class="form-group">
+        <input data-bind="value: tools.toolRate" type="text" class="form-control" id="toolRate" placeholder="Tool Rate">
+      </div>
+      <ul class="accordion-menu col-sm-12 col-lg-12">
+        <li class="closed">
+          <header data-bind="click: $component.addTool" onclick="location.href='#/tools'"><span class="title">Submit</span></header>
+          <header onclick="location.href='#/tools'"><span class="title">Back</span></header>
+        </li>
+        <li class="closed">
+          <header onclick="location.href='#/tools'"><span class="title">Cancel</span></header>
+        </li>
+      </ul>
+    </form>
+  </div>
+  <!--  </div>-->
 </template>
 
 <template id ="toolsEdit-page">
@@ -984,24 +663,17 @@
       <div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
       <div class="form-group">
         <label for="toolQtyEdit">Quantity:</label>
-        <div class="input-group">
-          <input data-bind="value: toolsEdit.toolQty" type="text" class="form-control" id="toolQtyEdit" placeholder="Tool Quantity">
-          <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-        </div>
+        <input data-bind="value: toolsEdit.toolQty" type="text" class="form-control" id="toolQtyEdit" placeholder="Tool Quantity">
+        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
       </div>
       <div class="form-group">
-        <label for="toolDescEdit">Description:</label>
-        <div class="input-group">
-          <input data-bind="value: toolsEdit.toolDesc" type="text" class="form-control" id="toolDescEdit" placeholder="Tool Description">
-          <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-        </div>
+        <input data-bind="value: toolsEdit.toolDesc" type="text" class="form-control" id="toolDescEdit" placeholder="Tool Description">
+        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
       </div>
       <div class="form-group">
         <label for="toolRateEdit">Rate:</label>
-        <div class="input-group">
-          <input data-bind="value: toolsEdit.toolRate" type="text" class="form-control" id="toolRateEdit" placeholder="Tool Rate">
-          <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-        </div>
+        <input data-bind="value: toolsEdit.toolRate" type="text" class="form-control" id="toolRateEdit" placeholder="Tool Rate">
+        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
       </div>
       <ul class="accordion-menu col-sm-12 col-lg-4">
         <li class="closed">
@@ -1017,74 +689,68 @@
 </template>
 
 <template id ="thirdParty-page">
-<!--  <div class="vertical-center">-->
-    <div class="container">
-      <h1>Third Party Outsource</h1>
-      <form action="">
-        <div class="form-group">
-          <h2>Total Cost:</h2>
-          <table>
-            <thead><tr>
-              <th>Date</th><th>Description</th><th>Cost</th><th>Edit or <br/>Remove</th>
-            </tr></thead>
-            <tbody data-bind="foreach: thirdPartyList">
-            <tr>
-              <td data-bind="text: thirdPartyDate"></td>
-              <td data-bind="text: thirdPartyDesc"></td>
-              <td data-bind="text: thirdPartyCost"></td>
-              <td><span class="glyphicon glyphicon-pencil" style="margin-right: 20px" data-bind="click: $component.editThirdParty($index())" onclick="location.href='#/thirdPartyEdit'"></span><span class="glyphicon glyphicon-trash alert-danger"></span></td>
-            </tr>
-            </tbody>
-          </table>
-            <ul class="accordion-menu col-sm-12 col-lg-12">
-                <li class="closed">
-                    <header onclick="location.href='#/thirdPartyAdd'"><span class="title">Add</span></header>
-                    <header onclick="location.href='#/materials'"><span class="title">Back</span></header>
-                </li>
-            </ul>
-        </div>
-      </form>
-    </div>
-<!--  </div>-->
+  <!--  <div class="vertical-center">-->
+  <div class="container">
+    <h1>Third Party Outsource</h1>
+    <form action="">
+      <div class="form-group">
+        <h2>Total Cost:</h2>
+        <table>
+          <thead><tr>
+            <th>Date</th><th>Description</th><th>Cost</th><th>Edit or <br/>Remove</th>
+          </tr></thead>
+          <tbody data-bind="foreach: thirdPartyList">
+          <tr>
+            <td data-bind="text: thirdPartyDate"></td>
+            <td data-bind="text: thirdPartyDesc"></td>
+            <td data-bind="text: thirdPartyCost"></td>
+            <td><span class="glyphicon glyphicon-pencil" style="margin-right: 20px" data-bind="click: $component.editThirdParty($index())" onclick="location.href='#/thirdPartyEdit'"></span><span class="glyphicon glyphicon-trash alert-danger"></span></td>
+          </tr>
+          </tbody>
+        </table>
+        <ul class="accordion-menu col-sm-12 col-lg-12">
+          <li class="closed">
+            <header onclick="location.href='#/thirdPartyAdd'"><span class="title">Add</span></header>
+            <header onclick="location.href='#/materials'"><span class="title">Back</span></header>
+          </li>
+        </ul>
+      </div>
+    </form>
+  </div>
+  <!--  </div>-->
 </template>
 
 <template id ="thirdPartyAdd-page">
-<!--  <div class="vertical-center">-->
-    <div class="container">
-      <h1>Third Party Outsource</h1><br>
-      <form action="">
-        <div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
-        <div class="form-group">
-          <label for="thirdPartyDate">Date:</label>
-            <div class="input-group">
-                <input data-bind="value: thirdParty.thirdPartyDate" type="date" class="form-control" id="thirdPartyDate" placeholder="Third Party Date">
-                <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-            </div>
-        </div>
-        <div class="form-group">
-          <label for="thirdPartyDesc">Description:</label>
-            <div class="input-group">
-                <input data-bind="value: thirdParty.thirdPartyDesc" type="text" class="form-control" id="thirdPartyDesc" placeholder="Third Party Description">
-            </div>
-        </div>
-        <div class="form-group">
-          <label for="thirdPartyCost">Cost:</label>
-            <div class="input-group">
-                <input data-bind="value: thirdParty.thirdPartyCost" type="text" class="form-control" id="thirdPartyCost" placeholder="Third Party Cost">
-            </div>
-        </div>
-        <ul class="accordion-menu col-sm-12 col-lg-12">
-            <li class="closed">
-                <header data-bind="click: $component.addThirdParty" onclick="location.href='#/thirdParty'"><span class="title">Submit</span></header>
-                <header onclick="location.href='#/thirdParty'"><span class="title">Back</span></header>
-            </li>
-          <li class="closed">
-            <header  onclick="location.href='#/thirdParty'"><span class="title">Cancel</span></header>
-          </li>
-        </ul>
-      </form>
-    </div>
-<!--  </div>-->
+  <!--  <div class="vertical-center">-->
+  <div class="container">
+    <h1>Third Party Outsource</h1><br>
+    <form action="">
+      <div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
+      <div class="form-group">
+        <label for="thirdPartyDate">Date:</label>
+        <input data-bind="value: thirdParty.thirdPartyDate" type="date" class="form-control" id="thirdPartyDate" placeholder="Third Party Date">
+        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
+      </div>
+      <div class="form-group">
+        <label for="thirdPartyDesc">Description:</label>
+        <input data-bind="value: thirdParty.thirdPartyDesc" type="text" class="form-control" id="thirdPartyDesc" placeholder="Third Party Description">
+      </div>
+      <div class="form-group">
+        <label for="thirdPartyCost">Cost:</label>
+        <input data-bind="value: thirdParty.thirdPartyCost" type="text" class="form-control" id="thirdPartyCost" placeholder="Third Party Cost">
+      </div>
+      <ul class="accordion-menu col-sm-12 col-lg-12">
+        <li class="closed">
+          <header data-bind="click: $component.addThirdParty" onclick="location.href='#/thirdParty'"><span class="title">Submit</span></header>
+          <header onclick="location.href='#/thirdParty'"><span class="title">Back</span></header>
+        </li>
+        <li class="closed">
+          <header  onclick="location.href='#/thirdParty'"><span class="title">Cancel</span></header>
+        </li>
+      </ul>
+    </form>
+  </div>
+  <!--  </div>-->
 </template>
 
 <template id ="thirdPartyEdit-page">
@@ -1095,24 +761,18 @@
       <div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
       <div class="form-group">
         <label for="thirdPartyDateEdit">Date:</label>
-        <div class="input-group">
-          <input data-bind="value: thirdPartyEdit.thirdPartyDate" type="date" class="form-control" id="thirdPartyDateEdit" placeholder="Third Party Date">
-          <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-        </div>
+        <input data-bind="value: thirdPartyEdit.thirdPartyDate" type="date" class="form-control" id="thirdPartyDateEdit" placeholder="Third Party Date">
+        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
       </div>
       <div class="form-group">
         <label for="thirdPartyDescEdit">Description:</label>
-        <div class="input-group">
-          <input data-bind="value: thirdPartyEdit.thirdPartyDesc" type="text" class="form-control" id="thirdPartyDescEdit" placeholder="Third Party Description">
-          <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-        </div>
+        <input data-bind="value: thirdPartyEdit.thirdPartyDesc" type="text" class="form-control" id="thirdPartyDescEdit" placeholder="Third Party Description">
+        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
       </div>
       <div class="form-group">
         <label for="thirdPartyCostEdit">Cost:</label>
-        <div class="input-group">
-          <input data-bind="value: thirdPartyEdit.thirdPartyCost" type="text" class="form-control" id="thirdPartyCostEdit" placeholder="Third Party Cost">
-          <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-        </div>
+        <input data-bind="value: thirdPartyEdit.thirdPartyCost" type="text" class="form-control" id="thirdPartyCostEdit" placeholder="Third Party Cost">
+        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
       </div>
       <ul class="accordion-menu col-sm-12 col-lg-4">
         <li class="closed">
@@ -1128,133 +788,112 @@
 </template>
 
 <template id ="quotedWork-page">
-<!--  <div class="vertical-center">-->
-    <div class="container">
-      <h1>Quoted Work</h1>
-      <form action="">
-        <div class="form-group">
-          <h3>Total Cost: <strong data-bind="text: quotedWork.quotedCost"></strong></h3>
-        </div>
-        <div class="form-group">
-          <h3>Description:<br><br> <strong data-bind="text: quotedWork.quotedDesc"></strong></h3>
-        </div>
-        <ul class="accordion-menu col-sm-12 col-lg-12">
-            <li class="closed">
-                <header onclick="location.href='#/quotedWorkAdd'"><span class="title">Edit</span></header>
-                <header onclick="location.href='#/materials'"><span class="title">Back</span></header>
-            </li>
-        </ul>
-      </form>
-    </div>
-<!--  </div>-->
+  <!--  <div class="vertical-center">-->
+  <div class="container">
+    <h1>Quoted Work</h1>
+    <form action="">
+      <div class="form-group">
+        <h3>Total Cost: <strong data-bind="text: quotedWork.quotedCost"></strong></h3>
+      </div>
+      <div class="form-group">
+        <h3>Description:<br><br> <strong data-bind="text: quotedWork.quotedDesc"></strong></h3>
+      </div>
+      <ul class="accordion-menu col-sm-12 col-lg-12">
+        <li class="closed">
+          <header onclick="location.href='#/quotedWorkAdd'"><span class="title">Edit</span></header>
+          <header onclick="location.href='#/materials'"><span class="title">Back</span></header>
+        </li>
+      </ul>
+    </form>
+  </div>
+  <!--  </div>-->
 </template>
 
 <template id ="quotedWorkAdd-page">
-<!--  <div class="vertical-center">-->
-    <div class="container">
-      <h1>Quoted Work</h1><br>
-      <form action="">
-        <div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
-        <div class="form-group">
-          <label for="quotedWorkCost">Cost:</label>
-            <div class="input-group">
-                <input data-bind="value: quotedWork.quotedCost" id="quotedWorkCost" class="form-control" type="text">
-            </div>
-        </div>
-        <div class="form-group">
-          <label for="quotedWorkDesc">Description:</label>
-            <div class="input-group">
-                <input data-bind="value: quotedWork.quotedDesc" id="quotedWorkDesc" class="form-control" type="text">
-            </div>
-        </div>
-        <ul class="accordion-menu col-sm-12 col-lg-12">
-            <li class="closed">
-                <header onclick="location.href='#/quotedWork'"><span class="title">Submit</span></header>
-                <header onclick="location.href='#/quotedWork'"><span class="title">Back</span></header>
-            </li>
-        </ul>
-      </form>
-    </div>
-<!--  </div>-->
+  <!--  <div class="vertical-center">-->
+  <div class="container">
+    <h1>Quoted Work</h1><br>
+    <form action="">
+      <div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
+      <div class="form-group">
+        <label for="quotedWorkCost">Cost:</label>
+        <input data-bind="value: quotedWork.quotedCost" id="quotedWorkCost" class="form-control" type="text">
+      </div>
+      <div class="form-group">
+        <label for="quotedWorkDesc">Description:</label>
+        <input data-bind="value: quotedWork.quotedDesc" id="quotedWorkDesc" class="form-control" type="text">
+      </div>
+      <ul class="accordion-menu col-sm-12 col-lg-12">
+        <li class="closed">
+          <header onclick="location.href='#/quotedWork'"><span class="title">Submit</span></header>
+          <header onclick="location.href='#/quotedWork'"><span class="title">Back</span></header>
+        </li>
+      </ul>
+    </form>
+  </div>
+  <!--  </div>-->
 </template>
 
 <template id ="equipment-page">
-
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-4"></div>
-      <div class="col-lg-4">
-        <ol class="breadcrumb breadcrumb-arrow bread-nav">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Dispatch</a></li>
-          <li><a href="#">Equipment</a></li>
-          <!--<li><a href="#">Materials & Tools</a></li>-->
-          <!--<li><a href="#">WorkDays</a></li>-->
-          <!--<li><a href="#">Invoice</a></li>-->
-        </ol>
-      </div>
-      <div class="col-lg-4"></div>
-    </div>
-  </div>
 
   <div>
     <div class="container" >
 
       <div class="row" data-bind="foreach: equipList">
-      <div class="card equipmentcards col-lg-6">
-        <div class="card-header card-success">
-          <div class="form-group">
-            <label>Equipment Name:</label>
-            <select class="form-control">
-              <option data-bind="text: equipmentName"></option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-            </select>
-          </div>
-        </div>
-        <div class="card-block">
-          <blockquote class="card-blockquote">
-            <table class="table">
-              <thead>
-              <tr class="table-success">
-                <th>Category:</th>
-                <th>Make/Model:</th>
-                <th>Serial#:</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr>
-                <td>HVAC</td>
-                <td data-bind="text: equipmentMakeModel"></td>
-                <td data-bind="text: equipmentNum"></td>
-              </tr>
-              </tbody>
-            </table>
-
-            <div class="row">
-              <div class="equipment-buttons"><div class="btn-group" role="group">
-                <button type="button" class="btn btn-secondary  btn-success"><span class="glyphicon glyphicon-ok"></span></button>
-                <button type="button" class="btn btn-secondary  btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
-                <button type="button" class="btn btn-secondary  btn-warning"><span class="glyphicon glyphicon-camera"></span></button>
-                <button type="button" class="btn btn-secondary  btn-primary" onclick="location.href='#/equipmentFormEdit'" data-bind="click: $component.edit($index())"><span class="glyphicon glyphicon-pencil"></span></button>
-                <button type="button" class="btn btn-secondary  btn-default"><span class="glyphicon glyphicon-trash"></span></button>
-              </div>
-              </div>
+        <div class="card equipmentcards col-lg-6">
+          <div class="card-header card-success">
+            <div class="form-group">
+              <label>Equipment Name:</label>
+              <select class="form-control">
+                <option data-bind="text: equipmentName"></option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+              </select>
             </div>
+          </div>
+          <div class="card-block">
+            <blockquote class="card-blockquote">
+              <table class="table">
+                <thead>
+                <tr class="table-success">
+                  <th>Category:</th>
+                  <th>Make/Model:</th>
+                  <th>Serial#:</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>HVAC</td>
+                  <td data-bind="text: equipmentMakeModel"></td>
+                  <td data-bind="text: equipmentNum"></td>
+                </tr>
+                </tbody>
+              </table>
 
-          </blockquote>
-        </div>
-      </div>
+              <div class="row">
+                <div class="equipment-buttons"><div class="btn-group" role="group">
+                  <button type="button" class="btn btn-secondary  btn-success"><span class="glyphicon glyphicon-ok"></span></button>
+                  <button type="button" class="btn btn-secondary  btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
+                  <button type="button" class="btn btn-secondary  btn-warning"><span class="glyphicon glyphicon-camera"></span></button>
+                  <button type="button" class="btn btn-secondary  btn-primary" onclick="location.href='#/equipmentFormEdit'" data-bind="click: $component.edit($index())"><span class="glyphicon glyphicon-pencil"></span></button>
+                  <button type="button" class="btn btn-secondary  btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                </div>
+                </div>
+              </div>
 
-      </div>
-
-
-        <div class="card equipmentcards col-lg-16">
-          <div class="col-lg-6 add-button">
-            <button type="button" class="btn btn-success btn-circle btn-xl" onclick="location.href='#/equipmentForm'"><i class="glyphicon glyphicon-plus"></i></button>
+            </blockquote>
           </div>
         </div>
+
+      </div>
+
+
+      <div class="card equipmentcards col-lg-16">
+        <div class="col-lg-6 add-button">
+          <button type="button" class="btn btn-success btn-circle btn-xl" onclick="location.href='#/equipmentForm'"><i class="glyphicon glyphicon-plus"></i></button>
+        </div>
+      </div>
 
 
 
@@ -1341,8 +980,8 @@
                     <div class="form-group">
                       <label for="equipmentStatus">Equipment Status:</label>
                       <ul>
-                      <button class="glyphicon glyphicon-ok" style="width: 60px; height: 60px;right: 25px;background-color: green; color: white;" onclick="location.href='#/'"></button>
-                      <button class="glyphicon glyphicon-remove" style="width: 60px; height: 60px;right: 25px;background-color: red; color: black" onclick="location.href='#/'"></button>
+                        <button class="glyphicon glyphicon-ok" style="width: 60px; height: 60px;right: 25px;background-color: green; color: white;" onclick="location.href='#/'"></button>
+                        <button class="glyphicon glyphicon-remove" style="width: 60px; height: 60px;right: 25px;background-color: red; color: black" onclick="location.href='#/'"></button>
                       </ul>
                       <br/>
                       <div class="input-group">
@@ -1534,23 +1173,6 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-4"></div>
-      <div class="col-lg-4">
-        <ol class="breadcrumb breadcrumb-arrow bread-nav">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Dispatch</a></li>
-          <li><a href="#">Equipment</a></li>
-          <li><a href="#">Materials & Tools</a></li>
-          <li><a href="#">WorkDays</a></li>
-          <!--<li><a href="#">Invoice</a></li>-->
-        </ol>
-      </div>
-      <div class="col-lg-4"></div>
-    </div>
-  </div>
-
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-4"></div>
       <ul class="accordion-menu col-sm-12 col-lg-12">
         <li class="open">
           <header  onclick="toggle(this.parentNode)"><span class="title">View Workdays</span></header>
@@ -1611,16 +1233,16 @@
             </div>
 
             <!--<div class="container">-->
-              <!--<div class="row">-->
-                <!--<form role="form">-->
-                  <!--<button onclick="location.href='#/workDays'">Add</button>-->
-                  <!--<div data-bind="foreach: workList">-->
-                    <!--<div data-bind="text: workDate"></div>-->
-                    <!--<div data-bind="text: technician"></div>-->
-                    <!--<button data-bind="click: $component.editWorkDay($index())" onclick="location.href='#/workDaysEdit'">Edit</button>-->
-                  <!--</div>-->
-                <!--</form>-->
-              <!--</div>-->
+            <!--<div class="row">-->
+            <!--<form role="form">-->
+            <!--<button onclick="location.href='#/workDays'">Add</button>-->
+            <!--<div data-bind="foreach: workList">-->
+            <!--<div data-bind="text: workDate"></div>-->
+            <!--<div data-bind="text: technician"></div>-->
+            <!--<button data-bind="click: $component.editWorkDay($index())" onclick="location.href='#/workDaysEdit'">Edit</button>-->
+            <!--</div>-->
+            <!--</form>-->
+            <!--</div>-->
             <!--</div>-->
           </section>
         </li>
@@ -1670,22 +1292,6 @@
 
 
 <template id ="workDays-page">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-4"></div>
-      <div class="col-lg-4">
-        <ol class="breadcrumb breadcrumb-arrow bread-nav">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Dispatch</a></li>
-          <li><a href="#">Equipment</a></li>
-          <li><a href="#">Materials & Tools</a></li>
-          <li><a href="#">WorkDays</a></li>
-          <!--<li><a href="#">Invoice</a></li>-->
-        </ol>
-      </div>
-      <div class="col-lg-4"></div>
-    </div>
-  </div>
 
   <div class="container-fluid">
     <div class="row">
@@ -1709,7 +1315,7 @@
                     <div class="form-group  form-group-lg">
                       <label for="technician">Technician</label>
                       <div class="input-group">
-                        <input data-bind="value: workDaysData.technician" type="text" class="form-control" id="technician" placeholder="Technician Name" name="technician"> 
+                        <input data-bind="value: workDaysData.technician" type="text" class="form-control" id="technician" placeholder="Technician Name" name="technician">
                       </div>
                     </div>
                     <div class="form-group form-group-lg">
@@ -1810,22 +1416,7 @@
 </template>
 
 <template id ="workDaysEdit-page">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-4"></div>
-      <div class="col-lg-4">
-        <ol class="breadcrumb breadcrumb-arrow bread-nav">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Dispatch</a></li>
-          <li><a href="#">Equipment</a></li>
-          <li><a href="#">Materials & Tools</a></li>
-          <li><a href="#">WorkDays</a></li>
-          <!--<li><a href="#">Invoice</a></li>-->
-        </ol>
-      </div>
-      <div class="col-lg-4"></div>
-    </div>
-  </div>
+
 
   <div class="container-fluid">
     <div class="row">
@@ -1956,44 +1547,27 @@
 
 <template id ="invoice-page">
 
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-4"></div>
-      <div class="col-lg-4">
-        <ol class="breadcrumb breadcrumb-arrow bread-nav">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Dispatch</a></li>
-          <li><a href="#">Equipment</a></li>
-          <li><a href="#">Materials & Tools</a></li>
-          <li><a href="#">WorkDays</a></li>
-          <li><a href="#">Invoice</a></li>
-        </ol>
+
+  <div class="container">
+    <h2>Invoice View Settings</h2>
+    <form action="">
+      <div class="checkbox">
+        <label><input type="checkbox" name="remember" style="width:32px;height:32px;left:-10px;">    Show 'Materials' section</label>
+        <label><input type="checkbox" name="remember" style="width:32px;height:32px;left:-10px;"> Show 'Truck Stock' section</label>
+        <label><input type="checkbox" name="remember" style="width:32px;height:32px;left:-10px;"> Show 'Tools Used' section</label>
+        <label><input type="checkbox" name="remember" style="width:32px;height:32px;left:-10px;"> Show 'Third Party Outsource' section</label>
       </div>
-      <div class="col-lg-4"></div>
-    </div>
-  </div>
-
-
-    <div class="container">
-      <h2>Invoice View Settings</h2>
-      <form action="">
-        <div class="checkbox">
-          <label><input type="checkbox" name="remember" style="width:32px;height:32px;left:-10px;">    Show 'Materials' section</label>
-          <label><input type="checkbox" name="remember" style="width:32px;height:32px;left:-10px;"> Show 'Truck Stock' section</label>
-          <label><input type="checkbox" name="remember" style="width:32px;height:32px;left:-10px;"> Show 'Tools Used' section</label>
-          <label><input type="checkbox" name="remember" style="width:32px;height:32px;left:-10px;"> Show 'Third Party Outsource' section</label>
-        </div>
-        <div class="form-group">
-          <label for="customerNum">Invoice Date</label>
-        </div>
-        <form data-bind="with: formModel">
+      <div class="form-group">
+        <label for="customerNum">Invoice Date</label>
+      </div>
+      <form data-bind="with: formModel">
         <input type="text" data-bind="value: invoiceDate" class="form-control" id="customerNum" placeholder="Select date"/>
-          <button type="submit" class="btn btn-default" data-bind="click: $parent.clear">Clear</button>
-          <button type="submit" class="btn btn-default">Generate</button>
-          <button type="submit" class="btn btn-default">Create WO</button>
-        </form>
+        <button type="submit" class="btn btn-default" data-bind="click: $parent.clear">Clear</button>
+        <button type="submit" class="btn btn-default">Generate</button>
+        <button type="submit" class="btn btn-default">Create WO</button>
       </form>
-    </div>
+    </form>
+  </div>
 
 
 
@@ -2025,7 +1599,7 @@
 
 
 
-<script  src="js/index.js"></script>
+<script src="js/index.js"></script>
 
 
 </body>
