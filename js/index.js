@@ -179,7 +179,7 @@ unitObject = function (qty,cost,desc) {
     self.unitCost = cost;
     self.unitDesc = desc;
 };
-truckObject = function (qty,cost,desc) {
+truckObject = function (qty,desc,cost) {
     self = this;
     self.truckQty = qty;
     self.truckCost = cost;
@@ -230,6 +230,33 @@ var thirdPartyList = ko.observableArray([]);
 var equipList = ko.observableArray([new equipmentObject()]);
 var workList = ko.observableArray([]);
 
+var totalTruckCost = ko.computed(function () {
+    var total = 0;
+    for (var i = 0; i < truckList().length; i++) {
+        total += (parseInt(truckList()[i].truckQty()) * parseInt(truckList()[i].truckCost()));
+    }
+
+    return (total ? " $" + total.toFixed(2) : " 0");
+});
+
+var totalToolCost = ko.computed(function () {
+    var total = 0;
+    for (var i = 0; i < toolList().length; i++) {
+        total += (parseInt(toolList()[i].toolQty()) * parseInt(toolList()[i].toolRate()));
+    }
+
+    return (total ? " $" + total.toFixed(2) : " 0");
+});
+
+var totalThirdPartyCost = ko.computed(function () {
+    var total = 0;
+    for (var i = 0; i < thirdPartyList().length; i++) {
+        total += parseInt(thirdPartyList()[i].thirdPartyCost());
+    }
+
+    return (total ? " $" + total.toFixed(2) : " 0");
+});
+
 var mainPage = function(params) {
 
 };
@@ -248,6 +275,7 @@ var dispatchPage = function (params) {
     self = this;
     self.buildingList = ko.observableArray();
 
+    console.log(dispatchData.workDate());
     self.submit = function () {
 
         // $.post("http://127.0.0.1:3000/customer", self.dispatchData, function(returnedData) {
@@ -292,7 +320,7 @@ var dispatchPage = function (params) {
 };
 
 var dispatchEditPage = function (params) {
-
+    console.log(dispatchData.workDate);
 };
 
 
@@ -344,7 +372,7 @@ var equipmentFormEdit = function (params) {
         equipList()[equipmentIndex] = equipmentEdit;
     }
 };
-
+var test = test;
 var equipmentPage = function (params) {
 
     self = this;
@@ -362,17 +390,17 @@ var equipmentPage = function (params) {
         equipmentIndex = index
     };
     self.confirm = function (index) {
-        index.buildingSpace = equipLoad.buildingSpace;
-        index.equipmentName = equipLoad.equipmentName;
-        index.equipmentMakeModel = equipLoad.equipmentMakeModel;
-        index.equipmentNum = equipLoad.equipmentNum;
-        index.equipmentCost = equipLoad.equipmentCost;
-        index.equipmentStatus = equipLoad.equipmentStatus;
-        index.equipmentDetails = equipLoad.equipmentDetails;
-        index.equipmentNotes = equipLoad.equipmentNotes;
-        index.equipmentImages = equipLoad.equipmentImages;
-
-        equipList()[equipmentIndex] = index;
+        equipList.remove(index);
+        equipList.push(new equipmentObject(equipLoad.buildingSpace,equipLoad.equipmentName,equipLoad.equipmentMakeModel,equipLoad.equipmentNum,equipLoad.equipmentCost,equipLoad.equipmentStatus,equipLoad.equipmentDetails,equipLoad.equipmentNotes,equipLoad.equipmentImages));
+        // index.buildingSpace = equipLoad.buildingSpace;
+        // index.equipmentName = equipLoad.equipmentName;
+        // index.equipmentMakeModel = equipLoad.equipmentMakeModel;
+        // index.equipmentNum = equipLoad.equipmentNum;
+        // index.equipmentCost = equipLoad.equipmentCost;
+        // index.equipmentStatus = equipLoad.equipmentStatus;
+        // index.equipmentDetails = equipLoad.equipmentDetails;
+        // index.equipmentNotes = equipLoad.equipmentNotes;
+        // index.equipmentImages = equipLoad.equipmentImages;
         navigatePage = 3;
 
     };
@@ -427,6 +455,9 @@ var purchasePage = function (params) {
         supplierIndex = index;
         supplierEdit = supplierList()[supplierIndex];
     };
+    self.removeSupplier = function (index) {
+        supplierList.remove(index);
+    }
 };
 var purchaseAddPage = function (params) {
     self = this;
@@ -442,6 +473,9 @@ var purchaseAddPage = function (params) {
         unitEdit = supplierData.unitList()[unitIndex];
          navigatePage= 0;
     };
+    self.removeUnit = function (index) {
+        supplierData.unitList.remove(index);
+    }
 };
 var purchaseEditPage = function (params) {
     self = this;
@@ -452,6 +486,9 @@ var purchaseEditPage = function (params) {
         unitIndex = index;
         unitEdit = supplierEdit.unitList()[unitIndex];
         navigatePage = 1;
+    }
+    self.removeUnit = function (index) {
+        supplierEdit.unitList.remove(index);
     }
 };
 var unitPage = function (params) {
