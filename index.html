@@ -147,7 +147,7 @@
                     <div class="form-group">
                       <label for="building-name">BUILDING NAME</label>
                       <div class="alert alert-success" id ="building-name">
-                        <strong>BUILDING NAME</strong>
+                        <strong data-bind="text: test"></strong>
                       </div>
                     </div>
                     <div class="form-group">
@@ -612,8 +612,8 @@
             </tr></thead>
             <tbody data-bind="foreach: supplierList">
                   <tr>
-                    <td><header><span class="title" data-bind="text: selectedSupplier"></span></header></td>
-                    <td><header onclick="location.href='#/purchaseEdit'" data-bind="click: $component.editSupplier($index())"><span class="title">Edit</span></header></td>
+                    <td onclick="location.href='#/purchaseEdit'" data-bind="click: $component.editSupplier($index())"><header><span class="title" data-bind="text: selectedSupplier"></span></header></td>
+                    <td><span data-bind="click: $component.removeSupplier" class="glyphicon glyphicon-trash alert-danger"></span></td>
                   </tr>
             </tbody>
           </table>
@@ -642,14 +642,14 @@
         <h2>Units</h2><br>
         <table>
           <thead><tr>
-            <th>Quantity</th><th>Description</th><th>Unit Cost</th><th>Edit or <br/>Remove</th>
+            <th>Quantity</th><th>Description</th><th>Unit Cost</th><th>Remove</th>
           </tr></thead>
           <tbody data-bind="foreach: supplierData.unitList">
           <tr>
-            <td><header><span class="title" data-bind="text: unitQty"></span></header></td>
-            <td><header><span class="title" data-bind="text: unitDesc"></span></header></td>
-            <td><header><span class="title" data-bind="text: unitCost"></span></header></td>
-            <td><header data-bind="click: $component.editUnit($index())" onclick="location.href='#/unitEdit'"><span class="title">Edit</span></header></td>
+            <td data-bind="click: $component.editUnit($index())" onclick="location.href='#/unitEdit'"><header><span class="title" data-bind="text: unitQty"></span></header></td>
+            <td data-bind="click: $component.editUnit($index())" onclick="location.href='#/unitEdit'"><header><span class="title" data-bind="text: unitDesc"></span></header></td>
+            <td data-bind="click: $component.editUnit($index())" onclick="location.href='#/unitEdit'"><header><span class="title" data-bind="text: unitCost"></span></header></td>
+            <td><span class="glyphicon glyphicon-trash alert-danger" data-bind="click: $component.removeUnit"></span></td>
           </tr>
           </tbody>
         </table>
@@ -682,10 +682,10 @@
           </tr></thead>
           <tbody data-bind="foreach: supplierEdit.unitList">
           <tr>
-            <td><header><span class="title" data-bind="text: unitQty"></span></header></td>
-            <td><header><span class="title" data-bind="text: unitDesc"></span></header></td>
-            <td><header><span class="title" data-bind="text: unitCost"></span></header></td>
-            <td><header data-bind="click: $component.editUnit($index())" onclick="location.href='#/unitEdit'"><span class="title">Edit</span></header></td>
+            <td data-bind="click: $component.editUnit($index())" onclick="location.href='#/unitEdit'"><header><span class="title" data-bind="text: unitQty"></span></header></td>
+            <td data-bind="click: $component.editUnit($index())" onclick="location.href='#/unitEdit'"><header><span class="title" data-bind="text: unitDesc"></span></header></td>
+            <td data-bind="click: $component.editUnit($index())" onclick="location.href='#/unitEdit'"><header><span class="title" data-bind="text: unitCost"></span></header></td>
+            <td><span class="glyphicon glyphicon-trash alert-danger" data-bind="click: $component.removeUnit"></span></td>
           </tr>
           </tbody>
         </table>
@@ -807,7 +807,7 @@
       <h1>Truck Stock</h1>
       <form action="">
         <div class="form-group">
-          <h2>Total Cost:</h2>
+          <h2>Total Cost:<span data-bind="text: totalTruckCost"></span></h2>
           <table>
             <thead><tr>
                 <th>Quantity</th><th>Description</th><th>Item Cost</th><th>Remove</th>
@@ -919,7 +919,7 @@
       <h1>Tools Used</h1>
       <form action="">
         <div class="form-group">
-          <h2>Total Cost:</h2>
+          <h2>Total Cost:<span data-bind="text: totalToolCost"></span></h2>
           <table>
             <thead><tr>
               <th>Quantity</th><th>Description</th><th>Rate</th><th>Remove</th>
@@ -974,9 +974,6 @@
                 <header data-bind="click: $component.addTool" onclick="location.href='#/tools'"><span class="title">Submit</span></header>
                 <header onclick="location.href='#/tools'"><span class="title">Back</span></header>
             </li>
-          <li class="closed">
-            <header onclick="location.href='#/tools'"><span class="title">Cancel</span></header>
-          </li>
         </ul>
       </form>
     </div>
@@ -1029,7 +1026,7 @@
       <h1>Third Party Outsource</h1>
       <form action="">
         <div class="form-group">
-          <h2>Total Cost:</h2>
+          <h2>Total Cost:<span data-bind="text: totalThirdPartyCost"></span></h2>
           <table>
             <thead><tr>
               <th>Date</th><th>Description</th><th>Cost</th><th>Remove</th>
@@ -1085,9 +1082,6 @@
                 <header data-bind="click: $component.addThirdParty" onclick="location.href='#/thirdParty'"><span class="title">Submit</span></header>
                 <header onclick="location.href='#/thirdParty'"><span class="title">Back</span></header>
             </li>
-          <li class="closed">
-            <header  onclick="location.href='#/thirdParty'"><span class="title">Cancel</span></header>
-          </li>
         </ul>
       </form>
     </div>
@@ -1212,15 +1206,14 @@
         <div class="card-header card-success">
           <div class="form-group" data-bind="click: $component.getIndex($index())">
             <label>Equipment Name:</label>
-            <select class="form-control" data-bind="options: equipmentOptions, optionsText: 'name', optionsValue: 'item', optionsCaption: 'Select...', value: equipLoad"></select>
+            <select class="form-control" data-bind="options: equipmentOptions, optionsText: 'name', optionsValue: 'item', value: equipLoad"></select>
             <button type="button" class="btn btn-secondary  btn-info" data-bind="click: $component.confirm"><span class="glyphicon glyphicon-ok"></span></button>
           </div>
         </div>
-        <div class="card-block">
           <blockquote class="card-blockquote">
             <table class="table">
               <thead>
-              <tr class="table-success">
+              <tr>
                 <th>Category:</th>
                 <th>Make/Model:</th>
                 <th>Serial#:</th>
@@ -1232,22 +1225,19 @@
                 <td>HVAC</td>
                 <td data-bind="text: equipmentMakeModel, click: $component.edit($index())" onclick="location.href='#/equipmentFormEdit'"></td>
                 <td data-bind="text: equipmentNum, click: $component.edit($index())" onclick="location.href='#/equipmentFormEdit'"></td>
-                <td><button type="button" class="btn btn-secondary  btn-default" data-bind="click: $component.remove"><span class="glyphicon glyphicon-trash"></span></button></td>
+                <td>
+                  <button type="button" class="btn btn-secondary  btn-success"><span class="glyphicon glyphicon-ok"></span></button>
+                  <button type="button" class="btn btn-secondary  btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
+                  <br/>
+                  <button type="button" class="btn btn-secondary  btn-warning"><span class="glyphicon glyphicon-camera"></span></button>
+                  <button type="button" class="btn btn-secondary  btn-default" data-bind="click: $component.remove"><span class="glyphicon glyphicon-trash"></span></button>
+                </td>
+
               </tr>
               </tbody>
             </table>
 
-            <div class="row">
-              <div class="equipment-buttons"><div class="btn-group" role="group">
-                <button type="button" class="btn btn-secondary  btn-success"><span class="glyphicon glyphicon-ok"></span></button>
-                <button type="button" class="btn btn-secondary  btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
-                <button type="button" class="btn btn-secondary  btn-warning"><span class="glyphicon glyphicon-camera"></span></button>
-              </div>
-              </div>
-            </div>
-
           </blockquote>
-        </div>
       </div>
 
       </div>
