@@ -49,11 +49,14 @@
         <li><a href="#/materials">Materials & Tools</a></li>
         <li><a href="#/viewWorkDays">Work Days</a></li>
         <li><a href="#/invoice">Invoice View</a></li>
+        <!--<li><a data-bind="value: workFormData.WONumber"></a></li>-->
+        <!--<li><a data-bind="value: workFormData.Category"></a></li>-->
+        <!--<li><a data-bind="value: workFormData.Status"></a></li>-->
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a>WO Number:</a></li>
-        <li><a>Category:</a></li>
-        <li><a>Status:</a></li>
+        <!--<li><h1 class="navbar-brand" data-bind="value: workFormData.WONumber"></h1></li>-->
+        <!--<li><h1 data-bind="value: workFormData.Category"></h1></li>-->
+        <!--<li><h1 data-bind="value: workFormData.Status"></h1></li>-->
       </ul>
     </div>
   </div>
@@ -123,13 +126,13 @@
                       <div class="form-group">
                         <label for="building-name">BUILDING NAME</label>
                         <div class="alert alert-success" id ="building-name">
-                          <strong data-bind="text: $component.buildingList.BuildingName"></strong>
+                          <strong data-bind="text: $component.buildingList.Building"></strong>
                         </div>
                       </div>
                       <div class="form-group">
                         <label for="building-address">BUILDING ADDRESS</label>
                         <div class="alert alert-success" id ="building-address">
-                          <strong data-bind="text: $component.buildingList.Address">ADDRESS</strong>
+                          <strong data-bind="text: $component.buildingList.BuildingAddress">ADDRESS</strong>
                         </div>
                       </div>
                       <div class="form-group">
@@ -141,7 +144,7 @@
                       <div class="form-group">
                         <label for="building-province">BUILDING PROVINCE</label>
                         <div class="alert alert-success" id ="building-province">
-                          <strong data-bind="text: $component.buildingList.ProvinceState">PROVINCE</strong>
+                          <strong data-bind="text: $component.buildingList.Province">PROVINCE</strong>
                         </div>
                       </div>
                     </div>
@@ -192,17 +195,14 @@
                       <div class="form-group">
                         <label>Attach File</label>
                         <div class="input-group">
-                        <span class="input-group-btn">
-                            <span class="btn btn-default btn-file">
-                                Browse…<input type="file" id="fileInpEdit">
-                            </span>
-                         </span>
-                          <input type="text" class="form-control" readonly>
+                          <input id="fileupload" name="myfile" type="file" multiple/>
                         </div>
                       </div>
                     </div>
+
                   </form>
                 </div>
+
               </div>
             </section>
           </li>
@@ -247,30 +247,6 @@
       </div>
       <div class="col-lg-4"></div>
     </div>
-    <div class="row">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4"></div>
-          <div class="col-lg-4">
-            <nav>
-              <ul class="pagination pagination-lg">
-                <li class="page-item disabled">
-                  <a class="page-link" href="#" tabindex="-1">Previous</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                <li class="page-item">
-                  <a class="page-link" href="#">Next</a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-          <div class="col-lg-4"></div>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -293,58 +269,35 @@
     <div class ="col-lg-4"></div>
   </div>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-4"></div>
-      <div class="col-lg-6">
-        <nav>
-          <ul class="pagination pagination-lg">
-            <li class="page-item disabled">
-              <a class="page-link" href="#" tabindex="-1">Previous</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item active"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">4</a></li>
-            <li class="page-item"><a class="page-link" href="#">5</a></li>
-            <li class="page-item">
-              <a class="page-link" href="#">Next</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <div class="col-lg-4"></div>
-    </div>
-  </div>
 
 </template>
 
 <template id ="purchase-page">
-<!--  <div class="vertical-center">-->
-    <div class="container">
-      <h1>Purchase Orders</h1>
-      <form action="">
-        <div class="form-group">
-          <h2>Supplier</h2><br>
-          <table>
-            <thead><tr>
-              <th>Supplier</th><th>Edit or <br/>Remove</th>
-            </tr></thead>
-            <tbody data-bind="foreach: supplierList">
-                  <tr>
-                    <td onclick="location.href='#/purchaseEdit'" data-bind="click: $component.editSupplier($index())"><header><span class="title" data-bind="text: selectedSupplier"></span></header></td>
-                    <td><span data-bind="click: $component.removeSupplier" class="glyphicon glyphicon-trash alert-danger"></span></td>
-                  </tr>
-            </tbody>
-          </table>
-          <ul class="accordion-menu col-sm-12 col-lg-4">
-            <li class="closed">
-              <header onclick="location.href='#/purchaseAdd'"><span class="title">Add</span></header>
-            </li>
-          </ul>
-        </div>
-      </form>
-    </div>
+  <!--  <div class="vertical-center">-->
+  <div class="container">
+    <h1>Purchase Orders</h1>
+    <form action="">
+      <div class="form-group">
+        <h2>Supplier</h2><br>
+        <table>
+          <thead><tr>
+            <th>Supplier</th><th>Edit or <br/>Remove</th>
+          </tr></thead>
+          <tbody data-bind="foreach: supplierList">
+          <tr>
+            <td onclick="location.href='#/purchaseEdit'" data-bind="click: $component.editSupplier($index())"><header><span class="title" data-bind="text: selectedSupplier"></span></header></td>
+            <td><span data-bind="click: $component.removeSupplier" class="glyphicon glyphicon-trash alert-danger"></span></td>
+          </tr>
+          </tbody>
+        </table>
+        <ul class="accordion-menu col-sm-12 col-lg-4">
+          <li class="closed">
+            <header onclick="location.href='#/purchaseAdd'"><span class="title">Add</span></header>
+          </li>
+        </ul>
+      </div>
+    </form>
+  </div>
 </template>
 
 
@@ -469,17 +422,14 @@
       <div class="form-group">
         <label for="unitQtyEdit">Quantity:</label>
         <input data-bind="value: unitsEdit.unitQty" type="text" class="form-control" id="unitQtyEdit" placeholder="Truck Quantity">
-        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
       </div>
       <div class="form-group">
         <label for="unitDescEdit">Description:</label>
         <input data-bind="value: unitsEdit.unitDesc" type="text" class="form-control" id="unitDescEdit" placeholder="Truck Description">
-        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
       </div>
       <div class="form-group">
         <label for="unitCostEdit">Unit Cost:</label>
         <input data-bind="value: unitsEdit.unitCost" type="text" class="form-control" id="unitCostEdit" placeholder="Truck Cost">
-        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
       </div>
       <ul class="accordion-menu col-sm-12 col-lg-4">
         <li class="closed">
@@ -499,34 +449,34 @@
 </template>
 
 <template id ="truck-page">
-<!--  <div class="vertical-center">-->
-    <div class="container">
-      <h1>Truck Stock</h1>
-      <form action="">
-        <div class="form-group">
-          <h2>Total Cost:<span data-bind="text: totalTruckCost"></span></h2>
-          <table>
-            <thead><tr>
-                <th>Quantity</th><th>Description</th><th>Item Cost</th><th>Remove</th>
-            </tr></thead>
-            <tbody data-bind="foreach: truckList">
-            <tr>
-              <td data-bind="text: truckQty, click: $component.editTruck($index())" onclick="location.href='#/trucksEdit'"></td>
-              <td data-bind="text: truckDesc, click: $component.editTruck($index())" onclick="location.href='#/trucksEdit'"></td>
-              <td data-bind="text: truckCost, click: $component.editTruck($index())" onclick="location.href='#/trucksEdit'"></td>
-              <td><span class="glyphicon glyphicon-trash alert-danger" data-bind="click: $component.removeTruck"></span></td>
-            </tr>
-            </tbody>
-          </table>
-            <ul class="accordion-menu col-sm-12 col-lg-12">
-                <li class="closed">
-                    <header onclick="location.href='#/trucksAdd'"><span class="title">Add</span></header>
-                    <header onclick="location.href='#/materials'"><span class="title">Back</span></header>
-                </li>
-            </ul>
-        </div>
-      </form>
-    </div>
+  <!--  <div class="vertical-center">-->
+  <div class="container">
+    <h1>Truck Stock</h1>
+    <form action="">
+      <div class="form-group">
+        <h2>Total Cost:<span data-bind="text: totalTruckCost"></span></h2>
+        <table>
+          <thead><tr>
+            <th>Quantity</th><th>Description</th><th>Item Cost</th><th>Remove</th>
+          </tr></thead>
+          <tbody data-bind="foreach: truckList">
+          <tr>
+            <td data-bind="text: truckQty, click: $component.editTruck($index())" onclick="location.href='#/trucksEdit'"></td>
+            <td data-bind="text: truckDesc, click: $component.editTruck($index())" onclick="location.href='#/trucksEdit'"></td>
+            <td data-bind="text: truckCost, click: $component.editTruck($index())" onclick="location.href='#/trucksEdit'"></td>
+            <td><span class="glyphicon glyphicon-trash alert-danger" data-bind="click: $component.removeTruck"></span></td>
+          </tr>
+          </tbody>
+        </table>
+        <ul class="accordion-menu col-sm-12 col-lg-12">
+          <li class="closed">
+            <header onclick="location.href='#/trucksAdd'"><span class="title">Add</span></header>
+            <header onclick="location.href='#/materials'"><span class="title">Back</span></header>
+          </li>
+        </ul>
+      </div>
+    </form>
+  </div>
 
 </template>
 
@@ -570,17 +520,14 @@
       <div class="form-group">
         <label for="truckQtyEdit">Quantity:</label>
         <input data-bind="value: truckEdit.truckQty" type="text" class="form-control" id="truckQtyEdit" placeholder="Truck Quantity">
-        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
       </div>
       <div class="form-group">
         <label for="truckDescEdit">Description:</label>
         <input data-bind="value: truckEdit.truckDesc" type="text" class="form-control" id="truckDescEdit" placeholder="Truck Description">
-        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
       </div>
       <div class="form-group">
         <label for="truckCostEdit">Item Cost:</label>
         <input data-bind="value: truckEdit.truckCost" type="text" class="form-control" id="truckCostEdit" placeholder="Truck Cost">
-        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
       </div>
       <ul class="accordion-menu col-sm-12 col-lg-4">
         <li class="closed">
@@ -596,67 +543,67 @@
 </template>
 
 <template id ="tools-page">
-<!--  <div class="vertical-center">-->
-    <div class="container">
-      <h1>Tools Used</h1>
-      <form action="">
-        <div class="form-group">
-          <h2>Total Cost:<span data-bind="text: totalToolCost"></span></h2>
-          <table>
-            <thead><tr>
-              <th>Quantity</th><th>Description</th><th>Rate</th><th>Remove</th>
-            </tr></thead>
-            <tbody data-bind="foreach: toolList">
-            <tr>
-              <td data-bind="text: toolQty, click: $component.editTool($index())" onclick="location.href='#/toolsEdit'"></td>
-              <td data-bind="text: toolDesc, click: $component.editTool($index())" onclick="location.href='#/toolsEdit'"></td>
-              <td data-bind="text: toolRate, click: $component.editTool($index())" onclick="location.href='#/toolsEdit'"></td>
-              <td><span data-bind="click: $component.removeTool" class="glyphicon glyphicon-trash alert-danger"></span></td>
-            </tr>
-            </tbody>
-          </table>
-            <ul class="accordion-menu col-sm-12 col-lg-12">
-                <li class="closed">
-                    <header onclick="location.href='#/toolsAdd'"><span class="title">Add</span></header>
-                    <header onclick="location.href='#/materials'"><span class="title">Back</span></header>
-                </li>
-            </ul>
-        </div>
-      </form>
-    </div>
-<!--  </div>-->
+  <!--  <div class="vertical-center">-->
+  <div class="container">
+    <h1>Tools Used</h1>
+    <form action="">
+      <div class="form-group">
+        <h2>Total Cost:<span data-bind="text: totalToolCost"></span></h2>
+        <table>
+          <thead><tr>
+            <th>Quantity</th><th>Description</th><th>Rate</th><th>Remove</th>
+          </tr></thead>
+          <tbody data-bind="foreach: toolList">
+          <tr>
+            <td data-bind="text: toolQty, click: $component.editTool($index())" onclick="location.href='#/toolsEdit'"></td>
+            <td data-bind="text: toolDesc, click: $component.editTool($index())" onclick="location.href='#/toolsEdit'"></td>
+            <td data-bind="text: toolRate, click: $component.editTool($index())" onclick="location.href='#/toolsEdit'"></td>
+            <td><span data-bind="click: $component.removeTool" class="glyphicon glyphicon-trash alert-danger"></span></td>
+          </tr>
+          </tbody>
+        </table>
+        <ul class="accordion-menu col-sm-12 col-lg-12">
+          <li class="closed">
+            <header onclick="location.href='#/toolsAdd'"><span class="title">Add</span></header>
+            <header onclick="location.href='#/materials'"><span class="title">Back</span></header>
+          </li>
+        </ul>
+      </div>
+    </form>
+  </div>
+  <!--  </div>-->
 </template>
 
 <template id ="toolsAdd-page">
-<!--  <div class="vertical-center">-->
-    <div class="container">
-      <h1>Tools Used</h1><br>
-      <form action="">
-        <div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
-        <div class="form-group">
-          <label for="toolQty">Quantity:</label>
-            <div class="input-group">
-                <input data-bind="value: tools.toolQty" type="text" class="form-control" id="toolQty" placeholder="Tool Quantity">
-            </div>
+  <!--  <div class="vertical-center">-->
+  <div class="container">
+    <h1>Tools Used</h1><br>
+    <form action="">
+      <div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
+      <div class="form-group">
+        <label for="toolQty">Quantity:</label>
+        <div class="input-group">
+          <input data-bind="value: tools.toolQty" type="text" class="form-control" id="toolQty" placeholder="Tool Quantity">
         </div>
-        <div class="form-group">
-          <label for="toolDesc">Description:</label>
-            <div class="input-group">
-                <input data-bind="value: tools.toolDesc" type="text" class="form-control" id="toolDesc" placeholder="Tool Description">
-            </div>
+      </div>
+      <div class="form-group">
+        <label for="toolDesc">Description:</label>
+        <div class="input-group">
+          <input data-bind="value: tools.toolDesc" type="text" class="form-control" id="toolDesc" placeholder="Tool Description">
         </div>
-        <div class="form-group">
-          <label for="toolRate">Rate:</label>
-            <div class="input-group">
-                <input data-bind="value: tools.toolRate" type="text" class="form-control" id="toolRate" placeholder="Tool Rate">
-            </div>
+      </div>
+      <div class="form-group">
+        <label for="toolRate">Rate:</label>
+        <div class="input-group">
+          <input data-bind="value: tools.toolRate" type="text" class="form-control" id="toolRate" placeholder="Tool Rate">
         </div>
-        <ul class="accordion-menu col-sm-12 col-lg-12">
-            <li class="closed">
-                <header data-bind="click: $component.addTool" onclick="location.href='#/tools'"><span class="title">Submit</span></header>
-                <header onclick="location.href='#/tools'"><span class="title">Back</span></header>
-            </li>
-        </ul>
+      </div>
+      <ul class="accordion-menu col-sm-12 col-lg-12">
+        <li class="closed">
+          <header data-bind="click: $component.addTool" onclick="location.href='#/tools'"><span class="title">Submit</span></header>
+          <header onclick="location.href='#/tools'"><span class="title">Back</span></header>
+        </li>
+      </ul>
     </form>
   </div>
   <!--  </div>-->
@@ -672,16 +619,13 @@
       <div class="form-group">
         <label for="toolQtyEdit">Quantity:</label>
         <input data-bind="value: toolsEdit.toolQty" type="text" class="form-control" id="toolQtyEdit" placeholder="Tool Quantity">
-        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
       </div>
       <div class="form-group">
         <input data-bind="value: toolsEdit.toolDesc" type="text" class="form-control" id="toolDescEdit" placeholder="Tool Description">
-        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
       </div>
       <div class="form-group">
         <label for="toolRateEdit">Rate:</label>
         <input data-bind="value: toolsEdit.toolRate" type="text" class="form-control" id="toolRateEdit" placeholder="Tool Rate">
-        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
       </div>
       <ul class="accordion-menu col-sm-12 col-lg-4">
         <li class="closed">
@@ -697,62 +641,61 @@
 </template>
 
 <template id ="thirdParty-page">
-<!--  <div class="vertical-center">-->
-    <div class="container">
-      <h1>Third Party Outsource</h1>
-      <form action="">
-        <div class="form-group">
-          <h2>Total Cost:<span data-bind="text: totalThirdPartyCost"></span></h2>
-          <table>
-            <thead><tr>
-              <th>Date</th><th>Description</th><th>Cost</th><th>Remove</th>
-            </tr></thead>
-            <tbody data-bind="foreach: thirdPartyList">
-            <tr>
-              <td data-bind="text: thirdPartyDate, click: $component.editThirdParty($index())" onclick="location.href='#/thirdPartyEdit'"></td>
-              <td data-bind="text: thirdPartyDesc, click: $component.editThirdParty($index())" onclick="location.href='#/thirdPartyEdit'"></td>
-              <td data-bind="text: thirdPartyCost, click: $component.editThirdParty($index())" onclick="location.href='#/thirdPartyEdit'"></td>
-              <td><span data-bind="click: $component.removeThirdParty" class="glyphicon glyphicon-trash alert-danger"></span></td>
-            </tr>
-            </tbody>
-          </table>
-            <ul class="accordion-menu col-sm-12 col-lg-12">
-                <li class="closed">
-                    <header onclick="location.href='#/thirdPartyAdd'"><span class="title">Add</span></header>
-                    <header onclick="location.href='#/materials'"><span class="title">Back</span></header>
-                </li>
-            </ul>
-        </div>
-      </form>
-    </div>
-<!--  </div>-->
+  <!--  <div class="vertical-center">-->
+  <div class="container">
+    <h1>Third Party Outsource</h1>
+    <form action="">
+      <div class="form-group">
+        <h2>Total Cost:<span data-bind="text: totalThirdPartyCost"></span></h2>
+        <table>
+          <thead><tr>
+            <th>Date</th><th>Description</th><th>Cost</th><th>Remove</th>
+          </tr></thead>
+          <tbody data-bind="foreach: thirdPartyList">
+          <tr>
+            <td data-bind="text: thirdPartyDate, click: $component.editThirdParty($index())" onclick="location.href='#/thirdPartyEdit'"></td>
+            <td data-bind="text: thirdPartyDesc, click: $component.editThirdParty($index())" onclick="location.href='#/thirdPartyEdit'"></td>
+            <td data-bind="text: thirdPartyCost, click: $component.editThirdParty($index())" onclick="location.href='#/thirdPartyEdit'"></td>
+            <td><span data-bind="click: $component.removeThirdParty" class="glyphicon glyphicon-trash alert-danger"></span></td>
+          </tr>
+          </tbody>
+        </table>
+        <ul class="accordion-menu col-sm-12 col-lg-12">
+          <li class="closed">
+            <header onclick="location.href='#/thirdPartyAdd'"><span class="title">Add</span></header>
+            <header onclick="location.href='#/materials'"><span class="title">Back</span></header>
+          </li>
+        </ul>
+      </div>
+    </form>
+  </div>
+  <!--  </div>-->
 </template>
 
 <template id ="thirdPartyAdd-page">
-<!--  <div class="vertical-center">-->
-    <div class="container">
-      <h1>Third Party Outsource</h1><br>
-      <form action="">
-        <div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
-        <div class="form-group">
-          <label for="thirdPartyDate">Date:</label>
-                <input data-bind="value: thirdParty.thirdPartyDate" type="date" class="form-control" id="thirdPartyDate" placeholder="Third Party Date">
-                <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-        </div>
-        <div class="form-group">
-          <label for="thirdPartyDesc">Description:</label>
-                <input data-bind="value: thirdParty.thirdPartyDesc" type="text" class="form-control" id="thirdPartyDesc" placeholder="Third Party Description">
-        </div>
-        <div class="form-group">
-          <label for="thirdPartyCost">Cost:</label>
-                <input data-bind="value: thirdParty.thirdPartyCost" type="text" class="form-control" id="thirdPartyCost" placeholder="Third Party Cost">
-        </div>
-        <ul class="accordion-menu col-sm-12 col-lg-12">
-            <li class="closed">
-                <header data-bind="click: $component.addThirdParty" onclick="location.href='#/thirdParty'"><span class="title">Submit</span></header>
-                <header onclick="location.href='#/thirdParty'"><span class="title">Back</span></header>
-            </li>
-        </ul>
+  <!--  <div class="vertical-center">-->
+  <div class="container">
+    <h1>Third Party Outsource</h1><br>
+    <form action="">
+      <div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
+      <div class="form-group">
+        <label for="thirdPartyDate">Date:</label>
+        <input data-bind="value: thirdParty.thirdPartyDate" type="date" class="form-control" id="thirdPartyDate" placeholder="Third Party Date">
+      </div>
+      <div class="form-group">
+        <label for="thirdPartyDesc">Description:</label>
+        <input data-bind="value: thirdParty.thirdPartyDesc" type="text" class="form-control" id="thirdPartyDesc" placeholder="Third Party Description">
+      </div>
+      <div class="form-group">
+        <label for="thirdPartyCost">Cost:</label>
+        <input data-bind="value: thirdParty.thirdPartyCost" type="text" class="form-control" id="thirdPartyCost" placeholder="Third Party Cost">
+      </div>
+      <ul class="accordion-menu col-sm-12 col-lg-12">
+        <li class="closed">
+          <header data-bind="click: $component.addThirdParty" onclick="location.href='#/thirdParty'"><span class="title">Submit</span></header>
+          <header onclick="location.href='#/thirdParty'"><span class="title">Back</span></header>
+        </li>
+      </ul>
     </form>
   </div>
   <!--  </div>-->
@@ -768,17 +711,14 @@
       <div class="form-group">
         <label for="thirdPartyDateEdit">Date:</label>
         <input data-bind="value: thirdPartyEdit.thirdPartyDate" type="date" class="form-control" id="thirdPartyDateEdit" placeholder="Third Party Date">
-        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
       </div>
       <div class="form-group">
         <label for="thirdPartyDescEdit">Description:</label>
         <input data-bind="value: thirdPartyEdit.thirdPartyDesc" type="text" class="form-control" id="thirdPartyDescEdit" placeholder="Third Party Description">
-        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
       </div>
       <div class="form-group">
         <label for="thirdPartyCostEdit">Cost:</label>
         <input data-bind="value: thirdPartyEdit.thirdPartyCost" type="text" class="form-control" id="thirdPartyCostEdit" placeholder="Third Party Cost">
-        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
       </div>
       <ul class="accordion-menu col-sm-12 col-lg-4">
         <li class="closed">
@@ -842,83 +782,56 @@
 
 <template id ="equipment-page">
 
-    <div class="container" >
+  <div class="container-fluid" >
 
-      <div class="row" data-bind="foreach: equipList">
+    <div class="row" data-bind="foreach: equipList">
       <div class="card equipmentcards col-lg-6">
         <div class="card-header card-success">
           <div class="form-group" data-bind="click: $component.getIndex($index())">
             <label>Equipment Name:</label>
             <select class="form-control" data-bind="options: equipmentOptions, optionsText: 'name', optionsValue: 'item', value: equipLoad"></select>
-            <button type="button" class="btn btn-secondary  btn-info" data-bind="click: $component.confirm"><span class="glyphicon glyphicon-ok"></span></button>
+            <h3><strong>Category: Hvac</strong><button type="button" class="btn btn-secondary  btn-info" data-bind="click: $component.confirm" style="float: right"><span class="glyphicon glyphicon-ok"></span></button></h3>
           </div>
         </div>
-          <blockquote class="card-blockquote">
-            <table class="table">
-              <thead>
-              <tr>
-                <th>Category:</th>
-                <th>Make/Model:</th>
-                <th>Serial#:</th>
-                <th>Remove:</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr>
-                <td>HVAC</td>
-                <td data-bind="text: equipmentMakeModel, click: $component.edit($index())" onclick="location.href='#/equipmentFormEdit'"></td>
-                <td data-bind="text: equipmentNum, click: $component.edit($index())" onclick="location.href='#/equipmentFormEdit'"></td>
-                <td>
-                  <button type="button" class="btn btn-secondary  btn-success"><span class="glyphicon glyphicon-ok"></span></button>
-                  <button type="button" class="btn btn-secondary  btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
-                  <br/>
-                  <button type="button" class="btn btn-secondary  btn-warning"><span class="glyphicon glyphicon-camera"></span></button>
-                  <button type="button" class="btn btn-secondary  btn-default" data-bind="click: $component.remove"><span class="glyphicon glyphicon-trash"></span></button>
-                </td>
+        <blockquote class="card-blockquote">
+          <table >
+            <thead>
+            <tr>
+              <th>Model:</th>
+              <th>Serial#:</th>
+              <th>Remove:</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td data-bind="text: equipmentMakeModel, click: $component.edit($index())" onclick="location.href='#/equipmentFormEdit'"></td>
+              <td data-bind="text: equipmentNum, click: $component.edit($index())" onclick="location.href='#/equipmentFormEdit'"></td>
+              <td>
+                <!--<button type="button" class="btn btn-secondary  btn-success"><span class="glyphicon glyphicon-ok"></span></button>-->
+                <!--<button type="button" class="btn btn-secondary  btn-danger"><span class="glyphicon glyphicon-remove"></span></button>-->
+                <!--<br/>-->
+                <!--<button type="button" class="btn btn-secondary  btn-warning"><span class="glyphicon glyphicon-camera"></span></button>-->
+                <button type="button" class="btn btn-secondary  btn-default" data-bind="click: $component.remove"><span class="glyphicon glyphicon-trash"></span></button>
+              </td>
 
-              </tr>
-              </tbody>
-            </table>
+            </tr>
+            </tbody>
+          </table>
 
-          </blockquote>
+        </blockquote>
       </div>
-
-      </div>
-
-
-
-        <div class="card equipmentcards col-lg-16">
-          <div class="col-lg-6 add-button">
-            <button type="button" class="btn btn-success btn-circle btn-xl" data-bind="click: $component.add"><i class="glyphicon glyphicon-plus"></i></button>
-          </div>
-        </div>
 
     </div>
 
+  </div>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-4"></div>
-      <div class="col-lg-6">
-        <nav>
-          <ul class="pagination pagination-lg">
-            <li class="page-item">
-              <a class="page-link" href="#" tabindex="-1">Previous</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item active"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">4</a></li>
-            <li class="page-item"><a class="page-link" href="#">5</a></li>
-            <li class="page-item">
-              <a class="page-link" href="#">Next</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <div class="col-lg-4"></div>
+  <div class="card equipmentcards col-lg-16">
+    <div class="col-lg-6 add-button">
+      <button type="button" class="btn btn-success btn-circle btn-xl" data-bind="click: $component.add"><i class="glyphicon glyphicon-plus"></i></button>
     </div>
   </div>
+
+
 
 </template>
 
@@ -938,74 +851,45 @@
                     <div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
                     <div class="form-group form-group-lg">
                       <label for="buildingSpace">Building Space:</label>
-                      <div class="input-group">
-                        <input data-bind="value: equipment.buildingSpace" type="text" class="form-control" id="buildingSpace" placeholder="Building Space" name="buildingSpace">
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-                      </div>
+                      <input data-bind="value: equipment.buildingSpace" type="text" class="form-control" id="buildingSpace" placeholder="Building Space" name="buildingSpace">
                     </div>
                     <div class="form-group form-group-lg">
                       <label for="equipmentName">Equipment Name:</label>
-                      <div class="input-group">
-                        <input data-bind="value: equipment.equipmentName" type="text" class="form-control" id="equipmentName" placeholder="Equipment Name" name="equipmentName">
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-                      </div>
+                      <input data-bind="value: equipment.equipmentName" type="text" class="form-control" id="equipmentName" placeholder="Equipment Name" name="equipmentName">
                     </div>
                     <div class="form-group form-group-lg">
                       <label for="equipmentMakeModel">Make/Model:</label>
-                      <div class="input-group">
-                        <input data-bind="value: equipment.equipmentMakeModel" type="text" class="form-control" id="equipmentMakeModel" placeholder="Make/Model" name="equipmentMakeModel">
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-                      </div>
+                      <input data-bind="value: equipment.equipmentMakeModel" type="text" class="form-control" id="equipmentMakeModel" placeholder="Make/Model" name="equipmentMakeModel">
                     </div>
                     <div class="form-group form-group-lg">
                       <label for="equipmentNum">Equipment Number:</label>
-                      <div class="input-group">
-                        <input data-bind="value: equipment.equipmentNum" type="text" class="form-control" id="equipmentNum" placeholder="Equipment Number" name="equipmentNum">
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-                      </div>
+                      <input data-bind="value: equipment.equipmentNum" type="text" class="form-control" id="equipmentNum" placeholder="Equipment Number" name="equipmentNum">
                     </div>
                     <div class="form-group form-group-lg">
                       <label for="equipmentCost">Equipment Cost:</label>
-                      <div class="input-group">
-                        <input data-bind="value: equipment.equipmentCost" type="text" class="form-control" id="equipmentCost" placeholder="Equipment Cost" name="equipmentCost">
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-                      </div>
+                      <input data-bind="value: equipment.equipmentCost" type="text" class="form-control" id="equipmentCost" placeholder="Equipment Cost" name="equipmentCost">
                     </div>
                     <div class="form-group">
-                      <label for="equipmentStatus">Equipment Status:</label>
-                      <ul>
-                        <button class="glyphicon glyphicon-ok" style="width: 60px; height: 60px;right: 25px;background-color: green; color: white;" onclick="location.href='#/'"></button>
-                        <button class="glyphicon glyphicon-remove" style="width: 60px; height: 60px;right: 25px;background-color: red; color: black" onclick="location.href='#/'"></button>
-                      </ul>
-                      <br/>
-                      <div class="input-group">
-                        <input data-bind="value: equipment.equipmentStatus" type="text" class="form-control" id="equipmentStatus" placeholder="Equipment Status" name="equipmentStatus">
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-                      </div>
+                      <!--<label for="equipmentStatus">Equipment Status:</label>-->
+                      <!--<ul>-->
+                      <!--<button class="glyphicon glyphicon-ok" style="width: 60px; height: 60px;right: 25px;background-color: green; color: white;" onclick="location.href='#/'"></button>-->
+                      <!--<button class="glyphicon glyphicon-remove" style="width: 60px; height: 60px;right: 25px;background-color: red; color: black" onclick="location.href='#/'"></button>-->
+                      <!--</ul>-->
+                      <!--<br/>-->
+                      <input data-bind="value: equipment.equipmentStatus" type="text" class="form-control" id="equipmentStatus" placeholder="Equipment Status" name="equipmentStatus">
                     </div>
                     <div class="form-group form-group-lg">
                       <label for="equipmentDetails">Equipment Details:</label>
-                      <div class="input-group">
-                        <textarea data-bind="value: equipment.equipmentDetails" name="equipmentDetails" id="equipmentDetails" class="form-control" rows="5" required></textarea>
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-                      </div>
+                      <textarea data-bind="value: equipment.equipmentDetails" name="equipmentDetails" id="equipmentDetails" class="form-control" rows="5" required></textarea>
                     </div>
                     <div class="form-group form-group-lg">
                       <label for="equipmentNotes">Equipment Notes:</label>
-                      <div class="input-group">
-                        <textarea data-bind="value: equipment.equipmentNotes" name="equipmentDetails" id="equipmentNotes" class="form-control" rows="5" required></textarea>
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-                      </div>
+                      <textarea data-bind="value: equipment.equipmentNotes" name="equipmentDetails" id="equipmentNotes" class="form-control" rows="5" required></textarea>
                     </div>
                     <div class="form-group">
                       <label>Upload Image</label>
                       <div class="input-group">
-                        <span class="input-group-btn">
-                            <span class="btn btn-default btn-file">
-                                Browse…<input id="imgInp" type="file" accept="image/*;capture=camera">
-                            </span>
-                         </span>
-                        <input type="text" class="form-control" readonly>
+                        <input id="imgInp" name="img" type="file" accept="image/*;capture=camera" multiple/>
                       </div>
                     </div>
                   </div>
@@ -1057,74 +941,45 @@
                     <div class="well well-sm alert alert-danger"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
                     <div class="form-group form-group-lg">
                       <label for="buildingSpaceEdit">Building Space:</label>
-                      <div class="input-group">
-                        <input data-bind="value: equipmentEdit.buildingSpace" type="text" class="form-control" id="buildingSpaceEdit" placeholder="Building Space" name="buildingSpace">
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-                      </div>
+                      <input data-bind="value: equipmentEdit.buildingSpace" type="text" class="form-control" id="buildingSpaceEdit" placeholder="Building Space" name="buildingSpace">
                     </div>
                     <div class="form-group form-group-lg">
                       <label for="equipmentNameEdit">Equipment Name:</label>
-                      <div class="input-group">
-                        <input data-bind="value: equipmentEdit.equipmentName" type="text" class="form-control" id="equipmentNameEdit" placeholder="Equipment Name" name="equipmentName">
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-                      </div>
+                      <input data-bind="value: equipmentEdit.equipmentName" type="text" class="form-control" id="equipmentNameEdit" placeholder="Equipment Name" name="equipmentName">
                     </div>
                     <div class="form-group form-group-lg">
                       <label for="equipmentMakeModelEdit">Make/Model:</label>
-                      <div class="input-group">
-                        <input data-bind="value: equipmentEdit.equipmentMakeModel" type="text" class="form-control" id="equipmentMakeModelEdit" placeholder="Make/Model" name="equipmentMakeModel">
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-                      </div>
+                      <input data-bind="value: equipmentEdit.equipmentMakeModel" type="text" class="form-control" id="equipmentMakeModelEdit" placeholder="Make/Model" name="equipmentMakeModel">
                     </div>
                     <div class="form-group form-group-lg">
                       <label for="equipmentNumEdit">Equipment Number:</label>
-                      <div class="input-group">
-                        <input data-bind="value: equipmentEdit.equipmentNum" type="text" class="form-control" id="equipmentNumEdit" placeholder="Equipment Number" name="equipmentNum">
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-                      </div>
+                      <input data-bind="value: equipmentEdit.equipmentNum" type="text" class="form-control" id="equipmentNumEdit" placeholder="Equipment Number" name="equipmentNum">
                     </div>
                     <div class="form-group form-group-lg">
                       <label for="equipmentCostEdit">Equipment Cost:</label>
-                      <div class="input-group">
-                        <input data-bind="value: equipmentEdit.equipmentCost" type="text" class="form-control" id="equipmentCostEdit" placeholder="Equipment Cost" name="equipmentCost">
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-                      </div>
+                      <input data-bind="value: equipmentEdit.equipmentCost" type="text" class="form-control" id="equipmentCostEdit" placeholder="Equipment Cost" name="equipmentCost">
                     </div>
                     <div class="form-group">
-                      <label for="equipmentStatusEdit">Equipment Status:</label>
-                      <ul>
-                        <button class="glyphicon glyphicon-ok" style="width: 60px; height: 60px;right: 25px;background-color: green; color: white;" onclick="location.href='#/'"></button>
-                        <button class="glyphicon glyphicon-remove" style="width: 60px; height: 60px;right: 25px;background-color: red; color: black" onclick="location.href='#/'"></button>
-                      </ul>
+                      <!--<label for="equipmentStatusEdit">Equipment Status:</label>-->
+                      <!--<ul>-->
+                      <!--<button class="glyphicon glyphicon-ok" style="width: 60px; height: 60px;right: 25px;background-color: green; color: white;" onclick="location.href='#/'"></button>-->
+                      <!--<button class="glyphicon glyphicon-remove" style="width: 60px; height: 60px;right: 25px;background-color: red; color: black" onclick="location.href='#/'"></button>-->
+                      <!--</ul>-->
                       <br/>
-                      <div class="input-group">
-                        <input data-bind="value: equipmentEdit.equipmentStatus" type="text" class="form-control" id="equipmentStatusEdit" placeholder="Equipment Status" name="equipmentStatus">
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-                      </div>
+                      <input data-bind="value: equipmentEdit.equipmentStatus" type="text" class="form-control" id="equipmentStatusEdit" placeholder="Equipment Status" name="equipmentStatus">
                     </div>
                     <div class="form-group form-group-lg">
                       <label for="equipmentDetailsEdit">Equipment Details:</label>
-                      <div class="input-group">
-                        <textarea data-bind="value: equipmentEdit.equipmentDetails" name="equipmentDetails" id="equipmentDetailsEdit" class="form-control" rows="5" required></textarea>
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-                      </div>
+                      <textarea data-bind="value: equipmentEdit.equipmentDetails" name="equipmentDetails" id="equipmentDetailsEdit" class="form-control" rows="5" required></textarea>
                     </div>
                     <div class="form-group form-group-lg">
                       <label for="equipmentNotesEdit">Equipment Notes:</label>
-                      <div class="input-group">
-                        <textarea data-bind="value: equipmentEdit.equipmentNotes" name="equipmentDetails" id="equipmentNotesEdit" class="form-control" rows="5" required></textarea>
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
-                      </div>
+                      <textarea data-bind="value: equipmentEdit.equipmentNotes" name="equipmentDetails" id="equipmentNotesEdit" class="form-control" rows="5" required></textarea>
                     </div>
                     <div class="form-group">
                       <label>Upload Image</label>
                       <div class="input-group">
-                        <span class="input-group-btn">
-                            <span class="btn btn-default btn-file">
-                                Browse…<input type="file" id="imgInpEdit">
-                            </span>
-                         </span>
-                        <input type="text" class="form-control" readonly>
+                        <input id="imgInp" name="img" type="file" accept="image/*;capture=camera" multiple/>
                       </div>
                       <img id='img-uploadEdit'/>
                     </div>
@@ -1254,29 +1109,6 @@
   </div>
 
 
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-4"></div>
-      <div class="col-lg-6">
-        <nav>
-          <ul class="pagination pagination-lg">
-            <li class="page-item">
-              <a class="page-link" href="#" tabindex="-1">Previous</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item active"><a class="page-link" href="#">4</a></li>
-            <li class="page-item"><a class="page-link" href="#">5</a></li>
-            <li class="page-item">
-              <a class="page-link" href="#">Next</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <div class="col-lg-4"></div>
-    </div>
-  </div>
 </template>
 
 
@@ -1298,7 +1130,6 @@
                       <label for="workDate2">Work Date:</label>
                       <div class="input-group">
                         <input data-bind="value: workDaysData.workDate" type="date" class="form-control" id="workDate2" placeholder="Scheduled Work Date" name="workDate">
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                       </div>
                     </div>
                     <div class="form-group  form-group-lg">
@@ -1329,7 +1160,6 @@
                       <label for="totalhrs">Total Hours</label>
                       <div class="input-group">
                         <input data-bind="value: workDaysData.totalHrs" type="text" class="form-control" id="totalhrs" placeholder="Total Hours" name="totalhrs">
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                       </div>
                     </div>
                     <div class="form-group form-group-lg">
@@ -1342,7 +1172,6 @@
                       <label for="labour">Labour</label>
                       <div class="input-group">
                         <input data-bind="value: workDaysData.labour" type="text" class="form-control" id="labour" placeholder="Labour" name="labour">
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                       </div>
                     </div>
                   </div>
@@ -1378,30 +1207,6 @@
     </div>
   </div>
 
-
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-4"></div>
-      <div class="col-lg-6">
-        <nav>
-          <ul class="pagination pagination-lg">
-            <li class="page-item">
-              <a class="page-link" href="#" tabindex="-1">Previous</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item active"><a class="page-link" href="#">4</a></li>
-            <li class="page-item"><a class="page-link" href="#">5</a></li>
-            <li class="page-item">
-              <a class="page-link" href="#">Next</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <div class="col-lg-4"></div>
-    </div>
-  </div>
 </template>
 
 <template id ="workDaysEdit-page">
@@ -1423,56 +1228,48 @@
                       <label for="workDate2Edit">Work Date:</label>
                       <div class="input-group">
                         <input data-bind="value: workDaysEdit.workDate" type="date" class="form-control" id="workDate2Edit" placeholder="Scheduled Work Date" name="workDate">
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                       </div>
                     </div>
                     <div class="form-group  form-group-lg">
                       <label for="technicianEdit">Technician</label>
                       <div class="input-group">
                         <input data-bind="value: workDaysEdit.technician" type="text" class="form-control" id="technicianEdit" placeholder="Technician Name" name="technician">
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                       </div>
                     </div>
                     <div class="form-group form-group-lg">
                       <label for="reghrsEdit">Regular Hours</label>
                       <div class="input-group">
                         <input data-bind="value: workDaysEdit.regHrs" type="text" class="form-control" id="reghrsEdit" placeholder="Regular Hours" name="reghrs">
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                       </div>
                     </div>
                     <div class="form-group form-group-lg">
                       <label for="overtimeEdit">Overtime</label>
                       <div class="input-group">
                         <input data-bind="value: workDaysEdit.overTime" type="text" class="form-control" id="overtimeEdit" placeholder="Overtime" name="overtime">
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                       </div>
                     </div>
                     <div class="form-group form-group-lg">
                       <label for="doubletimeEdit">Double Time</label>
                       <div class="input-group">
                         <input data-bind="value: workDaysEdit.doubleTime" type="text" class="form-control" id="doubletimeEdit" placeholder="Double Time" name="doubletime">
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                       </div>
                     </div>
                     <div class="form-group form-group-lg">
                       <label for="totalhrsEdit">Total Hours</label>
                       <div class="input-group">
                         <input data-bind="value: workDaysEdit.totalHrs" type="text" class="form-control" id="totalhrsEdit" placeholder="Total Hours" name="totalhrs">
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                       </div>
                     </div>
                     <div class="form-group form-group-lg">
                       <label for="rateEdit">Rate</label>
                       <div class="input-group">
                         <input data-bind="value: workDaysEdit.rate" type="text" class="form-control" id="rateEdit" placeholder="Rate" name="rate">
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                       </div>
                     </div>
                     <div class="form-group form-group-lg">
                       <label for="labourEdit">Labour</label>
                       <div class="input-group">
                         <input data-bind="value: workDaysEdit.labour" type="text" class="form-control" id="labourEdit" placeholder="Labour" name="labour">
-                        <span class="input-group-addon alert-danger"><span class="glyphicon glyphicon-asterisk alert-danger"></span></span>
                       </div>
                     </div>
                   </div>
@@ -1509,29 +1306,6 @@
   </div>
 
 
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-4"></div>
-      <div class="col-lg-6">
-        <nav>
-          <ul class="pagination pagination-lg">
-            <li class="page-item">
-              <a class="page-link" href="#" tabindex="-1">Previous</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item active"><a class="page-link" href="#">4</a></li>
-            <li class="page-item"><a class="page-link" href="#">5</a></li>
-            <li class="page-item">
-              <a class="page-link" href="#">Next</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <div class="col-lg-4"></div>
-    </div>
-  </div>
 </template>
 
 <template id ="invoice-page">
@@ -1560,36 +1334,12 @@
 
 
 
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-4"></div>
-      <div class="col-lg-6">
-        <nav>
-          <ul class="pagination pagination-lg">
-            <li class="page-item">
-              <a class="page-link" href="#" tabindex="-1">Previous</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">4</a></li>
-            <li class="page-item active"><a class="page-link" href="#">5</a></li>
-            <li class="page-item disabled">
-              <a class="page-link" href="#">Next</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <div class="col-lg-4"></div>
-    </div>
-  </div>
 
 </template>
 
 
 
-<script src="js/index.js"></script>
-
+<script  src="js/index.js"></script>
 
 </body>
 </html>

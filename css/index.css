@@ -1,5 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,900);
 
+@media only screen and (min-width: 1080px) {
+    .view-container{
+        margin-top: 5%;
+    }
+}
 
 .view-container{
     margin-top: 10%;

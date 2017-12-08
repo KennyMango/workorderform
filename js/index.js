@@ -6,7 +6,7 @@ var thirdPartyList = ko.observableArray([]);
 var equipList = ko.observableArray([]);
 var workList = ko.observableArray([]);
 var equipmentNameList = ko.observableArray([]);
-var text = 'text'
+var workFormData = ko.observableArray();
 
 var supplierEdit;
 var unitEdit;
@@ -295,21 +295,35 @@ var dispatchPage = function (params) {
     };
 
 
-    jQuery.ajax({
-        url: "https://www.builtspace.com/sites/bcitproject/_vti_bin/listdata.svc/OrganizationBuildings",
-        type: "GET",
-        async: false,
-        headers: { "Accept": "application/json;odata=verbose" },
-        success: function (data) {
-            if (data.d) {
-                if (data.d.results){
-                    self.buildingList = data.d.results[0]
-                }
-                else
-                    console.log('error')
-            }
-        }
-    });
+    // jQuery.ajax({
+    //     url: "https://www.builtspace.com/sites/bcitproject/_vti_bin/listdata.svc/ServiceWorkOrder",
+    //     type: "GET",
+    //     async: false,
+    //     headers: { "Accept": "application/json;odata=verbose" },
+    //     success: function (data) {
+    //         if (data.d) {
+    //             if (data.d.results){
+    //                 self.buildingList = data.d.results[0]
+    //                 workFormData = self.buildingList
+    //
+    //                 dispatchData.custName = data.d.results[0].Customer
+    //                 dispatchData.custPO = data.d.results[0].CustomerPO
+    //                 dispatchData.custEmail = data.d.results[0].TechnicianEmail
+    //                 dispatchData.custNotes = data.d.results[0].DispatchNotes
+    //                 dispatchData.requestBy = data.d.results[0].TaskCreatedBy
+    //                 dispatchData.contPhone = data.d.results[0].OnSiteContactPhone
+    //                 dispatchData.contEmail = data.d.results[0].OnSiteContactEmail
+    //                 dispatchData.assignedTo = data.d.results[0].Technician
+    //
+    //
+    //             }
+    //             else
+    //                 console.log('error')
+    //         }
+    //     }
+    // });
+
+
 
 
 };
@@ -969,22 +983,44 @@ $(document).on('click','.navbar-collapse.in',function(e) {
 
 $(document).ready(function () {
 
-    jQuery.ajax({
-        url: "https://www.builtspace.com/sites/bcitproject/_vti_bin/listdata.svc/ServiceWorkOrder",
-        type: "GET",
-        async: false,
-        headers: { "Accept": "application/json;odata=verbose" },
-        success: function (data) {
-            if (data.d) {
-                if (data.d.results){
-                    console.log(data.d.results[0])
-                    console.log(ko.toJSON(data.d.results[0]));
-                }
-                else
-                    console.log('error')
-            }
-        }
-    });
+    // var x = {
+    //     "__metadata": { "type": Microsoft.SharePoint.DataService.ServiceWorkOrderItem }
+    // };
+    //
+    // jQuery.ajax({
+    //     url: "https://www.builtspace.com/sites/bcitproject/_vti_bin/listdata.svc/ServiceWorkOrder",
+    //     type: "POST",
+    //     contentType: "application/json;odata=verbose",
+    //     data: ko.toJSON(x),
+    //     headers: {
+    //         "Accept": "application/json;odata=verbose", // return data format
+    //         "X-RequestDigest": $("#__REQUESTDIGEST").val()
+    //     },
+    //     success: function (data) {
+    //         self.error("New Category Created Successfully");
+    //     },
+    //     error: function (data) {
+    //         self.error("Error in processing request " + data.status);
+    //     }
+    // });
+
+    // jQuery.ajax({
+    //     url: "https://www.builtspace.com/sites/bcitproject/_vti_bin/listdata.svc/ServiceWorkOrder",
+    //     type: "GET",
+    //     async: false,
+    //     headers: { "Accept": "application/json;odata=verbose" },
+    //     success: function (data) {
+    //         if (data.d) {
+    //             if (data.d.results){
+    //                 workFormData = data.d.results[0]
+    //                 console.log(workFormData.WONumber)
+    //             }
+    //             else
+    //                 console.log('error')
+    //         }
+    //     }
+    // });
+
 
     var app = new MyApp();
     ko.applyBindings(app);
